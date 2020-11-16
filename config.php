@@ -5,4 +5,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=ubc_test_4','root','');
 echo "connécté à la base de donnée";
 
 
+
+
+echo "connécté à la base de donnée";
 ?>
