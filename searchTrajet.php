@@ -100,10 +100,10 @@ if(isset($_POST['search']))
     date_format(datetime_trajet, '%d/%m/%Y') as date, 
     date_format(datetime_trajet, '%h:%i') as hour, 
     nom, prenom, tel, email from trajet 
-    NATURAL JOIN users WHERE id_ville=? 
+    INNER JOIN users ON users.id = trajet.id_user 
+    WHERE id_ville=?
     AND datetime_trajet >=?
-    AND partir_ub =? 
-    GROUP BY id_trajet 
+    AND partir_ub =?  
     ORDER BY datetime_trajet;");
     $insertTrajet->execute(array($id_ville['id_ville'], $datetime, $_SESSION['partir_ub']));
 
