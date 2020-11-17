@@ -59,8 +59,6 @@ if(isset($_POST['proposer']))
         $erreur = "Tout les champs doivent être complétés!";
     }
 }
-
-
 ?>
 
 <form action="" method="post">

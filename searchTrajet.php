@@ -47,6 +47,12 @@ if(isset($_POST['search']))
     <h2>Rechercher un trajet</h2>
     <div>
     <p>
+    <label>Départ de l'UB :</label></br>
+    <input type="radio" name="depart" value="1"/></br>
+    <label>Arrivée à l'UB :</label></br>
+    <input type="radio" name="depart" value="0"/></br>
+    </p>
+    <p>
     <label>Ville :</label>
     <input type="text" name="ville_nom" placeholder="Ville de départ ou d'arrivée" value="<?php if(isset($ville_nom_reel)) {echo $ville_nom_reel; }?>"/>
     <label>Code postal :</label>
