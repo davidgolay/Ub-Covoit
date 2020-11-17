@@ -43,26 +43,7 @@ if(isset($_POST['search']))
 
 ?>
 
-<form action="" method="post">
-    <h2>Rechercher un trajet</h2>
-    <div>
-    <p>
-    <label>Ville :</label>
-    <input type="text" name="ville_nom" placeholder="Ville de départ ou d'arrivée" value="<?php if(isset($ville_nom_reel)) {echo $ville_nom_reel; }?>"/>
-    <label>Code postal :</label>
-    <input type="text" name="code_postal" placeholder="Code postal de cette ville" value="<?php if(isset($ville_code_postal)) {echo $ville_code_postal; }?>"/>
-    </p>
-    <p>
-    <label>Date :</label>
-    <input type="date" name="date" value="<?php if(isset($date)) {echo $date; }?>"/>
-    <label>Heure :</label>
-    <input type="time" name="time" value="<?php if(isset($time)) {echo $time; }?>"/>
-    </p>
-    </div> 
-    <?php if(isset($erreur)){echo '<font color="red">'. $erreur;};?>
-    <p><input type="submit" name="search" value="Rechercher le trajet"/>
-    </p>
-</form>
+
 
 <?php
 if(isset($_POST['search']))
