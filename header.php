@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<div> Header à remplir
+<div>
 <a href="index.php"> Index </a>
 <a href="profil.php"> Profil </a>
 <a href="logout.php"> Se deconnecter </a>

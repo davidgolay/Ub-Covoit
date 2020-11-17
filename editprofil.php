@@ -17,8 +17,6 @@ if(isset($_SESSION['id']))
         $insertnom = $bdd->prepare("UPDATE users SET nom = ? AND id = ?");
         $insertnom->execute(array($new_nom, $_SESSION['nom']));
         */
-        
-
     }
 
 ?>

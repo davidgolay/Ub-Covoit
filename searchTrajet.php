@@ -1,5 +1,9 @@
 <?php
+session_start();
+include 'header.php';
 include 'config.php';
+
+echo "boolean: partir_ub = ". $_SESSION['partir_ub'];
 
 if(isset($_POST['search']))
 {
@@ -78,7 +82,8 @@ if(isset($_POST['search']))
     date_format(datetime_trajet, '%h:%i') as hour, 
     nom, prenom, tel, email from trajet 
     NATURAL JOIN users WHERE id_ville=? 
-    AND datetime_trajet >=? 
+    AND datetime_trajet >=?
+    AND partir_université >=? 
     GROUP BY id_trajet 
     ORDER BY datetime_trajet;");
     $insertTrajet->execute(array($id_ville['id_ville'], $datetime));
@@ -91,7 +96,6 @@ if(isset($_POST['search']))
                         <th colspan="3">Détail sur les conducteurs</th>
                         <th>Date du trajet</th>
                         <th>Heure du trajet</th>
-
                     </tr>';
 
     foreach($insertTrajet as $row)
@@ -115,3 +119,7 @@ if(isset($_POST['search']))
 <p>
 <a href="createTrajet.php">Proposer un trajet</a>
 </p>
+
+<?php
+include 'footer.php';
+?>
