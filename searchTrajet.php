@@ -34,35 +34,6 @@ if(isset($_POST['search']))
         {
             $erreur ="Ville inconnue pour ce code postal";
         }
-        
-        
-
-        $insertTrajet = $bdd->prepare("SELECT DISTINCT id_trajet, id_ville, id_user, date_format(datetime_trajet, '%d/%m/%Y') as date, date_format(datetime_trajet, '%h:%i') as hour, nom, prenom, tel from trajet 
-        NATURAL JOIN users WHERE id_ville=? AND datetime_trajet >=?;");
-        $insertTrajet->execute(array($id_ville['id_ville'], $datetime));
-
-        echo '<table width="40%" border="1%" cellpadding="5" cellspacing="5">
-                    <tr>
-                        <th>Trajet</th>
-                        <th>Ville</th>
-                        <th>Conducteur</th>
-                        <th>Date du trajet</th>
-                        <th>Heure du trajet</th>
-                    </tr>';
-
-        foreach($insertTrajet as $row)
-        {
-            echo '<tr>
-                        <td>'. $row["id_trajet"]. '</td>
-                        <td>'. $ville_nom_reel. '</td>
-                        <td>'. $row["nom"]. " " . $row["prenom"]. " " . $row["tel"]. '</td>
-                        <td>'. $row["date"]. '</td>
-                        <td>'. $row["hour"]. '</td>
-                 </tr>';
-                                 
-        }
-
-        echo '</table>';
     }
     else
     {
@@ -75,20 +46,66 @@ if(isset($_POST['search']))
 <form action="" method="post">
     <h2>Rechercher un trajet</h2>
     <div>
+    <p>
     <label>Ville :</label>
     <input type="text" name="ville_nom" placeholder="Ville de départ ou d'arrivée" value="<?php if(isset($ville_nom_reel)) {echo $ville_nom_reel; }?>"/>
     <label>Code postal :</label>
     <input type="text" name="code_postal" placeholder="Code postal de cette ville" value="<?php if(isset($ville_code_postal)) {echo $ville_code_postal; }?>"/>
+    </p>
+    <p>
     <label>Date :</label>
     <input type="date" name="date" value="<?php if(isset($date)) {echo $date; }?>"/>
     <label>Heure :</label>
     <input type="time" name="time" value="<?php if(isset($time)) {echo $time; }?>"/>
+    </p>
     </div> 
     <?php if(isset($erreur)){echo '<font color="red">'. $erreur;};?>
     <p><input type="submit" name="search" value="Rechercher le trajet"/>
     </p>
-</form> 
+</form>
 
+<?php
+if(isset($_POST['search']))
+{
+    $insertTrajet = $bdd->prepare("SELECT id_trajet, id_ville, id_user, 
+    date_format(datetime_trajet, '%d/%m/%Y') as date, 
+    date_format(datetime_trajet, '%h:%i') as hour, 
+    nom, prenom, tel, email from trajet 
+    NATURAL JOIN users WHERE id_ville=? 
+    AND datetime_trajet >=? 
+    GROUP BY id_trajet 
+    ORDER BY datetime_trajet;");
+    $insertTrajet->execute(array($id_ville['id_ville'], $datetime));
+
+        echo '<h3>Liste des trajets trouvés</h3>
+                <table width="60%" border="1%" cellpadding="5">
+                    <tr>
+                        <th>Trajet</th>
+                        <th>Ville</th>
+                        <th colspan="3">Détail sur les conducteurs</th>
+                        <th>Date du trajet</th>
+                        <th>Heure du trajet</th>
+
+                    </tr>';
+
+    foreach($insertTrajet as $row)
+    {
+        echo '<tr>
+                <td>' . $row["id_trajet"] . '</td>
+                <td>' . $ville_nom_reel . '</td>
+                <td>' . $row["nom"] . '</td>
+                <td>' . $row["prenom"] . '</td>
+                <td>' . $row["tel"] . '</td>
+                <td>' . $row["email"] . '</td>
+                <td>' . $row["date"] . '</td>
+                <td>' . $row["hour"] . '</td>
+            </tr>';
+                                    
+    }
+
+    echo '</table>';        
+}
+?>
 <p>
 <a href="createTrajet.php">Proposer un trajet</a>
 </p>
