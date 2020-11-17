@@ -9,5 +9,7 @@
 
 <div> Header à remplir
 <a href="index.php"> Index </a>
+<a href="profil.php"> Profil </a>
+<a href="logout.php"> Se deconnecter </a>
 
 </div>
