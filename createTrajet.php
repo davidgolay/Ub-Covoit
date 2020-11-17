@@ -18,9 +18,6 @@ if(isset($_POST['proposer']))
     $rayon = $_POST['rayon'];
     
 
-    
-
-
     if(!empty($_POST['ville_nom']) AND !empty($_POST['date']) AND !empty($_POST['time']))
     {   
         $reqville = $bdd->prepare("SELECT id_ville FROM ville WHERE ville_nom_reel=?");
@@ -31,7 +28,6 @@ if(isset($_POST['proposer']))
         {
             $id_ville = $reqville->fetch();
             echo "id ville = " . $id_ville['id_ville'];
-
         }    
         else
         {   // Si la requete echoue, on racourci de 3 nombres le code postal entré pour reverifier
@@ -53,11 +49,9 @@ if(isset($_POST['proposer']))
             }
         }
 
-
         $insertTrajet = $bdd->prepare("INSERT INTO trajet(id_user, datetime_trajet, id_ville) VALUES(?, ?, ?)");
         $insertTrajet->execute(array($_SESSION['id'], $datetime, $id_ville['id_ville']));
         $erreur ="trajet ajouté!";
-
         
     }
     else
@@ -74,9 +68,9 @@ if(isset($_POST['proposer']))
     <div>
     <p>
     <label>Départ de l'UB :</label></br>
-    <input type="radio" name="depart" value="D"/></br>
+    <input type="radio" name="depart" value="1"/></br>
     <label>Arrivée à l'UB :</label></br>
-    <input type="radio" name="depart" value="A"/></br>
+    <input type="radio" name="depart" value="0"/></br>
     </p>
     <p>
     <label>Ville :</label></br>
