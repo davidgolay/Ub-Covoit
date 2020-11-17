@@ -9,9 +9,7 @@ if(isset($_SESSION['id']))
 
     if(isset($_POST['edit_profil']) AND !empty($_POST['new_nom']) AND $_POST['new_nom'] != $user['nom']);
     {
-        echo "lol"."\n";
         $new_nom = htmlspecialchars($_POST['new_nom']);
-        echo "leeeel"."\n";
         echo $new_nom;
         /*
         $insertnom = $bdd->prepare("UPDATE users SET nom = ? AND id = ?");

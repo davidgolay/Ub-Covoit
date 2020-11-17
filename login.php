@@ -22,7 +22,7 @@ if(isset($_POST['login']))
             $_SESSION['email'] = $userinfo['email'];
             $_SESSION['is_driver'] = $userinfo['is_driver'];
             //header("location: profil.php?id=".$_SESSION['id']);
-            header("location: createTrajet.php");
+            header("location: index.php");
         }
         else
         {
