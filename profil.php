@@ -2,11 +2,11 @@
 session_start();
 include 'config.php';
 
-if(isset($_GET['id']) AND $_GET['id'] > 0)
+if(isset($_SESSION['id']))
 {
-    $getid = intval($_GET['id']); //conversion en nombre pour sécuriser
+    $selectId = intval($_SESSION['id']); //conversion en nombre pour sécuriser
     $requser = $bdd->prepare('SELECT * FROM users WHERE id = ?');
-    $requser->execute(array($getid));
+    $requser->execute(array($selectId));
     $userinfo = $requser->fetch();
 ?>
 <html>
