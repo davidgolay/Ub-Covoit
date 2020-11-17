@@ -61,34 +61,34 @@ if(isset($_POST['proposer']))
 }
 ?>
 
-<form action="" method="post">
+<form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
     <h2>Proposer un trajet</h2>
     <div>
     <p>
-    <label>Départ de l'UB :</label></br>
-    <input type="radio" name="depart" value="1"/></br>
-    <label>Arrivée à l'UB :</label></br>
-    <input type="radio" name="depart" value="0"/></br>
+        <label>Départ de l'UB :</label></br>
+        <input type="radio" name="depart" value="1"/></br>
+        <label>Arrivée à l'UB :</label></br>
+        <input type="radio" name="depart" value="0"/></br>
     </p>
     <p>
-    <label>Ville :</label></br>
-    <input type="text" name="ville_nom" placeholder="Ville de départ ou d'arrivée" value="<?php if(isset($ville_nom_reel)) {echo $ville_nom_reel; }?>"/></br>
+        <label>Ville :</label></br>
+        <input type="text" name="ville_nom" placeholder="Ville de départ ou d'arrivée" value="<?php if(isset($ville_nom_reel)) {echo $ville_nom_reel; }?>"/></br>
     </p>
     <p>
-    <label>Code postal :</label></br>
-    <input type="text" name="code_postal" placeholder="Code postal de cette ville" value="<?php if(isset($ville_code_postal)) {echo $ville_code_postal; }?>"/></br>
+        <label>Code postal :</label></br>
+        <input type="text" name="code_postal" placeholder="Code postal de cette ville" value="<?php if(isset($ville_code_postal)) {echo $ville_code_postal; }?>"/></br>
     </p>
     <p>
-    <label>Date :</label></br>
-    <input type="date" name="date" value="<?php if(isset($date)) {echo $date; }?>"/></br>
+        <label>Date :</label></br>
+        <input type="date" name="date" value="<?php if(isset($date)) {echo $date; }?>"/></br>
     </p>
     <p>
-    <label>Heure :</label></br>
-    <input type="time" name="time" value="<?php if(isset($time)) {echo $time; }?>"/></br>
+        <label>Heure :</label></br>
+        <input type="time" name="time" value="<?php if(isset($time)) {echo $time; }?>"/></br>
     </p>
     <p>
-    <label>distance maximal de détour :</label></br>
-    <input type="number" name="rayon" value="<?php if(isset($rayon)) {echo $rayon; } else{echo 0;}?>"/></br>
+        <label>distance maximal de détour :</label></br>
+        <input type="number" name="rayon" value="<?php if(isset($rayon)) {echo $rayon; } else{echo 0;}?>"/></br>
     </p>
     </div> 
 
