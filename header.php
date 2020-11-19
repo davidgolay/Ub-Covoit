@@ -9,7 +9,7 @@
 
 <div>
 <a href="index.php"> Index </a>
-<a href="profil.php"> Profil </a>
+<a href="<?php echo 'profil.php?id='.$_SESSION['id']?>"> Mon profil </a>
 <a href="logout.php"> Se deconnecter </a>
 
 </div>

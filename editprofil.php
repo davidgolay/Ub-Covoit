@@ -1,21 +1,52 @@
 <?php
 session_start();
 include 'config.php';
+
+
 if(isset($_SESSION['id']))
 {
+    
+    // on recupère les données de l'utilisateur à partir de la variable de session id
     $requser = $bdd->prepare("SELECT * FROM users WHERE id=?");
     $requser->execute(array($_SESSION['id']));
     $user = $requser->fetch();
 
-    if(isset($_POST['edit_profil']) AND !empty($_POST['new_nom']) AND $_POST['new_nom'] != $user['nom']);
+    if(isset($_POST['edit_profil']) AND !empty($_POST['new_nom']) AND $_POST['new_nom'] != $user['nom'])
     {
+        
         $new_nom = htmlspecialchars($_POST['new_nom']);
-        echo $new_nom;
-        /*
-        $insertnom = $bdd->prepare("UPDATE users SET nom = ? AND id = ?");
-        $insertnom->execute(array($new_nom, $_SESSION['nom']));
-        */
+        $insertnom = $bdd->prepare("UPDATE users SET nom = ? WHERE id = ?");
+        $insertnom->execute(array($new_nom, $_SESSION['id']));
+        header('location: profil.php?id='. $_SESSION['id']); // on redirige vers le profil
+        
     }
+
+    if(isset($_POST['edit_profil']) AND !empty($_POST['new_prenom']) AND $_POST['new_prenom'] != $user['prenom'])
+    {
+        
+        $new_prenom = htmlspecialchars($_POST['new_prenom']);
+        $insertprenom = $bdd->prepare("UPDATE users SET prenom = ? WHERE id = ?");
+        $insertprenom->execute(array($new_prenom, $_SESSION['id']));
+        header('location: profil.php?id='. $_SESSION['id']); // on redirige vers le profil
+        
+    }
+
+    if(isset($_POST['edit_profil']) AND !empty($_POST['new_email']) AND $_POST['new_email'] != $user['email'])
+    {
+        
+        $new_email = htmlspecialchars($_POST['new_email']);
+        $insertmail = $bdd->prepare("UPDATE users SET email = ? WHERE id = ?");
+        $insertmail->execute(array($new_email, $_SESSION['id']));
+        header('location: profil.php?id='. $_SESSION['id']); // on redirige vers le profil
+        
+    }
+
+
+}
+else
+{
+    header("Location: login.php");
+}
 
 ?>
 <html>
@@ -26,7 +57,7 @@ if(isset($_SESSION['id']))
     </head>
     <body>
         <div>
-            <h2>Profil de mon profil</h2><br/>
+            <h2>Mofication de mon profil</h2><br/>
                 <div>
                     <form action="" method="post">
                         <label>Nom</label>
@@ -57,10 +88,4 @@ if(isset($_SESSION['id']))
     </body>
 </html>
 
-<?php
-}
-else
-{
-    header("Location: login.php");
-}
-?>
+

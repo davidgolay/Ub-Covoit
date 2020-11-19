@@ -1,10 +1,12 @@
 <?php
 session_start();
 include 'config.php';
+include 'header.php';
 
-if(isset($_SESSION['id']))
+
+if(isset($_GET['id']) AND $_GET['id'] > 0)
 {
-    $selectId = intval($_SESSION['id']); //conversion en nombre pour sécuriser
+    $selectId = intval($_GET['id']); //conversion en nombre pour sécuriser
     $requser = $bdd->prepare('SELECT * FROM users WHERE id = ?');
     $requser->execute(array($selectId));
     $userinfo = $requser->fetch();
@@ -27,7 +29,6 @@ if(isset($_SESSION['id']))
             {
             ?>
             <p><a href="editprofil.php">Modifier mon profil</a></p>
-            <p><a href="logout.php">Se déconnecter</a></p>
             <?php
             }
             ?>        
@@ -45,4 +46,5 @@ if(isset($_SESSION['id']))
 
 <?php
 }
+include 'footer.php';
 ?>
