@@ -30,13 +30,25 @@
         header("location: searchTrajet.php");
     }
 
+    if(isset($_POST['proposer_trajet']))
+    {
+        header("location: createTrajet.php");
+    }
+
+
 ?>
 
 <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
-        <div id="buttons_panel">
+    <div id="buttons_panel">
         <table>
             <?php echo get_buttons(); ?>
         </table>
+    </div>
+</form>
+
+<form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
+    <div id="buttons_panel">
+        <input type="submit" name="proposer_trajet" value="Proposer un trajet">
     </div>
 </form>
 
