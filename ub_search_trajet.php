@@ -32,7 +32,7 @@
 
     if(isset($_POST['proposer_trajet']))
     {
-        header("location: searchTrajet.php");
+        header("location: createTrajet.php");
     }
 
 

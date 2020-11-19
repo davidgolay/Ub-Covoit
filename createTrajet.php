@@ -1,9 +1,7 @@
 <?php
+session_start();
 include 'header.php';
 include 'config.php';
-session_start();
-
-
 
 if(isset($_POST['proposer']))
 {
@@ -14,7 +12,7 @@ if(isset($_POST['proposer']))
     $datetime = $date . ' ' . $time; 
 
     $lg_cp = strlen ( $ville_code_postal);
-    echo "longueur code postal" . $lg_cp . "\n";
+    //echo "longueur code postal" . $lg_cp . "\n";
     $rayon = $_POST['rayon'];
     
 
@@ -41,7 +39,7 @@ if(isset($_POST['proposer']))
             if($ville_exist > 0) 
             {
             $id_ville = $reqville->fetch();
-            echo "id ville = " . $id_ville['id_ville'];            
+            //echo "id ville = " . $id_ville['id_ville'];            
             }
             else
             {
@@ -59,6 +57,8 @@ if(isset($_POST['proposer']))
         $erreur = "Tout les champs doivent être complétés!";
     }
 }
+
+
 ?>
 
 <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
@@ -89,6 +89,11 @@ if(isset($_POST['proposer']))
     <p>
         <label>distance maximal de détour :</label></br>
         <input type="number" name="rayon" value="<?php if(isset($rayon)) {echo $rayon; } else{echo 0;}?>"/></br>
+    </p>
+    <p>
+        <label>Commentaire sur le trajet :</label></br>
+        <textarea name="com" rows="4" cols="50">
+        </textarea></br>
     </p>
     </div> 
 

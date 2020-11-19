@@ -9,8 +9,27 @@ include 'config.php';
 selon, la valeur posté par ce formulaire, on defini quelle affichage on donnera
 entre ville d'arrivée et ville de départ
 */
+
+
+//switch_desitnation
+if(isset($_POST['switch_destination']))
+{
+    if($_SESSION['partir_ub'] == 1)
+    {
+        $_SESSION['partir_ub'] = 0;    
+    }
+    else
+    {
+        $_SESSION['partir_ub'] = 1;    
+    }
+    echo 'valeur du boolean partir_ub : '. $_SESSION['partir_ub']; 
+}
+
 if($_SESSION['partir_ub'] == 1)
 {
+    // affichage de texte différents selon la valeur d u boolean partir_ub
+    // ici cas trajet partant de l'UB
+    $txt_main = 'Rechercher un trajet partant de l'."'". 'UB';
     $txt_destination = 'Ville d'."'".'arrivée : ';
     $td_debut = 'Trajets arrivant à ';
     $td_fin = ' et partant de l'."'".'UB';
@@ -18,7 +37,10 @@ if($_SESSION['partir_ub'] == 1)
 
 else
 {
+    // affichage de texte différents selon la valeur d u boolean partir_ub
+    // ici cas trajet arrivant à l'UB
     $txt_destination = 'Ville départ : ';
+    $txt_main = 'Rechercher un trajet arrivant à l'."'". 'UB';
     $td_debut = 'Trajets partant de ';
     $td_fin = ' et arrivant à l'."'".'UB';
 }
@@ -66,34 +88,6 @@ if(isset($_POST['search']))
     }
 }
 
-?>
-
-<form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
-    <h2>Rechercher un trajet</h2>
-    <div>    
-        <p>
-            <label><?php echo $txt_destination;?></label>
-            <input type="text" name="ville_nom" placeholder="Ville de départ ou d'arrivée" value="<?php if(isset($ville_nom_reel)) {echo $ville_nom_reel; }?>"/>
-            <label>Code postal :</label>
-            <input type="text" name="code_postal" placeholder="Code postal de cette ville" value="<?php if(isset($ville_code_postal)) {echo $ville_code_postal; }?>"/>
-        </p>
-        <p>
-            <label>Date :</label>
-            <input type="date" name="date" value="<?php if(isset($date)) {echo $date; }?>"/>
-            <label>Heure :</label>
-            <input type="time" name="time" value="<?php if(isset($time)) {echo $time; }?>"/>
-        </p>
-    
-
-        <?php // affichage du message d'erreur ou succes 
-        if(isset($erreur)){echo '<font color="red">'. $erreur;};?>
-        <p>
-            <input type="submit" name="search" value="Rechercher le trajet"/>
-        </p>
-    </div>
-</form>
-
-<?php
 if(isset($_POST['search']))
 {
     $insertTrajet = $bdd->prepare("SELECT id_trajet, id_ville, id_user, 
@@ -107,7 +101,8 @@ if(isset($_POST['search']))
     ORDER BY datetime_trajet;");
     $insertTrajet->execute(array($id_ville['id_ville'], $datetime, $_SESSION['partir_ub']));
 
-        echo '<h3>Liste des trajets trouvés</h3>
+        echo '<div class="affichage_trajet">
+                <h3>Liste des trajets trouvés</h3>
                 <table width="70%" border="1%" cellpadding="5">
                     <tr>
                         <th colspan="3">' . $td_debut . $ville_nom_reel . $td_fin . '</th>
@@ -130,9 +125,43 @@ if(isset($_POST['search']))
                                     
     }
 
-    echo '</table>';        
+    echo '</table>
+    </div>';        
 }
+
 ?>
+
+<form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
+    <h2><?php echo $txt_main; ?></h2>
+    <input type="submit" name="switch_destination" value="Inverser la destination"/>
+    <div>    
+        <p>
+            <label><?php echo $txt_destination;?></label></br>
+            <input type="text" name="ville_nom" placeholder="Ville de départ ou d'arrivée" value="<?php if(isset($ville_nom_reel)) {echo $ville_nom_reel; }?>"/>
+        </p>
+        <p>    
+            <label>Code postal :</label></br>
+            <input type="text" name="code_postal" placeholder="Code postal de cette ville" value="<?php if(isset($ville_code_postal)) {echo $ville_code_postal; }?>"/>
+        </p>
+        <p>
+            <label>Date :</label></br>
+            <input type="date" name="date" value="<?php if(isset($date)) {echo $date; }?>"/>
+        </p>
+        <p>
+            <label>Heure :</label></br>
+            <input type="time" name="time" value="<?php if(isset($time)) {echo $time; }?>"/>
+        </p>
+    
+
+        <?php // affichage du message d'erreur ou succes 
+        if(isset($erreur)){echo '<font color="red">'. $erreur;};?>
+        <p>
+            <input type="submit" name="search" value="Rechercher le trajet"/>
+        </p>
+    </div>
+</form>
+
+
 <p>
 <a href="createTrajet.php">Proposer un trajet</a>
 </p>
