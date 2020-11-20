@@ -66,16 +66,15 @@ else
                         <input type="text" name="new_prenom" placeholder="Prenom" value="<?php echo $user['prenom'];?>"/></br>
                         <label>Adresse mail étudiante</label>
                         <input type="email" name="new_email" placeholder="Email" value="<?php echo $user['email'];?>"/></br>
+                        <label>Adresse mail de récupération</label>
+                        <input type="email" name="new_email_recup" placeholder="Email de récupération" value="<?php echo $user['email_recup'];?>"/></br>
                         <label>Nouveau mot de passe</label>
                         <input type="password" name="new_password" placeholder="Mot de passe"/></br>
                         <label>Confirmer nouveau mot de passe</label>
                         <input type="password" name="new_password_confirm" placeholder="Confirmer mot de passe"/></br>
                         <input type="submit" name="edit_profil" value="Enregistrer les modifications"/></br>
                     </form>
-                </div>
-
-            
-                
+                </div>      
         </div>  
        
     <?php
