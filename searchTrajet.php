@@ -108,10 +108,12 @@ if(isset($_POST['search']))
                         <th colspan="3">' . $td_debut . $ville_nom_reel . $td_fin . '</th>
                         <th colspan="4">Détails conducteur</th>
                     </tr>';
+        $cpt = 0;
 
     foreach($insertTrajet as $row)
     {
-        echo '<tr>
+        echo 
+            '<tr>
 
                 <td>' . $txt_destination . ' ' . $ville_nom_reel . '</td>
                 <td>' . $row["date"] . '</td>
@@ -120,9 +122,11 @@ if(isset($_POST['search']))
                 <td>' . $row["prenom"] . '</td>
                 <td>' . $row["tel"] . '</td>
                 <td>' . $row["email"] . '</td>
+                <td><a href="inscription_trajet.php?id_trajet='.$row['id_trajet'].'"> Choisir trajet </a></td>
                 
             </tr>';
-                                    
+        $cpt = $cpt + 1;
+        echo $cpt;                                    
     }
 
     echo '</table>
@@ -135,22 +139,22 @@ if(isset($_POST['search']))
     <h2><?php echo $txt_main; ?></h2>
     <input type="submit" name="switch_destination" value="Inverser la destination"/>
     <div>    
-        <p>
+        <div>
             <label><?php echo $txt_destination;?></label></br>
             <input type="text" name="ville_nom" placeholder="Ville de départ ou d'arrivée" value="<?php if(isset($ville_nom_reel)) {echo $ville_nom_reel; }?>"/>
-        </p>
-        <p>    
+        </div>
+        <div>    
             <label>Code postal :</label></br>
             <input type="text" name="code_postal" placeholder="Code postal de cette ville" value="<?php if(isset($ville_code_postal)) {echo $ville_code_postal; }?>"/>
-        </p>
-        <p>
+        </div>
+        <div>
             <label>Date :</label></br>
             <input type="date" name="date" value="<?php if(isset($date)) {echo $date; }?>"/>
-        </p>
-        <p>
+        </div>
+        <div>
             <label>Heure :</label></br>
             <input type="time" name="time" value="<?php if(isset($time)) {echo $time; }?>"/>
-        </p>
+        </div>
     
 
         <?php // affichage du message d'erreur ou succes 
