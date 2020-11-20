@@ -17,7 +17,8 @@ if(isset($_POST['choisir_trajet']))
 
     $insert_passager = $bdd->prepare("INSERT INTO participe(id_user, id_trajet) VALUES(?, ?)");
     $insert_passager->execute(array($_SESSION['id'], $id_trajet));
-    $erreur ="vous êtes inscrit au trajet!";
+    //$erreur ="vous êtes inscrit au trajet!";
+    header('location: my_trajets.php');
 }
 
 ?>
@@ -25,7 +26,7 @@ if(isset($_POST['choisir_trajet']))
 
 
 <div>
-    <h2>Le fameux trajet</h2><br/>
+    <h2>Réservation du trajet</h2><br/>
             
     <p>id_driver : <?php echo $trajet['id_user'];?></p>
     <p>id_trajet : <?php echo $trajet['id_trajet'];?></p>
