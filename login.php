@@ -1,9 +1,11 @@
+<?php
+session_start();
+?>
 <style type="text/css">
 <?php include 'css/login.css'; ?>
 </style>
 <?php
-session_start();
-include 'header.php';
+
 include 'config.php';
 
 if(isset($_POST['login']))
