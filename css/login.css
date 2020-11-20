@@ -1,5 +1,56 @@
-.bordsRonds{
+body {
+    background-image: url("fondIndexubcovoit1.png");
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position-y: -100px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: whitesmoke;
+    font-size: 20px;
+}
+
+h2{
+    color: #f46917;
+    text-align: center;
+}
+
+
+a.bouton, input[type=submit]{
+    padding: 0.8em;
+    padding-left: 2.5em;
+    padding-right: 2.5em;
+    background-color: #f46917;
+    color: black;
+    border-radius: 25px;
+    border-style: none;
+    text-decoration: none;
+    font-size: 20px;
+    width: 200px;
+}
+
+a.bouton:hover, input[type=submit]:hover{
+    background-color:orange;
+}
+
+fieldset{
+    text-align: center;
+    border-color: gray;
     border-style: solid;
-    border-color: orange;
+    padding-left: 5em;
+    padding-right: 5em;
+    background-color: whitesmoke;
     border-radius: 20px;
+}
+
+input[type=text], input[type=checkbox]{
+    border-style: none;
+    background-color: white;
+    border-radius: 5px;
+    padding: 0.5em;
+    padding-left: 3.5em;
+}
+
+.flexColonne{
+    display: flex;
+    justify-content: space-around;
+    flex-flow: column;
 }
