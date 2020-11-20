@@ -1,11 +1,13 @@
 <?php
 session_start();
+include 'header.php';
 include 'config.php';
 
 if(isset($_POST['login']))
 {
     $email_log = htmlspecialchars($_POST['email_log']);
     $password_log = sha1($_POST['password_log']);
+    
 
     if(!empty($email_log) AND !empty($password_log))
     {
