@@ -1,3 +1,6 @@
+<style type="text/css">
+<?php include 'css/main.css'; ?>
+</style>
 <?php
 session_start();
 include 'config.php';
