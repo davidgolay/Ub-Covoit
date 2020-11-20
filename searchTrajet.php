@@ -108,10 +108,12 @@ if(isset($_POST['search']))
                         <th colspan="3">' . $td_debut . $ville_nom_reel . $td_fin . '</th>
                         <th colspan="4">Détails conducteur</th>
                     </tr>';
+        $cpt = 0;
 
     foreach($insertTrajet as $row)
     {
-        echo '<tr>
+        echo 
+            '<tr>
 
                 <td>' . $txt_destination . ' ' . $ville_nom_reel . '</td>
                 <td>' . $row["date"] . '</td>
@@ -120,9 +122,11 @@ if(isset($_POST['search']))
                 <td>' . $row["prenom"] . '</td>
                 <td>' . $row["tel"] . '</td>
                 <td>' . $row["email"] . '</td>
+                <td><a href="my_trajet.php?id_trajet='.$row['id_trajet'].'"> Choisir trajet </a></td>
                 
             </tr>';
-                                    
+        $cpt = $cpt + 1;
+        echo $cpt;                                    
     }
 
     echo '</table>
