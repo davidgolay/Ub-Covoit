@@ -1,3 +1,6 @@
+<style type="text/css">
+<?php include 'css/login.css'; ?>
+</style>
 <?php
 session_start();
 include 'header.php';
@@ -46,7 +49,7 @@ if(isset($_POST['login']))
 </head>
 <body>
 <form action="login.php" method="post">
-    <h2>Connexion</h2>
+    <h2 class="bordsRonds">Connexion</h2>
     <p><input type="email" name="email_log" placeholder="Email etudiant" value="<?php if(isset($email_log)) {echo $email_log; }?>"/></p>
     <p><input type="password" name="password_log" placeholder="Mot de passe"/></p>
     <?php if(isset($erreur)){echo '<font color="red">'. $erreur;};?>
