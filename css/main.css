@@ -74,3 +74,16 @@ div.flexLigne{
 #logoAccueuil{
     width: 100px;
 }
+
+a.bouton, input[type=submit]{
+    padding: 0.8em;
+    padding-left: 2.5em;
+    padding-right: 2.5em;
+    background-color: #f46917;
+    color: black;
+    border-radius: 25px;
+    border-style: none;
+    text-decoration: none;
+    font-size: 20px;
+    width: 200px;
+}

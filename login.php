@@ -1,6 +1,5 @@
 <?php
 session_start();
-include 'header.php';
 include 'config.php';
 
 if(isset($_POST['login']))
@@ -38,9 +37,10 @@ if(isset($_POST['login']))
 }
 ?>
 
-<style type="text/css">
+<style>
 <?php include 'css/login.css'; ?>
 </style>
+
 
 <html>
 <head>
@@ -50,19 +50,22 @@ if(isset($_POST['login']))
 </head>
 <body>
     <div class="flexColonne">
+        <div>
+        <img id="logoUB" src="img/UB.png" alt="logo Université Bourgogne">
+        </div>
         <div class="fieldflex">
             <fieldset>
                 <h2>Connexion</h2>
                 <form action="login.php" method="post">
-                    <p><input type="email" name="email_log" placeholder="Email etudiant" value="<?php if(isset($email_log)) {echo $email_log; }?>"/></p>
-                    <p><input type="password" name="password_log" placeholder="Mot de passe"/></p>
+                    <p><input class="center-right-left" type="email" name="email_log" placeholder="Email etudiant" value="<?php if(isset($email_log)) {echo $email_log; }?>"/></p>
+                    <p><input class="center-right-left" type="password" name="password_log" placeholder="Mot de passe"/></p>
                     <?php if(isset($erreur)){echo '<font color="red">'. $erreur;};?>
-                    <p><input type="submit" name="login" value="Se connecter"/>
-                    <a href="register.php">Pas encore de compte ?</a>
-                    </p>
+                    <p><input type="submit" name="login" value="Se connecter"/></p>
+                    <p>Pas encore de compte ?</p>
+                    <p><a class="bouton" href="register.php">S'inscrire</a></p>
                 </form>
             </fieldset>
         </div>
-    </div>   
+    </div>  
 </body>
 </html>
