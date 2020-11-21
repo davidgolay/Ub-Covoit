@@ -11,8 +11,12 @@ if($_GET['partir_ub']<=1 AND $_GET['partir_ub']>=0)
         $switch_dest = 'createTrajet.php?partir_ub=1';
         // affichage de texte différents selon la valeur d u boolean partir_ub
         // ici cas trajet arrivant à l'UB
-        $txt_destination = 'Ville de départ : ';
-        $txt_main = 'Proposer un trajet arrivant à l'."'". 'UB';   
+        $txt_main = 'Proposer un trajet arrivant à l'."'". 'UB';
+        $txt_ville = 'Ville de départ : ';
+        $txt_adresse = 'Adresse de départ : ';
+        $txt_placeholder_ville = 'ville de départ';
+        $txt_placeholder_adresse = 'adresse de départ';
+            
     }
     else
     {
@@ -21,7 +25,11 @@ if($_GET['partir_ub']<=1 AND $_GET['partir_ub']>=0)
         // affichage de texte différents selon la valeur d u boolean partir_ub
         // ici : cas trajet partant de l'UB
         $txt_main = 'Proposer un trajet partant de l'."'". 'UB';
-        $txt_destination = 'Ville d'."'".'arrivée : ';    
+        $txt_ville = 'Ville d'."'".'arrivée : ';
+        $txt_adresse = 'Adresse d'."'".'arrivée :';
+        $txt_placeholder_ville = 'ville d'."'".'arrivée';
+        $txt_placeholder_adresse = 'adresse d'."'".'arrivée';  
+          
     }
     echo 'valeur du boolean partir_ub : '. $partir_ub; 
 }
@@ -34,6 +42,7 @@ if(isset($_POST['proposer']))
 {
     $ville_nom_reel = htmlspecialchars($_POST['ville_nom']);
     $ville_code_postal = htmlspecialchars($_POST['code_postal']);
+    $adresse = htmlspecialchars($_POST['adresse']);
     $com = htmlspecialchars($_POST['com']);
     $rayon = htmlspecialchars($_POST['rayon']);
     $date = $_POST['date'];
@@ -76,8 +85,8 @@ if(isset($_POST['proposer']))
             }
         }
 
-        $insertTrajet = $bdd->prepare("INSERT INTO trajet(id_user, datetime_trajet, partir_ub, id_ville, com) VALUES(?, ?, ?, ?, ?)");
-        $insertTrajet->execute(array($_SESSION['id'], $datetime, $partir_ub, $id_ville['id_ville'], $com));
+        $insertTrajet = $bdd->prepare("INSERT INTO trajet(id_user, datetime_trajet, partir_ub, id_ville, adresse, com) VALUES(?, ?, ?, ?, ?, ?)");
+        $insertTrajet->execute(array($_SESSION['id'], $datetime, $partir_ub, $id_ville['id_ville'], $adresse, $com));
         $erreur ="trajet ajouté!";
         
     }
@@ -95,12 +104,16 @@ if(isset($_POST['proposer']))
     <div><a href="<?php echo $switch_dest;?>">Inverser la destination</a></div>
     <div>
     <p>
-        <label><?php echo $txt_destination;?></label></br>
-        <input type="text" name="ville_nom" placeholder="Ville de départ ou d'arrivée" value="<?php if(isset($ville_nom_reel)) {echo $ville_nom_reel; }?>"/></br>
+        <label><?php echo $txt_ville;?></label></br>
+        <input type="text" name="ville_nom" placeholder="<?php echo $txt_placeholder_ville; ?>" value="<?php if(isset($ville_nom_reel)) {echo $ville_nom_reel; }?>"/></br>
     </p>
     <p>
         <label>Code postal :</label></br>
         <input type="text" name="code_postal" placeholder="Code postal de cette ville" value="<?php if(isset($ville_code_postal)) {echo $ville_code_postal; }?>"/></br>
+    </p>
+    <p>
+        <label><?php echo $txt_adresse;?></label></br>
+        <input type="text" name="adresse" placeholder="<?php echo $txt_placeholder_adresse; ?>" value="<?php if(isset($ville_code_postal)) {echo $ville_code_postal; }?>"/></br>
     </p>
     <p>
         <label>Date :</label></br>
@@ -127,7 +140,7 @@ if(isset($_POST['proposer']))
     <?php
         if(isset($erreur))
         {
-            echo '<font color="red">'. $erreur;
+            echo '<div class="error">'. $erreur . '</div>';
         };
     ?>
     <p><input type="submit" name="proposer" value="Créer le trajet"/></p>
