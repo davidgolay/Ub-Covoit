@@ -141,7 +141,7 @@ if(isset($_POST['proposer']))
         if(isset($erreur))
         {
             echo '<div class="error">'. $erreur . '</div>';
-        };
+        }
     ?>
     <p><input type="submit" name="proposer" value="Créer le trajet"/></p>
     <p><a href="index.php">Rechercher un trajet</a></p>

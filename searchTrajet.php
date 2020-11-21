@@ -149,7 +149,9 @@ if(isset($_POST['search']))
     
 
         <?php // affichage du message d'erreur ou succes 
-        if(isset($erreur)){echo '<font color="red">'. $erreur;};?>
+        if(isset($erreur)){
+            echo '<div class="error">'. $erreur . '</div>';
+            }?>
         <p>
             <input type="submit" name="search" value="Rechercher le trajet"/>
         </p>
