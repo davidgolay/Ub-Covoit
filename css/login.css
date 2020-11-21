@@ -5,9 +5,9 @@
 
 body {
     background-image:
-    url('img/fondIndexubcovoit1.png');
+    url('img/fondIndexubcovoit2.png');
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     background-position-y: -100px;
     font-family: 'Poppins', sans-serif;
     background-color: whitesmoke;
@@ -76,6 +76,32 @@ input[type="password"]:focus,input[type="email"]:focus{
     background-size: 0% 100%;
 }
 
+@keyframes basEnHaut{
+    from{height: 100px;}
+    to{height: 0em;}
+}
+
+@-moz-keyframes basEnHaut{
+    from{height: 100px;}
+    to{height: 0em;} 
+}
+
+@keyframes apparaitre{
+    from{opacity: 0;}
+    to{opacity: 1;}
+}
+
+@-moz-keyframes apparaitre{
+    from{opacity: 0.3;}
+    to{opacity: 1;}
+}
+
+.animBasHaut{
+    animation: basEnHaut 1s ease-out;
+    -moz-animation: basEnHaut 1s ease-out;
+}
+
+
 fieldset{
     text-align: center;
     border-style: none;
@@ -84,6 +110,7 @@ fieldset{
     background-color: rgba(10, 10, 10, 0.65);
     border-radius: 5px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    animation: apparaitre 1s ease-out;
 }
 
 
