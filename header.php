@@ -8,10 +8,18 @@
 </head>
 <body>
 
+<!-- <div class="navbar">
+    <div><a href="index.php"><img id="logo" src="img/UB.png" alt="logoUB"></a></div>
+    <div><a href="<?php echo 'profil.php?id='.$_SESSION['id']?>"> Mon profil </a></div>
+    <div><a href="my_trajets.php"> Mes trajets </a></div>
+    <div><a href="logout.php"> Se deconnecter </a></div>
+</div> -->
+
 <div>
-    <img id="logoAccueuil" src="img/UB.png" alt="logoUB">
-    <a href="index.php"> Index </a>
-    <a href="<?php echo 'profil.php?id='.$_SESSION['id']?>"> Mon profil </a>
-    <a href="my_trajets.php"> Mes trajets </a>
-    <a href="logout.php"> Se deconnecter </a>
+    <ul class="navbar">
+        <li><a href="index.php"><img id="logoAccueuil" src="img/UB.png" alt="logoUB"></a></li>
+        <li><a class="onglet" href="<?php echo 'profil.php?id='.$_SESSION['id']?>"> Mon profil </a></li>
+        <li><a class="onglet" href="my_trajets.php"> Mes trajets </a></li>
+        <li><a class="onglet" href="logout.php"> Se deconnecter </a></li>
+    </ul>
 </div>

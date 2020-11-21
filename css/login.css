@@ -11,7 +11,7 @@ body {
     background-position-y: -100px;
     font-family: 'Poppins', sans-serif;
     background-color: whitesmoke;
-    font-size: 20px;
+    font-size: 1.2em;
     height: fit-content;
     color: whitesmoke;
 }
@@ -38,7 +38,7 @@ a.bouton, input[type=submit]{
     border-radius: 30px;
     border-style: none;
     text-decoration: none;
-    font-size: 20px;
+    font-size: inherit;
     width: 200px;
     font-family: inherit;
     align-items: center;
@@ -127,4 +127,7 @@ input[type=text], input[type=checkbox]{
     justify-content: space-around;
     flex-flow: column;
     align-items: center;
+}
+div.error{
+    color: rgb(255, 230, 0);
 }
