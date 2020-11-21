@@ -85,5 +85,20 @@ a.bouton, input[type=submit]{
     border-style: none;
     text-decoration: none;
     font-size: 20px;
-    width: 200px;
+}
+
+a.bouton:hover, input[type=submit]:hover{
+    background-color:orange;
+}
+
+.bouton2{
+    padding: 0.8em;
+    padding-left: 2.5em;
+    padding-right: 2.5em;
+    background-color: #bd4b00;
+    color: rgb(255, 255, 255);
+    border-radius: 25px;
+    border-style: none;
+    text-decoration: none;
+    font-size: 25px;  
 }

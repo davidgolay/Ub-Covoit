@@ -81,8 +81,8 @@ if(isset($_POST['register']))
     <?php
         if(isset($erreur))
         {
-            echo '<font color="red">'. $erreur;
-        };
+            echo '<div class="error">'. $erreur . '</div>';
+        }
     ?>
     <p><input type="submit" name="register" value="S'inscire"/>
     <a href="login.php">Déja un compte ?</a>

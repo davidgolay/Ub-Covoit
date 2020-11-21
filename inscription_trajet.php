@@ -40,8 +40,8 @@ if(isset($_POST['choisir_trajet']))
 <?php
 if(isset($erreur))
 {
-    echo '<font color="red">'. $erreur;   
-};
+    echo '<div class="error">'. $erreur . '</div>';   
+}
 ?>
 
 <?php
