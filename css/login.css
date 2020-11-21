@@ -1,5 +1,109 @@
-.bordsRonds{
+@font-face{
+    font-family: poppins;
+    src: url(fonts/poppins-medium.ttf);
+}
+
+body {
+    background-image:
+    url('img/fondIndexubcovoit1.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: -100px;
+    font-family: 'Poppins', sans-serif;
+    background-color: whitesmoke;
+    font-size: 20px;
+    height: fit-content;
+    color: whitesmoke;
+}
+
+
+
+#logoUB{
+    width: 13em;
+    margin: 1.5em;
+}
+
+h2{
+    color: #f46917;
+    text-align: center;
+    margin-top: 0.1em;
+    margin-bottom: 0.1em;
+}
+
+
+a.bouton, input[type=submit]{
+    padding: 0.8em;
+    background-color: #f46917;
+    color: black;
+    border-radius: 30px;
+    border-style: none;
+    text-decoration: none;
+    font-size: 20px;
+    width: 200px;
+    font-family: inherit;
+    align-items: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+a.bouton:hover, input[type=submit]:hover{
+    background-color:orange;
+}
+
+input[type="email"],input[type="password"]{
+    padding: 0.8em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    border-style: none;
+    border-radius: 30em;
+    background-color: whitesmoke;
+    font-size: inherit;
+    background-image: linear-gradient(#cecece, #cecece);
+    background-repeat: no-repeat;
+    transition: background-size .3s, color .3s;
+}
+
+input[type="password"]:focus,input[type="email"]:focus{
+    outline: none;
+    background-size: 100% 100%;
+    color: #000;
+    transform: transition;
+}
+
+.center-right-left{
+    background-position: 50% 50%;
+}
+.center-right-left{
+    background-size: 0% 100%;
+}
+
+fieldset{
+    text-align: center;
+    border-style: none;
+    padding-left: 5em;
+    padding-right: 5em;
+    background-color: rgba(10, 10, 10, 0.65);
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+input[type=text], input[type=checkbox]{
+    border-style: none;
+    background-color: white;
+    border-radius: 5px;
+    padding: 0.5em;
+    padding-left: 3.5em;
+}
+
+.flexColonne{
+    display: flex;
+    justify-content: space-around;
+    flex-flow: column;
+    align-items: center;
+}
+
+#erreur{
+    border-radius: 5px;
     border-style: solid;
-    border-color: orange;
-    border-radius: 20px;
+    border-color: green;
 }

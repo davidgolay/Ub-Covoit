@@ -1,26 +1,3 @@
-body {
-    background-image: url("fondIndexubcovoit1.png");
-    background-size: auto;
-    background-repeat: no-repeat;
-   }
-
-   a.bouton, input[type=submit]{
-    padding: 0.8em;
-    padding-left: 2.5em;
-    padding-right: 2.5em;
-    background-color: #f46917;
-    color: black;
-    border-radius: 25px;
-    border-style: none;
-    text-decoration: none;
-    font-size: 20px;
-    width: 200px;
-}
-
-a.bouton:hover, input[type=submit]:hover{
-    background-color:orange;
-}
-
 body{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     background-color: whitesmoke;
@@ -40,13 +17,7 @@ body{
     margin-bottom: 2em;
 }
 
-fieldset{
-    text-align: center;
-    border-color: #f46917;
-    border-style: solid;
-    padding-left: 5em;
-    padding-right: 5em;
-}
+
 
 .centre{
     text-align: center;
@@ -77,13 +48,7 @@ h2{
     margin-top: 3em;
 }
 
-input[type=text], input[type=checkbox]{
-    border-style: none;
-    background-color: white;
-    border-radius: 5px;
-    padding: 0.5em;
-    padding-left: 3.5em;
-}
+
 
 div.flexLigne{
     display: flex;
@@ -108,4 +73,17 @@ div.flexLigne{
 
 #logoAccueuil{
     width: 100px;
+}
+
+a.bouton, input[type=submit]{
+    padding: 0.8em;
+    padding-left: 2.5em;
+    padding-right: 2.5em;
+    background-color: #f46917;
+    color: black;
+    border-radius: 25px;
+    border-style: none;
+    text-decoration: none;
+    font-size: 20px;
+    width: 200px;
 }
