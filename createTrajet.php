@@ -3,6 +3,11 @@ session_start();
 include 'header.php';
 include 'config.php';
 
+
+if($_SESSION['is_driver'] != 1)
+header("location: index.php");
+
+
 if($_GET['partir_ub']<=1 AND $_GET['partir_ub']>=0)
 {
     if($_GET['partir_ub'] == 0)
@@ -44,7 +49,8 @@ if(isset($_POST['proposer']))
     $ville_code_postal = htmlspecialchars($_POST['code_postal']);
     $adresse = htmlspecialchars($_POST['adresse']);
     $com = htmlspecialchars($_POST['com']);
-    $rayon = htmlspecialchars($_POST['rayon']);
+    $rayon = intval($_POST['rayon']);
+    $place_dispo = intval($_POST['place_dispo']);
     $date = $_POST['date'];
     $time = $_POST['time'];
     $datetime = $date . ' ' . $time; 
@@ -85,8 +91,8 @@ if(isset($_POST['proposer']))
             }
         }
 
-        $insertTrajet = $bdd->prepare("INSERT INTO trajet(id_user, datetime_trajet, partir_ub, id_ville, adresse, com) VALUES(?, ?, ?, ?, ?, ?)");
-        $insertTrajet->execute(array($_SESSION['id'], $datetime, $partir_ub, $id_ville['id_ville'], $adresse, $com));
+        $insertTrajet = $bdd->prepare("INSERT INTO trajet(id_user, datetime_trajet, partir_ub, id_ville, adresse, place_dispo, rayon_detour, com) VALUES(?, ?, ?, ?, ?, ?, ?, ?)");
+        $insertTrajet->execute(array($_SESSION['id'], $datetime, $partir_ub, $id_ville['id_ville'], $adresse, $place_dispo, $rayon, $com));
         $erreur ="trajet ajouté!";
         
     }
@@ -125,7 +131,7 @@ if(isset($_POST['proposer']))
     </p>
     <p>
         <label>Nombre de place(s) disponible(s) :</label></br>
-        <input type="number" name="rayon" value="<?php if(isset($rayon)) {echo $rayon; } else{echo 0;}?>"/></br>
+        <input type="number" name="place_dispo" value="<?php if(isset($place_dispo)) {echo $place_dispo; } else{echo 4;}?>"/></br>
     </p>
     <p>
         <label>distance maximale de détour (en km):</label></br>
@@ -133,7 +139,7 @@ if(isset($_POST['proposer']))
     </p>
     <p>
         <label>Commentaire sur le trajet :</label></br>
-        <input type="text" name="com" rows="4" cols="50"/></br>
+        <input type="text" name="com" value="<?php if(isset($com)) {echo $com; }?>"/></br>
     </p>
     </div> 
 

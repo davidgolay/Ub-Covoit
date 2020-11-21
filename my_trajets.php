@@ -5,6 +5,11 @@ include 'config.php';
 
 $date_now = date_create('now')->format('Y-m-d H:i:s');
 
+if($_SESSION['is_driver'] == 1)
+{
+    echo '<div class="button"><a href="my_trajets_driver.php">Mes trajets en tant que conducteur</a>';
+}
+
 $incoming_trajet = $bdd->prepare("SELECT date_format(datetime_trajet, '%d/%m/%Y') as date, 
 date_format(datetime_trajet, '%h:%i') as hour, nom, prenom, is_driver 
 FROM trajet INNER JOIN users ON users.id = trajet.id_user 

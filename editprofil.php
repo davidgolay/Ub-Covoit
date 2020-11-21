@@ -1,7 +1,7 @@
 <?php
 session_start();
 include 'config.php';
-
+include 'header.php';
 
 if(isset($_SESSION['id']))
 {
@@ -64,6 +64,8 @@ else
                         <input type="text" name="new_nom" placeholder="Nom" value="<?php echo $user['nom'];?>"/></br>
                         <label>Prénom</label>
                         <input type="text" name="new_prenom" placeholder="Prenom" value="<?php echo $user['prenom'];?>"/></br>
+                        <label>Conducteur</label>
+                        <input type="checkbox" name="new_driver" <?php if($user['is_driver'] == 1){echo 'checked';}?> /></br>
                         <label>Adresse mail étudiante</label>
                         <input type="email" name="new_email" placeholder="Email" value="<?php echo $user['email'];?>"/></br>
                         <label>Adresse mail de récupération</label>
@@ -80,7 +82,7 @@ else
     <?php
     if(isset($erreur))
     {
-        echo '<font color="red">'. $erreur;   
+        echo '<div class="error">'. $erreur . '</div>';   
     };
     ?>
     
