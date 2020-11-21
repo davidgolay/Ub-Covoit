@@ -3,34 +3,38 @@ session_start();
 include 'header.php';
 include 'config.php';
 
-$now = date_create('now')->format('Y-m-d H:i:s');
+$date_now = date_create('now')->format('Y-m-d H:i:s');
 
-$incoming_trajet = $bdd->prepare("SELECT datetime_trajet, nom, prenom, is_driver 
+$incoming_trajet = $bdd->prepare("SELECT date_format(datetime_trajet, '%d/%m/%Y') as date, 
+date_format(datetime_trajet, '%h:%i') as hour, nom, prenom, is_driver 
 FROM trajet INNER JOIN users ON users.id = trajet.id_user 
 INNER JOIN participe ON trajet.id_trajet = participe.id_trajet 
-WHERE participe.id_user = ? AND datetime_trajet > ?;");
-$incoming_trajet->execute(array($_SESSION['id'], $now));
+WHERE participe.id_user = ? AND trajet.datetime_trajet > ? ;");
+$incoming_trajet->execute(array($_SESSION['id'], $date_now));
 
 
 echo '<h2>Trajets à venir</h2>';
 
 foreach($incoming_trajet as $row)
 {
-    echo '<div>'. $row['nom'] . $row['prenom'] . $row['datetime_trajet'] . '</div>';
+    echo '<div> Trajet de ' . $row['prenom'] . ' ' . $row['nom'] . ', le ' . $row['date'] . ' à ' . $row['hour'] . '</div>';
+    
 }
 
 
-$incoming_trajet = $bdd->prepare("SELECT datetime_trajet, nom, prenom, is_driver 
+$done_trajet = $bdd->prepare("SELECT date_format(datetime_trajet, '%d/%m/%Y') as date, 
+date_format(datetime_trajet, '%h:%i') as hour, nom, prenom, is_driver 
 FROM trajet INNER JOIN users ON users.id = trajet.id_user 
 INNER JOIN participe ON trajet.id_trajet = participe.id_trajet 
-WHERE participe.id_user = ? AND datetime_trajet < ?;");
-$incoming_trajet->execute(array($_SESSION['id'], $now));
+WHERE participe.id_user = ? AND trajet.datetime_trajet < ? ;");
+$done_trajet->execute(array($_SESSION['id'], $date_now));
 
-echo '<h2>Trajets effectué</h2>';
+echo '<h2>Trajets effectués</h2>';
 
-foreach($incoming_trajet as $row2)
+foreach($done_trajet as $row2)
 {
-    echo '<div>'. $row2['nom'] . $row2['prenom'] . $row2['datetime_trajet'] . '</div>';
+    echo '<div> Trajet de ' . $row2['prenom'] . ' ' . $row2['nom'] . ', le ' . $row2['date'] . ' à ' . $row2['hour'] . '</div>';
+    
 }
 
 
