@@ -49,6 +49,7 @@ if(isset($_POST['login']))
     <title>Index</title>
 </head>
 <body>
+    <div class="animBasHaut"></div>
     <div class="flexColonne">
         <div>
         <img id="logoUB" src="img/UB.png" alt="logo Université Bourgogne">

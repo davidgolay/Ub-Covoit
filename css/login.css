@@ -5,9 +5,9 @@
 
 body {
     background-image:
-    url('img/fondIndexubcovoit1.png');
+    url('img/fondIndexubcovoit2.png');
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     background-position-y: -100px;
     font-family: 'Poppins', sans-serif;
     background-color: whitesmoke;
@@ -74,6 +74,15 @@ input[type="password"]:focus,input[type="email"]:focus{
 }
 .center-right-left{
     background-size: 0% 100%;
+}
+
+@keyframes basEnHaut{
+    from{height: 300px;}
+    to{height: 100px;}
+}
+
+.animBasHaut{
+    animation: basEnHaut 1s;
 }
 
 fieldset{
