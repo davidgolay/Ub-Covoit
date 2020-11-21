@@ -53,6 +53,7 @@ if(isset($_POST['login']))
         <div>
         <img id="logoUB" src="img/UB.png" alt="logo Université Bourgogne">
         </div>
+        <div class="animBasHaut"></div>
         <div class="fieldflex">
             <fieldset>
                 <h2>Connexion</h2>
