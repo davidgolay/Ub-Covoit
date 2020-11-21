@@ -41,6 +41,15 @@ if(isset($_SESSION['id']))
         
     }
 
+    if(isset($_POST['edit_profil']) AND !empty($_POST['new_bio']) AND $_POST['new_bio'] != $user['bio'])
+    {
+        
+        $new_bio = htmlspecialchars($_POST['new_bio']);
+        $insert_bio = $bdd->prepare("UPDATE users SET bio = ? WHERE id = ?");
+        $insert_bio->execute(array($new_bio, $_SESSION['bio']));
+        header('location: profil.php?id='. $_SESSION['id']); // on redirige vers le profil
+    }
+
 
 }
 else
@@ -74,7 +83,11 @@ else
                         <input type="password" name="new_password" placeholder="Mot de passe"/></br>
                         <label>Confirmer nouveau mot de passe</label>
                         <input type="password" name="new_password_confirm" placeholder="Confirmer mot de passe"/></br>
+                        <label>Biographie</label>
+                        <input type="text" name="new_bio" value="<?php echo $user['bio'];?>"/></br>
                         <input type="submit" name="edit_profil" value="Enregistrer les modifications"/></br>
+                        
+
                     </form>
                 </div>      
         </div>  

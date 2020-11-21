@@ -3,6 +3,12 @@ session_start();
 include 'header.php';
 include 'config.php';
 
+$date_now = date_create('now')->format('Y-m-d');
+$hour_now = date_create('now')->format('H:i');
+$date = $date_now;
+$time = $hour_now;
+
+
 //switch_destination
 if($_GET['partir_ub']<=1 AND $_GET['partir_ub']>=0)
 {
@@ -12,8 +18,9 @@ if($_GET['partir_ub']<=1 AND $_GET['partir_ub']>=0)
         $switch_dest = 'searchTrajet.php?partir_ub=1';
         // affichage de texte différents selon la valeur d u boolean partir_ub
         // ici cas trajet arrivant à l'UB
-        $txt_destination = 'Ville de départ : ';
         $txt_main = 'Rechercher un trajet arrivant à l'."'". 'UB';
+        $txt_ville = 'Ville de départ : ';
+        $txt_placeholder_ville = 'ville de départ';
         $td_debut = 'Trajets partant de ';
         $td_fin = ' et arrivant à l'."'".'UB';    
     }
@@ -24,7 +31,8 @@ if($_GET['partir_ub']<=1 AND $_GET['partir_ub']>=0)
         // affichage de texte différents selon la valeur d u boolean partir_ub
         // ici : cas trajet partant de l'UB
         $txt_main = 'Rechercher un trajet partant de l'."'". 'UB';
-        $txt_destination = 'Ville d'."'".'arrivée : ';
+        $txt_ville = 'Ville d'."'".'arrivée : ';
+        $txt_placeholder_ville = 'ville d'."'".'arrivée';
         $td_debut = 'Trajets arrivant à ';
         $td_fin = ' et partant de l'."'".'UB';    
     }
@@ -38,6 +46,7 @@ else
 
 // on teste si le submit "rechercher le trajet" =name"search" a été cliqué
 // on verifie que la ville est okai
+
 if(isset($_POST['search']))
 {
     $ville_nom_reel = htmlspecialchars($_POST['ville_nom']); //on affecte les champs du form postés à des variables pour les manipuler plus facilement
@@ -131,8 +140,8 @@ if(isset($_POST['search']))
     <div><a href="<?php echo $switch_dest;?>">Inverser la destination</a></div>
     <div>    
         <div>
-            <label><?php echo $txt_destination;?></label></br>
-            <input type="text" name="ville_nom" placeholder="Ville de départ ou d'arrivée" value="<?php if(isset($ville_nom_reel)) {echo $ville_nom_reel; }?>"/>
+            <label><?php echo $txt_ville;?></label></br>
+            <input type="text" name="ville_nom" placeholder="<?php echo $txt_placeholder_ville; ?>" value="<?php if(isset($ville_nom_reel)) {echo $ville_nom_reel; } ?>"/>
         </div>
         <div>    
             <label>Code postal :</label></br>
@@ -140,11 +149,11 @@ if(isset($_POST['search']))
         </div>
         <div>
             <label>Date :</label></br>
-            <input type="date" name="date" value="<?php if(isset($date)) {echo $date; }?>"/>
+            <input type="date" name="date" value="<?php if(isset($date)) {echo $date; }?>" min="<?php echo $date_now ?>"/>
         </div>
         <div>
             <label>Heure :</label></br>
-            <input type="time" name="time" value="<?php if(isset($time)) {echo $time; }?>"/>
+            <input type="time" name="time" value="<?php if(isset($time)) {echo $time; }?>" min="<?php echo $hour_now ?>"/>
         </div>
     
 
@@ -160,7 +169,7 @@ if(isset($_POST['search']))
 
 
 <p>
-<a href="createTrajet.php">Proposer un trajet</a>
+<a href="createTrajet.php?partir_ub=1">Proposer un trajet</a>
 </p>
 
 <?php

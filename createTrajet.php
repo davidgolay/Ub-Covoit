@@ -4,8 +4,15 @@ include 'header.php';
 include 'config.php';
 
 
-if($_SESSION['is_driver'] != 1)
-header("location: index.php");
+if($_SESSION['is_driver'] != 1){
+//header("location: index.php");
+    echo "<script> alert('Vous nêtes pas conducteur');window.location='index.php'</script>";
+}
+
+$date_now = date_create('now')->format('Y-m-d');
+$hour_now = date_create('now')->format('H:i');
+$date = $date_now;
+$time = $hour_now;
 
 
 if($_GET['partir_ub']<=1 AND $_GET['partir_ub']>=0)
@@ -98,7 +105,7 @@ if(isset($_POST['proposer']))
     }
     else
     {
-        $erreur = "Tout les champs doivent être complétés!";
+        $erreur = "Les champs obligatoires doivent être complétés";
     }
 }
 
@@ -123,11 +130,11 @@ if(isset($_POST['proposer']))
     </p>
     <p>
         <label>Date :</label></br>
-        <input type="date" name="date" value="<?php if(isset($date)) {echo $date; }?>"/></br>
+        <input type="date" name="date" value="<?php if(isset($date)) {echo $date; }?>" min="<?php echo $date_now ?>"/></br>
     </p>
     <p>
         <label>Heure :</label></br>
-        <input type="time" name="time" value="<?php if(isset($time)) {echo $time; }?>"/></br>
+        <input type="time" name="time" value="<?php if(isset($time)) {echo $time; }?>" min="<?php echo $hour_now ?>"/></br>
     </p>
     <p>
         <label>Nombre de place(s) disponible(s) :</label></br>
