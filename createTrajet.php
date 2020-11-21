@@ -3,10 +3,39 @@ session_start();
 include 'header.php';
 include 'config.php';
 
+if($_GET['partir_ub']<=1 AND $_GET['partir_ub']>=0)
+{
+    if($_GET['partir_ub'] == 0)
+    {
+        $partir_ub = 0;
+        $switch_dest = 'createTrajet.php?partir_ub=1';
+        // affichage de texte différents selon la valeur d u boolean partir_ub
+        // ici cas trajet arrivant à l'UB
+        $txt_destination = 'Ville de départ : ';
+        $txt_main = 'Proposer un trajet arrivant à l'."'". 'UB';   
+    }
+    else
+    {
+        $partir_ub = 1;
+        $switch_dest = 'createTrajet.php?partir_ub=0';
+        // affichage de texte différents selon la valeur d u boolean partir_ub
+        // ici : cas trajet partant de l'UB
+        $txt_main = 'Proposer un trajet partant de l'."'". 'UB';
+        $txt_destination = 'Ville d'."'".'arrivée : ';    
+    }
+    echo 'valeur du boolean partir_ub : '. $partir_ub; 
+}
+else
+{
+    header('location: index.php');
+}
+
 if(isset($_POST['proposer']))
 {
     $ville_nom_reel = htmlspecialchars($_POST['ville_nom']);
     $ville_code_postal = htmlspecialchars($_POST['code_postal']);
+    $com = htmlspecialchars($_POST['com']);
+    $rayon = htmlspecialchars($_POST['rayon']);
     $date = $_POST['date'];
     $time = $_POST['time'];
     $datetime = $date . ' ' . $time; 
@@ -38,8 +67,8 @@ if(isset($_POST['proposer']))
 
             if($ville_exist > 0) 
             {
-            $id_ville = $reqville->fetch();
-            //echo "id ville = " . $id_ville['id_ville'];            
+                $id_ville = $reqville->fetch();
+                echo "id ville = " . $id_ville['id_ville'];            
             }
             else
             {
@@ -47,8 +76,8 @@ if(isset($_POST['proposer']))
             }
         }
 
-        $insertTrajet = $bdd->prepare("INSERT INTO trajet(id_user, datetime_trajet, id_ville) VALUES(?, ?, ?)");
-        $insertTrajet->execute(array($_SESSION['id'], $datetime, $id_ville['id_ville']));
+        $insertTrajet = $bdd->prepare("INSERT INTO trajet(id_user, datetime_trajet, partir_ub, id_ville, com) VALUES(?, ?, ?, ?, ?)");
+        $insertTrajet->execute(array($_SESSION['id'], $datetime, $partir_ub, $id_ville['id_ville'], $com));
         $erreur ="trajet ajouté!";
         
     }
@@ -61,17 +90,12 @@ if(isset($_POST['proposer']))
 
 ?>
 
-<form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
-    <h2>Proposer un trajet</h2>
+<form action="" method="post">
+    <h2><?php echo $txt_main; ?></h2>
+    <div><a href="<?php echo $switch_dest;?>">Inverser la destination</a></div>
     <div>
     <p>
-        <label>Départ de l'UB :</label></br>
-        <input type="radio" name="depart" value="1"/></br>
-        <label>Arrivée à l'UB :</label></br>
-        <input type="radio" name="depart" value="0"/></br>
-    </p>
-    <p>
-        <label>Ville :</label></br>
+        <label><?php echo $txt_destination;?></label></br>
         <input type="text" name="ville_nom" placeholder="Ville de départ ou d'arrivée" value="<?php if(isset($ville_nom_reel)) {echo $ville_nom_reel; }?>"/></br>
     </p>
     <p>
@@ -87,13 +111,16 @@ if(isset($_POST['proposer']))
         <input type="time" name="time" value="<?php if(isset($time)) {echo $time; }?>"/></br>
     </p>
     <p>
-        <label>distance maximal de détour :</label></br>
+        <label>Nombre de place(s) disponible(s) :</label></br>
+        <input type="number" name="rayon" value="<?php if(isset($rayon)) {echo $rayon; } else{echo 0;}?>"/></br>
+    </p>
+    <p>
+        <label>distance maximale de détour (en km):</label></br>
         <input type="number" name="rayon" value="<?php if(isset($rayon)) {echo $rayon; } else{echo 0;}?>"/></br>
     </p>
     <p>
         <label>Commentaire sur le trajet :</label></br>
-        <textarea name="com" rows="4" cols="50">
-        </textarea></br>
+        <input type="text" name="com" rows="4" cols="50"/></br>
     </p>
     </div> 
 
@@ -103,7 +130,7 @@ if(isset($_POST['proposer']))
             echo '<font color="red">'. $erreur;
         };
     ?>
-    <p><input type="submit" name="proposer" value="Proposer le trajet"/></p>
+    <p><input type="submit" name="proposer" value="Créer le trajet"/></p>
     <p><a href="index.php">Rechercher un trajet</a></p>
     
 </form>
