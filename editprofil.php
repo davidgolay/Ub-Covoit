@@ -1,7 +1,7 @@
 <?php
 session_start();
 include 'config.php';
-
+include 'header.php';
 
 if(isset($_SESSION['id']))
 {
@@ -41,6 +41,15 @@ if(isset($_SESSION['id']))
         
     }
 
+    if(isset($_POST['edit_profil']) AND !empty($_POST['new_bio']) AND $_POST['new_bio'] != $user['bio'])
+    {
+        
+        $new_bio = htmlspecialchars($_POST['new_bio']);
+        $insert_bio = $bdd->prepare("UPDATE users SET bio = ? WHERE id = ?");
+        $insert_bio->execute(array($new_bio, $_SESSION['bio']));
+        header('location: profil.php?id='. $_SESSION['id']); // on redirige vers le profil
+    }
+
 
 }
 else
@@ -64,6 +73,8 @@ else
                         <input type="text" name="new_nom" placeholder="Nom" value="<?php echo $user['nom'];?>"/></br>
                         <label>Prénom</label>
                         <input type="text" name="new_prenom" placeholder="Prenom" value="<?php echo $user['prenom'];?>"/></br>
+                        <label>Conducteur</label>
+                        <input type="checkbox" name="new_driver" <?php if($user['is_driver'] == 1){echo 'checked';}?> /></br>
                         <label>Adresse mail étudiante</label>
                         <input type="email" name="new_email" placeholder="Email" value="<?php echo $user['email'];?>"/></br>
                         <label>Adresse mail de récupération</label>
@@ -72,7 +83,11 @@ else
                         <input type="password" name="new_password" placeholder="Mot de passe"/></br>
                         <label>Confirmer nouveau mot de passe</label>
                         <input type="password" name="new_password_confirm" placeholder="Confirmer mot de passe"/></br>
+                        <label>Biographie</label>
+                        <input type="text" name="new_bio" value="<?php echo $user['bio'];?>"/></br>
                         <input type="submit" name="edit_profil" value="Enregistrer les modifications"/></br>
+                        
+
                     </form>
                 </div>      
         </div>  
@@ -80,7 +95,7 @@ else
     <?php
     if(isset($erreur))
     {
-        echo '<font color="red">'. $erreur;   
+        echo '<div class="error">'. $erreur . '</div>';   
     };
     ?>
     

@@ -11,6 +11,7 @@ CREATE TABLE users (
     dob DATE,
     password VARCHAR(255) NOT NULL,
     is_driver TINYINT(1),
+    bio VARCHAR(255),
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -70,6 +71,7 @@ CREATE TABLE trajet(
    datetime_trajet DATETIME,
    partir_ub TINYINT(1),
    id_ville mediumint(8) unsigned,
+   adresse VARCHAR(50),
    statut_trajet TINYINT(1),
    place_dispo INT,
    rayon_detour INT,
@@ -84,6 +86,7 @@ CREATE TABLE trajet(
 CREATE TABLE participe(
    id_user INT NOT NULL,
    id_trajet INT NOT NULL,
+   com_passager VARCHAR(255),
    PRIMARY KEY(id_user, id_trajet),
    FOREIGN KEY(id_user) REFERENCES users(id),
    FOREIGN KEY(id_trajet) REFERENCES trajet(id_trajet)

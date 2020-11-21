@@ -10,7 +10,20 @@ if(isset($_GET['id']) AND $_GET['id'] > 0)
     $requser = $bdd->prepare('SELECT * FROM users WHERE id = ?');
     $requser->execute(array($selectId));
     $userinfo = $requser->fetch();
+
+    if($userinfo['is_driver'] == 1) 
+    {
+        $user_conducteur = 'OUI';
+    }
+    else
+    {
+        $user_conducteur = 'NON';
+    }
+}
 ?>
+
+
+
 <html>
     <head>
         <meta charset="UTF-8">
@@ -24,6 +37,8 @@ if(isset($_GET['id']) AND $_GET['id'] > 0)
             <p>Prenom : <?php echo $userinfo['prenom'];?></p>
             <p>Nom : <?php echo $userinfo['nom'];?></p>
             <p>Email étudiant : <?php echo $userinfo['email'];?></p>
+            <p>conducteur : <?php echo $user_conducteur?></p>
+            <p>biographie :</p>
             <?php
             if($userinfo['id'] == $_SESSION['id'])
             {
@@ -37,7 +52,7 @@ if(isset($_GET['id']) AND $_GET['id'] > 0)
     <?php
     if(isset($erreur))
     {
-        echo '<font color="red">'. $erreur;   
+        echo '<div class="error">'. $erreur . '</div>';   
     };
     ?>
     
@@ -45,6 +60,5 @@ if(isset($_GET['id']) AND $_GET['id'] > 0)
 </html>
 
 <?php
-}
 include 'footer.php';
 ?>
