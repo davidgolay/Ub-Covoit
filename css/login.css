@@ -128,9 +128,3 @@ input[type=text], input[type=checkbox]{
     flex-flow: column;
     align-items: center;
 }
-
-#erreur{
-    border-radius: 5px;
-    border-style: solid;
-    border-color: green;
-}
