@@ -5,7 +5,7 @@ include 'header.php';
 
 if(isset($_SESSION['id']))
 {
-    
+    $var_session_id = $_SESSION['id'];
     // on recupère les données de l'utilisateur et véhicule à partir de la variable de session id
     $select_id_driver = intval($_SESSION['id']); //conversion en nombre pour sécuriser
     $requser = $bdd->prepare('SELECT nom,prenom,id,id_vehicule,place,marque,model,commentaire FROM vehicule v INNER JOIN users u ON v.id_user=u.id WHERE id_user=?');
@@ -18,7 +18,7 @@ if(isset($_SESSION['id']))
         $new_model = htmlspecialchars($_POST['new_model']);
         $insert_model = $bdd->prepare("UPDATE vehicule SET model = ? WHERE id_user = ?");
         $insert_model->execute(array($new_model, $_SESSION['id']));
-        header('location: my_vehicule.php'); // on redirige vers le véhicule
+        header('location: profil.php?id='. $var_session_id); // on redirige vers le véhicule
         
     }
     if(isset($_POST['edit_vehicule']) AND !empty($_POST['new_marque']) AND $_POST['new_marque'] != $vehicule_info['marque'])
@@ -27,7 +27,7 @@ if(isset($_SESSION['id']))
         $new_marque = htmlspecialchars($_POST['new_marque']);
         $insert_marque = $bdd->prepare("UPDATE vehicule SET marque = ? WHERE id_user = ?");
         $insert_marque->execute(array($new_marque, $_SESSION['id']));
-        header('location: my_vehicule.php'); // on redirige vers le véhicule
+        header('location: profil.php?id='. $var_session_id); // on redirige vers le véhicule
         
     }
     if(isset($_POST['edit_vehicule']) AND !empty($_POST['new_place']) AND $_POST['new_place'] != $vehicule_info['place'])
@@ -35,11 +35,11 @@ if(isset($_SESSION['id']))
         $new_place = intval($_POST['new_place']);
         $insert_place = $bdd->prepare("UPDATE vehicule SET place = ? WHERE id_user = ?");
         $insert_place->execute(array($new_place, $_SESSION['id']));
-        header('location: my_vehicule.php'); 
+        header('location: profil.php?id='. $var_session_id); 
     }
     if(isset($_POST['edit_vehicule']))
     {
-        header('location: my_vehicule.php'); 
+        header('location: profil.php?id='. $var_session_id); 
     }
 }
 else

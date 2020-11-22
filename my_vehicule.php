@@ -1,7 +1,4 @@
 <?php
-session_start();
-include 'config.php';
-include 'header.php';
 
 if(isset($_SESSION['id']) AND $_SESSION['id'] > 0)
 {
@@ -11,10 +8,9 @@ if(isset($_SESSION['id']) AND $_SESSION['id'] > 0)
     $vehicule_info = $requser->fetch();
 
 }
+
+
 ?>
-
-
-
     
 <div>
     <h2>Véhicule de <?php echo $vehicule_info['prenom']." ".$vehicule_info['nom']; ?></h2><br/>
@@ -36,11 +32,12 @@ if(isset($_SESSION['id']) AND $_SESSION['id'] > 0)
         </div>
     
     <?php
+        
         if($vehicule_info['id'] == $_SESSION['id'])
     {
-    ?>
-    <p><a href="edit_vehicule.php">Modifier mon véhicule</a></p>
-    <?php
+    
+        $vehicule = '<a href="edit_vehicule.php">modifier mon vehicule</a>';
+        echo '<div>'.$vehicule. '</div>';
     }
     ?>        
 </div>  
@@ -50,9 +47,4 @@ if(isset($erreur))
 {
     echo '<div class="error">'. $erreur . '</div>';   
 }
- ?>
-
-
-<?php
-include 'footer.php';
 ?>
