@@ -34,13 +34,42 @@ if(isset($_GET['id']) AND $_GET['id'] > 0)
     <body>
         <div>
             <h2>Profil de <?php echo $userinfo['prenom']." ".$userinfo['nom']; ?></h2><br/>
-            
-            <p>Prenom : <?php echo $userinfo['prenom'];?></p>
-            <p>Nom : <?php echo $userinfo['nom'];?></p>
-            <p>Email étudiant : <?php echo $userinfo['email'];?></p>
-            <p>conducteur : <?php echo $user_conducteur?></p>
-            <p>Acces : <?php echo $vehicule?></p>
-            <p>biographie : <?php echo $userinfo['bio'];?></p>
+                <div>
+                    <table>
+                        <tr>
+                            <td>Prenom :</td>
+                            <td><?php echo $userinfo['prenom'];?></td>
+                        </tr>
+                        <tr>
+                            <td>Nom :</td>
+                            <td><?php echo $userinfo['nom'];?></td>
+                        </tr>
+                        <tr>
+                            <td>Email étudiant :</td>
+                            <td><?php echo $userinfo['email'];?></td>
+                        </tr>
+                        <tr>
+                            <td>conducteur :</td>
+                            <td><?php echo $user_conducteur?></td>
+                        </tr>
+                        <tr>    
+                            <td>biographie :</td>
+                            <td><?php echo $userinfo['bio'];?></td>
+                        </tr>
+                    </table>
+                    
+                    <?php 
+                    if($userinfo['is_driver'] == 1) 
+                    {
+                        echo 'Accès';
+                        echo $vehicule;
+                    }
+                    else 
+                    {
+                        echo '';
+                    }
+                    ?> 
+                </div>
             <?php
             if($userinfo['id'] == $_SESSION['id'])
             {
