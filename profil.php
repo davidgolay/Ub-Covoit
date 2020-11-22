@@ -14,6 +14,7 @@ if(isset($_GET['id']) AND $_GET['id'] > 0)
     if($userinfo['is_driver'] == 1) 
     {
         $user_conducteur = 'OUI';
+        $vehicule = '<a href="my_vehicule.php">Mon vehicule</a>'; 
     }
     else
     {
@@ -38,6 +39,7 @@ if(isset($_GET['id']) AND $_GET['id'] > 0)
             <p>Nom : <?php echo $userinfo['nom'];?></p>
             <p>Email étudiant : <?php echo $userinfo['email'];?></p>
             <p>conducteur : <?php echo $user_conducteur?></p>
+            <p>Acces : <?php echo $vehicule?></p>
             <p>biographie : <?php echo $userinfo['bio'];?></p>
             <?php
             if($userinfo['id'] == $_SESSION['id'])
