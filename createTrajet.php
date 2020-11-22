@@ -5,8 +5,7 @@ include 'config.php';
 
 
 if($_SESSION['is_driver'] != 1){
-//header("location: index.php");
-    echo "<script> alert('Vous nêtes pas conducteur');window.location='index.php'</script>";
+header("location: index.php");
 }
 
 $date_now = date_create('now')->format('Y-m-d');

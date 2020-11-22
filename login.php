@@ -60,7 +60,9 @@ if(isset($_POST['login']))
                 <form action="login.php" method="post">
                     <p><input class="center-right-left" type="email" name="email_log" placeholder="Email etudiant" value="<?php if(isset($email_log)) {echo $email_log; }?>"/></p>
                     <p><input class="center-right-left" type="password" name="password_log" placeholder="Mot de passe"/></p>
-                    <?php if(isset($erreur)){echo '<font color="red">'. $erreur;};?>
+                    <?php if(isset($erreur)){
+                        echo '<div class="error">'. $erreur . '</div>';
+                    }?>
                     <p><input type="submit" name="login" value="Se connecter"/></p>
                     <p>Pas encore de compte ?</p>
                     <p><a class="bouton" href="register.php">S'inscrire</a></p>

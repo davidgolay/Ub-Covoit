@@ -41,14 +41,38 @@ if(isset($_SESSION['id']))
         
     }
 
-    if(isset($_POST['edit_profil']) AND !empty($_POST['new_bio']) AND $_POST['new_bio'] != $user['bio'])
+    if(isset($_POST['edit_profil']) AND !empty($_POST['new_bio']))
     {
         
         $new_bio = htmlspecialchars($_POST['new_bio']);
         $insert_bio = $bdd->prepare("UPDATE users SET bio = ? WHERE id = ?");
-        $insert_bio->execute(array($new_bio, $_SESSION['bio']));
+        $insert_bio->execute(array($new_bio, $_SESSION['id']));
         header('location: profil.php?id='. $_SESSION['id']); // on redirige vers le profil
     }
+
+    if(isset($_POST['edit_profil']) AND !empty($_POST['new_password']) AND !empty($_POST['new_password_confirm']) AND $_POST['new_password'] == $_POST['new_password_confirm'])
+    {
+        
+        $new_password = sha1($_POST['new_password']);
+        $insert_pwd = $bdd->prepare("UPDATE users SET password = ? WHERE id = ?");
+        $insert_pwd->execute(array($new_password, $_SESSION['id']));
+        header('location: profil.php?id='. $_SESSION['id']); // on redirige vers le profil
+    }
+
+    if(empty($_POST["new_driver"])) {
+        $new_driver = 0;
+    } else{
+        $new_driver = $_POST["new_driver"];
+    }
+
+    if(isset($_POST['edit_profil']))
+    {
+        $insert_driver = $bdd->prepare("UPDATE users SET is_driver = ? WHERE id = ?");
+        $insert_driver->execute(array($new_driver, $_SESSION['id']));
+        header('location: profil.php?id='. $_SESSION['id']); // on redirige vers le profil
+    }
+    
+
 
 
 }
@@ -69,25 +93,41 @@ else
             <h2>Mofication de mon profil</h2><br/>
                 <div>
                     <form action="" method="post">
-                        <label>Nom</label>
-                        <input type="text" name="new_nom" placeholder="Nom" value="<?php echo $user['nom'];?>"/></br>
-                        <label>Prénom</label>
-                        <input type="text" name="new_prenom" placeholder="Prenom" value="<?php echo $user['prenom'];?>"/></br>
-                        <label>Conducteur</label>
-                        <input type="checkbox" name="new_driver" <?php if($user['is_driver'] == 1){echo 'checked';}?> /></br>
-                        <label>Adresse mail étudiante</label>
-                        <input type="email" name="new_email" placeholder="Email" value="<?php echo $user['email'];?>"/></br>
-                        <label>Adresse mail de récupération</label>
-                        <input type="email" name="new_email_recup" placeholder="Email de récupération" value="<?php echo $user['email_recup'];?>"/></br>
-                        <label>Nouveau mot de passe</label>
-                        <input type="password" name="new_password" placeholder="Mot de passe"/></br>
-                        <label>Confirmer nouveau mot de passe</label>
-                        <input type="password" name="new_password_confirm" placeholder="Confirmer mot de passe"/></br>
-                        <label>Biographie</label>
-                        <input type="text" name="new_bio" value="<?php echo $user['bio'];?>"/></br>
-                        <input type="submit" name="edit_profil" value="Enregistrer les modifications"/></br>
-                        
-
+                        <table>
+                            <tr>
+                                <td><label>Nom</label></td>
+                                <td><input type="text" name="new_nom" placeholder="Nom" value="<?php echo $user['nom'];?>"/></td>
+                            </tr>
+                            <tr>
+                                <td><label>Prénom</label></td>
+                                <td><input type="text" name="new_prenom" placeholder="Prenom" value="<?php echo $user['prenom'];?>"/></td>
+                            </tr>
+                            <tr>
+                                <td><label>Adresse email étudiante</label></td>
+                                <td><input type="email" name="new_email" placeholder="Email" value="<?php echo $user['email'];?>"/></td>
+                            </tr>
+                            <tr>
+                                <td><label>Adresse email de récupération</label></td>
+                                <td><input type="email" name="new_email_recup" placeholder="Email de récupération" value="<?php echo $user['email_recup'];?>"/></td>
+                            </tr>
+                            <tr>
+                                <td><label>Nouveau mot de passe</label></td>
+                                <td><input type="password" name="new_password" placeholder="Mot de passe"/></td>
+                            </tr>
+                            <tr>
+                                <td><label>Confirmer mot de passe</label></td>
+                                <td><input type="password" name="new_password_confirm" placeholder="Confirmer mot de passe"/></td>
+                            </tr>
+                            <tr>
+                                <td><label>Biographie</label></td>
+                                <td><input type="text" name="new_bio" value="<?php echo $user['bio'];?>" maxlength="255"/></td>
+                            </tr>
+                            <tr>
+                                <td><label>Conducteur</label></td>
+                                <td><input type="checkbox" name="new_driver" value="1" <?php if($user['is_driver'] == 1){echo 'checked';}?> /></td>
+                            </tr>
+                        </table>
+                        <input type="submit" name="edit_profil" value="Enregistrer les modifications"/></td>
                     </form>
                 </div>      
         </div>  
