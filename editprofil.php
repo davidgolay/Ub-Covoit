@@ -61,8 +61,10 @@ if(isset($_SESSION['id']))
 
     if(empty($_POST["new_driver"])) {
         $new_driver = 0;
+        $_SESSION['is_driver'] = 0;
     } else{
         $new_driver = $_POST["new_driver"];
+        $_SESSION['is_driver'] = 1;
     }
 
     if(isset($_POST['edit_profil']))
