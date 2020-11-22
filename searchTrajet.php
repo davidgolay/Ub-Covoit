@@ -100,7 +100,7 @@ if(isset($_POST['search']))
                 echo 
                 '<tr>
         
-                    <td>' . $txt_destination . ' ' . $ville_nom_reel . '</td>
+                    <td>' . $txt_ville . ' ' . $ville_nom_reel . '</td>
                     <td>' . $row["date"] . '</td>
                     <td>' . $row["hour"] . '</td>
                     <td>' . $row["nom"] . '</td>
@@ -153,7 +153,7 @@ if(isset($_POST['search']))
         </div>
         <div>
             <label>Heure :</label></br>
-            <input type="time" name="time" value="<?php if(isset($time)) {echo $time; }?>" min="<?php echo $hour_now ?>"/>
+            <input type="time" name="time" value="<?php if(isset($time)) {echo $time; }?>"/>
         </div>
     
 
