@@ -8,26 +8,13 @@ if(isset($_GET['id_trajet']) AND $_GET['id_trajet'] > 0)
 {
     $select_id_trajet = intval($_GET['id_trajet']); //conversion en nombre pour sécuriser
 
-<<<<<<< Updated upstream
     $req_aff_trajet = $bdd->prepare("SELECT * FROM trajet WHERE id_trajet = ?");
-=======
-    $req_aff_trajet = $bdd->prepare("SELECT trajet.id_trajet, trajet.partir_ub, trajet.id_ville, trajet.id_user, 
-    date_format(datetime_trajet, '%d/%m/%Y') as date, 
-    date_format(datetime_trajet, '%h:%i') as hour, 
-    nom, prenom, tel, email from trajet 
-    INNER JOIN users ON users.id = trajet.id_user
-    WHERE id_trajet=?;");
->>>>>>> Stashed changes
     $req_aff_trajet->execute(array($select_id_trajet));
     $trajet = $req_aff_trajet->fetch(); // enregistrement des données de la requete affichage du trajet
 
     $other_passager = $bdd->prepare("SELECT * FROM users INNER JOIN participe ON users.id=participe.id_user WHERE id_trajet = ?;");
     $other_passager->execute(array($select_id_trajet));
-<<<<<<< Updated upstream
     //$passager = $other_passager->fetch();
-=======
-    $trajet = $other_passager->fetch();
->>>>>>> Stashed changes
     
     foreach($other_passager as $row)
     {
