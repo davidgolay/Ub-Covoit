@@ -22,7 +22,6 @@ if(isset($_POST['login']))
             $_SESSION['prenom'] = $userinfo['prenom'];
             $_SESSION['email'] = $userinfo['email'];
             $_SESSION['is_driver'] = $userinfo['is_driver'];
-            $_SESSION['logged_in'] = 1;
             //header("location: profil.php?id=".$_SESSION['id']);
             header("location: index.php");
         }
@@ -59,7 +58,7 @@ if(isset($_POST['login']))
             <fieldset>
                 <h2>Connexion</h2>
                 <form action="login.php" method="post">
-                    <p><input class="center-right-left" type="email" name="email_log" placeholder="Email etudiant" value="<?php if(isset($email_log)) {echo $email_log; } else{if(isset($_GET['email'])){echo $_GET['email'];}}?>"/></p>
+                    <p><input class="center-right-left" type="email" name="email_log" placeholder="Email etudiant" value="<?php if(isset($email_log)) {echo $email_log; }?>"/></p>
                     <p><input class="center-right-left" type="password" name="password_log" placeholder="Mot de passe"/></p>
                     <?php if(isset($erreur)){
                         echo '<div class="error">'. $erreur . '</div>';
