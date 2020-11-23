@@ -23,6 +23,12 @@ time, mark, audio, video {
 	font: 'Poppins', sans-serif;
 	vertical-align: baseline;
 }
+@font-face{
+    font-family: poppins;
+    src: url(fonts/poppins-medium.ttf);
+}
+
+
 
 body {
     background-image: url('img/fondIndexubcovoit2.png');
@@ -108,6 +114,39 @@ a.levier:hover{
     to{opacity: 1;}
 }
 
+@media screen and (max-device-width: 480px) {
+    a.bouton, a.levier{
+        font-size : 1em;
+    }
+
+    #flexLigne{
+        display : block;
+    }
+
+    #flexColonne{
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .navbar li .onglet{
+        font-size: 1em;
+        justify-content: center;
+    }
+
+    .navbar{
+        height: 4em;
+    }
+
+    #logoAccueuil{
+        margin-top: 0.3em;
+    }
+
+    div#footer div a{
+        font-size: 0.1em;
+    }
+}
 
 
 

@@ -24,6 +24,12 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 
+@font-face{
+    font-family: poppins;
+    src: url(fonts/poppins-medium.ttf);
+}
+
+
 body{
     font-family: 'Poppins', sans-serif;
     background-color: whitesmoke;
