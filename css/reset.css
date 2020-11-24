@@ -46,3 +46,51 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+
+@media screen and (max-device-width: 600px) {
+	.navbar{
+		height: 4em;
+	}
+
+	#logoAccueuil{
+		margin-top: 0.3em;
+	}
+
+	div#footer div a{
+		font-size: 1em;
+	}
+
+	.mobileTexte{
+		visibility: hidden;
+		font-size: 0.1em;
+	}
+
+	svg.icon{
+		width: 2.8em;
+		height: 2.8em;
+	}
+
+	.navbar li a:hover{
+		background-color: transparent;
+		box-shadow: 0 0 0 0;
+		border-radius: 0px 0px 5px 5px;
+		text-shadow: 1px 1px 10px white;
+	}
+
+	body {
+		background-image: url('img/fondIndexubcovoit2.png');
+		background-size: 450%;
+		background-repeat: repeat;
+		background-position-y: -100px;
+		background-position-x: -50%;
+	}
+
+	div#footer a{
+		color: rgb(19, 19, 19);
+		text-decoration: none;
+		font-size: 3em;
+		padding: 1em;
+	}
+
+}
