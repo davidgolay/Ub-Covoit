@@ -54,13 +54,13 @@ body{
 .navbar li .onglet {
     color: whitesmoke;
     text-decoration: none;
-    margin-top: 5em;
+    margin-top: 4em;
     font-size: 1.2em;
-    padding: 1em;
+    padding: 1.5em;
 }
 
 .navbar li {
-    margin-top: 0.8em;
+    margin-top: 0.5em;
 }
 
 #logoAccueuil{

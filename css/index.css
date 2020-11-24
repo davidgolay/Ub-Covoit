@@ -33,7 +33,7 @@ time, mark, audio, video {
 body {
     background-image: url('img/fondIndexubcovoit2.png');
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     background-position-y: -100px;
     font-family: 'Poppins', sans-serif;
     background-color: rgb(31, 31, 31);
@@ -87,6 +87,7 @@ a.levier:hover{
     justify-content: space-evenly;
 } 
 
+
 @keyframes basEnHaut{
     from{height: 10em;}
     to{height: 8em;}
@@ -113,19 +114,39 @@ a.levier:hover{
     from{opacity: 0.3;}
     to{opacity: 1;}
 }
+.mobile{
+    font-weight: normal;
+}
 
 @media screen and (max-device-width: 480px) {
     a.bouton, a.levier{
-        font-size : 1em;
+        font-size : 1.5em;
+    }
+
+    a.bouton{
+        margin-top: 10em;
+        margin-bottom: 10em;
+    }
+
+    .animBasHautMobile{
+        animation: basEnHaut 1s ease-out;
+        -moz-animation: basEnHaut 1s ease-out;
+        height: 8em;
     }
 
     #flexLigne{
-        display : block;
+        display : flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: center;
+        align-content: space-around;
+        justify-content: space-evenly;
     }
 
     #flexColonne{
         display: flex;
         flex-flow: column;
+        flex-wrap: wrap;
         align-items: center;
         justify-content: space-around;
     }
@@ -133,6 +154,7 @@ a.levier:hover{
     .navbar li .onglet{
         font-size: 1em;
         justify-content: center;
+        top: 0px;
     }
 
     .navbar{
@@ -145,6 +167,16 @@ a.levier:hover{
 
     div#footer div a{
         font-size: 0.1em;
+    }
+
+    .mobileTexte{
+        visibility: hidden;
+        font-size: 0.1em;
+    }
+
+    svg.icon{
+        width: 2.8em;
+        height: 2.8em;
     }
 }
 
