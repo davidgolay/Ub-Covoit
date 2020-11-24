@@ -10,6 +10,7 @@ include 'header.php';
     <div id="flexColonne">
         <div id="flexLigne">
             <div class="centrer"><a class="bouton" href="searchTrajet.php?partir_ub=0"> Aller à l'UB </a></div>
+            <div class="animBasHautMobile"></div>
             <div class="centrer"><a class="bouton" href="searchTrajet.php?partir_ub=1"> Partir de l'UB </a></div>
         </div>
         <div class="animBasHaut"></div>
