@@ -1,4 +1,5 @@
 <?php
+session_cache_limiter('private_no_expire');
 session_start();
 include 'header.php';
 include 'config.php';
@@ -49,6 +50,8 @@ if(isset($_POST['search']))
 {
     $ville_nom_reel = htmlspecialchars($_POST['ville_nom']); //on affecte les champs du form postés à des variables pour les manipuler plus facilement
     $ville_code_postal = htmlspecialchars($_POST['code_postal']);
+    $rayon_recherche = (floatval($_POST['rayon_recherche']) / 111);
+    echo $rayon_recherche;
     $date = $_POST['date'];
     $time = $_POST['time'];
     $datetime = $date . ' ' . $time; //on concatène les champs formulaire date et time en une seule variable datetime_trajet
@@ -59,7 +62,7 @@ if(isset($_POST['search']))
         
         $sht_cp = substr($ville_code_postal, 0, -3); //on racourcit de 3 nombres le code postal entré
 
-        $reqville = $bdd->prepare("SELECT id_ville FROM ville WHERE ville_nom_reel=? AND ville_code_postal LIKE ?"); // requete qui permet de trouver l'id correspondant à la ville et son code postal saisis
+        $reqville = $bdd->prepare("SELECT id_ville, ville_latitude_deg, ville_longitude_deg FROM ville WHERE ville_nom_reel=? AND ville_code_postal LIKE ?"); // requete qui permet de trouver l'id correspondant à la ville et son code postal saisis
         $reqville->execute(array($ville_nom_reel, "%$sht_cp%"));
         $ville_exist = $reqville->rowCount();
 
@@ -67,26 +70,30 @@ if(isset($_POST['search']))
         if($ville_exist > 0) //on teste si il y a au moins une ville retourné par la database
         {
             $id_ville = $reqville->fetch();
+            echo 'longitude ville saisie'. $id_ville['ville_longitude_deg'] . '\n';
+            echo 'latitude ville saisie'. $id_ville['ville_latitude_deg'] . '\n';
 
             // on prepare la requete de recherche de trajet
-            $search_trajet = $bdd->prepare("SELECT id_trajet, partir_ub, id_ville, id_user, 
-            date_format(datetime_trajet, '%d/%m/%Y') as date, 
-            date_format(datetime_trajet, '%h:%i') as hour, 
-            nom, prenom, tel, email from trajet 
-            INNER JOIN users ON users.id = trajet.id_user 
-            WHERE id_ville=?
-            AND datetime_trajet >=?
-            AND partir_ub =?  
-            ORDER BY datetime_trajet;");
+            $search_trajet = $bdd->prepare("SELECT id_trajet, partir_ub, id_ville, id_user, date_format(datetime_trajet, '%d/%m/%Y') as date, date_format(datetime_trajet, '%h:%i') as hour, 
+            nom, prenom, tel, email FROM trajet INNER JOIN users ON users.id = trajet.id_user
+            WHERE id_ville IN
+            (SELECT id_ville FROM ville WHERE ville_latitude_deg 
+            BETWEEN ?-? AND ?+?
+            INTERSECT 
+            (SELECT id_ville FROM ville WHERE ville_longitude_deg 
+            BETWEEN ?-? AND ?+?))
+            AND datetime_trajet >= ?
+            AND partir_ub = ?
+            LIMIT 10");
             // on exectute la requete de recherche de trajet et on affiche les resultats avec une boucle foreach
-            $search_trajet->execute(array($id_ville['id_ville'], $datetime, $partir_ub));
+            $search_trajet->execute(array($id_ville['ville_latitude_deg'], $rayon_recherche, $id_ville['ville_latitude_deg'], $rayon_recherche, $id_ville['ville_longitude_deg'], $rayon_recherche, $id_ville['ville_longitude_deg'], $rayon_recherche, $datetime, $partir_ub));
             $trajet_exist = $search_trajet->rowCount();
 
             if($trajet_exist > 1)
             {               
                 echo '               
                 <div>
-                    <h3>' . $td_debut . $ville_nom_reel . $td_fin . '</h3>
+                    <h3>Liste des trajets trouvés</h3>
                 <div>
                 </br>'; 
         
@@ -97,12 +104,16 @@ if(isset($_POST['search']))
                     $heure = substr($row['date'], 0, 2);
                     $minute = substr($row['date'], -3, 2);
 
+                    $ville_alentour = $bdd->prepare("SELECT ville_nom_reel FROM ville WHERE id_ville=?;"); // requete qui permet de trouver l'id correspondant à la ville et son code postal saisis
+                    $ville_alentour->execute(array($row['id_ville']));
+                    $nom_ville_alentour = $ville_alentour->fetch();
+
                     if($depart == 1)
                     {
                         echo ' 
                         <div>
                             <p> Trajet proposé par <a href="profil.php?id=' . $driver.'">'. $row['prenom'] . ' ' . $row['nom'] . '</a></p>
-                            <p> Le ' . $row['date'] . ' à ' . $heure . 'h' . $minute . ' de uB à '. $ville_nom_reel .  '</p>
+                            <p> Le ' . $row['date'] . ' à ' . $heure . 'h' . $minute . ' de uB à '. $nom_ville_alentour['ville_nom_reel'] .  '</p>
                         </div>
                         <div>
                             <a href="inscription_trajet.php?id_trajet='.$row['id_trajet'].'&id_driver='.$row['id_user'].'"> Choisir ce trajet </a>
@@ -111,7 +122,15 @@ if(isset($_POST['search']))
                     }
                     else
                     {
-                        
+                        echo ' 
+                        <div>
+                            <p> Trajet proposé par <a href="profil.php?id=' . $driver.'">'. $row['prenom'] . ' ' . $row['nom'] . '</a></p>
+                            <p> Le ' . $row['date'] . ' à ' . $heure . 'h' . $minute . ' de '. $nom_ville_alentour['ville_nom_reel'] . ' à uB </p>
+                        </div>
+                        <div>
+                            <a href="inscription_trajet.php?id_trajet='.$row['id_trajet'].'&id_driver='.$row['id_user'].'"> Choisir ce trajet </a>
+                        </div>
+                        </br>';    
                     }                              
                 }                
             }
@@ -149,6 +168,10 @@ if(isset($_POST['search']))
             <div>    
                 <label>Code postal :</label></br>
                 <input type="text" name="code_postal" placeholder="Code postal de cette ville" value="<?php if(isset($ville_code_postal)) {echo $ville_code_postal; }?>"/>
+            </div>
+            <div>
+                <label>Rayon de recherche (km)</label></br>
+                <input type="number" name="rayon_recherche" placeholder="Rayon de recherche" value="<?php if(isset($_POST['rayon_recherche'])) {echo $_POST['rayon_recherche'];} else{echo '10';}?>"/>
             </div>
             <div>
                 <label>Date :</label></br>

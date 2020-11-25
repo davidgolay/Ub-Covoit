@@ -67,23 +67,37 @@ if(isset($erreur))
     echo '<div class="error">'. $erreur . '</div>';   
 }
 ?>
+
 <?php
 $id_driver = intval($_GET['id']); //conversion en nombre pour sécuriser
-$req_vehicule_exist = $bdd->prepare('SELECT id_vehicule FROM vehicule v INNER JOIN users u ON v.id_vehicule=u.id WHERE id=?');
+$req_vehicule_exist = $bdd->prepare('SELECT id_vehicule FROM vehicule WHERE id_user=?;');
 $req_vehicule_exist->execute(array($id_driver));
 $vehicule_exist = $req_vehicule_exist->rowCount();
 
-if($_SESSION['is_driver'] == 1)
+
+if($vehicule_exist > 0) // si le vehicule relié a l'utilisateur passé en url existe
 {
-    if($vehicule_exist > 0)
+    include 'my_vehicule.php';
+    
+    /*if($_SESSION['is_driver'] == 1 AND $_GET['id'] == $_SESSION['id'])
     {
-        include 'my_vehicule.php';   
-    }
-    else{
-        $add_vehicule = '<a href="edit_vehicule.php">Ajouter un vehicule</a>';
+        $edit_vehicule = '<a href="edit_vehicule.php?edit=1"> Modifier mon vehicule</a>';
+        echo $edit_vehicule;
+    }*/
+    
+
+}
+else //le vehicule de l'user passé en url n'existe pas
+{
+    if($_SESSION['is_driver'] == 1 AND $_GET['id'] == $_SESSION['id']) // l'utilisateur connecté est conducteur et est passé en url 
+    {
+        $add_vehicule = '<a href="add_vehicule.php"> Ajouter un vehicule</a>';  // alors il peut accéder la page d'ajout de vehicule
         echo $add_vehicule;
     }
 }
+
+
+
 ?>    
 
 

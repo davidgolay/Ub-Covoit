@@ -28,6 +28,10 @@ if(isset($_SESSION['id']) AND $_SESSION['id'] > 0)
                     <td>Place :</td>
                     <td><?php echo $vehicule_info['place'];?></td>
                </tr>
+               <tr>
+                    <td>Commentaire :</td>
+                    <td><?php echo $vehicule_info['commentaire'];?></td>
+               </tr>
             </table>
         </div>
     
