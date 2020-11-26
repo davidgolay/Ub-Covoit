@@ -172,38 +172,7 @@ div.error{
 
     /* page active */
 
-    /* a.bouton, a.levier{
-        font-size : 1.5em;
-    }
 
-    a.bouton{
-        margin-top: 10em;
-        margin-bottom: 10em;
-    }
-
-
-    .animBasHautMobile{
-        animation: basEnHaut 1s ease-out;
-        -moz-animation: basEnHaut 1s ease-out;
-        height: 8em;
-    }
-
-    #flexLigne{
-        display : flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        align-items: center;
-        align-content: space-around;
-        justify-content: space-evenly;
-    }
-
-    #flexColonne{
-        display: flex;
-        flex-flow: column;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: space-around;
-    } */
 
     /* général */
 

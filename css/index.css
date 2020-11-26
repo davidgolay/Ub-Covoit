@@ -43,7 +43,7 @@ a.bouton, input[type=submit]{
     padding: 0.8em;
     background-color: #f46917;
     color: black;
-    border-radius: 30px;
+    border-radius: 90px;
     border-style: none;
     text-decoration: none;
     font-size: 2.5em;
@@ -61,7 +61,7 @@ a.levier{
     padding: 0.8em;
     background-color: rgb(31, 31, 31);
     color: rgb(236, 236, 236);
-    border-radius: 30px;
+    border-radius: 90px;
     border-style: none;
     text-decoration: none;
     font-size: 2.5em;
