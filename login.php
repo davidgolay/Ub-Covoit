@@ -50,26 +50,26 @@ if(isset($_POST['login']))
     <title>Index</title>
 </head>
 <body>
-    <div class="flexColonne">
-        <div>
-        <img id="logoUB" src="img/UB.png" alt="logo Université Bourgogne">
-        </div>
-        <div class="animBasHaut"></div>
-        <div class="fieldflex">
+        <div class="flexColonne">
+            <div>
+            <img id="logoUB" src="img/UB.png" alt="logo Université Bourgogne">
+            </div>
+            <div class="animBasHaut"></div>
             <fieldset>
-                <h2>Connexion</h2>
-                <form action="login.php" method="post">
-                    <p><input class="center-right-left" type="email" name="email_log" placeholder="Email etudiant" value="<?php if(isset($email_log)) {echo $email_log; } else{if(isset($_GET['email'])){echo $_GET['email'];}}?>"/></p>
-                    <p><input class="center-right-left" type="password" name="password_log" placeholder="Mot de passe"/></p>
-                    <?php if(isset($erreur)){
-                        echo '<div class="error">'. $erreur . '</div>';
-                    }?>
-                    <p><input type="submit" name="login" value="Se connecter"/></p>
-                    <p>Pas encore de compte ?</p>
-                    <p><a class="bouton" href="register.php">S'inscrire</a></p>
-                </form>
-            </fieldset>
-        </div>
-    </div>  
+                <div class="fieldflex">
+                        <h2>Connexion</h2>
+                        <form action="login.php" method="post">
+                            <p><input class="center-right-left" type="email" name="email_log" placeholder="Email etudiant" value="<?php if(isset($email_log)) {echo $email_log; } else{if(isset($_GET['email'])){echo $_GET['email'];}}?>"/></p>
+                            <p><input class="center-right-left" type="password" name="password_log" placeholder="Mot de passe"/></p>
+                            <?php if(isset($erreur)){
+                                echo '<div class="error">'. $erreur . '</div>';
+                            }?>
+                            <p><input type="submit" name="login" value="Se connecter"/></p>
+                            <p>Pas encore de compte ?</p>
+                            <p><a class="bouton" href="register.php">S'inscrire</a></p>
+                        </form>
+                </div>
+            </fieldset>  
+        </div>  
 </body>
 </html>
