@@ -81,6 +81,13 @@ input[type="text"],input[type="password"], input[type="date"]{
     transition: background-size .3s, color .3s;
 }
 
+input[type="date"]{
+    font-size: 0.9em;
+    font-family: 'Poppins', sans-serif;
+    padding-left: 2.4em;
+    padding-right: 2em;
+}
+
 input.center-right-left:focus{
     outline: none;
     background-size: 100% 100%;
@@ -96,13 +103,13 @@ input.center-right-left:focus{
 }
 
 @keyframes basEnHaut{
-    from{height: 4.3em;}
-    to{height: 2.5em;}
+    from{height: 5em;}
+    to{height: 2.8em;}
 }
 
 @-moz-keyframes basEnHaut{
-    from{height: 4.3em;}
-    to{height: 2.5em;} 
+    from{height: 5em;}
+    to{height: 2.8em;} 
 }
 
 @keyframes apparaitre{
@@ -118,7 +125,7 @@ input.center-right-left:focus{
 .animBasHaut{
     animation: basEnHaut 1s ease-out;
     -moz-animation: basEnHaut 1s ease-out;
-    height: 2.5em;
+    height: 2.8em;
 }
 
 
@@ -128,20 +135,17 @@ fieldset{
     padding-left: 5em;
     padding-right: 5em;
     padding-bottom: 2em;
-    background-color: rgba(10, 10, 10, 0.65);
+    background-color: rgba(10, 10, 10, 0.70);
     border-radius: 5px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     animation: apparaitre 1s ease-out;
 }
 
 
-label{
-    color: whitesmoke;
-    margin: 1em;
-}
 
-p#label{
+p.label{
     color: whitesmoke;
+    margin-top: 1em;
 }
 
 .flexColonne{
@@ -154,6 +158,14 @@ div.error{
     color: rgb(255, 230, 0);
 }
 
+.flexLigne{
+    display : flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: space-around;
+    justify-content: space-evenly;
+}
 
 
 @media screen and (max-device-width: 600px) {
