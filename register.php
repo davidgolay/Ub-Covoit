@@ -34,7 +34,8 @@ if(isset($_POST['register']))
                     
                     $insertUser = $bdd->prepare("INSERT INTO users(nom, prenom, email, email_recup, tel, dob, password, is_driver) VALUES(?, ?, ?, ?, ?, ?, ?, ?)");
                     $insertUser->execute(array($nom,$prenom,$email,$email_recup,$tel,$dob,$password,$is_driver));
-                    $erreur ="Votre compte a bien été créé!";
+                    //$erreur ="Votre compte a bien été créé!";
+                    header('location: login.php?email='.$email);
                 }
                 else
                 {
