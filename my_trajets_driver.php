@@ -33,3 +33,5 @@ if($_SESSION['is_driver'] == 1)
     echo '<div> Trajet de ' . $row['prenom'] . ' ' . $row['nom'] . ', le ' . $row['date'] . ' à ' . $row['hour'] . '</div>';
     }
 }
+
+?>
