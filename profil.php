@@ -25,7 +25,11 @@ if(isset($_GET['id']) AND $_GET['id'] > 0)
 
 ?>
 
-<div>
+<style>
+<?php include 'css/profile.css'; ?>
+</style>
+
+<div id="page">
     <h2>Profil de <?php echo $userinfo['prenom']." ".$userinfo['nom']; ?></h2><br/>
         <div>
             <table>

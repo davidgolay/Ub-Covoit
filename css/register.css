@@ -103,13 +103,13 @@ input.center-right-left:focus{
 }
 
 @keyframes basEnHaut{
-    from{height: 5em;}
-    to{height: 2.8em;}
+    from{height: 4.5em;}
+    to{height: 2.5em;}
 }
 
 @-moz-keyframes basEnHaut{
-    from{height: 5em;}
-    to{height: 2.8em;} 
+    from{height: 4.5em;}
+    to{height: 2.5em;} 
 }
 
 @keyframes apparaitre{
@@ -125,7 +125,7 @@ input.center-right-left:focus{
 .animBasHaut{
     animation: basEnHaut 1s ease-out;
     -moz-animation: basEnHaut 1s ease-out;
-    height: 2.8em;
+    height: 2.5em;
 }
 
 
@@ -172,38 +172,7 @@ div.error{
 
     /* page active */
 
-    /* a.bouton, a.levier{
-        font-size : 1.5em;
-    }
 
-    a.bouton{
-        margin-top: 10em;
-        margin-bottom: 10em;
-    }
-
-
-    .animBasHautMobile{
-        animation: basEnHaut 1s ease-out;
-        -moz-animation: basEnHaut 1s ease-out;
-        height: 8em;
-    }
-
-    #flexLigne{
-        display : flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        align-items: center;
-        align-content: space-around;
-        justify-content: space-evenly;
-    }
-
-    #flexColonne{
-        display: flex;
-        flex-flow: column;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: space-around;
-    } */
 
     /* général */
 
