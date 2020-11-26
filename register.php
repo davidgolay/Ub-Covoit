@@ -59,6 +59,10 @@ if(isset($_POST['register']))
 }
 ?>
 
+<style>
+<?php include 'css/register.css'; ?>
+</style>
+
 <html>
 <head>
     <meta charset="UTF-8">
@@ -66,29 +70,34 @@ if(isset($_POST['register']))
     <title>Index</title>
 </head>
 <body>
-<form action="" method="post">
-    <h2>Inscription</h2>
-    <p><input type="text" name="nom" placeholder="Nom" value="<?php if(isset($nom)) {echo $nom; }?>" /></p>
-    <p><input type="text" name="prenom" placeholder="Prenom" value="<?php if(isset($prenom)) {echo $prenom; }?>" /></p>
-    <p><input type="date" name="dob" placeholder="Date de naissance" value="<?php if(isset($dob)) {echo $dob; }?>" /></p>
-    <p><input type="text" name="tel" placeholder="Téléphone" value="<?php if(isset($tel)) {echo $tel; }?>" /></p>
-    <p><input type="text" name="email" placeholder="Email etudiant" value="<?php if(isset($email)) {echo $email; }?>" /></p>
-    <p><input type="text" name="email_recup" placeholder="Email recup" value="<?php if(isset($email_recup)) {echo $email_recup; }?>" /></p>
-    <p><input type="password" name="password" placeholder="Mot de passe"/></p>
-    <p><input type="password" name="password_confirm" placeholder="Confirmer mot de passe"/></p>
-    <p><label>Etes-vous conducteur ?</label>
-    <input type="checkbox" name="is_driver" value="1"/>
-    </p>
-    <?php
-        if(isset($erreur))
-        {
-            echo '<div class="error">'. $erreur . '</div>';
-        }
-    ?>
-    <p><input type="submit" name="register" value="S'inscire"/>
-    <a href="login.php">Déja un compte ?</a>
-    </p>
-</form>
+    <div class="flexColonne">
+        <div class="animBasHaut"></div>
+        <fieldset>
+            <form action="" method="post">
+                <h2>Inscription</h2>
+                <p><input class="center-right-left" type="text" name="nom" placeholder="Nom" value="<?php if(isset($nom)) {echo $nom; }?>" /></p>
+                <p><input  class="center-right-left" type="text" name="prenom" placeholder="Prenom" value="<?php if(isset($prenom)) {echo $prenom; }?>" /></p>
+                <p><input  class="center-right-left" type="date" name="dob" placeholder="Date de naissance" value="<?php if(isset($dob)) {echo $dob; }?>" /></p>
+                <p><input  class="center-right-left" type="text" name="tel" placeholder="Téléphone" value="<?php if(isset($tel)) {echo $tel; }?>" /></p>
+                <p><input  class="center-right-left" type="text" name="email" placeholder="Email etudiant" value="<?php if(isset($email)) {echo $email; }?>" /></p>
+                <p><input  class="center-right-left" type="text" name="email_recup" placeholder="Email recup" value="<?php if(isset($email_recup)) {echo $email_recup; }?>" /></p>
+                <p><input  class="center-right-left" type="password" name="password" placeholder="Mot de passe"/></p>
+                <p><input  class="center-right-left" type="password" name="password_confirm" placeholder="Confirmer mot de passe"/></p>
+                <p><label>Etes-vous conducteur ?</label>
+                <input type="checkbox" name="is_driver" value="1"/>
+                </p>
+                <?php
+                    if(isset($erreur))
+                    {
+                        echo '<div class="error">'. $erreur . '</div>';
+                    }
+                ?>
+                <p><input type="submit" name="register" value="S'inscire"/></p>
+                <p id="label">Déjà un compte ?</p>
+                <p><br/> <a class="bouton" href="login.php">Se connecter</a></p>
+            </form>
+        </fieldset>
+    </div>
 
 </body>
 </html>

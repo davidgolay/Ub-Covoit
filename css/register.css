@@ -39,70 +39,70 @@ body {
     background-color: rgb(31, 31, 31);
 }
 
+h2{
+    color: #f46917;
+    text-align: center;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    font-size: 2em;
+}
+
+
 a.bouton, input[type=submit]{
     padding: 0.8em;
+    margin: 1em;
     background-color: #f46917;
     color: black;
     border-radius: 30px;
     border-style: none;
     text-decoration: none;
-    font-size: 2.5em;
+    font-size: inherit;
+    width: 200px;
     font-family: inherit;
     align-items: center;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    animation: apparaitre 1s ease-out;
 }
 
 a.bouton:hover, input[type=submit]:hover{
     background-color:orange;
 }
 
-a.levier{
+input[type="text"],input[type="password"], input[type="date"]{
     padding: 0.8em;
-    background-color: rgb(31, 31, 31);
-    color: rgb(236, 236, 236);
-    border-radius: 30px;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    margin: 0.5em;
     border-style: none;
-    text-decoration: none;
-    font-size: 2.5em;
-    font-family: inherit;
-    align-items: center;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    animation: apparaitre 1s ease-out;
+    border-radius: 30em;
+    background-color: whitesmoke;
+    font-size: inherit;
+    background-image: linear-gradient(#cecece, #cecece);
+    background-repeat: no-repeat;
+    transition: background-size .3s, color .3s;
 }
 
-a.levier:hover{
-    background-color:rgb(56, 56, 56);
+input.center-right-left:focus{
+    outline: none;
+    background-size: 100% 100%;
+    color: #000;
+    transform: transition;
 }
 
-#flexColonne{
-    display: flex;
-    justify-content: space-evenly;
-    flex-flow: column;
+.center-right-left{
+    background-position: 50% 50%;
 }
-
- #flexLigne{
-    display: flex;
-    flex-flow: row;
-    justify-content: space-evenly;
-} 
-
+.center-right-left{
+    background-size: 0% 100%;
+}
 
 @keyframes basEnHaut{
-    from{height: 10em;}
-    to{height: 8em;}
+    from{height: 4.3em;}
+    to{height: 2.5em;}
 }
 
 @-moz-keyframes basEnHaut{
-    from{height: 10emx;}
-    to{height: 8em;} 
-}
-
-
-.animBasHaut{
-    animation: basEnHaut 1s ease-out;
-    -moz-animation: basEnHaut 1s ease-out;
-    height: 8em;
+    from{height: 4.3em;}
+    to{height: 2.5em;} 
 }
 
 @keyframes apparaitre{
@@ -114,15 +114,53 @@ a.levier:hover{
     from{opacity: 0.3;}
     to{opacity: 1;}
 }
-.mobileTexte{
-    font-weight: normal;
+
+.animBasHaut{
+    animation: basEnHaut 1s ease-out;
+    -moz-animation: basEnHaut 1s ease-out;
+    height: 2.5em;
 }
+
+
+fieldset{
+    text-align: center;
+    border-style: none;
+    padding-left: 5em;
+    padding-right: 5em;
+    padding-bottom: 2em;
+    background-color: rgba(10, 10, 10, 0.65);
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    animation: apparaitre 1s ease-out;
+}
+
+
+label{
+    color: whitesmoke;
+    margin: 1em;
+}
+
+p#label{
+    color: whitesmoke;
+}
+
+.flexColonne{
+    display: flex;
+    justify-content: space-around;
+    flex-flow: column;
+    align-items: center;
+}
+div.error{
+    color: rgb(255, 230, 0);
+}
+
+
 
 @media screen and (max-device-width: 600px) {
 
     /* page active */
 
-    a.bouton, a.levier{
+    /* a.bouton, a.levier{
         font-size : 1.5em;
     }
 
@@ -153,7 +191,7 @@ a.levier:hover{
         flex-wrap: wrap;
         align-items: center;
         justify-content: space-around;
-    }
+    } */
 
     /* général */
 
@@ -200,7 +238,7 @@ a.levier:hover{
         margin-top: 0.5em;
    
     }
-
+    
     /* footer */
 
     div#footer a{
@@ -211,7 +249,3 @@ a.levier:hover{
     }
    
 }
-
-
-
-
