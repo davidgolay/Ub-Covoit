@@ -53,6 +53,11 @@ body {
     background-color: rgb(31, 31, 31);
 }
 
+.mobileTexte{
+    font-weight: normal;
+}
+
+
 h2{
     color: #f46917;
     text-align: center;
@@ -61,7 +66,7 @@ h2{
     font-size: 2em;
 }
 
-p a.bouton{
+p a.bouton, #voiture{
     padding: 0.8em;
     background-color: #f46917;
     color: black;
@@ -73,10 +78,23 @@ p a.bouton{
     font-family: inherit;
     align-items: center;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    position: absolute;
-    bottom: 1.5em;
     left: 50%;
-    margin-left: -7em;
+    margin-left: -100px;
+    position: absolute;
+}
+
+p a.bouton{
+    bottom: 1.5em;
+}
+
+#voiture{
+    bottom: 5em;
+    text-decoration: none;
+}
+
+#voiture a{
+    text-decoration: none;
+    color: black;
 }
 
 @media screen and (max-device-width: 600px) {
@@ -144,3 +162,4 @@ p a.bouton{
         font-size: 3em;
         padding: 1em;
     }
+}

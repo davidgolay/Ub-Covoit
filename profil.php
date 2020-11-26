@@ -56,6 +56,36 @@ if(isset($_GET['id']) AND $_GET['id'] > 0)
                 </tr>
             </table>
         </div>
+        <div id="voiture">
+            <?php
+                $id_driver = intval($_GET['id']); //conversion en nombre pour sécuriser
+                $req_vehicule_exist = $bdd->prepare('SELECT id_vehicule FROM vehicule WHERE id_user=?;');
+                $req_vehicule_exist->execute(array($id_driver));
+                $vehicule_exist = $req_vehicule_exist->rowCount();
+
+
+                if($vehicule_exist > 0) // si le vehicule relié a l'utilisateur passé en url existe
+                {
+                    include 'my_vehicule.php';
+
+                    /*if($_SESSION['is_driver'] == 1 AND $_GET['id'] == $_SESSION['id'])
+                    {
+                        $edit_vehicule = '<a href="edit_vehicule.php?edit=1"> Modifier mon vehicule</a>';
+                        echo $edit_vehicule;
+                    }*/
+
+                
+                }
+                else //le vehicule de l'user passé en url n'existe pas
+                {
+                    if($_SESSION['is_driver'] == 1 AND $_GET['id'] == $_SESSION['id']) // l'utilisateur connecté est conducteur et est passé en url 
+                    {
+                        $add_vehicule = '<a href="add_vehicule.php"> Ajouter un vehicule</a>';  // alors il peut accéder la page d'ajout de vehicule
+                        echo $add_vehicule;
+                    }
+                }
+            ?>
+        </div>    
     <?php
     if($userinfo['id'] == $_SESSION['id'])
     {
@@ -73,37 +103,7 @@ if(isset($erreur))
 }
 ?>
 
-<?php
-$id_driver = intval($_GET['id']); //conversion en nombre pour sécuriser
-$req_vehicule_exist = $bdd->prepare('SELECT id_vehicule FROM vehicule WHERE id_user=?;');
-$req_vehicule_exist->execute(array($id_driver));
-$vehicule_exist = $req_vehicule_exist->rowCount();
 
-
-if($vehicule_exist > 0) // si le vehicule relié a l'utilisateur passé en url existe
-{
-    include 'my_vehicule.php';
-    
-    /*if($_SESSION['is_driver'] == 1 AND $_GET['id'] == $_SESSION['id'])
-    {
-        $edit_vehicule = '<a href="edit_vehicule.php?edit=1"> Modifier mon vehicule</a>';
-        echo $edit_vehicule;
-    }*/
-    
-
-}
-else //le vehicule de l'user passé en url n'existe pas
-{
-    if($_SESSION['is_driver'] == 1 AND $_GET['id'] == $_SESSION['id']) // l'utilisateur connecté est conducteur et est passé en url 
-    {
-        $add_vehicule = '<a href="add_vehicule.php"> Ajouter un vehicule</a>';  // alors il peut accéder la page d'ajout de vehicule
-        echo $add_vehicule;
-    }
-}
-
-
-
-?>    
 
 
 <?php
