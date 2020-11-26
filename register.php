@@ -74,15 +74,47 @@ if(isset($_POST['register']))
         <fieldset>
             <form action="" method="post">
                 <h2>Inscription</h2>
-                <p><input class="center-right-left" type="text" name="nom" placeholder="Nom" value="<?php if(isset($nom)) {echo $nom; }?>" /></p>
-                <p><input  class="center-right-left" type="text" name="prenom" placeholder="Prenom" value="<?php if(isset($prenom)) {echo $prenom; }?>" /></p>
-                <p><input  class="center-right-left" type="date" name="dob" placeholder="Date de naissance" value="<?php if(isset($dob)) {echo $dob; }?>" /></p>
-                <p><input  class="center-right-left" type="text" name="tel" placeholder="Téléphone" value="<?php if(isset($tel)) {echo $tel; }?>" /></p>
-                <p><input  class="center-right-left" type="text" name="email" placeholder="Email etudiant" value="<?php if(isset($email)) {echo $email; }?>" /></p>
-                <p><input  class="center-right-left" type="text" name="email_recup" placeholder="Email recup" value="<?php if(isset($email_recup)) {echo $email_recup; }?>" /></p>
-                <p><input  class="center-right-left" type="password" name="password" placeholder="Mot de passe"/></p>
-                <p><input  class="center-right-left" type="password" name="password_confirm" placeholder="Confirmer mot de passe"/></p>
-                <p><label>Etes-vous conducteur ?</label>
+                <div class="flexLigne"> 
+                    <div class="flexColonne"> 
+                        <p class="label">Nom</p>  
+                        <input class="center-right-left" type="text" name="nom" value="<?php if(isset($nom)) {echo $nom; }?>" /> 
+                    </div>
+                    <div class="flexColonne">
+                        <p class="label">Prénom</p>
+                        <input  class="center-right-left" type="text" name="prenom" value="<?php if(isset($prenom)) {echo $prenom; }?>" />
+                    </div>    
+                </div>
+                <div class="flexLigne"> 
+                    <div class="flexColonne"> 
+                        <p class="label">Date de Naissance</p>  
+                        <input  class="center-right-left" type="date" name="dob" value="<?php if(isset($dob)) {echo $dob; }?>" /> 
+                    </div>
+                    <div class="flexColonne">
+                        <p class="label">Téléphone</p>
+                        <input  class="center-right-left" type="text" name="tel" value="<?php if(isset($tel)) {echo $tel; }?>" />
+                    </div>    
+                </div>
+                <div class="flexLigne"> 
+                    <div class="flexColonne"> 
+                        <p class="label">Adresse email UB</p>  
+                        <input  class="center-right-left" type="text" name="email" value="<?php if(isset($email)) {echo $email; }?>" /> 
+                    </div>
+                    <div class="flexColonne">
+                        <p class="label">Adresse email récupération</p>
+                        <input  class="center-right-left" type="text" name="email_recup" value="<?php if(isset($email_recup)) {echo $email_recup; }?>" />
+                    </div>    
+                </div>
+                <div class="flexLigne"> 
+                    <div class="flexColonne"> 
+                        <p class="label">Mot de passe</p>  
+                        <input  class="center-right-left" type="password" name="password" /> 
+                    </div>
+                    <div class="flexColonne">
+                        <p class="label">Confirmation mot de passe</p>
+                        <input  class="center-right-left" type="password" name="password_confirm" />
+                    </div>    
+                </div>
+                <p  class="label">Etes-vous conducteur ?
                 <input type="checkbox" name="is_driver" value="1"/>
                 </p>
                 <?php
@@ -92,7 +124,7 @@ if(isset($_POST['register']))
                     }
                 ?>
                 <p><input type="submit" name="register" value="S'inscire"/></p>
-                <p id="label">Déjà un compte ?</p>
+                <p class="label">Déjà un compte ?</p>
                 <p><br/> <a class="bouton" href="login.php">Se connecter</a></p>
             </form>
         </fieldset>
