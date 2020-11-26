@@ -21,6 +21,7 @@ if(isset($_SESSION['id']))
         header('location: profil.php?id='. $var_session_id); // on redirige vers le véhicule
         
     }
+
     if(isset($_POST['edit_vehicule']) AND !empty($_POST['new_marque']) AND $_POST['new_marque'] != $vehicule_info['marque'])
     {
         
@@ -30,6 +31,7 @@ if(isset($_SESSION['id']))
         header('location: profil.php?id='. $var_session_id); // on redirige vers le véhicule
         
     }
+
     if(isset($_POST['edit_vehicule']) AND !empty($_POST['new_place']) AND $_POST['new_place'] != $vehicule_info['place'])
     {
         $new_place = intval($_POST['new_place']);
@@ -37,6 +39,16 @@ if(isset($_SESSION['id']))
         $insert_place->execute(array($new_place, $_SESSION['id']));
         header('location: profil.php?id='. $var_session_id); 
     }
+
+    if(isset($_POST['edit_vehicule']) AND !empty($_POST['new_commentaire']) AND $_POST['new_commentaire'] != $vehicule_info['commentaire'])
+    {
+        $new_com = htmlspecialchars($_POST['new_commentaire']);
+        $insert_com = $bdd->prepare("UPDATE vehicule SET commentaire = ? WHERE id_user = ?");
+        $insert_com->execute(array($new_com, $_SESSION['id']));
+        header('location: profil.php?id='. $var_session_id); 
+    }
+
+
     if(isset($_POST['edit_vehicule']))
     {
         header('location: profil.php?id='. $var_session_id); 
@@ -46,6 +58,8 @@ else
 {
     header("Location: index.php");
 }
+
+
 
 ?>
 <div>
@@ -64,6 +78,10 @@ else
                     <tr>
                         <td><label>Place</label></td>
                         <td><input type="text" name="new_place" placeholder="Place(s)" value="<?php echo $vehicule_info['place'];?>"/></td>
+                    </tr>
+                    <tr>
+                        <td><label>Commentaire</label></td>
+                        <td><input type="text" name="new_commentaire" placeholder="Commentaire" value="<?php echo $vehicule_info['commentaire'];?>"/></td>
                     </tr>                        
                 </table>
                 <input type="submit" name="edit_vehicule" value="Enregistrer les modifications"/></td>

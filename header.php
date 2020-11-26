@@ -1,3 +1,10 @@
+<?php
+if($_SESSION['logged_in'] != 1)
+{
+    header('location: login.php');
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>

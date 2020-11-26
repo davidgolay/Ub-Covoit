@@ -22,6 +22,7 @@ if(isset($_POST['login']))
             $_SESSION['prenom'] = $userinfo['prenom'];
             $_SESSION['email'] = $userinfo['email'];
             $_SESSION['is_driver'] = $userinfo['is_driver'];
+            $_SESSION['logged_in'] = 1;
             //header("location: profil.php?id=".$_SESSION['id']);
             header("location: index.php");
         }

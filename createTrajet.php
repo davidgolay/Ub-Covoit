@@ -100,6 +100,7 @@ if(isset($_POST['proposer']))
         $insertTrajet = $bdd->prepare("INSERT INTO trajet(id_user, datetime_trajet, partir_ub, id_ville, adresse, place_dispo, rayon_detour, com) VALUES(?, ?, ?, ?, ?, ?, ?, ?)");
         $insertTrajet->execute(array($_SESSION['id'], $datetime, $partir_ub, $id_ville['id_ville'], $adresse, $place_dispo, $rayon, $com));
         $erreur ="trajet ajouté!";
+        header('location: my_trajets_driver.php');
         
     }
     else
