@@ -29,6 +29,7 @@ if(isset($_GET['id']) AND $_GET['id'] > 0)
 <?php include 'css/profile.css'; ?>
 </style>
 
+<div>
 <div id="page">
     <h2>Profil de <?php echo $userinfo['prenom']." ".$userinfo['nom']; ?></h2><br/>
         <div>
@@ -59,7 +60,7 @@ if(isset($_GET['id']) AND $_GET['id'] > 0)
     if($userinfo['id'] == $_SESSION['id'])
     {
     ?>
-    <p><a href="editprofil.php">Modifier mon profil</a></p>
+    <p><a class="bouton" href="editprofil.php">Modifier mon profil</a></p>
     <?php
     }
     ?>        
