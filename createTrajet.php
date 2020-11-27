@@ -134,7 +134,7 @@ if(isset($_POST['proposer']))
     </p>
     <p>
         <label>Heure :</label></br>
-        <input type="time" name="time" value="<?php if(isset($time)) {echo $time; }?>" min="<?php echo $hour_now ?>"/></br>
+        <input type="time" name="time" value="<?php if(isset($time)) {echo $time; }?>"/></br>
     </p>
     <p>
         <label>Nombre de place(s) disponible(s) :</label></br>
