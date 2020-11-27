@@ -3,8 +3,8 @@ session_start();
 include 'header.php';
 include 'config.php';
 
-$date_now = date_create('now')->format('Y-m-d H:i:s');
-
+$date_now = date_create('now')->format('Y-m-d H:i:s'); 
+/*
 if($_SESSION['is_driver'] == 1)
 {
     $incoming_trajet_driver = $bdd->prepare("SELECT partir_ub, id_ville, date_format(datetime_trajet, '%d/%m/%Y') as date, 
@@ -28,5 +28,57 @@ if($_SESSION['is_driver'] == 1)
         </div>';
     }
 }
+*/
+
+
+if($_SESSION['is_driver'] == 1)
+{   
+    // requete pour recupérer les trajet du conducteur qui part de l'ub
+    $trajet_driver = $bdd->prepare("SELECT partir_ub, ville_nom_reel, id_trajet, date_format(datetime_trajet, '%d/%m/%Y') as date, 
+    date_format(datetime_trajet, '%H:%i') as hour 
+    FROM trajet INNER JOIN ville ON trajet.id_ville = ville.id_ville
+    WHERE trajet.id_user = ? AND partir_ub = 1 ORDER BY datetime_trajet DESC;");
+    $trajet_driver->execute(array($_SESSION['id']));
+
+    echo '<h1>Tout mes trajets proposés</h1>';
+
+    foreach($trajet_driver as $row)
+    {
+        //echo $row['hour'];
+        //echo $row['id_trajet'];
+        $heure = substr($row['hour'], 0, 2);
+        $minute = substr($row['hour'], -2, 2);
+
+        echo 
+            '<div classe="trajet-conducteur"> 
+                <h2>
+                    Mon trajet du ' . $row['date'] . ' à ' . $heure . 'h' . $minute .  ' de uB à '. $row['ville_nom_reel'] . 
+                '</h2>';
+        //requete pour afficher les passagers du trajet
+        $trajet_passager = $bdd->prepare("SELECT id, nom, prenom, trajet.id_trajet, trajet.id_ville FROM users 
+        INNER JOIN participe ON users.id=participe.id_user 
+        INNER JOIN trajet ON participe.id_trajet=trajet.id_trajet
+        WHERE trajet.partir_ub = 1 AND trajet.id_trajet=?;");
+        $trajet_passager->execute(array($row['id_trajet']));
+
+            echo 
+                '<div classe="passager">Passagers';
+
+        foreach($trajet_passager as $row2)
+        {
+            echo    
+                '<a href="profil.php?id=' . $row2['id'].'">'. $row2['prenom'] . ' ' . $row2['nom'] . '</a>';            
+        }
+            echo
+                '</div>
+            </div>
+            </br>';
+        
+    }
+}
+
+
+
+
 
 ?>

@@ -75,14 +75,16 @@ if(isset($_POST['search']))
             //echo 'id ville retourné'. $id_ville['id_ville'] . '\n';
 
             // on prepare la requete de recherche de trajet
-            $search_trajet = $bdd->prepare("SELECT id_trajet, partir_ub, id_ville, id_user, date_format(datetime_trajet, '%d/%m/%Y') as date, date_format(datetime_trajet, '%h:%i') as hour, 
+            $search_trajet = $bdd->prepare("SELECT id_trajet, partir_ub, id_ville, id_user, place_dispo, date_format(datetime_trajet, '%d/%m/%Y') as date, date_format(datetime_trajet, '%H:%i') as hour, 
             nom, prenom, tel, email FROM trajet INNER JOIN users ON users.id = trajet.id_user
             WHERE id_ville = ?
             AND datetime_trajet >= ?
             AND partir_ub = ?
+            AND place_dispo >=1
+            AND id_user != ?
             LIMIT 10");
             // on exectute la requete de recherche de trajet et on affiche les resultats avec une boucle foreach
-            $search_trajet->execute(array($id_ville['id_ville'], $datetime, $partir_ub));
+            $search_trajet->execute(array($id_ville['id_ville'], $datetime, $partir_ub, $_SESSION['id']));
             $trajet_exist = $search_trajet->rowCount();
 
             if($trajet_exist > 0)
@@ -97,21 +99,22 @@ if(isset($_POST['search']))
                 {
                     $depart = $row['partir_ub'];
                     $driver = $row['id_user'];
-                    $heure = substr($row['date'], 0, 2);
-                    $minute = substr($row['date'], -3, 2);
+                    $heure = substr($row['hour'], 0, 2);
+                    $minute = substr($row['hour'], -2, 2);
 
-                    $ville_alentour = $bdd->prepare("SELECT ville_nom_reel FROM ville WHERE id_ville=?;"); // requete qui permet de trouver l'id correspondant à la ville et son code postal saisis
-                    $ville_alentour->execute(array($row['id_ville']));
-                    $nom_ville_alentour = $ville_alentour->fetch();
+                    $ville = $bdd->prepare("SELECT ville_nom_reel FROM ville WHERE id_ville=?;"); // requete qui permet de trouver l'id correspondant à la ville et son code postal saisis
+                    $ville->execute(array($row['id_ville']));
+                    $nom_ville = $ville->fetch();
 
                     if($depart == 1)
                     {
                         echo ' 
                         <div>
                             <p> Trajet proposé par <a href="profil.php?id=' . $driver.'">'. $row['prenom'] . ' ' . $row['nom'] . '</a></p>
-                            <p> Le ' . $row['date'] . ' à ' . $heure . 'h' . $minute . ' de uB à '. $nom_ville_alentour['ville_nom_reel'] .  '</p>
+                            <p> Le ' . $row['date'] . ' à ' . $heure . 'h' . $minute . ' de uB à '. $nom_ville['ville_nom_reel'] .  '</p>
                         </div>
                         <div>
+                            <p>nombre places disponibles : ' . $row['place_dispo'] . '</p>
                             <a href="inscription_trajet.php?id_trajet='.$row['id_trajet'].'&id_driver='.$row['id_user'].'"> Choisir ce trajet </a>
                         </div>
                         </br>';
@@ -121,7 +124,7 @@ if(isset($_POST['search']))
                         echo ' 
                         <div>
                             <p> Trajet proposé par <a href="profil.php?id=' . $driver.'">'. $row['prenom'] . ' ' . $row['nom'] . '</a></p>
-                            <p> Le ' . $row['date'] . ' à ' . $heure . 'h' . $minute . ' de '. $nom_ville_alentour['ville_nom_reel'] . ' à uB </p>
+                            <p> Le ' . $row['date'] . ' à ' . $heure . 'h' . $minute . ' de '. $nom_ville['ville_nom_reel'] . ' à uB </p>
                         </div>
                         <div>
                             <a href="inscription_trajet.php?id_trajet='.$row['id_trajet'].'&id_driver='.$row['id_user'].'"> Choisir ce trajet </a>
