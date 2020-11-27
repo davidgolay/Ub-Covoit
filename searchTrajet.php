@@ -50,8 +50,8 @@ if(isset($_POST['search']))
 {
     $ville_nom_reel = htmlspecialchars($_POST['ville_nom']); //on affecte les champs du form postés à des variables pour les manipuler plus facilement
     $ville_code_postal = htmlspecialchars($_POST['code_postal']);
-    $rayon_recherche = (floatval($_POST['rayon_recherche']) / 111);
-    echo $rayon_recherche;
+    //$rayon_recherche = (floatval($_POST['rayon_recherche']) / 111);
+    //echo $rayon_recherche;
     $date = $_POST['date'];
     $time = $_POST['time'];
     $datetime = $date . ' ' . $time; //on concatène les champs formulaire date et time en une seule variable datetime_trajet
@@ -70,26 +70,22 @@ if(isset($_POST['search']))
         if($ville_exist > 0) //on teste si il y a au moins une ville retourné par la database
         {
             $id_ville = $reqville->fetch();
-            echo 'longitude ville saisie'. $id_ville['ville_longitude_deg'] . '\n';
-            echo 'latitude ville saisie'. $id_ville['ville_latitude_deg'] . '\n';
+            //echo 'longitude ville saisie'. $id_ville['ville_longitude_deg'] . '\n';
+            //echo 'latitude ville saisie'. $id_ville['ville_latitude_deg'] . '\n';
+            //echo 'id ville retourné'. $id_ville['id_ville'] . '\n';
 
             // on prepare la requete de recherche de trajet
             $search_trajet = $bdd->prepare("SELECT id_trajet, partir_ub, id_ville, id_user, date_format(datetime_trajet, '%d/%m/%Y') as date, date_format(datetime_trajet, '%h:%i') as hour, 
             nom, prenom, tel, email FROM trajet INNER JOIN users ON users.id = trajet.id_user
-            WHERE id_ville IN
-            (SELECT id_ville FROM ville WHERE ville_latitude_deg 
-            BETWEEN ?-? AND ?+?
-            INTERSECT 
-            (SELECT id_ville FROM ville WHERE ville_longitude_deg 
-            BETWEEN ?-? AND ?+?))
+            WHERE id_ville = ?
             AND datetime_trajet >= ?
             AND partir_ub = ?
             LIMIT 10");
             // on exectute la requete de recherche de trajet et on affiche les resultats avec une boucle foreach
-            $search_trajet->execute(array($id_ville['ville_latitude_deg'], $rayon_recherche, $id_ville['ville_latitude_deg'], $rayon_recherche, $id_ville['ville_longitude_deg'], $rayon_recherche, $id_ville['ville_longitude_deg'], $rayon_recherche, $datetime, $partir_ub));
+            $search_trajet->execute(array($id_ville['id_ville'], $datetime, $partir_ub));
             $trajet_exist = $search_trajet->rowCount();
 
-            if($trajet_exist > 1)
+            if($trajet_exist > 0)
             {               
                 echo '               
                 <div>
@@ -169,10 +165,12 @@ if(isset($_POST['search']))
                 <label>Code postal :</label></br>
                 <input type="text" name="code_postal" placeholder="Code postal de cette ville" value="<?php if(isset($ville_code_postal)) {echo $ville_code_postal; }?>"/>
             </div>
+            <!--
             <div>
                 <label>Rayon de recherche (km)</label></br>
                 <input type="number" name="rayon_recherche" placeholder="Rayon de recherche" value="<?php if(isset($_POST['rayon_recherche'])) {echo $_POST['rayon_recherche'];} else{echo '10';}?>"/>
             </div>
+            -->
             <div>
                 <label>Date :</label></br>
                 <input type="date" name="date" value="<?php if(isset($date)) {echo $date; } else{echo $date_now;}?>" min="<?php echo $date_now ?>"/>
