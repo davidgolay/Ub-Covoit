@@ -80,7 +80,7 @@ if(isset($_GET['id']) AND $_GET['id'] > 0)
                 {
                     if($_SESSION['is_driver'] == 1 AND $_GET['id'] == $_SESSION['id']) // l'utilisateur connecté est conducteur et est passé en url 
                     {
-                        $add_vehicule = '<a href="add_vehicule.php"> Ajouter un vehicule</a>';  // alors il peut accéder la page d'ajout de vehicule
+                        $add_vehicule = '<a class ="bouton" id="modifVoiture" href="add_vehicule.php"> Ajouter un vehicule</a>';  // alors il peut accéder la page d'ajout de vehicule
                         echo $add_vehicule;
                     }
                 }

@@ -34,13 +34,14 @@ if(isset($_SESSION['id']) AND $_SESSION['id'] > 0)
                </tr>
             </table>
         </div>
+
     
     <?php
         
         if($vehicule_info['id'] == $_SESSION['id'])
     {
     
-        $vehicule = '<a href="edit_vehicule.php">modifier mon vehicule</a>';
+        $vehicule = '<a class="bouton" id="modifVoiture" href="edit_vehicule.php">Modifier mon vehicule</a>';
         echo '<div>'.$vehicule. '</div>';
     }
     ?>        

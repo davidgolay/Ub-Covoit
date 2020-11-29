@@ -19,7 +19,6 @@ time, mark, audio, video {
 	margin: 0;
 	padding: 0;
 	border: 0;
-	font-size: 100%;
 	font: 'Poppins', sans-serif;
 	vertical-align: baseline;
 }
@@ -58,15 +57,15 @@ body {
 }
 
 
-h2{
+div#page h2{
     color: #f46917;
     text-align: center;
     margin-top: 0.5em;
     margin-bottom: 0.5em;
-    font-size: 2em;
+    font-size: 1.8em;
 }
 
-p a.bouton, #voiture{
+p a.bouton, .bouton{
     padding: 0.8em;
     background-color: #f46917;
     color: black;
@@ -78,13 +77,19 @@ p a.bouton, #voiture{
     font-family: inherit;
     align-items: center;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    left: 50%;
-    margin-left: -100px;
     position: absolute;
 }
 
 p a.bouton{
+    left: 33%;
+    margin-left: -70px;
     bottom: 1.5em;
+}
+
+a.bouton#modifVoiture{
+    left: 66%;
+    margin-left: -140px;
+    bottom : 1.5em;
 }
 
 #voiture{
@@ -97,6 +102,13 @@ p a.bouton{
     color: black;
 }
 
+table{
+    display: flex;
+    justify-content: center;
+    color: whitesmoke;
+}
+
+
 @media screen and (max-device-width: 600px) {
 
     /* page active */
@@ -104,6 +116,7 @@ p a.bouton{
     #page{
         left: 0;
         right: 0;
+        height: 40em;
     }
 
 
