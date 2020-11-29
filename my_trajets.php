@@ -7,7 +7,7 @@ $date_now = date_create('now')->format('Y-m-d H:i:s');
 
 if($_SESSION['is_driver'] == 1)
 {
-    echo '<div class="button"><a href="my_trajets_driver.php">Mes trajets en tant que conducteur</a>';
+    echo '<div class="button"><a href="my_trajets_driver.php?partir_ub=1">Mes trajets en tant que conducteur</a>';
 }
 
 $incoming_trajet = $bdd->prepare("SELECT trajet.partir_ub, trajet.id_trajet, trajet.id_user, date_format(datetime_trajet, '%d/%m/%Y') as date, 
