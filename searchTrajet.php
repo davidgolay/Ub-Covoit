@@ -115,7 +115,7 @@ if(isset($_POST['search']))
                         </div>
                         <div>
                             <p>nombre places disponibles : ' . $row['place_dispo'] . '</p>
-                            <a href="inscription_trajet.php?id_trajet='.$row['id_trajet'].'&id_driver='.$row['id_user'].'"> Choisir ce trajet </a>
+                            <a href="inscription_trajet.php?id_trajet='.$row['id_trajet'] . '"> Choisir ce trajet </a>
                         </div>
                         </br>';
                     }
@@ -127,7 +127,7 @@ if(isset($_POST['search']))
                             <p> Le ' . $row['date'] . ' à ' . $heure . 'h' . $minute . ' de '. $nom_ville['ville_nom_reel'] . ' à uB </p>
                         </div>
                         <div>
-                            <a href="inscription_trajet.php?id_trajet='.$row['id_trajet'].'&id_driver='.$row['id_user'].'"> Choisir ce trajet </a>
+                            <a href="inscription_trajet.php?id_trajet='.$row['id_trajet'] . '"> Choisir ce trajet </a>
                         </div>
                         </br>';    
                     }                              
