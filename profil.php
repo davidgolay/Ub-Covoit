@@ -55,6 +55,43 @@ if(isset($_GET['id']) AND $_GET['id'] > 0)
                 </tr>
             </table>
         </div>
+<<<<<<< Updated upstream
+=======
+        <div id="voiture">
+            <?php
+                $id_driver = intval($_GET['id']); //conversion en nombre pour sécuriser
+                $req_vehicule_exist = $bdd->prepare('SELECT id_vehicule FROM vehicule WHERE id_user=?;');
+                $req_vehicule_exist->execute(array($id_driver));
+                $vehicule_exist = $req_vehicule_exist->rowCount();
+
+                //[MODIF CSS] IF l'utilisateur est conducteur est conducteur alors :
+                    if($vehicule_exist > 0) // si le vehicule relié a l'utilisateur passé en url existe
+                    {
+                        include 'my_vehicule.php';
+                        //[MODIF CSS] Afficher lien modifier profil
+
+                        /*if($_SESSION['is_driver'] == 1 AND $_GET['id'] == $_SESSION['id'])
+                        {
+                            $edit_vehicule = '<a href="edit_vehicule.php?edit=1"> Modifier mon vehicule</a>';
+                            echo $edit_vehicule;
+                        }*/
+
+                    
+                    }
+                    else //[MODIF CSS] le vehicule de l'user passé en url n'existe pas
+                    {
+                        if($_SESSION['is_driver'] == 1 AND $_GET['id'] == $_SESSION['id']) // l'utilisateur connecté est conducteur et est passé en url 
+                        {
+                            $add_vehicule = '<a class ="bouton" id="modifVoiture" href="add_vehicule.php"> Ajouter un vehicule</a>';  // alors il peut accéder la page d'ajout de vehicule
+                            echo $add_vehicule;
+                            //[MODIF CSS] Afficher lien modifier véhicule
+                        }
+                    }
+                //[MODIF CSS] Else (donc utilisateur pas conducteur)
+                    //[MODIF CSS] afficher lien modifier profile
+            ?>
+        </div>    
+>>>>>>> Stashed changes
     <?php
     if($userinfo['id'] == $_SESSION['id'])
     {
