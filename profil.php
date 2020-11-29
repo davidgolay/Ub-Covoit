@@ -55,8 +55,6 @@ if(isset($_GET['id']) AND $_GET['id'] > 0)
                 </tr>
             </table>
         </div>
-<<<<<<< Updated upstream
-=======
         <div id="voiture">
             <?php
                 $id_driver = intval($_GET['id']); //conversion en nombre pour sécuriser
@@ -91,7 +89,6 @@ if(isset($_GET['id']) AND $_GET['id'] > 0)
                     //[MODIF CSS] afficher lien modifier profile
             ?>
         </div>    
->>>>>>> Stashed changes
     <?php
     if($userinfo['id'] == $_SESSION['id'])
     {
