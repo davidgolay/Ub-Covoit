@@ -21,7 +21,9 @@ if(isset($_POST['add_vehicule']) AND !empty($_POST['marque']) AND !empty($_POST[
 
 ?>
 
-<div>
+
+
+<div id="voiture">
     <h2>Ajouter mon véhicule</h2><br/>
         <div>
             <form action="" method="post">

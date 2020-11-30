@@ -62,6 +62,11 @@ else
 
 
 ?>
+
+<style>
+<?php include 'css/editvehivule.css'; ?>
+</style>
+
 <div>
     <h2>Mofication de mon véhicule</h2><br/>
         <div>
