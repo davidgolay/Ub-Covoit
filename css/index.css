@@ -39,6 +39,14 @@ body {
     background-color: rgb(31, 31, 31);
 }
 
+
+div#footer1{
+    position: absolute;
+    bottom: 3em;
+    left: 50%;
+    margin-left: -7.6em;
+}
+
 a.bouton, input[type=submit]{
     padding: 0.8em;
     background-color: #f46917;

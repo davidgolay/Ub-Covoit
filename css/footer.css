@@ -44,13 +44,12 @@ div#footer{
     display: flex;
     flex-flow: row;
     justify-content: space-around;
-    position: absolute;
-    bottom: 0;
-    padding: 2em;
 }
 
 #footer1{
     display: flex;
     flex-flow: row;
     justify-content: space-around;
+    position: relative;
+    bottom: -6em;
 }
