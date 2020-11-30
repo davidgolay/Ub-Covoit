@@ -4,10 +4,10 @@ include 'config.php';
 include 'header.php';
 
 //$vehicule = '<a href="edit_vehicule.php">modifier mon vehicule</a>';
-$modify_profil_2btn = '<a href="editprofil.php">Modifier mon profil</a>';
-$modify_profil_1btn = '<a href="editprofil.php">Modifier mon profil</a>';
-$add_vehicule = '<a class ="bouton" id="modifVoiture" href="add_vehicule.php"> Ajouter un vehicule</a>';  // alors il peut accéder la page d'ajout de vehicule
-$edit_vehicule = '<a href="edit_vehicule.php">modifier mon vehicule</a>';
+$modify_profil_2btn = '<div><a class="bouton" href="editprofil.php">Modifier mon profil</a></div>';
+$modify_profil_1btn = '<div><a class="bouton" href="editprofil.php">Modifier mon profil</a></div>';
+$add_vehicule = '<div><a class="bouton" href="add_vehicule.php"> Ajouter un vehicule</a></div>';  // alors il peut accéder la page d'ajout de vehicule
+$edit_vehicule = '<div><a class="bouton" href="edit_vehicule.php">modifier mon vehicule</a><d/iv>';
 
 if(isset($_GET['id']) AND $_GET['id'] > 0)
 {
@@ -37,30 +37,31 @@ else
 
 <div id="page">
     <h2>Profil de <?php echo $userinfo['prenom']." ".$userinfo['nom']; ?></h2><br/>
-    <div>
-        <table>
-            <tr>
-                <td>Prenom :</td>
-                <td><?php echo $userinfo['prenom'];?></td>
-            </tr>
-            <tr>
-                <td>Nom :</td>
-                <td><?php echo $userinfo['nom'];?></td>
-            </tr>
-            <tr>
-                <td>Email étudiant :</td>
-                <td><?php echo $userinfo['email'];?></td>
-            </tr>
-            <tr>
-                <td>conducteur :</td>
-                <td><?php echo $user_conducteur?></td>
-            </tr>
-            <tr>    
-                <td>biographie :</td>
-                <td><?php echo $userinfo['bio'];?></td>
-            </tr>
-        </table>
+    <div class="flexLigne">
+        <div class="flexColonne" id="aligneDroite">
+                <div class="flexLigne">
+                    <div class="etiquette">Prenom : </div>
+                    <div class="info"><?php echo $userinfo['prenom'];?></div>
+                </div>
+                <div class="flexLigne">
+                    <div class="etiquette">Nom : </div>
+                    <div class="info"><?php echo $userinfo['nom'];?></div>
+                </div>
+                <div class="flexLigne">
+                    <div class="etiquette">Email étudiant : </div>
+                    <div class="info"><?php echo $userinfo['email'];?></div>
+                </div>
+                <div class="flexLigne"> 
+                    <div class="etiquette">conducteur : </div>
+                    <div class="info"><?php echo $user_conducteur?></div>
+                </div>
+        </div>
+        <div class="flexColonne">    
+        <div class="etiquette">biographie : </div>
+        <div class="textArea"><?php echo $userinfo['bio'];?></div>
+        </div>
     </div>
+    <div><p></br></p></div>  
     <?php
 
     //requete pour savoir si le profil visité est conducteur
@@ -79,7 +80,7 @@ else
         $req_vehicule_exist->execute(array($id_driver));
         $vehicule_exist = $req_vehicule_exist->rowCount();
         
-        // on rentre dans la boucle si le véhicule existe
+        // on rendive dans la boucle si le véhicule existe
         if($vehicule_exist > 0)
         {   
             // le véhicule du profil visité existe, alors on realise la requete qui recupère les données du vehicule correspondant à ce profil
@@ -91,33 +92,34 @@ else
             ?>
                 <div>
                     <h2>Véhicule de <?php echo $vehicule_info['prenom']." ".$vehicule_info['nom']; ?></h2><br/>
-                    <div>
-                        <table>
-                            <tr>    
-                                <td>Marque :</td>
-                                <td><?php echo $vehicule_info['marque'];?></td>   
-                            </tr>
-                            <tr>       
-                                <td>Modèle :</td> 
-                                <td><?php echo $vehicule_info['model'];?></td>  
-                            </tr>    
-                            <tr>
-                                <td>Place :</td>
-                                <td><?php echo $vehicule_info['place'];?></td>
-                            </tr>
-                            <tr>
-                                <td>Commentaire :</td>
-                                <td><?php echo $vehicule_info['commentaire'];?></td>
-                            </tr>
-                        </table>
-                    </div>           
+                    <div class="flexLigne">
+                        <div class="flexColonne"  id="aligneDroite">
+                                <div class="flexLigne">    
+                                    <div class="etiquette">Marque : </div>
+                                    <div class="info"><?php echo $vehicule_info['marque'];?></div>   
+                                </div>
+                                <div class="flexLigne">       
+                                    <div class="etiquette">Modèle : </div> 
+                                    <div class="info"><?php echo $vehicule_info['model'];?></div>  
+                                </div>    
+                                <div class="flexLigne">
+                                    <div class="etiquette">Place : </div>
+                                    <div class="info"><?php echo $vehicule_info['place'];?></div>
+                                </div>
+                        </div>
+                        <div class="flexColonne">
+                                    <div class="etiquette">Commentaire : </div>
+                                    <div class="textArea"><?php echo $vehicule_info['commentaire'];?></div>
+                        </div>
+                    </div>               
                 </div>
+                <div><p></br></p></div>
             <?php  
 
             // l'utilisateur visitant ce profil est sur son profil personnel
             if($_GET['id'] == $_SESSION['id'])
             {
-                echo '<div class="2-btn">' . $modify_profil_2btn . $edit_vehicule . '</div>'; // on affiche les deux boutons: modifier mon profil & MODIFIER mon véhicule   
+                echo '<div class="DeuxBtn">' . $modify_profil_2btn . $edit_vehicule . '</div>'; // on affiche les deux boutons: modifier mon profil & MODIFIER mon véhicule   
             }
         }
         //le profil visité n'a pas de vehicule renseigné
@@ -126,7 +128,7 @@ else
             // l'utilisateur visitant ce profil est sur son profil personnel
             if($_GET['id'] == $_SESSION['id'])
             {  
-            echo '<div class="2-btn">' . $modify_profil_2btn . $add_vehicule . '</div>'; // on affiche les deux boutons: modifier mon profil & AJOUTER un véhicule
+            echo '<div class="DeuxBtn">' . $modify_profil_2btn . $add_vehicule . '</div>'; // on affiche les deux boutons: modifier mon profil & AJOUTER un véhicule
             }
         }
     }
@@ -136,7 +138,7 @@ else
         //le profil visité est le profil de la personne connectée 
         if($_GET['id'] == $_SESSION['id'])
         {
-            echo '<div class="1-btn">' . $modify_profil_1btn . '</div>'; // on affiche le bouton modifier mon profil TOUT SEUL
+            echo '<div class="UnBtn">' . $modify_profil_1btn . '</div>'; // on affiche le bouton modifier mon profil TOUT SEUL
         }
     }  
 ?>     
