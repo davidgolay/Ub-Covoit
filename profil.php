@@ -61,7 +61,7 @@ else
         <div class="textArea"><?php echo $userinfo['bio'];?></div>
         </div>
     </div>
-    <div><p></br></p></div>  
+    <div><p></br></p></div> 
     <?php
 
     //requete pour savoir si le profil visité est conducteur
@@ -107,7 +107,7 @@ else
                                     <div class="info"><?php echo $vehicule_info['place'];?></div>
                                 </div>
                         </div>
-                        <div class="flexColonne">
+                        <div class="flexColonne" id="commentaire">
                                     <div class="etiquette">Commentaire : </div>
                                     <div class="textArea"><?php echo $vehicule_info['commentaire'];?></div>
                         </div>
@@ -143,8 +143,7 @@ else
     }  
 ?>     
 </div>  
-
-       
 <?php
 include 'footer.php';
 ?>
+       

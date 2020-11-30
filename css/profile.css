@@ -28,15 +28,16 @@ time, mark, audio, video {
 }
 
 #page{
-    position: fixed;
-    left: 10em;
-    right: 10em;
-    top: 5em;
+    position: relative;
+    margin-left: 10em;
+    margin-right: 10em;
+    margin-top: 2em;
     text-align: center;
     border-style: none;
     padding-left: 5em;
     padding-right: 5em;
-    padding-bottom: 3em;
+    padding-bottom: 1.5em;
+    padding-top: 0.5em;
     background-color: rgba(10, 10, 10, 0.65);
     border-radius: 5px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -77,12 +78,13 @@ body {
     padding: 0.1rem;
     padding-left: 1em;
     padding-right: 1em;
-    margin: 0.2em;
+    margin: 0.5em;
     margin-left: 1em;
     margin-right: 1em;
-    min-width: 20em;
+    width: 20em;
     min-height: 3em;
 }
+
 
 .mobileTexte{
     font-weight: normal;
@@ -93,7 +95,7 @@ div#page h2{
     color: #f46917;
     text-align: center;
     margin-top: 0.5em;
-    margin-bottom: 0.2em;
+    margin-bottom: 0.1em;
     font-size: 1.8em;
 }
 
@@ -157,6 +159,7 @@ div.UnBtn{
 .flexColonne#aligneDroite .flexLigne{
     justify-content: flex-end;
 }
+
 
 
 
