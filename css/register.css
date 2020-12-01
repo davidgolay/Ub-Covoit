@@ -171,7 +171,10 @@ div.error{
 @media screen and (max-device-width: 600px) {
 
     /* page active */
-
+    fieldset{
+        left: 0;
+        right: 0;
+    }
 
 
     /* général */

@@ -169,9 +169,10 @@ div.UnBtn{
     /* page active */
 
     #page{
-        left: 0;
-        right: 0;
+        margin-left: 0;
+        margin-right: 0;
         height: 40em;
+        /*padding-bottom: 3em;*/
     }
 
     div#page h2{
@@ -181,7 +182,10 @@ div.UnBtn{
     div.DeuxBtn{
         display: flex;
         flex-flow: column;
-        justify-content: center; 
+        justify-content: center;
+        align-content: space-around;
+        margin-top: 3em;
+        margin-bottom: 5em; 
     }
 
     .flexLigne{
@@ -215,7 +219,6 @@ div.UnBtn{
    
     div#footer div a{
         font-size: 1em;
-        color: lightgray;
     }
    
     .mobileTexte{
