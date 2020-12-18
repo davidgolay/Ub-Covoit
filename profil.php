@@ -47,10 +47,13 @@ else
                     <div class="etiquette">Nom : </div>
                     <div class="info"><?php echo $userinfo['nom'];?></div>
                 </div>
-                <div class="flexLigne">
-                    <div class="etiquette">Email étudiant : </div>
-                    <div class="info"><?php echo $userinfo['email'];?></div>
-                </div>
+                <?php if ($_GET['id'] == $_SESSION['id']){?>
+                    <div class="flexLigne">
+                        <div class="etiquette">Email étudiant : </div>
+                        <div class="info"> <?php echo $userinfo['email'];?></div>
+                    </div><?php
+                }?>             
+
                 <div class="flexLigne"> 
                     <div class="etiquette">conducteur : </div>
                     <div class="info"><?php echo $user_conducteur?></div>
