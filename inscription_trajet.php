@@ -3,6 +3,19 @@ session_start();
 include 'config.php';
 include 'header.php';
 
+
+switch ($_GET['action']) {
+    case 'inscription':
+        $action = 'inscription';
+        break;
+    case 'desincription':
+        $action = 'desinscription';
+        break;
+    case 'delete':
+        $action = 'delete';
+        break;
+}
+
 // on verifie que l'url est transmise un id_trajet et on vérifie qu'il est supérieur à 0
 if(isset($_GET['id_trajet']) AND $_GET['id_trajet'] > 0)
 {
@@ -101,7 +114,7 @@ if(isset($_GET['id_trajet']) AND $_GET['id_trajet'] > 0)
     
 }
 
-        if(isset($_POST['choisir_trajet']))
+        if(isset($_POST['inscription']))
         {
             $id_trajet = $trajet['id_trajet'];
             $com_trajet = htmlspecialchars($_POST['com_passager']);
@@ -122,7 +135,7 @@ if(isset($_GET['id_trajet']) AND $_GET['id_trajet'] > 0)
         <form action="" method="post">
             <label>Ajouter un commentaire</label></br>
             <input type="text" name="com_passager"/></br></br>
-            <input type="submit" name="choisir_trajet" value="S'inscrire au trajet"/>
+            <input type="submit" name="<?php echo $action;?>" value="<?php echo $action;?>"/>
         </form>
     </div>
 

@@ -36,29 +36,6 @@ if(isset($_POST['register']))
     } else{
         $accepteCondition = 1;
     }
-   /* 
-    $date = date("Y-m-d");;
-    list($annee, $mois, $jour) = sscanf($date, "%d-%d-%d"); //%d pour récupérer des entiers mais on peut utiliser & %s pour récupérer comme des chaînes de caractères 
-    $aujourdhui = date("Y-m-d"); // on récupère la date d'aujourd'hui
-    $diff = date_diff(date_create($dob), date_create($aujourdhui)); //on calcule l'écart entre la date d'aujourdhui et la date de naissance entré par l'utilisateur
-    $age = $diff->format('%y'); // l'écart calculé précedement correspond à l'age de l'utilisateur, on recupère l'age au format année
-
-    if (($dob < $date) AND ($age >=18)) // la date de naissance est inférieure à la date d'aujourd'hui (la fonction diff bugue pour les année dépassant la date actuelle) et l'utilisateur à plus de 18 ans 
-    {
-        if($age <= 55)
-        {
-        echo "c'est okai";
-        }
-        else
-        {
-            echo "vous êtes un peu vieux pour être étudiant à l'université";
-        } 
-    }
-    else
-    {
-        echo 'bah nonnnnnn ca va pas du tout ta date là';
-    } */
-
 
     if(!empty($_POST['email']) AND !empty($_POST['email_recup']) AND !empty($_POST['nom']) AND !empty($_POST['prenom']) AND !empty($_POST['password']))
     {

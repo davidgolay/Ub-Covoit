@@ -35,18 +35,18 @@ foreach($incoming_trajet as $row)
     {
         echo ' 
         <div>
-            <p> Le ' . $row['date'] . ' à ' . $row['hour'] . '</p>
-            <p> De uB à '. $nom_ville['ville_nom_reel'] . '</p>
-            <p> Conducteur :<a href="profil.php?id=' . $driver.'">'. $row['prenom'] . ' ' . $row['nom'] . '</a></p>
+            <div> Le ' . $row['date'] . ' à ' . $row['hour'] . '</div>
+            <div> De uB à '. $nom_ville['ville_nom_reel'] . '</div>
+            <div> Conducteur :<a href="profil.php?id=' . $driver.'">'. $row['prenom'] . ' ' . $row['nom'] . '</a></div>
         </div></br>';
     }
     else
     {
         echo ' 
         <div>
-            <p> Le ' . $row['date'] . ' à ' . $row['hour'] . '</p>
-            <p> De ' . $nom_ville['ville_nom_reel'] . ' à uB </p>
-            <p> Conducteur :<a href="profil.php?id=' . $driver.'">'. $row['prenom'] . ' ' . $row['nom'] . '</a></p>
+            <div> Le ' . $row['date'] . ' à ' . $row['hour'] . '</div>
+            <div> De ' . $nom_ville['ville_nom_reel'] . ' à uB </div>
+            <div> Conducteur :<a href="profil.php?id=' . $driver.'">'. $row['prenom'] . ' ' . $row['nom'] . '</a></div>
         </div></br>';
     }
     

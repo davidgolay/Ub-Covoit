@@ -46,43 +46,46 @@ if($_SESSION['is_driver'] == 1)
     if($_GET['incoming'] == 1)
     {   
         // requete pour recupérer les trajets du conducteur dans le cas trajets à venir
-        $trajet_driver = $bdd->prepare("SELECT partir_ub, ville_nom_reel, id_trajet, date_format(datetime_trajet, '%d/%m/%Y') as date, 
+        $trajet_driver = $bdd->prepare("SELECT partir_ub, statut_trajet, ville_nom_reel, id_trajet, date_format(datetime_trajet, '%d/%m/%Y') as date, 
         date_format(datetime_trajet, '%H:%i') as hour 
         FROM trajet INNER JOIN ville ON trajet.id_ville = ville.id_ville
-        WHERE trajet.id_user = ? AND trajet.partir_ub = ? AND trajet.datetime_trajet > ? ORDER BY datetime_trajet ASC;");
+        WHERE trajet.id_user = ? AND trajet.partir_ub = ? AND trajet.datetime_trajet > ? ORDER BY datetime_trajet ASC LIMIT 50;");
         $trajet_driver->execute(array($_SESSION['id'], $partir_ub, $date_now));
     }
     // si l'utilisateur à cliqué sur afficher mes trajets effectués
     else
     {
         // requete pour recupérer les trajets du conducteur dans le cas trajets effectués
-        $trajet_driver = $bdd->prepare("SELECT partir_ub, ville_nom_reel, id_trajet, date_format(datetime_trajet, '%d/%m/%Y') as date, 
+        $trajet_driver = $bdd->prepare("SELECT partir_ub, statut_trajet, ville_nom_reel, id_trajet, date_format(datetime_trajet, '%d/%m/%Y') as date, 
         date_format(datetime_trajet, '%H:%i') as hour 
         FROM trajet INNER JOIN ville ON trajet.id_ville = ville.id_ville
-        WHERE trajet.id_user = ? AND trajet.partir_ub = ? AND trajet.datetime_trajet < ? ORDER BY datetime_trajet DESC;");
+        WHERE trajet.id_user = ? AND trajet.partir_ub = ? AND trajet.datetime_trajet < ? ORDER BY datetime_trajet DESC LIMIT 50;");
         $trajet_driver->execute(array($_SESSION['id'], $partir_ub, $date_now));   
     }
 
     echo 
-        '<h1>Tout mes trajets proposés</h1>
-            <div>
-                <a href="my_trajets_driver.php?'. $switch_dest . '&incoming='.$_GET['incoming'] . '">' . $text_selection . '</a>
-            </div>
-            <div>
+    '<h1>Tout mes trajets proposés</h1>
+        <div>
+            <a href="my_trajets_driver.php?'. $switch_dest . '&incoming='.$_GET['incoming'] . '">' . $text_selection . '</a>
+        </div>
+        <div>
             <a href="my_trajets_driver.php?partir_ub='. $_GET['partir_ub'] . '&' . $switch_date . '">' . $text_incoming . '</a>
-            </div>
+        </div>
 
-            <div classe="trajet-conducteur">'; 
+    <div classe="trajet-conducteur">'; 
 
-    foreach($trajet_driver as $row)
-    {
+    foreach($trajet_driver as $row){
+        $classTrajet = 'normal-trajet';
         $heure = substr($row['hour'], 0, 2);
         $minute = substr($row['hour'], -2, 2);
-
-            echo  
-                '<h2>Mon trajet du ' . $row['date'] . ' à ' . $heure . 'h' . $minute . $text_destination . $row['ville_nom_reel'] . '</h2>';
-       
-
+        if ($row['statut_trajet'] == 1){
+            echo '<div>Ce trajet à été annulé</div>';
+            $classTrajet = 'deleted-trajet';
+        }
+        
+        echo  
+                '<div class="'.$classTrajet.'">
+                    <h2>Mon trajet du ' . $row['date'] . ' à ' . $heure . 'h' . $minute . $text_destination . $row['ville_nom_reel'] . '</h2>';
         //requete pour afficher les passagers du trajet
         $trajet_passager = $bdd->prepare("SELECT id, nom, prenom, trajet.id_trajet, trajet.id_ville FROM users 
         INNER JOIN participe ON users.id=participe.id_user 
@@ -91,9 +94,7 @@ if($_SESSION['is_driver'] == 1)
         $trajet_passager->execute(array($row['id_trajet']));
         $passager_row = $trajet_passager->rowCount();
 
-        if($passager_row > 0)
-        {
-
+        if($passager_row > 0){
             echo 
                 '<div classe="passager">
                     <table>
@@ -103,26 +104,31 @@ if($_SESSION['is_driver'] == 1)
                             </td>';
         
 
-            foreach($trajet_passager as $row2)
-            {
+            foreach($trajet_passager as $row2){
                 echo    
                             '<td>
                                 <a href="profil.php?id=' . $row2['id'].'">'. $row2['prenom'] . ' ' . $row2['nom'] . '</a>
                             </td>';            
             }
-            echo
+        echo
                         '</tr>
                     </table>
-                </div></br>';
+                </div>';
         }
-        else
-        {
+        else{
             echo 
                 '<div classe="passager">
                     Aucun passager inscrit
-                </div></br>
-            </div>';
+                </div>';
         }
+        if ($row['statut_trajet'] == 0){
+        echo '
+        <div>
+            <a href="inscription_trajet.php?id_trajet='.$row['id_trajet'] . '&action=delete">Supprimer ce trajet</a>    
+        </div>
+        </div>';} // div qui ferme la div de classe "classTrajet" juste avant les h2 mon trajet du ...
+    echo 
+    '</div></br>'; // div qui ferme la div de classe "trajet-conducteur" juste avant le 1er foreach  
     }
 }
 ?>
