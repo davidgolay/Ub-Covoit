@@ -28,56 +28,99 @@ if(isset($_POST['register']))
     if(empty($_POST["is_driver"])) {
         $is_driver = 0;
     } else{
-        $is_driver = $_POST["is_driver"];
-    } 
+        $is_driver = 1;
+    }
 
+    if(empty($_POST["accepteCondition"])) {
+        $accepteCondition = 0;
+    } else{
+        $accepteCondition = 1;
+    }
+   /* 
+    $date = date("Y-m-d");;
+    list($annee, $mois, $jour) = sscanf($date, "%d-%d-%d"); //%d pour récupérer des entiers mais on peut utiliser & %s pour récupérer comme des chaînes de caractères 
+    $aujourdhui = date("Y-m-d"); // on récupère la date d'aujourd'hui
+    $diff = date_diff(date_create($dob), date_create($aujourdhui)); //on calcule l'écart entre la date d'aujourdhui et la date de naissance entré par l'utilisateur
+    $age = $diff->format('%y'); // l'écart calculé précedement correspond à l'age de l'utilisateur, on recupère l'age au format année
+
+    if (($dob < $date) AND ($age >=18)) // la date de naissance est inférieure à la date d'aujourd'hui (la fonction diff bugue pour les année dépassant la date actuelle) et l'utilisateur à plus de 18 ans 
+    {
+        if($age <= 55)
+        {
+        echo "c'est okai";
+        }
+        else
+        {
+            echo "vous êtes un peu vieux pour être étudiant à l'université";
+        } 
+    }
+    else
+    {
+        echo 'bah nonnnnnn ca va pas du tout ta date là';
+    } */
 
 
     if(!empty($_POST['email']) AND !empty($_POST['email_recup']) AND !empty($_POST['nom']) AND !empty($_POST['prenom']) AND !empty($_POST['password']))
     {
-        if(preg_match("#[0][6][- \.?]?([0-9][0-9][- \.?]?){4}$#", $tel))
-        {   
-            if(filter_var($email, FILTER_VALIDATE_EMAIL) AND (endsWith($email, $fmt_mail1) OR endsWith($email, $fmt_mail2)))
+        $date = date("Y-m-d");;
+        list($annee, $mois, $jour) = sscanf($date, "%d-%d-%d"); //%d pour récupérer des entiers mais on peut utiliser & %s pour récupérer comme des chaînes de caractères 
+        $aujourdhui = date("Y-m-d"); // on récupère la date d'aujourd'hui
+        $diff = date_diff(date_create($dob), date_create($aujourdhui)); //on calcule l'écart entre la date d'aujourdhui et la date de naissance entré par l'utilisateur
+        $age = $diff->format('%y'); // l'écart calculé précedement correspond à l'age de l'utilisateur, on recupère l'age au format année
+
+        if (($dob < $date) AND ($age >=18)){ // la date de naissance est inférieure à la date d'aujourd'hui (la fonction diff bugue pour les année dépassant la date actuelle) et l'utilisateur à plus de 18 ans 
+        
+            if($age <= 55)
             {
-                $reqmail = $bdd->prepare("SELECT * FROM users WHERE email=?");
-                $reqmail->execute(array($email));
-                $mailexist = $reqmail->rowCount();
-                if($mailexist == 0) 
-                {
-                    if($password == $password_2)
-                    {   
-                        
-                        $insertUser = $bdd->prepare("INSERT INTO users(nom, prenom, email, email_recup, tel, dob, password, is_driver) VALUES(?, ?, ?, ?, ?, ?, ?, ?)");
-                        $insertUser->execute(array($nom,$prenom,$email,$email_recup,$tel,$dob,$password,$is_driver));
-                        //$erreur ="Votre compte a bien été créé!";
-                        header('location: login.php?email='.$email);
+                echo "c'est okai";
+                if(preg_match("#[0][6][- \.?]?([0-9][0-9][- \.?]?){4}$#", $tel)){ // verification du format du num de telephone  
+                    if(filter_var($email, FILTER_VALIDATE_EMAIL) AND (endsWith($email, $fmt_mail1) OR endsWith($email, $fmt_mail2))){ // verification du format du mail 
+                        $reqmail = $bdd->prepare("SELECT * FROM users WHERE email=?");
+                        $reqmail->execute(array($email));
+                        $mailexist = $reqmail->rowCount();
+                        if($mailexist == 0){
+                            if ($accepteCondition == 1){
+                                if($password == $password_2){   
+                                    $insertUser = $bdd->prepare("INSERT INTO users(nom, prenom, email, email_recup, tel, dob, password, is_driver) VALUES(?, ?, ?, ?, ?, ?, ?, ?)");
+                                    $insertUser->execute(array($nom,$prenom,$email,$email_recup,$tel,$dob,$password,$is_driver));
+                                    //$erreur ="Votre compte a bien été créé!";
+                                    header('location: login.php?email='.$email);
+                                }
+                                else
+                                {
+                                    $erreur = "Vos mots de passe sont différents";
+                                }
+                            }
+                            else{
+                                $erreur = "Vous devez accepter les conditions générales d'utilisation'";
+                            }
+                        }
+                        else{
+                            $erreur ="Cet email est déjà utilisé";
+                        }
                     }
-                    else
-                    {
-                        $erreur = "Vos mots de passe sont différents";
+                    else{
+                        $erreur = "Votre email n'a pas été reconnu";
                     }
                 }
-                else
-                {
-                    $erreur ="Cet email est déjà utilisé";
+                else{
+                    $erreur = "Entrez un numéro de téléphone correct";    
                 }
             }
-            else
-            {
-                $erreur = "Votre email n'a pas été reconnu";
+            else{
+                $erreur = "vous êtes un peu vieux pour être étudiant à l'université";
             }
         }
-        else
-        {
-            $erreur = "Entrez un numéro de téléphone correct";    
+        else{
+            $erreur = "Vous n'avez pas 18 ans";
         }
     }
-    else
-    {
+    else{
         $erreur = "Tout les champs doivent être complétés";
     }
-}
+}          
 ?>
+
 
 <style>
 <?php include 'css/register.css'; ?>

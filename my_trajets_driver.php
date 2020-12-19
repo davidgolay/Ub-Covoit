@@ -59,7 +59,7 @@ if($_SESSION['is_driver'] == 1)
         $trajet_driver = $bdd->prepare("SELECT partir_ub, ville_nom_reel, id_trajet, date_format(datetime_trajet, '%d/%m/%Y') as date, 
         date_format(datetime_trajet, '%H:%i') as hour 
         FROM trajet INNER JOIN ville ON trajet.id_ville = ville.id_ville
-        WHERE trajet.id_user = ? AND trajet.partir_ub = ? AND trajet.datetime_trajet < ? ORDER BY datetime_trajet ASC;");
+        WHERE trajet.id_user = ? AND trajet.partir_ub = ? AND trajet.datetime_trajet < ? ORDER BY datetime_trajet DESC;");
         $trajet_driver->execute(array($_SESSION['id'], $partir_ub, $date_now));   
     }
 
