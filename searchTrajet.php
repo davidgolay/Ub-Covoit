@@ -82,6 +82,7 @@ if(isset($_POST['search']))
             AND partir_ub = ?
             AND place_dispo >=1
             AND id_user != ?
+            AND statut_trajet = 0
             LIMIT 10");
             // on exectute la requete de recherche de trajet et on affiche les resultats avec une boucle foreach
             $search_trajet->execute(array($id_ville['id_ville'], $datetime, $partir_ub, $_SESSION['id']));
@@ -115,7 +116,7 @@ if(isset($_POST['search']))
                         </div>
                         <div>
                             <p>nombre places disponibles : ' . $row['place_dispo'] . '</p>
-                            <a href="inscription_trajet.php?id_trajet='.$row['id_trajet'] . '"> Choisir ce trajet </a>
+                            <a href="inscription_trajet.php?id_trajet='.$row['id_trajet'] . '&action=inscription"> Choisir ce trajet </a>
                         </div>
                         </br>';
                     }
@@ -127,7 +128,7 @@ if(isset($_POST['search']))
                             <p> Le ' . $row['date'] . ' à ' . $heure . 'h' . $minute . ' de '. $nom_ville['ville_nom_reel'] . ' à uB </p>
                         </div>
                         <div>
-                            <a href="inscription_trajet.php?id_trajet='.$row['id_trajet'] . '"> Choisir ce trajet </a>
+                            <a href="inscription_trajet.php?id_trajet='.$row['id_trajet'] . '&action=inscription"> Choisir ce trajet </a>
                         </div>
                         </br>';    
                     }                              
