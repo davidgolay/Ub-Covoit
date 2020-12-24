@@ -3,55 +3,41 @@ session_start();
 include 'config.php';
 include 'header.php';
 
-if(isset($_SESSION['id']))
-{
-    
+if(isset($_SESSION['id'])){
     // on recupère les données de l'utilisateur à partir de la variable de session id
     $requser = $bdd->prepare("SELECT * FROM users WHERE id=?");
     $requser->execute(array($_SESSION['id']));
     $user = $requser->fetch();
 
-    if(isset($_POST['edit_profil']) AND !empty($_POST['new_nom']) AND $_POST['new_nom'] != $user['nom'])
-    {
-        
+    if(isset($_POST['edit_profil']) AND !empty($_POST['new_nom']) AND $_POST['new_nom'] != $user['nom']){   
         $new_nom = htmlspecialchars($_POST['new_nom']);
         $insertnom = $bdd->prepare("UPDATE users SET nom = ? WHERE id = ?");
         $insertnom->execute(array($new_nom, $_SESSION['id']));
-        header('location: profil.php?id='. $_SESSION['id']); // on redirige vers le profil
-        
+        header('location: profil.php?id='. $_SESSION['id']); // on redirige vers le profil  
     }
 
-    if(isset($_POST['edit_profil']) AND !empty($_POST['new_prenom']) AND $_POST['new_prenom'] != $user['prenom'])
-    {
-        
+    if(isset($_POST['edit_profil']) AND !empty($_POST['new_prenom']) AND $_POST['new_prenom'] != $user['prenom']){
         $new_prenom = htmlspecialchars($_POST['new_prenom']);
         $insertprenom = $bdd->prepare("UPDATE users SET prenom = ? WHERE id = ?");
         $insertprenom->execute(array($new_prenom, $_SESSION['id']));
         header('location: profil.php?id='. $_SESSION['id']); // on redirige vers le profil
-        
     }
 
-    if(isset($_POST['edit_profil']) AND !empty($_POST['new_email']) AND $_POST['new_email'] != $user['email'])
-    {
-        
+    if(isset($_POST['edit_profil']) AND !empty($_POST['new_email']) AND $_POST['new_email'] != $user['email']){ 
         $new_email = htmlspecialchars($_POST['new_email']);
         $insertmail = $bdd->prepare("UPDATE users SET email = ? WHERE id = ?");
         $insertmail->execute(array($new_email, $_SESSION['id']));
-        header('location: profil.php?id='. $_SESSION['id']); // on redirige vers le profil
-        
+        header('location: profil.php?id='. $_SESSION['id']); // on redirige vers le profil 
     }
 
-    if(isset($_POST['edit_profil']) AND !empty($_POST['new_bio']))
-    {
-        
+    if(isset($_POST['edit_profil']) AND !empty($_POST['new_bio'])){
         $new_bio = htmlspecialchars($_POST['new_bio']);
         $insert_bio = $bdd->prepare("UPDATE users SET bio = ? WHERE id = ?");
         $insert_bio->execute(array($new_bio, $_SESSION['id']));
         header('location: profil.php?id='. $_SESSION['id']); // on redirige vers le profil
     }
 
-    if(isset($_POST['edit_profil']) AND !empty($_POST['new_password']) AND !empty($_POST['new_password_confirm']) AND $_POST['new_password'] == $_POST['new_password_confirm'])
-    {
+    if(isset($_POST['edit_profil']) AND !empty($_POST['new_password']) AND !empty($_POST['new_password_confirm']) AND $_POST['new_password'] == $_POST['new_password_confirm']){
         
         $new_password = sha1($_POST['new_password']);
         $insert_pwd = $bdd->prepare("UPDATE users SET password = ? WHERE id = ?");
@@ -59,27 +45,22 @@ if(isset($_SESSION['id']))
         header('location: profil.php?id='. $_SESSION['id']); // on redirige vers le profil
     }
 
-    if(empty($_POST["new_driver"])) {
+    if(empty($_POST["new_driver"])){
         $new_driver = 0;
         $_SESSION['is_driver'] = 0;
-    } else{
+    } 
+    else{
         $new_driver = $_POST["new_driver"];
         $_SESSION['is_driver'] = 1;
     }
 
-    if(isset($_POST['edit_profil']))
-    {
+    if(isset($_POST['edit_profil'])){
         $insert_driver = $bdd->prepare("UPDATE users SET is_driver = ? WHERE id = ?");
         $insert_driver->execute(array($new_driver, $_SESSION['id']));
         header('location: profil.php?id='. $_SESSION['id']); // on redirige vers le profil
     }
-    
-
-
-
 }
-else
-{
+else{
     header("Location: login.php");
 }
 
