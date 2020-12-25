@@ -184,7 +184,7 @@ if(isset($_GET['incoming']) AND isset($_GET['driver']) AND isset($_GET['partir_u
         // si le trajet n'a pas été annulé
         if ($row['statut_trajet'] == 0 AND $_GET['incoming'] == 1){
             // dans le cas "en tant que CONDUCTEUR" => Bouton de suppression du trajet
-            if($_GET['driver'] == 1){
+            if($_GET['driver'] == 1 AND $_SESSION['is_driver'] == 1){
                 echo '<div><a href="inscription_trajet.php?id_trajet='.$row['id_trajet'] . '&action=delete">Supprimer ce trajet</a></div>';
             }
             // dans le cas "en tant que PASSAGER" => Bouton de désinscription
