@@ -2,6 +2,8 @@
 session_start();
 include 'header.php';
 include 'config.php';
+// PAGE QUI N'EST PLUS UTILISE 
+// DESORMAIS, TOUT PASSE PAR trajet.php (anciennement my_trajets_driver.php)
 
 $date_now = date_create('now')->format('Y-m-d H:i:s');
 

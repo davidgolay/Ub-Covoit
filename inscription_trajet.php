@@ -101,7 +101,7 @@ if(isset($_GET['id_trajet']) AND $_GET['id_trajet'] > 0){
             } 
         }
 
-        // il n'y a pas de passager inscrits
+        // il n'y a pas de passager inscrit
         else{
             echo 
                     '<div classe="passager">
