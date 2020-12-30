@@ -102,13 +102,13 @@ input.center-right-left:focus{
 }
 
 @keyframes basEnHaut{
-    from{height: 4.5em;}
-    to{height: 2.5em;}
+    from{height: 2.5em;}
+    to{height: 0em;}
 }
 
 @-moz-keyframes basEnHaut{
-    from{height: 4.5em;}
-    to{height: 2.5em;} 
+    from{height: 2.5em;}
+    to{height: 0em;} 
 }
 
 @keyframes apparaitre{
@@ -124,7 +124,7 @@ input.center-right-left:focus{
 .animBasHaut{
     animation: basEnHaut 1s ease-out;
     -moz-animation: basEnHaut 1s ease-out;
-    height: 2.5em;
+    height: 0em;
 }
 
 
@@ -185,9 +185,14 @@ div.error{
 @media screen and (max-device-width: 600px) {
 
     /* page active */
-    fieldset{
+
+    #page{
+        margin-left: 0;
+        margin-right: 0;
+        height: 40em;
         left: 0;
         right: 0;
+        /*padding-bottom: 3em;*/
     }
 
 

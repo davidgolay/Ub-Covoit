@@ -5,7 +5,7 @@ include 'config.php';
 
 $date_now = date_create('now')->format('Y-m-d H:i:s');
 
-echo '<div id ="page">';
+echo '<div class="animBasHaut"></div><div id="page">';
 
 if($_SESSION['is_driver'] == 1)
 {

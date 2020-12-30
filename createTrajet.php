@@ -111,10 +111,11 @@ if(isset($_POST['proposer']))
 
 
 ?>
+<div class="animBasHaut"></div>
 <div id="page">
 <form action="" method="post">
     <h2><?php echo $txt_main; ?></h2>
-    <div><a href="<?php echo $switch_dest;?>">Inverser la destination</a></div>
+    <br/><div><a class="bouton" href="<?php echo $switch_dest;?>">Inverser la destination</a></div><br/>
     <div>
     <p>
         <label><?php echo $txt_ville;?></label></br>
@@ -157,7 +158,7 @@ if(isset($_POST['proposer']))
         }
     ?>
     <p><input type="submit" name="proposer" value="Créer le trajet"/></p>
-    <p><a href="index.php">Rechercher un trajet</a></p>
+    <p><a class="bouton" href="index.php">Rechercher un trajet</a></p>
     
 </form>
 </div>

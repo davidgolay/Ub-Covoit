@@ -7,7 +7,7 @@ $date_now = date_create('now')->format('Y-m-d H:i:s');
 
 if($_SESSION['is_driver'] == 1)
 {
-    echo '<div id="page">';
+    echo '<div class="animBasHaut"></div><div id="page">';
     $incoming_trajet_driver = $bdd->prepare("SELECT date_format(datetime_trajet, '%d/%m/%Y') as date, 
     date_format(datetime_trajet, '%h:%i') as hour, nom, prenom, is_driver 
     FROM trajet INNER JOIN users ON users.id = trajet.id_user

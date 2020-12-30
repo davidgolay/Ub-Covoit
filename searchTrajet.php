@@ -152,7 +152,7 @@ if(isset($_POST['search']))
 }
 
 ?>
-
+<div class="animBasHaut"></div>
 <div id="page">
     <form action="" method="post">
         <h2><?php echo $txt_main; ?></h2><br/>

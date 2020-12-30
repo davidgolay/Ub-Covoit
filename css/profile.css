@@ -160,6 +160,21 @@ div.UnBtn{
     justify-content: flex-end;
 }
 
+.animBasHaut{
+    animation: basEnHaut 1s ease-out;
+    -moz-animation: basEnHaut 1s ease-out;
+    height: 0em;
+}
+
+@keyframes basEnHaut{
+    from{height: 2.5em;}
+    to{height: 0em;}
+}
+
+@-moz-keyframes basEnHaut{
+    from{height: 2.5em;}
+    to{height: 0em;} 
+}
 
 
 
