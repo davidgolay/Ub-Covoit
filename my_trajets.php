@@ -37,7 +37,7 @@ foreach($incoming_trajet as $row)
     if($depart == 1)
     {
         echo ' 
-        <div>
+        <div class="trajet">
             <p> Le ' . $row['date'] . ' à ' . $row['hour'] . '</p>
             <p> De uB à '. $nom_ville['ville_nom_reel'] . '</p>
             <p> Conducteur :<a href="profil.php?id=' . $driver.'">'. $row['prenom'] . ' ' . $row['nom'] . '</a></p>
@@ -46,7 +46,7 @@ foreach($incoming_trajet as $row)
     else
     {
         echo ' 
-        <div>
+        <div class="trajet">
             <p> Le ' . $row['date'] . ' à ' . $row['hour'] . '</p>
             <p> De ' . $nom_ville['ville_nom_reel'] . ' à uB </p>
             <p> Conducteur :<a href="profil.php?id=' . $driver.'">'. $row['prenom'] . ' ' . $row['nom'] . '</a></p>

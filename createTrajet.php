@@ -111,7 +111,7 @@ if(isset($_POST['proposer']))
 
 
 ?>
-
+<div id="page">
 <form action="" method="post">
     <h2><?php echo $txt_main; ?></h2>
     <div><a href="<?php echo $switch_dest;?>">Inverser la destination</a></div>
@@ -160,6 +160,11 @@ if(isset($_POST['proposer']))
     <p><a href="index.php">Rechercher un trajet</a></p>
     
 </form>
+</div>
+
+<style>
+<?php include 'css/recherche.css'; ?>
+</style>
 
 <?php
 include 'footer.php';

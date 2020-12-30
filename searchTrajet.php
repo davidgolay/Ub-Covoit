@@ -153,51 +153,46 @@ if(isset($_POST['search']))
 
 ?>
 
-<div>
+<div id="page">
     <form action="" method="post">
-        <h2><?php echo $txt_main; ?></h2>
+        <h2><?php echo $txt_main; ?></h2><br/>
         <div>
-            <a href="<?php echo $switch_dest;?>">Inverser la destination</a>
+            <a class="bouton" href="<?php echo $switch_dest;?>">Inverser la destination</a>
         </div>
-        
-        <div>    
-            <div>
-                <label><?php echo $txt_ville;?></label></br>
-                <input type="text" name="ville_nom" placeholder="<?php echo $txt_placeholder_ville; ?>" value="<?php if(isset($ville_nom_reel)) {echo $ville_nom_reel; } ?>"/>
-            </div>
-            <div>    
-                <label>Code postal :</label></br>
-                <input type="text" name="code_postal" placeholder="Code postal de cette ville" value="<?php if(isset($ville_code_postal)) {echo $ville_code_postal; }?>"/>
-            </div>
-            <div>
-                <label>Rayon de recherche (km)</label></br>
-                <input type="number" name="rayon_recherche" placeholder="Rayon de recherche" value="<?php if(isset($_POST['rayon_recherche'])) {echo $_POST['rayon_recherche'];} else{echo '10';}?>"/>
-            </div>
-            <div>
-                <label>Date :</label></br>
-                <input type="date" name="date" value="<?php if(isset($date)) {echo $date; } else{echo $date_now;}?>" min="<?php echo $date_now ?>"/>
-            </div>
-            <div>
-                <label>Heure :</label></br>
-                <input type="time" name="time" value="<?php if(isset($time)) {echo $time; } else{echo $hour_now;}?>"/>
-            </div>
-        
+        <br/>
+        <div class="flexLigne">
+            <div class="flexColonneEnd"> 
+                    <label><?php echo $txt_ville;?></label>
+                    <label>Code postal :</label>    
+                    <label>Rayon de recherche (km) :</label>    
+                    <label>Date :</label>    
+                    <label>Heure :</label>
+            </div>    
 
-            <?php // affichage du message d'erreur ou succes 
+            <div class="flexColonneStart">
+                <input class="center-right-left" type="text" name="ville_nom" placeholder="<?php echo $txt_placeholder_ville; ?>" value="<?php if(isset($ville_nom_reel)) {echo $ville_nom_reel; } ?>"/>
+                <input class="center-right-left" type="text" name="code_postal" placeholder="Code postal de cette ville" value="<?php if(isset($ville_code_postal)) {echo $ville_code_postal; }?>"/>
+                <input class="center-right-left" type="number" name="rayon_recherche" placeholder="Rayon de recherche" value="<?php if(isset($_POST['rayon_recherche'])) {echo $_POST['rayon_recherche'];} else{echo '10';}?>"/>
+                <input class="center-right-left" type="date" name="date" value="<?php if(isset($date)) {echo $date; } else{echo $date_now;}?>" min="<?php echo $date_now ?>"/>
+                <input class="center-right-left" type="time" name="time" value="<?php if(isset($time)) {echo $time; } else{echo $hour_now;}?>"/>
+            </div>
+        </div>
+        <?php // affichage du message d'erreur ou succes 
             if(isset($erreur)){
                 echo '<div class="error">'. $erreur . '</div>';
                 }?>
-            <p>
-                <input type="submit" name="search" value="Rechercher le trajet"/>
-            </p>
-        </div>
+        <input type="submit" name="search" value="Rechercher le trajet"/>
     </form>
+    <a class="bouton" href="createTrajet.php?partir_ub=1">Proposer un trajet</a>
 </div>
 
 
-<p>
-<a href="createTrajet.php?partir_ub=1">Proposer un trajet</a>
-</p>
+
+
+
+<style>
+<?php include 'css/recherche.css'; ?>
+</style>
 
 <?php
 include 'footer.php';

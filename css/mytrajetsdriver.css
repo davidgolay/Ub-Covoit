@@ -53,43 +53,9 @@ body {
     background-color: rgb(31, 31, 31);
 }
 
-.etiquette{
-    color: lightgrey;
-
-}
-
-.info{
-    background-color: lightgray;
-    color:  rgb(31, 31, 31);
-    border-radius: 5px;
-    padding: 0.1rem;
-    padding-left: 1em;
-    padding-right: 1em;
-    margin: 0.2em;
-    margin-left: 1em;
-    margin-right: 1em;
-    min-width: 15em;
-}
-
-.textArea{
-    background-color: lightgray;
-    color:  rgb(31, 31, 31);
-    border-radius: 5px;
-    padding: 0.1rem;
-    padding-left: 1em;
-    padding-right: 1em;
-    margin: 0.5em;
-    margin-left: 1em;
-    margin-right: 1em;
-    width: 20em;
-    min-height: 3em;
-}
-
-
 .mobileTexte{
     font-weight: normal;
 }
-
 
 div#page h2{
     position: relative;
@@ -120,6 +86,13 @@ a.bouton{
     font-family: inherit;
     align-items: center;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.trajet{
+    background-color: lightgray;
+    border-radius: 5px;
+    padding: 0.5em;
+    margin: 0.3em;
 }
 
 

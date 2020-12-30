@@ -18,7 +18,7 @@ if($_SESSION['is_driver'] == 1)
 
     foreach($incoming_trajet_driver as $row)
     {
-    echo '<div> Trajet de ' . $row['prenom'] . ' ' . $row['nom'] . ', le ' . $row['date'] . ' à ' . $row['hour'] . '</div>';
+    echo '<div class="trajet"> Trajet de ' . $row['prenom'] . ' ' . $row['nom'] . ', le ' . $row['date'] . ' à ' . $row['hour'] . '</div>';
     }
 
     $incoming_trajet_driver = $bdd->prepare("SELECT date_format(datetime_trajet, '%d/%m/%Y') as date, 
@@ -31,7 +31,7 @@ if($_SESSION['is_driver'] == 1)
 
     foreach($incoming_trajet_driver as $row)
     {
-    echo '<div> Trajet de ' . $row['prenom'] . ' ' . $row['nom'] . ', le ' . $row['date'] . ' à ' . $row['hour'] . '</div>';
+    echo '<div class="trajet"> Trajet de ' . $row['prenom'] . ' ' . $row['nom'] . ', le ' . $row['date'] . ' à ' . $row['hour'] . '</div>';
     }
     echo '</div>';
 }
