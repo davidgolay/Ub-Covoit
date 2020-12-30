@@ -2,6 +2,8 @@
 session_start();
 include 'header.php';
 include 'config.php';
+// PAGE QUI N'EST PLUS UTILISE 
+// DESORMAIS, TOUT PASSE PAR trajet.php (anciennement my_trajets_driver.php)
 
 $date_now = date_create('now')->format('Y-m-d H:i:s');
 
@@ -9,7 +11,7 @@ echo '<div class="animBasHaut"></div><div id="page">';
 
 if($_SESSION['is_driver'] == 1)
 {
-    echo '<div><a class="bouton" href="my_trajets_driver.php">Mes trajets en tant que conducteur</a>';
+    echo '<div class="button"><a href="my_trajets_driver.php?partir_ub=1&incoming=1&driver=1">Mes trajets en tant que conducteur</a>';
 }
 
 $incoming_trajet = $bdd->prepare("SELECT trajet.partir_ub, trajet.id_trajet, trajet.id_user, date_format(datetime_trajet, '%d/%m/%Y') as date, 
@@ -37,19 +39,19 @@ foreach($incoming_trajet as $row)
     if($depart == 1)
     {
         echo ' 
-        <div class="trajet">
-            <p> Le ' . $row['date'] . ' à ' . $row['hour'] . '</p>
-            <p> De uB à '. $nom_ville['ville_nom_reel'] . '</p>
-            <p> Conducteur :<a href="profil.php?id=' . $driver.'">'. $row['prenom'] . ' ' . $row['nom'] . '</a></p>
+        <div>
+            <div> Le ' . $row['date'] . ' à ' . $row['hour'] . '</div>
+            <div> De uB à '. $nom_ville['ville_nom_reel'] . '</div>
+            <div> Conducteur :<a href="profil.php?id=' . $driver.'">'. $row['prenom'] . ' ' . $row['nom'] . '</a></div>
         </div></br>';
     }
     else
     {
         echo ' 
-        <div class="trajet">
-            <p> Le ' . $row['date'] . ' à ' . $row['hour'] . '</p>
-            <p> De ' . $nom_ville['ville_nom_reel'] . ' à uB </p>
-            <p> Conducteur :<a href="profil.php?id=' . $driver.'">'. $row['prenom'] . ' ' . $row['nom'] . '</a></p>
+        <div>
+            <div> Le ' . $row['date'] . ' à ' . $row['hour'] . '</div>
+            <div> De ' . $nom_ville['ville_nom_reel'] . ' à uB </div>
+            <div> Conducteur :<a href="profil.php?id=' . $driver.'">'. $row['prenom'] . ' ' . $row['nom'] . '</a></div>
         </div></br>';
     }
     

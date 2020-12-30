@@ -100,7 +100,7 @@ if(isset($_POST['proposer']))
         $insertTrajet = $bdd->prepare("INSERT INTO trajet(id_user, datetime_trajet, partir_ub, id_ville, adresse, place_dispo, rayon_detour, com) VALUES(?, ?, ?, ?, ?, ?, ?, ?)");
         $insertTrajet->execute(array($_SESSION['id'], $datetime, $partir_ub, $id_ville['id_ville'], $adresse, $place_dispo, $rayon, $com));
         $erreur ="trajet ajouté!";
-        header('location: my_trajets_driver.php');
+        header('location: trajet.php?partir_ub='.$partir_ub.'&incoming=1&driver=1');
         
     }
     else
@@ -135,7 +135,7 @@ if(isset($_POST['proposer']))
     </p>
     <p>
         <label>Heure :</label></br>
-        <input type="time" name="time" value="<?php if(isset($time)) {echo $time; }?>" min="<?php echo $hour_now ?>"/></br>
+        <input type="time" name="time" value="<?php if(isset($time)) {echo $time; }?>"/></br>
     </p>
     <p>
         <label>Nombre de place(s) disponible(s) :</label></br>
