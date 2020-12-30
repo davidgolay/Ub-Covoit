@@ -7,6 +7,8 @@ include 'config.php';
 
 $date_now = date_create('now')->format('Y-m-d H:i:s');
 
+echo '<div class="animBasHaut"></div><div id="page">';
+
 if($_SESSION['is_driver'] == 1)
 {
     echo '<div class="button"><a href="my_trajets_driver.php?partir_ub=1&incoming=1&driver=1">Mes trajets en tant que conducteur</a>';
@@ -19,8 +21,9 @@ INNER JOIN participe ON trajet.id_trajet = participe.id_trajet
 WHERE participe.id_user = ? AND trajet.datetime_trajet > ? ;");
 $incoming_trajet->execute(array($_SESSION['id'], $date_now));
 
-
-echo '<h2>Trajets à venir :</h2>';
+//Tu pourrais rajouter un if qui permet de echo soit un h2 normal soit un h2 avec un id driver si l'utilisateur est conducteur s'il te plait ?
+echo '<h2 id="driver">Trajets à venir :</h2>';
+//
 
 foreach($incoming_trajet as $row)
 {
@@ -53,11 +56,16 @@ foreach($incoming_trajet as $row)
     }
     
 }
+echo '</div>';
 
 
 
 
 ?>
+
+<style>
+<?php include 'css/mytrajetsdriver.css'; ?>
+</style>
 
 <?php
 include 'footer.php';

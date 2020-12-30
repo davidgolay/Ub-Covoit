@@ -53,45 +53,13 @@ body {
     background-color: rgb(31, 31, 31);
 }
 
-.etiquette{
-    color: lightgrey;
-
-}
-
-.info{
-    background-color: lightgray;
-    color:  rgb(31, 31, 31);
-    border-radius: 5px;
-    padding: 0.1rem;
-    padding-left: 1em;
-    padding-right: 1em;
-    margin: 0.2em;
-    margin-left: 1em;
-    margin-right: 1em;
-    min-width: 15em;
-}
-
-.textArea{
-    background-color: lightgray;
-    color:  rgb(31, 31, 31);
-    border-radius: 5px;
-    padding: 0.1rem;
-    padding-left: 1em;
-    padding-right: 1em;
-    margin: 0.5em;
-    margin-left: 1em;
-    margin-right: 1em;
-    width: 20em;
-    min-height: 3em;
-}
-
-
 .mobileTexte{
     font-weight: normal;
 }
 
-
 div#page h2{
+    position: relative;
+    top : 0em;
     color: #f46917;
     text-align: center;
     margin-top: 0.5em;
@@ -99,45 +67,35 @@ div#page h2{
     font-size: 1.8em;
 }
 
-p a.bouton, .bouton{
+div#page h2#driver{
+top : 1em;
+}
+
+a.bouton{
+    position: relative;
     padding: 0.8em;
     margin: 1em;
+    top: 1em;
     background-color: #f46917;
     color: black;
     border-radius: 30px;
     border-style: none;
     text-decoration: none;
     font-size: inherit;
-    width: 200px;
+    min-width: 200px;
     font-family: inherit;
     align-items: center;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-
-div.DeuxBtn{
-    display: flex;
-    flex-flow: row;
-    justify-content: center; 
-}
-
-div.UnBtn{
-    display: flex;
-    flex-flow: row;
-    justify-content: center; 
-    
+.trajet{
+    background-color: lightgray;
+    border-radius: 5px;
+    padding: 0.5em;
+    margin: 0.3em;
 }
 
 
-#voiture{
-    bottom: 5em;
-    text-decoration: none;
-}
-
-#voiture a{
-    text-decoration: none;
-    color: black;
-}
 
 .flexLigne{
     display : flex;
@@ -177,30 +135,31 @@ div.UnBtn{
 }
 
 
-
-
 @media screen and (max-device-width: 600px) {
 
     /* page active */
+
+    /* #listeTrajets{
+        display: flex;
+        flex-flow: column;
+    } */
+
+    .trajet{
+        flex-grow: 1;
+    }
+
 
     #page{
         margin-left: 0;
         margin-right: 0;
         height: 40em;
+        left: 0;
+        right: 0;
         /*padding-bottom: 3em;*/
     }
 
     div#page h2{
         font-size: 1.2em;
-    }
-
-    div.DeuxBtn{
-        display: flex;
-        flex-flow: column;
-        justify-content: center;
-        align-content: space-around;
-        margin-top: 3em;
-        margin-bottom: 5em; 
     }
 
     .flexLigne{

@@ -41,6 +41,8 @@ div#footer a{
 }
 
 div#footer{
+    position: relative;
+    bottom : 2em;
     display: flex;
     flex-flow: row;
     justify-content: space-around;

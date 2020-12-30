@@ -152,12 +152,12 @@ if(isset($_POST['search']))
 }
 
 ?>
-
-<div>
+<div class="animBasHaut"></div>
+<div id="page">
     <form action="" method="post">
-        <h2><?php echo $txt_main; ?></h2>
+        <h2><?php echo $txt_main; ?></h2><br/>
         <div>
-            <a href="<?php echo $switch_dest;?>">Inverser la destination</a>
+            <a class="bouton" href="<?php echo $switch_dest;?>">Inverser la destination</a>
         </div>
         
         <div>    
@@ -189,17 +189,18 @@ if(isset($_POST['search']))
             if(isset($erreur)){
                 echo '<div class="error">'. $erreur . '</div>';
                 }?>
-            <p>
-                <input type="submit" name="search" value="Rechercher le trajet"/>
-            </p>
-        </div>
+        <input type="submit" name="search" value="Rechercher le trajet"/>
     </form>
+    <a class="bouton" href="createTrajet.php?partir_ub=1">Proposer un trajet</a>
 </div>
 
 
-<p>
-<a href="createTrajet.php?partir_ub=1">Proposer un trajet</a>
-</p>
+
+
+
+<style>
+<?php include 'css/recherche.css'; ?>
+</style>
 
 <?php
 include 'footer.php';
