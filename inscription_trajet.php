@@ -8,16 +8,19 @@ switch ($_GET['action']) {
         $action = 'inscription';
         $txt_main = "Inscription à un trajet";
         $txt_action = "S'inscrire";
+        $txt_label = "Message à transmettre au conducteur";
         break;
-    case 'desincription':
+    case 'desinscription':
         $action = 'desinscription';
         $txt_main = 'Se désincrire du trajet';
         $txt_action = "Se désincrire";
+        $txt_label = "Message à transmettre au conducteur";
         break;
     case 'delete':
         $action = 'delete';
         $txt_main = 'Supprimer le trajet';
         $txt_action = "Supprimer ce trajet";
+        $txt_label = "Message à transmettre aux passagers";
         break;
 }
 
@@ -116,7 +119,7 @@ if(isset($_GET['id_trajet']) AND $_GET['id_trajet'] > 0){
         //cas de l'inscription à un trajet
         if(isset($_POST['inscription'])){
             $id_trajet = $trajet['id_trajet'];
-            $com_trajet = htmlspecialchars($_POST['com_passager']);
+            $com_trajet = htmlspecialchars($_POST['com']);
             $insert_passager = $bdd->prepare("INSERT INTO participe(id_user, id_trajet, com_passager) VALUES(?, ?, ?);");
             $insert_passager->execute(array($_SESSION['id'], $id_trajet, $com_trajet));
             $enlever_place = $bdd->prepare("UPDATE trajet SET place_dispo = place_dispo - 1 WHERE id_trajet=?;");
@@ -127,11 +130,14 @@ if(isset($_GET['id_trajet']) AND $_GET['id_trajet'] > 0){
         //cas de desincription de l'utilisateur passager
         if(isset($_POST['desinscription'])){
             $id_trajet = $trajet['id_trajet'];
-            $id_passager = $trajet['id_user'];
-            $insert_passager = $bdd->prepare("DELETE FROM participe
+            $id_passager = $_SESSION['id'];
+            $com_passager = htmlspecialchars($_POST['com']);
+            $desinscription_passager = $bdd->prepare("UPDATE participe
+            SET annulation_passager = 1,
+            com_passager = ? 
             WHERE id_trajet = ?
             AND id_user = ?;");
-            $insert_passager->execute(array($id_trajet, $id_passager));
+            $desinscription_passager->execute(array($com_passager, $id_trajet, $id_passager));
             $add_place = $bdd->prepare("UPDATE trajet SET place_dispo = place_dispo + 1 WHERE id_trajet=?;");
             $add_place->execute(array($id_trajet));
             //$erreur ="vous êtes désinscrit du trajet!";
@@ -141,7 +147,7 @@ if(isset($_GET['id_trajet']) AND $_GET['id_trajet'] > 0){
         //cas de suppression du trajet par un conducteur
         if(isset($_POST['delete']) AND $trajet['id_user'] == $_SESSION['id']){
             $id_trajet = $trajet['id_trajet'];
-            $id_conducteur = $trajet['id_user'];
+            $id_conducteur = $_SESSION['id'];
             $delete_trajet = $bdd->prepare("UPDATE trajet SET statut_trajet = 1 , com = ?  WHERE id_trajet = ?;");
             $delete_trajet->execute(array($com, $id_trajet));
             header('location: trajet.php?partir_ub='.$trajet['partir_ub'].'&incoming=1&driver=1');
@@ -153,8 +159,8 @@ if(isset($_GET['id_trajet']) AND $_GET['id_trajet'] > 0){
             <label>Ajouter un commentaire</label></br>
               <input type="text" name="com_passager"/></br></br>   
             -->
-            <label>Message pour les passagers</label></br>
-            <input type="text" name="com_driver" value="<?php echo "Je vous informe que je dois annuler mon trajet proposé ".$txt_delete." Merci de votre compréhension."?>"/></br>
+            <label><?php echo $txt_label;?></label></br>
+            <input type="text" name="com" value="<?php if(isset($_GET['delete'])){echo "Je vous informe que je dois annuler mon trajet proposé ".$txt_delete." Merci de votre compréhension.";}?>"/></br>
             <input type="submit" name="<?php echo $action;?>" value="<?php echo $txt_action;?>"/>
         </form>
     </div>
