@@ -1,3 +1,7 @@
+<?php
+include 'header.php';
+?>
+
 <h1>Politique de confidentialité</h1>
 <div><br></div>
 <div><strong>Introduction</strong></div>
@@ -94,3 +98,7 @@ Toutefois, comme aucun mécanisme n’offre une sécurité maximale, une part de
 <div>Législation:  Règlement général sur la protection des données - RGPD</div>
 <div><br></div>
 <div><strong>Générateur de politique de confidentialité / </strong><a href="//www.politiquedeconfidentialite.ca" target="_blank"><strong>Politique de confidentialité</strong></a></div>
+
+<?php
+include 'footer.php';
+?>
