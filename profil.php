@@ -56,12 +56,12 @@ else
                 }?>             
 
                 <div class="flexLigne"> 
-                    <div class="etiquette">conducteur : </div>
+                    <div class="etiquette">Conducteur : </div>
                     <div class="info"><?php echo $user_conducteur?></div>
                 </div>
         </div>
         <div class="flexColonne">    
-        <div class="etiquette">biographie : </div>
+        <div class="etiquetteTexte">Biographie : </div>
         <div class="textArea"><?php echo $userinfo['bio'];?></div>
         </div>
     </div>
@@ -112,7 +112,7 @@ else
                                 </div>
                         </div>
                         <div class="flexColonne" id="commentaire">
-                                    <div class="etiquette">Commentaire : </div>
+                                    <div class="etiquetteTexte">Commentaire : </div>
                                     <div class="textArea"><?php echo $vehicule_info['commentaire'];?></div>
                         </div>
                     </div>               

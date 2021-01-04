@@ -162,10 +162,10 @@ if(isset($_POST['register']))
                 <input type="checkbox" name="accepteCondition" value="1"/>
                 </p>
                 <p>
-                <a href="conditions.php">Conditions générales d'utilisation</a>
+                <a class="CGU center-right-left" href="conditions.php">Conditions générales d'utilisation</a>
                 </p>
                 <p>
-                <a href="politique.php">politique de confidentialité</a>
+                <a class="CGU center-right-left" href="politique.php">politique de confidentialité</a>
                 </p>
                 <?php
                     if(isset($erreur))
