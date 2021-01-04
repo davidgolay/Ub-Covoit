@@ -47,17 +47,14 @@ VALUES
 (3,2,0,0,"Je suis vraiment content"),
 (4,2,0,1,"Noël, plus qu'une passion, une religion"),
 (2,3,1,1,"Heyyyy"),
-(4,3,0,1,"Salut"),
 (4,3,0,0,"Bonjour"),
 (4,18,0,0,"Ca va être cool"),
 (4,15,0,1,"Voili Voilou"),
 (4,14,1,0,"Voilà"),
 (2,8,0,1,"C'est pas moi !"),
-(2,8,0,0,"C'est moi !"),
 (2,9,0,1,"Je suis cool"),
 (2,7,1,1,"Ca à l'air marrant"),
 (1,15,0,1,"Pourquoi pas"),
-(1,14,0,1,"Peut-être"),
 (1,14,0,0,"En fait si"),
 (1,11,1,0,"Je suis un peu bavard"),
 (1,12,0,0,"Salut à toi"),
@@ -67,7 +64,6 @@ VALUES
 (3,5,0,0,"Bonsoir non"),
 (3,21,0,0,"Il est vrai"),
 (3,22,0,1,"J'aime rencontrer de nouvelles personnes"),
-(3,22,0,0,"J'adore parler"),
 (3,15,0,1,"J'ai pas de voiture");
 
 
