@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'config.php';
 $fmt_mail1 = '@etu.u-bourgogne.fr';
 $fmt_mail2 = '@iut-dijon.u-bourgogne.fr';
@@ -47,7 +48,7 @@ if(isset($_POST['register']))
 
         if (($dob < $date) AND ($age >=18)){ // la date de naissance est inférieure à la date d'aujourd'hui (la fonction diff bugue pour les année dépassant la date actuelle) et l'utilisateur à plus de 18 ans 
         
-            if($age <= 55)
+            if($age <= 64)
             {
                 echo "c'est okai";
                 if(preg_match("#[0][6][- \.?]?([0-9][0-9][- \.?]?){4}$#", $tel)){ // verification du format du num de telephone  
@@ -182,6 +183,7 @@ if(isset($_POST['register']))
 
 </body>
 </html>
+
 <?php
 include 'footer.php';
 ?>

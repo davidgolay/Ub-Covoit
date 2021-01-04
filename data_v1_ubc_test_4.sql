@@ -7,12 +7,14 @@ VALUES
 (3,'Perzo-Joly','Alexandre','Alexandre_Perzo-Joly@etu.u-bourgogne.fr','Alexandre@gmail.com',0781381203,'2002-09-11','7110eda4d09e062aa5e4a390b0a572ac0d2c0220',0,"Toujours là pour la bonne humeur",'2019-12-25 23:00:49'),
 (4,'Lorenzo','Eileen','Eileen_Lorenzo@etu.u-bourgogne.fr','Eileen@gmail.com',0641090460,'2002-08-25','7110eda4d09e062aa5e4a390b0a572ac0d2c0220',0,"Je suis sympathique",'2020-10-05 08:46:00');
 
-INSERT INTO universite(id_place,nom_place,desc_place) VALUES
+INSERT INTO universite(id_place,nom_place,desc_place) 
+VALUES
 (1,"Campus Dijon","Campus Dijon"),
 (2,"7 Boulevard Dr Petitjean Dijon","Parking IUT"),
 (3,"Rue Edgar Faure Dijon","Parking général");
 
-INSERT INTO trajet(id_trajet,id_user,datetime_trajet,partir_ub,id_ville,adresse,statut_trajet,place_dispo,rayon_detour,com,id_place) VALUES
+INSERT INTO trajet(id_trajet,id_user,datetime_trajet,partir_ub,id_ville,adresse,statut_trajet,place_dispo,rayon_detour,com,id_place) 
+VALUES
 (1,1,'2020-10-28 18:00',1,7189,'38 route des rosiers',1,4,10,"Partir à Beaune",1 ),  
 (2,1,'2020-11-21 08:30',0,4440,'11 route des papillons',1,4,10,"Revenir de Marseille !",1),
 (3,1,'2020-11-21 14:15',1,4440,'14 impasse des tulipes',1,4,10,"Partir à Marseille!",1),
@@ -36,19 +38,43 @@ INSERT INTO trajet(id_trajet,id_user,datetime_trajet,partir_ub,id_ville,adresse,
 (21,1,'2021-01-06 9:00',0,30438,'14 Avenue des Retraités',0,1,3,"Revenir de Paris ",1),
 (22,1,'2021-01-06 18:00',1,30438,'14 Avenue des Retraités',0,1,3,"Partir à Paris",1);
 
-INSERT INTO participe(id_user,id_trajet,com_passager) VALUES
-(2,1,"C'est cool"),
-(3,1,"Merci"),
-(4,1,"Enchanté"),
-(2,2,"Stylé"),
-(3,2,"Je suis vraiment content"),
-(4,2,"Noël, plus qu'une passion, une religion"),
-(2,3,"Heyyyy"),
-(4,3,"Salut");
+INSERT INTO participe(id_user,id_trajet,is_accepted,annulation_passager,com_passager) 
+VALUES
+(2,1,0,1,"C'est cool"),
+(3,1,0,0,"Merci"),
+(4,1,1,0,"Enchanté"),
+(2,2,1,1,"Stylé"),
+(3,2,0,0,"Je suis vraiment content"),
+(4,2,0,1,"Noël, plus qu'une passion, une religion"),
+(2,3,1,1,"Heyyyy"),
+(4,3,0,0,"Bonjour"),
+(4,18,0,0,"Ca va être cool"),
+(4,15,0,1,"Voili Voilou"),
+(4,14,1,0,"Voilà"),
+(2,8,0,1,"C'est pas moi !"),
+(2,9,0,1,"Je suis cool"),
+(2,7,1,1,"Ca à l'air marrant"),
+(1,15,0,1,"Pourquoi pas"),
+(1,14,0,0,"En fait si"),
+(1,11,1,0,"Je suis un peu bavard"),
+(1,12,0,0,"Salut à toi"),
+(1,13,0,0,"Je sais pas quoi dire"),
+(1,20,0,0,"Je dois prendre ce trajet!"),
+(3,12,0,0,"Bonsoir oui"),
+(3,5,0,0,"Bonsoir non"),
+(3,21,0,0,"Il est vrai"),
+(3,22,0,1,"J'aime rencontrer de nouvelles personnes"),
+(3,15,0,1,"J'ai pas de voiture");
 
-INSERT INTO vehicule (id_vehicule,id_user,place,marque,model,commentaire) VALUES
+
+INSERT INTO vehicule (id_vehicule,id_user,place,marque,model,commentaire) 
+VALUES
 (1,1,5,"Renault","Clio 4","Voiture propre d'interieur"),
 (2,2,6,"Fiat","Multipla","Rien à signaler");
+
+
+
+
 
 
 

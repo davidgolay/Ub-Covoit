@@ -189,7 +189,7 @@ if(isset($_GET['incoming']) AND isset($_GET['driver']) AND isset($_GET['partir_u
             }
             // dans le cas "en tant que PASSAGER" => Bouton de désinscription
             else{
-                echo '<div><a href="inscription_trajet.php?id_trajet='.$row['id_trajet'] . '&action=desinscription">Se désinscrire de ce trajet</a></div>';        
+                echo '<div><a href="inscription_trajet.php?id_trajet='.$row['id_trajet'] . '&action=desincription">Se désinscrire de ce trajet</a></div>';        
             }
             
         }
