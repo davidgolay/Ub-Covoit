@@ -2,6 +2,13 @@
 session_start();
 include 'header.php';
 include 'config.php';
+?>
+
+<style>
+<?php include 'css/profile.css'; ?>
+</style>
+
+<?php
 
 if(isset($_GET['idPass']) AND isset($_GET['idTraj'])){
 
@@ -39,7 +46,7 @@ foreach($passagersNonAccepted as $row){
                     <div>Demande de <a href="profil.php?id=' . $row2['id'].'">'. $row2['prenom'] . ' ' . $row2['nom'] . '</a></div>';            
         }
     echo
-                    '<div><a href="acceptation.php?idPass=' . $row2['id'].'&idTraj='.$row['id_trajet'].'&idSess='.$_SESSION['id'].'">Valider ce passager</a></div>   
+                    '<div><a class="bouton" href="acceptation.php?idPass=' . $row2['id'].'&idTraj='.$row['id_trajet'].'&idSess='.$_SESSION['id'].'">Valider ce passager</a></div>   
                 </div></br>
             </div>';
     }
