@@ -5,8 +5,17 @@ include 'config.php';
 ?>
 
 <style>
-<?php include 'css/profile.css'; ?>
+<?php include 'css/acceptation.css'; ?>
 </style>
+
+<div class="info">
+    <h1>Acceptation des passagers</h1>
+    <div>En validant l'inscription de passagers qui n'ont encore jamais voyagé avec vous, </br> 
+    vous aurez accès à des informations de contact supplémentaire en visitant leur profil.</br>
+    En validant une inscription, vous permettez également à ces passagers d'acceder à vos informations de contact.</br>
+    Retrouvez facilement leur profil en passant par l'onglet "Mes Trajets" puis "Afficher mes trajets conducteurs"
+    </div>
+</div>
 
 <?php
 
@@ -35,29 +44,22 @@ foreach($passagersNonAccepted as $row){
     $profil_passager->execute(array($row['id_user']));
     $passager_row = $profil_passager->rowCount();
 
-    // si il y a au moins 1 passager
-    if($passager_row > 0){
-        echo 
-            '<div classe="passager">';                          
-        foreach($profil_passager as $row2){
-            echo    
-                '<div>
-                    <div>Trajet du '.$row['date'] . ' à ' . $heure . 'h' . $minute.' </div>
-                    <div>Demande de <a href="profil.php?id=' . $row2['id'].'">'. $row2['prenom'] . ' ' . $row2['nom'] . '</a></div>';            
-        }
-    echo
-                    '<div><a class="bouton" href="acceptation.php?idPass=' . $row2['id'].'&idTraj='.$row['id_trajet'].'&idSess='.$_SESSION['id'].'">Valider ce passager</a></div>   
-                </div></br>
-            </div>';
+    // si il y a au moins 1 passager qui veut s'inscire
+    if($passager_row > 0){?>
+        <div>;<?php
+        foreach($profil_passager as $row2){?>
+            <div id="page">
+                <h3>Trajet du <?php echo $row['date'].' à '.$heure.'h'.$minute;?> </h3>
+                <div>Demande de <a href="profil.php?id=<?php echo $row2['id'];?>"> <?php echo $row2['prenom'].' '.$row2['nom'];?></a></div></br><?php            
+        }?>
+                <div><a class="bouton" href="acceptation.php?idPass=<?php echo $row2['id'].'&idTraj='.$row['id_trajet'].'&idSess='.$_SESSION['id'];?>">Accepter ce passager</a></div>   
+            </div>
+        </div><?php
     }
     // si il n'y aucun passager
-    else{
-        echo 
-            '<div classe="passager">Aucun passager inscrit à vos trajets</div>';
+    else{?>
+        <div>Aucun passager inscrit à vos trajets</div><?php
     }
-
-
-
 }
 
 
