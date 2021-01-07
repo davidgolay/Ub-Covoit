@@ -56,12 +56,12 @@ else
                 }?>             
 
                 <div class="flexLigne"> 
-                    <div class="etiquette">conducteur : </div>
+                    <div class="etiquette">Conducteur : </div>
                     <div class="info"><?php echo $user_conducteur?></div>
                 </div>
         </div>
         <div class="flexColonne">    
-        <div class="etiquette">biographie : </div>
+        <div class="etiquetteTexte">Biographie : </div>
         <div class="textArea"><?php echo $userinfo['bio'];?></div>
         </div>
     </div>
@@ -112,18 +112,18 @@ else
                                 </div>
                         </div>
                         <div class="flexColonne" id="commentaire">
-                                    <div class="etiquette">Commentaire : </div>
+                                    <div class="etiquetteTexte">Commentaire : </div>
                                     <div class="textArea"><?php echo $vehicule_info['commentaire'];?></div>
                         </div>
                     </div>               
                 </div>
-                <div><p></br></p></div>
+                <div id="espace"></div>
             <?php  
 
             // l'utilisateur visitant ce profil est sur son profil personnel
             if($_GET['id'] == $_SESSION['id'])
             {
-                echo '<div class="DeuxBtn">' . $modify_profil_2btn . $edit_vehicule . '</div>'; // on affiche les deux boutons: modifier mon profil & MODIFIER mon véhicule   
+                echo '<div class="DeuxBtn">' . $modify_profil_2btn .  '<div id="espace"></div>' . $edit_vehicule . '</div>'; // on affiche les deux boutons: modifier mon profil & MODIFIER mon véhicule   
             }
         }
         //le profil visité n'a pas de vehicule renseigné
@@ -132,7 +132,7 @@ else
             // l'utilisateur visitant ce profil est sur son profil personnel
             if($_GET['id'] == $_SESSION['id'])
             {  
-            echo '<div class="DeuxBtn">' . $modify_profil_2btn . $add_vehicule . '</div>'; // on affiche les deux boutons: modifier mon profil & AJOUTER un véhicule
+            echo '<div class="DeuxBtn">' . $modify_profil_2btn .  '<div id="espace"></div>' . $add_vehicule . '</div>'; // on affiche les deux boutons: modifier mon profil & AJOUTER un véhicule
             }
         }
     }
@@ -146,7 +146,8 @@ else
         }
     }  
 ?>     
-</div>  
+</div>
+  
 <?php
 include 'footer.php';
 ?>
