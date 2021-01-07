@@ -117,13 +117,13 @@ else
                         </div>
                     </div>               
                 </div>
-                <div><p></br></p></div>
+                <div id="espace"></div>
             <?php  
 
             // l'utilisateur visitant ce profil est sur son profil personnel
             if($_GET['id'] == $_SESSION['id'])
             {
-                echo '<div class="DeuxBtn">' . $modify_profil_2btn . $edit_vehicule . '</div>'; // on affiche les deux boutons: modifier mon profil & MODIFIER mon véhicule   
+                echo '<div class="DeuxBtn">' . $modify_profil_2btn .  '<div id="espace"></div>' . $edit_vehicule . '</div>'; // on affiche les deux boutons: modifier mon profil & MODIFIER mon véhicule   
             }
         }
         //le profil visité n'a pas de vehicule renseigné
@@ -132,7 +132,7 @@ else
             // l'utilisateur visitant ce profil est sur son profil personnel
             if($_GET['id'] == $_SESSION['id'])
             {  
-            echo '<div class="DeuxBtn">' . $modify_profil_2btn . $add_vehicule . '</div>'; // on affiche les deux boutons: modifier mon profil & AJOUTER un véhicule
+            echo '<div class="DeuxBtn">' . $modify_profil_2btn .  '<div id="espace"></div>' . $add_vehicule . '</div>'; // on affiche les deux boutons: modifier mon profil & AJOUTER un véhicule
             }
         }
     }
@@ -146,7 +146,8 @@ else
         }
     }  
 ?>     
-</div>  
+</div>
+  
 <?php
 include 'footer.php';
 ?>

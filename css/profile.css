@@ -20,6 +20,7 @@
     animation: apparaitre 1s ease-out;
 }
 
+
 body {
     background-image: url('img/fondIndexubcovoit2.png');
     background-size: cover;
@@ -61,8 +62,8 @@ body {
     margin: 0.5em;
     margin-left: 1em;
     margin-right: 1em;
-    width: 40em;
-    min-height: 5em;
+    max-width: 20vw;
+    align-self: stretch;
 }
 
 
@@ -119,6 +120,10 @@ div.UnBtn{
     color: black;
 }
 
+#espace{
+    height: 2em;
+}
+
 .flexLigne{
     display : flex;
     flex-direction: row;
@@ -130,10 +135,9 @@ div.UnBtn{
 
 .flexColonne{
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     flex-flow: column;
     align-items: right;
-    justify-content: right;
 }
 
 .flexColonne#aligneDroite .flexLigne{
@@ -163,11 +167,20 @@ div.UnBtn{
 
     /* page active */
 
+    .textArea{
+        max-width: 15em;
+        flex-grow: 2;
+    }
+    
+
     #page{
         margin-left: 0;
         margin-right: 0;
-        height: 40em;
-        /*padding-bottom: 3em;*/
+        width: 100vw;
+        padding-right: 0;
+        padding-left: 0;
+        padding-bottom: -2em;
+        overflow-x: clip;
     }
 
     div#page h2{
@@ -181,6 +194,10 @@ div.UnBtn{
         align-content: space-around;
         margin-top: 3em;
         margin-bottom: 5em; 
+    }
+
+    #espaceMobile{
+        height: 2em;
     }
 
     .flexLigne{
