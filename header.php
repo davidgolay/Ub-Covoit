@@ -43,11 +43,13 @@ include 'config.php';
             </svg> <b class="mobileTexte"> Mes Trajets</b> </a></li>
 
         <?php // ONGLET CONDUCTEUR pour les acceptations de passager
-        if($_SESSION['is_driver'] == 1){
+        if(isset($_SESSION['is_driver'])){
+            if($_SESSION['is_driver'] == 1){
             $nbDemandes = 0;
             $req_demande_accept = $bdd->prepare("SELECT trajet.id_user, trajet.statut_trajet, trajet.id_trajet FROM participe INNER JOIN trajet ON participe.id_trajet=trajet.id_trajet AND participe.is_accepted = 0 AND trajet.id_user = ? AND trajet.statut_trajet = 0;");
             $req_demande_accept->execute(array($_SESSION['id']));
             $nbDemandes = $req_demande_accept->rowCount();
+            
         ?>
         <li><a class="onglet" href="<?php if(isset($_SESSION['logged_in'])){echo 'acceptation.php';}else{echo 'login.php';}?>"> 
             <svg width="1.1em" height="1.1em" viewBox="0 0 16 16" class="icon" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -55,6 +57,7 @@ include 'config.php';
             </svg> 
             <b class="mobileTexte">Demandes passagères<?php echo ' ('.$nbDemandes.')'?> </b></a></li>
         <?php
+            }
         } 
         ?>
 
