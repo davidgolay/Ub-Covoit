@@ -44,6 +44,7 @@ time, mark, audio, video {
     animation: apparaitre 1s ease-out;
 }
 
+
 body {
     background-image: url('img/fondIndexubcovoit2.png');
     background-size: cover;
@@ -57,7 +58,7 @@ body {
     font-weight: normal;
 }
 
-div#page h1{
+h1{
     position: relative;
     top : 0em;
     color: #f46917;
@@ -165,26 +166,25 @@ div#page h1{
 
     /* page active */
 
-    /* #listeTrajets{
-        display: flex;
-        flex-flow: column;
-    } */
-
-    .trajet{
-        flex-grow: 1;
+    .switch{
+        font-size: 0.8em;
     }
 
+    .normal-trajet{
+        font-size: 0.7em;
+    }
 
     #page{
         margin-left: 0;
         margin-right: 0;
-        height: 40em;
-        left: 0;
-        right: 0;
-        /*padding-bottom: 3em;*/
+        width: 100vw;
+        padding-right: 0;
+        padding-left: 0;
+        padding-bottom: -2em;
+        overflow-x: clip;
     }
 
-    div#page h2{
+    h1{
         font-size: 1.2em;
     }
 

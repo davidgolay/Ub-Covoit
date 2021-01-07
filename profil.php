@@ -30,16 +30,14 @@ else
     header('location: index.php');
 }
 ?>
-
-<style>
-<?php include 'css/profile.css'; ?>
-</style>
+<link rel="stylesheet" href="css/profile.css">
+<link rel="stylesheet" href="css/main.css">
 
 <div class="animBasHaut"></div>
 <div id="page">
     <h2>Profil de <?php echo $userinfo['prenom']." ".$userinfo['nom']; ?></h2><br/>
     <div class="flexLigne">
-        <div class="flexColonne" id="aligneDroite">
+        <div class="flexColonneDroite" id="aligneDroite">
                 <div class="flexLigne">
                     <div class="etiquette">Prenom : </div>
                     <div class="info"><?php echo $userinfo['prenom'];?></div>
@@ -49,10 +47,10 @@ else
                     <div class="info"><?php echo $userinfo['nom'];?></div>
                 </div>
                 <?php if ($_GET['id'] == $_SESSION['id']){?>
-                    <div class="flexLigne">
+                <div class="flexLigne">
                         <div class="etiquette">Email étudiant : </div>
                         <div class="info"> <?php echo $userinfo['email'];?></div>
-                    </div><?php
+                </div><?php
                 }?>             
 
                 <div class="flexLigne"> 
@@ -65,7 +63,8 @@ else
         <div class="textArea"><?php echo $userinfo['bio'];?></div>
         </div>
     </div>
-    <div><p></br></p></div> 
+    <div><p></br></p></div>
+
     <?php
 
     //requete pour savoir si le profil visité est conducteur
@@ -97,7 +96,7 @@ else
                 <div>
                     <h2>Véhicule de <?php echo $vehicule_info['prenom']." ".$vehicule_info['nom']; ?></h2><br/>
                     <div class="flexLigne">
-                        <div class="flexColonne"  id="aligneDroite">
+                        <div class="flexColonneDroite"  id="aligneDroite">
                                 <div class="flexLigne">    
                                     <div class="etiquette">Marque : </div>
                                     <div class="info"><?php echo $vehicule_info['marque'];?></div>   
@@ -146,6 +145,7 @@ else
         }
     }  
 ?>     
+</div>
 </div>
   
 <?php

@@ -141,7 +141,7 @@ if(isset($_GET['incoming']) AND isset($_GET['driver']) AND isset($_GET['partir_u
     '<div class="espace"></div><h1>Liste de mes trajets'. $txt_title_dated . $txt_title_destination . $txt_title_type_trajet . '</h1></br>';
 
     echo 
-    '<div class="trajet">';
+    '<div class="driverTrajet">';
 
     foreach($trajet as $row){
         $classTrajet = 'normal-trajet';
@@ -229,7 +229,7 @@ echo '</div>'
 <style>
 <?php include 'css/mytrajetsdriver.css'; ?>
 </style>
-
+</div>
 <?php
 include 'footer.php';
 ?>

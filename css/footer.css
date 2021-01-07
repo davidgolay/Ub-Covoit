@@ -3,29 +3,3 @@
     src: url(fonts/poppins-medium.ttf);
 }
 
-div#footer a{
-    color: rgb(19, 19, 19);
-    text-decoration: none;
-    font-size: 1em;
-    padding: 1em;
-}
-
-#footer a:hover{
-    text-shadow: 1px 1px 10px whitesmoke;
-}
-
-div#footer{
-    position: relative;
-    bottom : 2em;
-    display: flex;
-    flex-flow: row;
-    justify-content: space-around;
-}
-
-#footer1{
-    display: flex;
-    flex-flow: row;
-    justify-content: space-around;
-    position: relative;
-    bottom: -6em;
-}

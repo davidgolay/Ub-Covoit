@@ -142,7 +142,8 @@ a.levier:hover{
 		background-size: 450%;
 		background-repeat: repeat;
 		background-position-y: -100px;
-		background-position-x: -50%;
+        background-position-x: -50%;
+        overflow-x: clip;
     }
 
     /* navbar */
