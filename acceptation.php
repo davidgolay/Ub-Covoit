@@ -16,7 +16,7 @@ if(isset($_GET['idPass']) AND isset($_GET['idTraj'])){
 }
 
 $passagersNonAccepted = $bdd->prepare("SELECT participe.id_user, trajet.id_trajet, date_format(datetime_trajet, '%d/%m/%Y') as date, 
-date_format(datetime_trajet, '%h:%i') as hour FROM trajet INNER JOIN participe ON trajet.id_trajet=participe.id_trajet WHERE trajet.id_user = ? AND participe.is_accepted = 0 ORDER BY datetime_trajet;");
+date_format(datetime_trajet, '%h:%i') as hour FROM trajet INNER JOIN participe ON trajet.id_trajet=participe.id_trajet WHERE trajet.id_user = ? AND trajet.statut_trajet = 0 AND participe.is_accepted = 0 ORDER BY datetime_trajet;");
 $passagersNonAccepted->execute(array($_SESSION['id']));
 
 foreach($passagersNonAccepted as $row){

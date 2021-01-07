@@ -77,7 +77,7 @@ else
                 <?php if ($_GET['id'] == $_SESSION['id'] OR $usersAccepted == 1){?>
                     <div class="flexLigne">
                         <div class="etiquette">Téléphone : </div>
-                        <div class="info"> <?php echo '0'.$userinfo['tel'];?></div>
+                        <div class="info"> <?php echo $userinfo['tel'];?></div>
                     </div><?php
                 }?>              
 
