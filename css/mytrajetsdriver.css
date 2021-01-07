@@ -57,7 +57,7 @@ body {
     font-weight: normal;
 }
 
-div#page h2{
+div#page h1{
     position: relative;
     top : 0em;
     color: #f46917;
@@ -67,16 +67,13 @@ div#page h2{
     font-size: 1.8em;
 }
 
-div#page h2#driver{
-top : 1em;
-}
 
-a.bouton{
+.switch{
     position: relative;
-    padding: 0.8em;
+    padding: 0;
     margin: 1em;
     top: 1em;
-    background-color: #f46917;
+    background-color: #dadada;
     color: black;
     border-radius: 30px;
     border-style: none;
@@ -84,11 +81,40 @@ a.bouton{
     font-size: inherit;
     min-width: 200px;
     font-family: inherit;
-    align-items: center;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    justify-content: space-between;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19), 0 -6px 20px 0 rgba(0, 0, 0, 0.3) inset;
+    display: flex;
+    flex-flow: row;
 }
 
-.trajet{
+.switch a{
+    color: black;
+    background-color: transparent;
+    padding: 0.7em;
+    border-radius: 30px;
+    border-style: none;
+    text-decoration: none;  
+}
+
+.switch a.selectionne{
+    color: black;
+    background-color: #f46917;
+    border: none;
+    padding: 0.7em;
+    border-radius: 30px;
+    border-style: none;
+    text-decoration: none;
+}
+
+.switch a.droite{
+    box-shadow: -15px 0px 15px -10px rgba(0,0,0,0.75);
+}
+
+.switch a.gauche{
+    box-shadow: 15px 0px 15px -10px rgba(0,0,0,0.75);
+}
+
+.normal-trajet{
     background-color: lightgray;
     border-radius: 5px;
     padding: 0.5em;

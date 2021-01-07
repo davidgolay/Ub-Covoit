@@ -13,7 +13,9 @@ if($_GET['driver']<=1 AND $_GET['driver']>=0){
         $txt_title_type_trajet = ' en tant que passager'; // utile pour l'affichage de texte
         // UTILE POUR LE BOUTON DE SWITCH
         $switch_type_trajet = 'driver=1'; // utile pour le switch de passager à conducteur
-        $link_type_trajet = 'Afficher mes trajets en tant que conducteur'; // utile pour le switch de passager à conducteur
+        $link_type_trajet = 'Conducteur'; // utile pour le switch de passager à conducteur
+        $selection_driver = '';
+        $selection_passager = 'class="selectionne droite"';
         
     }
     else{
@@ -21,7 +23,9 @@ if($_GET['driver']<=1 AND $_GET['driver']>=0){
         $txt_title_type_trajet = ' en tant que conducteur';
         // UTILE POUR LE BOUTON DE SWITCH
         $switch_type_trajet = 'driver=0'; // utile pour le switch de passager à PASSAGER
-        $link_type_trajet = 'Afficher mes trajets en tant que passager'; // utile pour le switch de passager à PASSAGER
+        $link_type_trajet = 'Passager'; // utile pour le switch de passager à PASSAGER
+        $selection_passager = '';
+        $selection_driver = 'class="selectionne gauche"';
           
     }
 }
@@ -32,15 +36,18 @@ if($_GET['incoming']<=1 AND $_GET['incoming']>=0){
         $txt_title_dated = ' effectués ';
         // UTILE POUR LE BOUTON DE SWITCH
         $switch_date = 'incoming=1';
-        $text_incoming = ' Afficher mes trajets à venir';
-        
+        $text_incoming = 'A venir';
+        $selection_effectue = 'class="selectionne droite"';
+        $selection_avenir = '';
     }
     else{
         $incoming = 1;
         $txt_title_dated = ' à venir ';
         // UTILE POUR LE BOUTON DE SWITCH
         $switch_date = 'incoming=0';
-        $text_incoming = ' Afficher mes trajets effectués';  
+        $text_incoming = 'Effectués';
+        $selection_effectue = '';
+        $selection_avenir = 'class="selectionne gauche"'; 
     }
 }
 if($_GET['partir_ub']<=1 AND $_GET['partir_ub']>=0){
@@ -50,7 +57,9 @@ if($_GET['partir_ub']<=1 AND $_GET['partir_ub']>=0){
         $text_destination = ' allant à uB et partant de ';
         // UTILE POUR LE BOUTON DE SWITCH
         $switch_dest = 'partir_ub=1';
-        $text_selection = ' Afficher mes trajets partant de uB';
+        $text_selection = ' Partant de uB';
+        $selection_aller = 'class="selectionne gauche"';
+        $selection_partir = '';
     }
     else{
         $partir_ub = 1;
@@ -58,7 +67,9 @@ if($_GET['partir_ub']<=1 AND $_GET['partir_ub']>=0){
         $text_destination = ' partant de uB et allant à ';
         // UTILE POUR LE BOUTON DE SWITCH
         $switch_dest = 'partir_ub=0';
-        $text_selection = ' Afficher mes trajets allant à uB';
+        $text_selection = ' Allant à uB';
+        $selection_aller = '';
+        $selection_partir = 'class="selectionne droite"';
           
     }
     //echo 'valeur du boolean partir_ub : '. $partir_ub; 
@@ -110,15 +121,27 @@ if(isset($_GET['incoming']) AND isset($_GET['driver']) AND isset($_GET['partir_u
     }
 
     echo // les liens boutons permettant de switcher entre partir_ub, trajets effectués/à venir et la destination ub ou non
-    '<div><a href="trajet.php?partir_ub='. $_GET['partir_ub'] . '&incoming='.$_GET['incoming'] . '&' .$switch_type_trajet.'">' . $link_type_trajet . '</a></div>
-    <div><a href="trajet.php?'. $switch_dest . '&incoming='.$_GET['incoming'] . '&driver='.$_GET['driver'].'">' . $text_selection . '</a></div>
-    <div><a href="trajet.php?partir_ub='. $_GET['partir_ub'] . '&' . $switch_date . '&driver='.$_GET['driver'].'">' . $text_incoming . '</a></div>';
+    '<div id="page"> 
+        <div class="flexLigne">
+            <div class="switch">
+                <a '.$selection_driver .'href="trajet.php?partir_ub='. $_GET['partir_ub'] . '&incoming='.$_GET['incoming'] . '&driver=1">Conducteur</a>
+                <a '.$selection_passager .'href="trajet.php?partir_ub='. $_GET['partir_ub'] . '&incoming='.$_GET['incoming'] . '&driver=0">Passager</a>
+            </div>
+            <div class="switch">
+                <a '.$selection_aller .'href="trajet.php?partir_ub=0&incoming='.$_GET['incoming'] . '&driver='.$_GET['driver'].'">Allant UB</a>
+                <a '.$selection_partir .'href="trajet.php?partir_ub=1&incoming='.$_GET['incoming'] . '&driver='.$_GET['driver'].'">Partant UB</a>
+            </div>
+            <div class="switch">
+                <a '.$selection_avenir .'href="trajet.php?partir_ub='. $_GET['partir_ub'] . '&incoming=1&driver='.$_GET['driver'].'">A venir</a>
+                <a '.$selection_effectue .'href="trajet.php?partir_ub='. $_GET['partir_ub'] . '&incoming=0&driver='.$_GET['driver'].'">Effectués</a>
+            </div>
+        </div>';
 
     echo // balises de titre de liste des trajets à afficher
-    '<h1>Liste de mes trajets'. $txt_title_dated . $txt_title_destination . $txt_title_type_trajet . '</h1></br>';
+    '<div class="espace"></div><h1>Liste de mes trajets'. $txt_title_dated . $txt_title_destination . $txt_title_type_trajet . '</h1></br>';
 
     echo 
-    '<div classe="trajet-conducteur">';
+    '<div class="trajet">';
 
     foreach($trajet as $row){
         $classTrajet = 'normal-trajet';
@@ -200,7 +223,12 @@ if(isset($_GET['incoming']) AND isset($_GET['driver']) AND isset($_GET['partir_u
 else{
     header('location: index.php');
 }
+echo '</div>'
 ?>
+
+<style>
+<?php include 'css/mytrajetsdriver.css'; ?>
+</style>
 
 <?php
 include 'footer.php';
