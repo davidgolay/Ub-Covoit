@@ -7,7 +7,7 @@ include 'header.php';
 $modify_profil_2btn = '<div><a class="bouton" href="editprofil.php">Modifier mon profil</a></div>';
 $modify_profil_1btn = '<div><a class="bouton" href="editprofil.php">Modifier mon profil</a></div>';
 $add_vehicule = '<div><a class="bouton" href="add_vehicule.php"> Ajouter un vehicule</a></div>';  // alors il peut accéder la page d'ajout de vehicule
-$edit_vehicule = '<div><a class="bouton" href="edit_vehicule.php">modifier mon vehicule</a><d/iv>';
+$edit_vehicule = '<div><a class="bouton" href="edit_vehicule.php">Modifier mon vehicule</a><d/iv>';
 
 if(isset($_GET['id']) AND $_GET['id'] > 0)
 {
@@ -49,16 +49,14 @@ else
     header('location: index.php');
 }
 ?>
-
-<style>
-<?php include 'css/profile.css'; ?>
-</style>
+<link rel="stylesheet" href="css/profile.css">
+<link rel="stylesheet" href="css/main.css">
 
 <div class="animBasHaut"></div>
 <div id="page">
     <h2>Profil de <?php echo $userinfo['prenom']." ".$userinfo['nom']; ?></h2><br/>
     <div class="flexLigne">
-        <div class="flexColonne" id="aligneDroite">
+        <div class="flexColonneDroite" id="aligneDroite">
                 <div class="flexLigne">
                     <div class="etiquette">Prenom : </div>
                     <div class="info"><?php echo $userinfo['prenom'];?></div>
@@ -67,6 +65,7 @@ else
                     <div class="etiquette">Nom : </div>
                     <div class="info"><?php echo $userinfo['nom'];?></div>
                 </div>
+
                 <?php if (($_GET['id'] == $_SESSION['id']) OR ($usersAccepted == 1)){?>
                     <div class="flexLigne">
                         <div class="etiquette">Email étudiant : </div>
@@ -81,6 +80,7 @@ else
                     </div><?php
                 }?>              
 
+
                 <div class="flexLigne"> 
                     <div class="etiquette">Conducteur : </div>
                     <div class="info"><?php echo $user_conducteur?></div>
@@ -91,7 +91,8 @@ else
         <div class="textArea"><?php echo $userinfo['bio'];?></div>
         </div>
     </div>
-    <div><p></br></p></div> 
+    <div><p></br></p></div>
+
     <?php
 
     //requete pour savoir si le profil visité est conducteur
@@ -123,7 +124,7 @@ else
                 <div>
                     <h2>Véhicule de <?php echo $vehicule_info['prenom']." ".$vehicule_info['nom']; ?></h2><br/>
                     <div class="flexLigne">
-                        <div class="flexColonne"  id="aligneDroite">
+                        <div class="flexColonneDroite"  id="aligneDroite">
                                 <div class="flexLigne">    
                                     <div class="etiquette">Marque : </div>
                                     <div class="info"><?php echo $vehicule_info['marque'];?></div>   
@@ -172,6 +173,7 @@ else
         }
     }  
 ?>     
+</div>
 </div>
   
 <?php

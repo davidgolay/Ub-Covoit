@@ -37,10 +37,8 @@ if(isset($_POST['login']))
     }
 }
 ?>
-
-<style>
-<?php include 'css/login.css'; ?>
-</style>
+<link rel="stylesheet" href="css/login.css">
+<link rel="stylesheet" href="css/main.css">
 
 
 <html>
@@ -56,18 +54,18 @@ if(isset($_POST['login']))
         </div>
         <div class="animBasHaut"></div>
         <fieldset>
-            <div class="fieldflex">
-                    <h2>Connexion</h2>
-                    <form action="login.php" method="post">
-                        <p><input class="center-right-left" type="email" name="email_log" placeholder="Email etudiant" value="<?php if(isset($email_log)) {echo $email_log; }?>"/></p>
-                        <p><input class="center-right-left" type="password" name="password_log" placeholder="Mot de passe"/></p>
+                <h2>Connexion</h2>
+                <form action="login.php" method="post">
+                    <div class="flexColonne">
+                        <div><input class="center-right-left" type="email" name="email_log" placeholder="Email etudiant" value="<?php if(isset($email_log)) {echo $email_log; }?>"/></div>
+                        <div><input class="center-right-left" type="password" name="password_log" placeholder="Mot de passe"/></div>
                         <?php if(isset($erreur)){
                             echo '<div class="error">'. $erreur . '</div>';
                         }?>
-                        <p><input type="submit" name="login" value="Se connecter"/></p>
-                        <p>Pas encore de compte ?</p>
-                        <p><a class="bouton" href="register.php">S'inscrire</a></p>
-                    </form>
+                        <div><input class="bouton" type="submit" name="login" value="Se connecter"/></div>
+                        <div>Pas encore de compte ?</p></div>
+                        <a class="bouton" href="register.php">S'inscrire</a>
+                </form>
             </div>
         </fieldset>  
     </div>  

@@ -141,7 +141,7 @@ if(isset($_GET['incoming']) AND isset($_GET['driver']) AND isset($_GET['partir_u
     '<div class="espace"></div><h1>Liste de mes trajets'. $txt_title_dated . $txt_title_destination . $txt_title_type_trajet . '</h1></br>';
 
     echo 
-    '<div class="trajet">';
+    '<div class="driverTrajet">';
 
     foreach($trajet as $row){
         $classTrajet = 'normal-trajet';
@@ -172,7 +172,7 @@ if(isset($_GET['incoming']) AND isset($_GET['driver']) AND isset($_GET['partir_u
         
         echo  
             '<div class="'.$classTrajet.'">
-            <h2>Trajet du ' . $row['date'] . ' à ' . $heure . 'h' . $minute . $text_destination . $nom_ville['ville_nom_reel'] . '</h2>' . $div_conducteur;
+            <h2>Trajet du ' . $row['date'] . ' à ' . $heure . 'h' . $minute . $text_destination . $nom_ville['ville_nom_reel'] . '</h2><div class="flexColonne">' . $div_conducteur;
 
         //requete pour afficher les passagers du trajet
         $trajet_passager = $bdd->prepare("SELECT id, nom, prenom, trajet.id_trajet, trajet.id_ville FROM users 
@@ -208,15 +208,18 @@ if(isset($_GET['incoming']) AND isset($_GET['driver']) AND isset($_GET['partir_u
         if ($row['statut_trajet'] == 0 AND $_GET['incoming'] == 1){
             // dans le cas "en tant que CONDUCTEUR" => Bouton de suppression du trajet
             if($_GET['driver'] == 1 AND $_SESSION['is_driver'] == 1){
-                echo '<div><a href="inscription_trajet.php?id_trajet='.$row['id_trajet'] . '&action=delete">Supprimer ce trajet</a></div>';
+                echo '<div class="bouton"><a class="TexteBouton" href="inscription_trajet.php?id_trajet='.$row['id_trajet'] . '&action=delete"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+              </svg> Supprimer</a></div>';
             }
             // dans le cas "en tant que PASSAGER" => Bouton de désinscription
             else{
-                echo '<div><a href="inscription_trajet.php?id_trajet='.$row['id_trajet'] . '&action=desinscription">Se désinscrire de ce trajet</a></div>';        
+                echo '<div class="bouton"><a class="TexteBouton" href="inscription_trajet.php?id_trajet='.$row['id_trajet'] . '&action=desincription">Se désinscrire de ce trajet</a></div>';        
             }
             
         }
-    echo '</div>'; // div qui ferme la div de classe "classTrajet" juste avant le h2 Trajet du ...
+        echo '</div>'; //div qui ferme la div "flexColonne"
+        echo '</div>'; // div qui ferme la div de classe "classTrajet" juste avant le h2 Trajet du ...
     echo '</div></br>'; // div qui ferme la div de classe "trajet-conducteur" juste avant le 1er foreach  
     }
 }
@@ -226,10 +229,9 @@ else{
 echo '</div>'
 ?>
 
-<style>
-<?php include 'css/mytrajetsdriver.css'; ?>
-</style>
-
+<link rel="stylesheet" href="css/trajet.css">
+<link rel="stylesheet" href="css/main.css">
+</div>
 <?php
 include 'footer.php';
 ?>
