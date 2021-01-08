@@ -1,7 +1,7 @@
 <?php
 include 'header.php';
 ?>
-
+<link rel="stylesheet" href="css/main.css">
 <h1>Politique de confidentialité</h1>
 <div><br></div>
 <div><strong>Introduction</strong></div>
