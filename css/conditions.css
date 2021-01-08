@@ -28,7 +28,7 @@ time, mark, audio, video {
 }
 
 
-#page{
+div#page{
     position: relative;
     margin-left: 10em;
     margin-right: 10em;
@@ -38,7 +38,7 @@ time, mark, audio, video {
     padding-right: 5em;
     padding-bottom: 1.5em;
     padding-top: 0.5em;
-    background-color: rgba(10, 10, 10, 0.90);
+    background-color: rgba(10, 10, 10, 0.80);
     border-radius: 5px;
 }
 
@@ -50,10 +50,6 @@ body {
     font-family: 'Poppins', sans-serif;
     background-color: rgb(31, 31, 31);
 }
-
-
-
-
 
 
 div#page h1{
@@ -69,6 +65,7 @@ div#page h2{
     margin-top: 1em;
     margin-bottom: 0.1em;
     font-size: 1.8em;
+    text-align: left;
 }
 
 div#page h3{
@@ -76,6 +73,7 @@ div#page h3{
     margin-top: 1em;
     margin-bottom: 0.1em;
     font-size: 1.3em;
+    text-align: left;
 }
 
 div#page p{
@@ -90,7 +88,7 @@ div#page ul{
     text-align: left;
     margin-bottom: 0.5em;
     font-size: 1em;
-    margin-left: 1.5em;
+    margin-left:1.5em;
 }
 
 
@@ -129,3 +127,4 @@ div#page a{
 		background-position-y: -100px;
 		background-position-x: -50%;
     }
+}

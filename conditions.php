@@ -122,9 +122,9 @@ include 'header.php';
 
 
 
-    <style>
-    <?php include 'css/conditions.css'; ?>
-    </style>
+    <link rel="stylesheet" href="css/conditions.css">
+    <link rel="stylesheet" href="css/main.css"> 
+
 </div>
 <?php
 include 'footer.php';
