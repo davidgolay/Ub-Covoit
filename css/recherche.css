@@ -31,7 +31,7 @@ div.switch{
     justify-content: space-around;
 }
 
-div input[type="text"], div input[type="date"], div input[type="time"], div input[type="number"]{
+div input[type="text"], input[type="date"], input[type="time"], input[type="number"]{
     min-width: 12em;
     max-width: 12em;
 }
