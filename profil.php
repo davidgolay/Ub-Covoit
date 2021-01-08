@@ -11,6 +11,25 @@ $edit_vehicule = '<div><a class="bouton" href="edit_vehicule.php">Modifier mon v
 
 if(isset($_GET['id']) AND $_GET['id'] > 0)
 {
+    $id_driver = intval($_GET['id']); //conversion en nombre pour sécuriser
+    $participation = $bdd->prepare('SELECT trajet.id_user, trajet.statut_trajet FROM participe INNER JOIN trajet ON participe.id_trajet=trajet.id_trajet WHERE participe.id_user = ? AND participe.is_accepted = 1 AND trajet.id_user = ?;');
+    $participation->execute(array($_SESSION['id'], $id_driver));
+    $participation_trajet_exist = $participation->rowCount();
+
+    $id_driver = intval($_GET['id']); //conversion en nombre pour sécuriser
+    $been_drived_by = $bdd->prepare('SELECT trajet.id_user, trajet.statut_trajet FROM participe INNER JOIN trajet ON participe.id_trajet=trajet.id_trajet WHERE participe.id_user = ? AND participe.is_accepted = 1 AND trajet.id_user = ?;');
+    $been_drived_by->execute(array($id_driver, $_SESSION['id']));
+    $conducteur_trajet_exist = $been_drived_by->rowCount();
+
+    if($participation_trajet_exist > 0 OR $conducteur_trajet_exist > 0){
+        $usersAccepted = 1;
+        //echo 'oui accepté';
+    }
+    else{
+        $usersAccepted = 0;
+        //echo 'non accepté';
+    }
+
     $selectId = intval($_GET['id']); //conversion en nombre pour sécuriser
     $requser = $bdd->prepare('SELECT * FROM users WHERE id = ?');
     $requser->execute(array($selectId));
@@ -46,12 +65,21 @@ else
                     <div class="etiquette">Nom : </div>
                     <div class="info"><?php echo $userinfo['nom'];?></div>
                 </div>
-                <?php if ($_GET['id'] == $_SESSION['id']){?>
-                <div class="flexLigne">
+
+                <?php if (($_GET['id'] == $_SESSION['id']) OR ($usersAccepted == 1)){?>
+                    <div class="flexLigne">
                         <div class="etiquette">Email étudiant : </div>
                         <div class="info"> <?php echo $userinfo['email'];?></div>
-                </div><?php
-                }?>             
+                    </div><?php
+                }?>
+
+                <?php if ($_GET['id'] == $_SESSION['id'] OR $usersAccepted == 1){?>
+                    <div class="flexLigne">
+                        <div class="etiquette">Téléphone : </div>
+                        <div class="info"> <?php echo $userinfo['tel'];?></div>
+                    </div><?php
+                }?>              
+
 
                 <div class="flexLigne"> 
                     <div class="etiquette">Conducteur : </div>

@@ -94,7 +94,7 @@ if(isset($_GET['incoming']) AND isset($_GET['driver']) AND isset($_GET['partir_u
             date_format(datetime_trajet, '%h:%i') as hour, nom, prenom, is_driver 
             FROM trajet INNER JOIN users ON users.id = trajet.id_user 
             INNER JOIN participe ON trajet.id_trajet = participe.id_trajet 
-            WHERE participe.id_user = ? AND trajet.partir_ub = ? AND trajet.datetime_trajet > ? ORDER BY datetime_trajet ASC LIMIT 50;");
+            WHERE participe.id_user = ? AND participe.annulation_passager = 0 AND trajet.partir_ub = ? AND trajet.datetime_trajet > ? ORDER BY datetime_trajet ASC LIMIT 50;");
             $trajet->execute(array($_SESSION['id'], $partir_ub, $date_now));
         }
     }    
@@ -114,7 +114,7 @@ if(isset($_GET['incoming']) AND isset($_GET['driver']) AND isset($_GET['partir_u
             date_format(datetime_trajet, '%h:%i') as hour, nom, prenom, is_driver 
             FROM trajet INNER JOIN users ON users.id = trajet.id_user 
             INNER JOIN participe ON trajet.id_trajet = participe.id_trajet 
-            WHERE participe.id_user = ? AND trajet.partir_ub = ? AND trajet.datetime_trajet < ? ORDER BY datetime_trajet ASC LIMIT 50;");
+            WHERE participe.id_user = ? AND participe.annulation_passager = 0 AND trajet.partir_ub = ? AND trajet.datetime_trajet < ? ORDER BY datetime_trajet ASC LIMIT 50;");
             $trajet->execute(array($_SESSION['id'], $partir_ub, $date_now));
         }
 
@@ -178,7 +178,7 @@ if(isset($_GET['incoming']) AND isset($_GET['driver']) AND isset($_GET['partir_u
         $trajet_passager = $bdd->prepare("SELECT id, nom, prenom, trajet.id_trajet, trajet.id_ville FROM users 
         INNER JOIN participe ON users.id=participe.id_user 
         INNER JOIN trajet ON participe.id_trajet=trajet.id_trajet
-        WHERE trajet.partir_ub = 1 AND trajet.id_trajet=?;");
+        WHERE trajet.partir_ub = 1 AND trajet.id_trajet=? AND participe.annulation_passager = 0;");
         $trajet_passager->execute(array($row['id_trajet']));
         $passager_row = $trajet_passager->rowCount();
 
