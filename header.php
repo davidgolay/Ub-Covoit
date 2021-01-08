@@ -32,9 +32,12 @@ include 'config.php';
             </a>
         </li>
         <li><a class="onglet" href="<?php if(isset($_SESSION['logged_in'])){echo 'profil.php?id='.$_SESSION['id'];}else{echo 'login.php';}?>"> 
-            <svg width="1.1em" height="1.1em" viewBox="0 0 16 16" class="icon" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-            </svg> 
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="icon" viewBox="0 0 16 16">
+            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+        </svg>
+
             <b class="mobileTexte">Mon Profil </b></a></li>
         <li><a class="onglet" href="<?php if(isset($_SESSION['logged_in'])){echo 'trajet.php?partir_ub=1&incoming=1&driver=0';}else{echo 'login.php';}?>";>
             <svg width="1em" height="1em" viewBox="0 0 16 16" class="icon" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -51,9 +54,11 @@ include 'config.php';
             
         ?>
         <li><a class="onglet" href="<?php if(isset($_SESSION['logged_in'])){echo 'acceptation.php';}else{echo 'login.php';}?>"> 
-            <svg width="1.1em" height="1.1em" viewBox="0 0 16 16" class="icon" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-            </svg> 
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="icon" viewBox="0 0 16 16">
+            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+        </svg>
+
             <b class="mobileTexte">Demandes passagères<?php echo ' ('.$nbDemandes.')'?> </b></a></li>
         <?php
             }
