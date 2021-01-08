@@ -377,10 +377,6 @@ div#footer{
         font-size: 0.8em;
     }
     
-    .info{
-        padding-right: 0;
-        padding-left: 0;
-    }
 
 
     /* général */
@@ -396,13 +392,11 @@ div#footer{
     /* navbar */
 
     .navbar{
-        height: 3.2em;
+        height: 4em;
     }
    
     #logoAccueuil{
         margin-top: 0.3em;
-        width: 15vw;
-        margin-left: 0.5em;
     }
    
     div#footer div a{
@@ -415,10 +409,8 @@ div#footer{
     }
    
     svg.icon{
-        width: 2em;
-        height: 2em;
-        margin-right: 0.1rem;
-        margin-left: 0.1rem;
+        width: 2.5em;
+        height: 2.5em;
     }
    
     .navbar li a:hover{
