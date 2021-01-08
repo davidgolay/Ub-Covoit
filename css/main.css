@@ -1,21 +1,4 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
-
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
- figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video { 
+body { 
 	margin: 0;}
 
 @font-face{
@@ -28,7 +11,7 @@ time, mark, audio, video {
 body{
     font-family: 'Poppins', sans-serif;
     background-color: whitesmoke;
-    font-size: 1.2em;
+    font-size: 1.1em;
     background-image: url('../img/fondIndexubcovoit2.png');
     background-size: cover;
     background-repeat: repeat;
@@ -100,6 +83,17 @@ body{
     animation: apparaitre 1s ease-out;
 }
 
+h1{
+    position: relative;
+    top : 0em;
+    color: #f46917;
+    text-align: center;
+    margin-top: 0.5em;
+    margin-bottom: 0.1em;
+    font-size: 1.8em;
+}
+
+
 h2{
     color: #f46917;
     text-align: center;
@@ -127,8 +121,63 @@ p a.bouton, .bouton{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-a.bouton:hover{
+a.TexteBouton, input.TexteBouton{
+    text-decoration: none;
+    color: black; 
+}
+
+.bouton:hover{
     background-color:orange;
+}
+
+.switch{
+    position: relative;
+    padding: 0;
+    margin: 1em;
+    top: 1em;
+    background-color: #dadada;
+    color: black;
+    border-radius: 30px;
+    border-style: none;
+    text-decoration: none;
+    font-size: inherit;
+    min-width: 200px;
+    font-family: inherit;
+    justify-content: space-between;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19), 0 -6px 20px 0 rgba(0, 0, 0, 0.3) inset;
+    display: flex;
+    flex-flow: row;
+}
+
+.switch:hover{
+    box-shadow: 0 0 8px honeydew inset;
+}
+
+.switch a{
+    color: black;
+    background-color: transparent;
+    padding: 0.7em;
+    border-radius: 30px;
+    border-style: none;
+    text-decoration: none;  
+}
+
+.switch a.selectionne{
+    color: black;
+    background-color: #f46917;
+    border: none;
+    padding: 0.7em;
+    border-radius: 30px;
+    border-style: none;
+    text-decoration: none;
+}
+
+.switch a.droite{
+    box-shadow: -15px 0px 15px -10px rgba(0,0,0,0.75);
+}
+
+.switch a.gauche{
+    box-shadow: 15px 0px 15px -10px rgba(0,0,0,0.75);
 }
 
 .textArea{
@@ -154,6 +203,10 @@ a.bouton:hover{
     margin-top: 2em;
 }
 
+label{
+    color: whitesmoke;
+}
+
 .info{
     background-color: lightgray;
     color:  rgb(31, 31, 31);
@@ -164,21 +217,46 @@ a.bouton:hover{
     margin: 0.2em;
     margin-left: 1em;
     margin-right: 1em;
-    min-width: 15em;
+    min-width: 18.5em;
 }
 
 input[type=text], input[type=checkbox]{
     border-style: none;
     background-color: white;
-    border-radius: 5px;
+    border-radius: 30px;
     padding: 0.5em;
     padding-left: 3.5em;
 }
 
-div.error{
-    color: rgb(255, 230, 0);
+input[type="text"],input[type="password"], input[type="date"], input[type="time"], input[type="number"], input[type=email]{
+    padding: 0.8em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    margin: 0.5em;
+    border-style: none;
+    border-radius: 30em;
+    background-color: whitesmoke;
+    font-size: inherit;
+    background-image: linear-gradient(#cecece, #cecece);
+    background-repeat: no-repeat;
+    transition: background-size .3s, color .3s;
+    min-width: 18.5em;
 }
 
+input[type="date"], input[type="time"]{
+    font-size: 0.9em;
+    font-family: 'Poppins', sans-serif;
+    padding-left: 2.4em;
+    padding-right: 2em;
+}
+
+div.error{
+    color: rgb(255, 55, 88);
+}
+
+tr td:first-child{
+    text-align: left;
+}
 
 /*Flexbox*/
 
@@ -230,6 +308,13 @@ div.error{
     background-size: 0% 100%;
 }
 
+input.center-right-left:focus{
+    outline: none;
+    background-size: 100% 100%;
+    color: #000;
+    transform: transition;
+}
+
 
 /*Footer*/
 div#footer a{
@@ -272,6 +357,11 @@ div#footer{
         padding-bottom: -2em;
         overflow-x: clip;
     }
+    
+    h1{
+        font-size: 1.2em;
+    }
+
 
     .flexLigne{
         flex-flow: wrap;
@@ -281,6 +371,10 @@ div#footer{
     .textArea{
         max-width: 15em;
         flex-grow: 2;
+    }
+
+    .switch{
+        font-size: 0.8em;
     }
     
 

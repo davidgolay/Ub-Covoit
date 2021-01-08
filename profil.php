@@ -7,7 +7,7 @@ include 'header.php';
 $modify_profil_2btn = '<div><a class="bouton" href="editprofil.php">Modifier mon profil</a></div>';
 $modify_profil_1btn = '<div><a class="bouton" href="editprofil.php">Modifier mon profil</a></div>';
 $add_vehicule = '<div><a class="bouton" href="add_vehicule.php"> Ajouter un vehicule</a></div>';  // alors il peut accéder la page d'ajout de vehicule
-$edit_vehicule = '<div><a class="bouton" href="edit_vehicule.php">modifier mon vehicule</a><d/iv>';
+$edit_vehicule = '<div><a class="bouton" href="edit_vehicule.php">Modifier mon vehicule</a><d/iv>';
 
 if(isset($_GET['id']) AND $_GET['id'] > 0)
 {
