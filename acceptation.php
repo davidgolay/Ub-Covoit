@@ -4,9 +4,7 @@ include 'header.php';
 include 'config.php';
 ?>
 
-<style>
-<?php include 'css/acceptation.css'; ?>
-</style>
+<link rel="stylesheet" href="css/main.css">
 
 <div class="info">
     <h1>Acceptation des passagers</h1>
