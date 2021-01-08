@@ -7,10 +7,29 @@ include 'header.php';
 $modify_profil_2btn = '<div><a class="bouton" href="editprofil.php">Modifier mon profil</a></div>';
 $modify_profil_1btn = '<div><a class="bouton" href="editprofil.php">Modifier mon profil</a></div>';
 $add_vehicule = '<div><a class="bouton" href="add_vehicule.php"> Ajouter un vehicule</a></div>';  // alors il peut accéder la page d'ajout de vehicule
-$edit_vehicule = '<div><a class="bouton" href="edit_vehicule.php">modifier mon vehicule</a><d/iv>';
+$edit_vehicule = '<div><a class="bouton" href="edit_vehicule.php">Modifier mon vehicule</a><d/iv>';
 
 if(isset($_GET['id']) AND $_GET['id'] > 0)
 {
+    $id_driver = intval($_GET['id']); //conversion en nombre pour sécuriser
+    $participation = $bdd->prepare('SELECT trajet.id_user, trajet.statut_trajet FROM participe INNER JOIN trajet ON participe.id_trajet=trajet.id_trajet WHERE participe.id_user = ? AND participe.is_accepted = 1 AND trajet.id_user = ?;');
+    $participation->execute(array($_SESSION['id'], $id_driver));
+    $participation_trajet_exist = $participation->rowCount();
+
+    $id_driver = intval($_GET['id']); //conversion en nombre pour sécuriser
+    $been_drived_by = $bdd->prepare('SELECT trajet.id_user, trajet.statut_trajet FROM participe INNER JOIN trajet ON participe.id_trajet=trajet.id_trajet WHERE participe.id_user = ? AND participe.is_accepted = 1 AND trajet.id_user = ?;');
+    $been_drived_by->execute(array($id_driver, $_SESSION['id']));
+    $conducteur_trajet_exist = $been_drived_by->rowCount();
+
+    if($participation_trajet_exist > 0 OR $conducteur_trajet_exist > 0){
+        $usersAccepted = 1;
+        //echo 'oui accepté';
+    }
+    else{
+        $usersAccepted = 0;
+        //echo 'non accepté';
+    }
+
     $selectId = intval($_GET['id']); //conversion en nombre pour sécuriser
     $requser = $bdd->prepare('SELECT * FROM users WHERE id = ?');
     $requser->execute(array($selectId));
@@ -30,16 +49,14 @@ else
     header('location: index.php');
 }
 ?>
-
-<style>
-<?php include 'css/profile.css'; ?>
-</style>
+<link rel="stylesheet" href="css/profile.css">
+<link rel="stylesheet" href="css/main.css">
 
 <div class="animBasHaut"></div>
 <div id="page">
     <h2>Profil de <?php echo $userinfo['prenom']." ".$userinfo['nom']; ?></h2><br/>
     <div class="flexLigne">
-        <div class="flexColonne" id="aligneDroite">
+        <div class="flexColonneDroite" id="aligneDroite">
                 <div class="flexLigne">
                     <div class="etiquette">Prenom : </div>
                     <div class="info"><?php echo $userinfo['prenom'];?></div>
@@ -48,24 +65,34 @@ else
                     <div class="etiquette">Nom : </div>
                     <div class="info"><?php echo $userinfo['nom'];?></div>
                 </div>
-                <?php if ($_GET['id'] == $_SESSION['id']){?>
+
+                <?php if (($_GET['id'] == $_SESSION['id']) OR ($usersAccepted == 1)){?>
                     <div class="flexLigne">
                         <div class="etiquette">Email étudiant : </div>
                         <div class="info"> <?php echo $userinfo['email'];?></div>
                     </div><?php
-                }?>             
+                }?>
+
+                <?php if ($_GET['id'] == $_SESSION['id'] OR $usersAccepted == 1){?>
+                    <div class="flexLigne">
+                        <div class="etiquette">Téléphone : </div>
+                        <div class="info"> <?php echo $userinfo['tel'];?></div>
+                    </div><?php
+                }?>              
+
 
                 <div class="flexLigne"> 
-                    <div class="etiquette">conducteur : </div>
+                    <div class="etiquette">Conducteur : </div>
                     <div class="info"><?php echo $user_conducteur?></div>
                 </div>
         </div>
         <div class="flexColonne">    
-        <div class="etiquette">biographie : </div>
+        <div class="etiquetteTexte">Biographie : </div>
         <div class="textArea"><?php echo $userinfo['bio'];?></div>
         </div>
     </div>
-    <div><p></br></p></div> 
+    <div><p></br></p></div>
+
     <?php
 
     //requete pour savoir si le profil visité est conducteur
@@ -97,7 +124,7 @@ else
                 <div>
                     <h2>Véhicule de <?php echo $vehicule_info['prenom']." ".$vehicule_info['nom']; ?></h2><br/>
                     <div class="flexLigne">
-                        <div class="flexColonne"  id="aligneDroite">
+                        <div class="flexColonneDroite"  id="aligneDroite">
                                 <div class="flexLigne">    
                                     <div class="etiquette">Marque : </div>
                                     <div class="info"><?php echo $vehicule_info['marque'];?></div>   
@@ -112,18 +139,18 @@ else
                                 </div>
                         </div>
                         <div class="flexColonne" id="commentaire">
-                                    <div class="etiquette">Commentaire : </div>
+                                    <div class="etiquetteTexte">Commentaire : </div>
                                     <div class="textArea"><?php echo $vehicule_info['commentaire'];?></div>
                         </div>
                     </div>               
                 </div>
-                <div><p></br></p></div>
+                <div id="espace"></div>
             <?php  
 
             // l'utilisateur visitant ce profil est sur son profil personnel
             if($_GET['id'] == $_SESSION['id'])
             {
-                echo '<div class="DeuxBtn">' . $modify_profil_2btn . $edit_vehicule . '</div>'; // on affiche les deux boutons: modifier mon profil & MODIFIER mon véhicule   
+                echo '<div class="DeuxBtn">' . $modify_profil_2btn .  '<div id="espace"></div>' . $edit_vehicule . '</div>'; // on affiche les deux boutons: modifier mon profil & MODIFIER mon véhicule   
             }
         }
         //le profil visité n'a pas de vehicule renseigné
@@ -132,7 +159,7 @@ else
             // l'utilisateur visitant ce profil est sur son profil personnel
             if($_GET['id'] == $_SESSION['id'])
             {  
-            echo '<div class="DeuxBtn">' . $modify_profil_2btn . $add_vehicule . '</div>'; // on affiche les deux boutons: modifier mon profil & AJOUTER un véhicule
+            echo '<div class="DeuxBtn">' . $modify_profil_2btn .  '<div id="espace"></div>' . $add_vehicule . '</div>'; // on affiche les deux boutons: modifier mon profil & AJOUTER un véhicule
             }
         }
     }
@@ -146,7 +173,9 @@ else
         }
     }  
 ?>     
-</div>  
+</div>
+</div>
+  
 <?php
 include 'footer.php';
 ?>

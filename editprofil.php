@@ -70,47 +70,49 @@ else{
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Mon profil</title>
+        <link rel="stylesheet" href="css/edit.css">
+        <link rel="stylesheet" href="css/main.css">
     </head>
     <body>
-        <div>
+        <div id="page">
             <h2>Mofication de mon profil</h2><br/>
                 <div>
                     <form action="" method="post">
-                        <table>
+                        <table class="flexColonne">
                             <tr>
                                 <td><label>Nom</label></td>
-                                <td><input type="text" name="new_nom" placeholder="Nom" value="<?php echo $user['nom'];?>"/></td>
+                                <td><input class="center-right-left" type="text" name="new_nom" placeholder="Nom" value="<?php echo $user['nom'];?>"/></td>
                             </tr>
                             <tr>
                                 <td><label>Prénom</label></td>
-                                <td><input type="text" name="new_prenom" placeholder="Prenom" value="<?php echo $user['prenom'];?>"/></td>
+                                <td><input class="center-right-left" type="text" name="new_prenom" placeholder="Prenom" value="<?php echo $user['prenom'];?>"/></td>
                             </tr>
                             <tr>
                                 <td><label>Adresse email étudiante</label></td>
-                                <td><input type="email" name="new_email" placeholder="Email" value="<?php echo $user['email'];?>"/></td>
+                                <td><input class="center-right-left" type="email" name="new_email" placeholder="Email" value="<?php echo $user['email'];?>"/></td>
                             </tr>
                             <tr>
                                 <td><label>Adresse email de récupération</label></td>
-                                <td><input type="email" name="new_email_recup" placeholder="Email de récupération" value="<?php echo $user['email_recup'];?>"/></td>
+                                <td><input class="center-right-left" type="email" name="new_email_recup" placeholder="Email de récupération" value="<?php echo $user['email_recup'];?>"/></td>
                             </tr>
                             <tr>
                                 <td><label>Nouveau mot de passe</label></td>
-                                <td><input type="password" name="new_password" placeholder="Mot de passe"/></td>
+                                <td><input class="center-right-left" type="password" name="new_password" placeholder="Mot de passe"/></td>
                             </tr>
                             <tr>
                                 <td><label>Confirmer mot de passe</label></td>
-                                <td><input type="password" name="new_password_confirm" placeholder="Confirmer mot de passe"/></td>
+                                <td><input class="center-right-left" type="password" name="new_password_confirm" placeholder="Confirmer mot de passe"/></td>
                             </tr>
                             <tr>
                                 <td><label>Biographie</label></td>
-                                <td><input type="text" name="new_bio" value="<?php echo $user['bio'];?>" maxlength="255"/></td>
+                                <td><input class="center-right-left" type="text" name="new_bio" value="<?php echo $user['bio'];?>" maxlength="255"/></td>
                             </tr>
                             <tr>
                                 <td><label>Conducteur</label></td>
-                                <td><input type="checkbox" name="new_driver" value="1" <?php if($user['is_driver'] == 1){echo 'checked';}?> /></td>
+                                <td><input class="center-right-left" type="checkbox" name="new_driver" value="1" <?php if($user['is_driver'] == 1){echo 'checked';}?> /></td>
                             </tr>
                         </table>
-                        <input type="submit" name="edit_profil" value="Enregistrer les modifications"/></td>
+                        <input class="bouton" type="submit" name="edit_profil" value="Enregistrer"/></td>
                     </form>
                 </div>      
         </div>  

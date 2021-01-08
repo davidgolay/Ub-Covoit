@@ -1,130 +1,17 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
- figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video { 
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: 'Poppins', sans-serif;
-	vertical-align: baseline;
-}
-@font-face{
-    font-family: poppins;
-    src: url(fonts/poppins-medium.ttf);
-}
-
-
-
-body {
-    background-image: url('img/fondIndexubcovoit2.png');
-    background-size: cover;
-    background-repeat: repeat;
-    background-position-y: -100px;
-    font-family: 'Poppins', sans-serif;
-    background-color: rgb(31, 31, 31);
-}
-
-h2{
-    color: #f46917;
-    text-align: center;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-    font-size: 2em;
-}
-
-
-a.bouton, input[type=submit]{
-    padding: 0.8em;
-    margin: 1em;
-    background-color: #f46917;
-    color: black;
-    border-radius: 30px;
-    border-style: none;
-    text-decoration: none;
-    font-size: inherit;
-    width: 200px;
-    font-family: inherit;
-    align-items: center;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-a.bouton:hover, input[type=submit]:hover{
-    background-color:orange;
-}
-
-input[type="text"],input[type="password"], input[type="date"]{
-    padding: 0.8em;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
-    margin: 0.5em;
-    border-style: none;
-    border-radius: 30em;
-    background-color: whitesmoke;
-    font-size: inherit;
-    background-image: linear-gradient(#cecece, #cecece);
-    background-repeat: no-repeat;
-    transition: background-size .3s, color .3s;
-}
-
-input[type="date"]{
-    font-size: 0.9em;
-    font-family: 'Poppins', sans-serif;
-    padding-left: 2.4em;
-    padding-right: 2em;
-}
-
-input.center-right-left:focus{
-    outline: none;
-    background-size: 100% 100%;
-    color: #000;
-    transform: transition;
-}
-
-.center-right-left{
-    background-position: 50% 50%;
-}
-.center-right-left{
-    background-size: 0% 100%;
-}
-
-@keyframes basEnHaut{
+@keyframes basEnHautRegister{
     from{height: 4.5em;}
     to{height: 2.5em;}
 }
 
-@-moz-keyframes basEnHaut{
+@-moz-keyframes basEnHautRegister{
     from{height: 4.5em;}
     to{height: 2.5em;} 
 }
 
-@keyframes apparaitre{
-    from{opacity: 0;}
-    to{opacity: 1;}
-}
-
-@-moz-keyframes apparaitre{
-    from{opacity: 0.3;}
-    to{opacity: 1;}
-}
-
-.animBasHaut{
-    animation: basEnHaut 1s ease-out;
-    -moz-animation: basEnHaut 1s ease-out;
+div.animBasHaut{
+    animation: basEnHautRegister 1s ease-out;
+    -moz-animation: basEnHautRegister 1s ease-out;
     height: 2.5em;
 }
 
@@ -139,34 +26,29 @@ fieldset{
     border-radius: 5px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     animation: apparaitre 1s ease-out;
-}
-
-
-
-p.label{
     color: whitesmoke;
-    margin-top: 1em;
 }
 
-.flexColonne{
-    display: flex;
-    justify-content: space-around;
-    flex-flow: column;
-    align-items: center;
-}
-div.error{
-    color: rgb(255, 230, 0);
+a.CGU{
+    color: rgb(255, 240, 36);
+    text-decoration: none;
+    padding: 0.2em;
+    border: rgb(255, 240, 36) dashed 3px;
+    border-radius: 5px;
 }
 
-.flexLigne{
-    display : flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    align-content: space-around;
+a.CGU:hover{
+    border: rgb(255, 240, 36) solid 3px;
+}
+
+
+div.flexLigne{
     justify-content: space-evenly;
 }
 
+input[type="text"],input[type="password"], input[type="date"], input[type="time"], input[type="number"]{
+    min-width: 19em;
+}
 
 @media screen and (max-device-width: 600px) {
 
@@ -174,62 +56,7 @@ div.error{
     fieldset{
         left: 0;
         right: 0;
+        padding-right: 1em;
+        padding-left: 1em;
     }
-
-
-    /* général */
-
-    body {
-		background-image: url('img/fondIndexubcovoit2.png');
-		background-size: 450%;
-		background-repeat: repeat;
-		background-position-y: -100px;
-		background-position-x: -50%;
-    }
-
-    /* navbar */
-
-    .navbar{
-        height: 4em;
-    }
-   
-    #logoAccueuil{
-        margin-top: 0.3em;
-    }
-   
-    div#footer div a{
-        font-size: 1em;
-    }
-   
-    .mobileTexte{
-        visibility: hidden;
-        font-size: 0.1em;
-    }
-   
-    svg.icon{
-        width: 2.5em;
-        height: 2.5em;
-    }
-   
-    .navbar li a:hover{
-        background-color: transparent;
-        box-shadow: 0 0 0 0;
-        border-radius: 0px 0px 5px 5px;
-        text-shadow: 1px 1px 10px white;
-    }
-
-    .navbar li{
-        margin-top: 0.5em;
-   
-    }
-    
-    /* footer */
-
-    div#footer a{
-        color: rgb(19, 19, 19);
-        text-decoration: none;
-        font-size: 3em;
-        padding: 1em;
-    }
-   
 }
