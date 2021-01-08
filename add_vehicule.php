@@ -21,32 +21,35 @@ if(isset($_POST['add_vehicule']) AND !empty($_POST['marque']) AND !empty($_POST[
 
 ?>
 
+<link rel="stylesheet" href="css/edit.css">
+<link rel="stylesheet" href="css/main.css">
 
-
-<div id="voiture">
+<div id="page">
     <h2>Ajouter mon véhicule</h2><br/>
         <div>
             <form action="" method="post">
-                <table>
+                <table class="flexColonne">
                     <tr>
                         <td><label>Marque du véhicule</label></td>
-                        <td><input type="text" name="marque" placeholder="Marque" value="<?php if(isset($_POST['marque']))echo $_POST['marque'];?>"/></td>
+                        <td><input class="center-right-left" type="text" name="marque" placeholder="Marque" value="<?php if(isset($_POST['marque']))echo $_POST['marque'];?>"/></td>
                     </tr>
                     <tr>
                         <td><label>Modèle du véhicule</label></td>
-                        <td><input type="text" name="model" placeholder="Modele" value="<?php if(isset($_POST['model']))echo $_POST['model'];?>"/></td>
+                        <td><input class="center-right-left" type="text" name="model" placeholder="Modele" value="<?php if(isset($_POST['model']))echo $_POST['model'];?>"/></td>
                     </tr>
                 
                     <tr>
                         <td><label>Nombre de places</label></td>
-                        <td><input type="number" name="place" placeholder="Place(s) passagères" value="<?php if(isset($_POST['place']))echo $_POST['place'];?>"/></td>
+                        <td><input class="center-right-left" type="number" name="place" placeholder="Place(s) passagères" value="<?php if(isset($_POST['place']))echo $_POST['place'];?>"/></td>
                     </tr>
                     <tr>
                         <td><label>Commentaire véhicule</label></td>
-                        <td><input type="text" name="commentaire" placeholder="Commentaire sur votre véhicule" value="<?php if(isset($_POST['commentaire']))echo $_POST['commentaire'];?>"/></td>
+                        <td><input class="center-right-left" type="text" name="commentaire" placeholder="Commentaire sur votre véhicule" value="<?php if(isset($_POST['commentaire']))echo $_POST['commentaire'];?>"/></td>
                     </tr>                        
                 </table>
-                <input type="submit" name="add_vehicule" value="Enregistrer les modifications"/></td>
+                <div >
+                <input class="bouton" type="submit" name="add_vehicule" value="Enregistrer"/></td>
+                </div>
             </form>
         </div>      
 </div>
