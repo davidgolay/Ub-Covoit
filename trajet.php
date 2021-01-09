@@ -10,7 +10,7 @@ if($_GET['driver']<=1 AND $_GET['driver']>=0){
     // correspondra au trajets en tant que passagers
     if($_GET['driver'] == 0){
         $affichage_trajet_driver = 0;
-        $txt_title_type_trajet = ' en tant que passager'; // utile pour l'affichage de texte
+        $txt_title_type_trajet = ' passager'; // utile pour l'affichage de texte
         // UTILE POUR LE BOUTON DE SWITCH
         $switch_type_trajet = 'driver=1'; // utile pour le switch de passager à conducteur
         $link_type_trajet = 'Conducteur'; // utile pour le switch de passager à conducteur
@@ -20,7 +20,7 @@ if($_GET['driver']<=1 AND $_GET['driver']>=0){
     }
     else{
         $affichage_trajet_driver = 1;
-        $txt_title_type_trajet = ' en tant que conducteur';
+        $txt_title_type_trajet = ' conducteur';
         // UTILE POUR LE BOUTON DE SWITCH
         $switch_type_trajet = 'driver=0'; // utile pour le switch de passager à PASSAGER
         $link_type_trajet = 'Passager'; // utile pour le switch de passager à PASSAGER
@@ -53,7 +53,7 @@ if($_GET['incoming']<=1 AND $_GET['incoming']>=0){
 if($_GET['partir_ub']<=1 AND $_GET['partir_ub']>=0){
     if($_GET['partir_ub'] == 0){
         $partir_ub = 0;
-        $txt_title_destination = "allant à l'Université de Bourgogne";
+        $txt_title_destination = "allant à l'UB";
         $text_destination = ' allant à uB et partant de ';
         // UTILE POUR LE BOUTON DE SWITCH
         $switch_dest = 'partir_ub=1';
@@ -63,7 +63,7 @@ if($_GET['partir_ub']<=1 AND $_GET['partir_ub']>=0){
     }
     else{
         $partir_ub = 1;
-        $txt_title_destination = "partant de l'Université de Bourgogne";
+        $txt_title_destination = "partant de l'UB";
         $text_destination = ' partant de uB et allant à ';
         // UTILE POUR LE BOUTON DE SWITCH
         $switch_dest = 'partir_ub=0';
@@ -119,9 +119,9 @@ if(isset($_GET['incoming']) AND isset($_GET['driver']) AND isset($_GET['partir_u
         }
 
     }
-
     echo // les liens boutons permettant de switcher entre partir_ub, trajets effectués/à venir et la destination ub ou non
-    '<div id="page"> 
+    '<div id="page">
+        <h1>Mes trajets '. $txt_title_type_trajet.'</h1>
         <div class="flexLigne">
             <div class="switch">
                 <a '.$selection_driver .'href="trajet.php?partir_ub='. $_GET['partir_ub'] . '&incoming='.$_GET['incoming'] . '&driver=1">Conducteur</a>
@@ -136,9 +136,9 @@ if(isset($_GET['incoming']) AND isset($_GET['driver']) AND isset($_GET['partir_u
                 <a '.$selection_effectue .'href="trajet.php?partir_ub='. $_GET['partir_ub'] . '&incoming=0&driver='.$_GET['driver'].'">Effectués</a>
             </div>
         </div>';
-
+    
     echo // balises de titre de liste des trajets à afficher
-    '<div class="espace"></div><h1>Liste de mes trajets'. $txt_title_dated . $txt_title_destination . $txt_title_type_trajet . '</h1></br>';
+    '<div class="espace"></div><h1>Trajets'. $txt_title_dated . $txt_title_destination.'</h1></br>';
 
     echo 
     '<div class="driverTrajet">';
@@ -185,7 +185,7 @@ if(isset($_GET['incoming']) AND isset($_GET['driver']) AND isset($_GET['partir_u
         // si il y a au moins 1 passager
         if($passager_row > 0){
             echo 
-                '<div classe="passager">
+                '<div class="passager">
                     <table>
                         <tr>
                             <td>Passagers inscrits au trajet :</td>';      
@@ -194,7 +194,7 @@ if(isset($_GET['incoming']) AND isset($_GET['driver']) AND isset($_GET['partir_u
                 echo    
                             '<td><a href="profil.php?id=' . $row2['id'].'">'. $row2['prenom'] . ' ' . $row2['nom'] . '</a></td>';            
             }
-        echo
+            echo
                         '</tr>
                     </table>
                 </div>';
@@ -202,7 +202,7 @@ if(isset($_GET['incoming']) AND isset($_GET['driver']) AND isset($_GET['partir_u
         // si il n'y aucun passager
         else{
             echo 
-                '<div classe="passager">Aucun passager inscrit à ce trajet</div>';
+                '<div class="passager">Aucun passager inscrit à ce trajet</div>';
         }
         // si le trajet n'a pas été annulé
         if ($row['statut_trajet'] == 0 AND $_GET['incoming'] == 1){
@@ -219,8 +219,7 @@ if(isset($_GET['incoming']) AND isset($_GET['driver']) AND isset($_GET['partir_u
             
         }
         echo '</div>'; //div qui ferme la div "flexColonne"
-        echo '</div>'; // div qui ferme la div de classe "classTrajet" juste avant le h2 Trajet du ...
-    echo '</div></br>'; // div qui ferme la div de classe "trajet-conducteur" juste avant le 1er foreach  
+    echo '</div></br>'; // div qui ferme la div de classe "classTrajet" juste avant le h2 Trajet du ...  
     }
 }
 else{
