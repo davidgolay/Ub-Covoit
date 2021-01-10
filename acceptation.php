@@ -29,7 +29,7 @@ if(isset($_GET['idPass']) AND isset($_GET['idTraj'])){
     }
 }
 
-$passagersNonAccepted = $bdd->prepare("SELECT participe.id_user, participe.com_passager, trajet.id_trajet, date_format(datetime_trajet, '%d/%m/%Y') as date, 
+$passagersNonAccepted = $bdd->prepare("SELECT participe.id_user, participe.com_passager, participe.is_accepted, trajet.id_trajet, date_format(datetime_trajet, '%d/%m/%Y') as date, 
 date_format(datetime_trajet, '%h:%i') as hour FROM trajet INNER JOIN participe ON trajet.id_trajet=participe.id_trajet WHERE trajet.id_user = ? AND trajet.statut_trajet = 0 AND participe.is_accepted = 0 ORDER BY datetime_trajet;");
 $passagersNonAccepted->execute(array($_SESSION['id']));
 
@@ -49,6 +49,7 @@ foreach($passagersNonAccepted as $row){
             <div id="page">
                 <h3>Trajet du <?php echo $row['date'].' à '.$heure.'h'.$minute;?> </h3>
                 <div>Demande de <a href="profil.php?id=<?php echo $row2['id'];?>"> <?php echo $row2['prenom'].' '.$row2['nom'];?></a></div>
+                <div>Commentaire d'inscription: <?php if(!empty($row['com_passager'])){echo $row['com_passager'];}else{echo 'pas de message';};?></div>
                 <div>Email: <?php echo $row2['email'];?></div>
                 <div>Telephone: <?php echo $row2['tel'];?></div>
                 </br>
