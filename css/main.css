@@ -222,7 +222,7 @@ label{
 
 input[type=text], input[type=checkbox]{
     border-style: none;
-    background-color: white;
+    background-color: lightgray;
     border-radius: 30px;
     padding: 0.5em;
     padding-left: 3.5em;
@@ -235,9 +235,9 @@ input[type="text"],input[type="password"], input[type="date"], input[type="time"
     margin: 0.5em;
     border-style: none;
     border-radius: 30em;
-    background-color: whitesmoke;
+    background-color: lightgray;
     font-size: inherit;
-    background-image: linear-gradient(#cecece, #cecece);
+    background-image: linear-gradient(whitesmoke, whitesmoke);
     background-repeat: no-repeat;
     transition: background-size .3s, color .3s;
     min-width: 18.5em;
@@ -254,9 +254,41 @@ div.error{
     color: rgb(255, 55, 88);
 }
 
-tr td:first-child{
-    text-align: left;
+div.normal-trajet{
+    background-color: lightgray;
+    border-radius: 5px;
+    padding: 0.8em;
+    margin: 0.3em;
+    color: black;
 }
+
+div.normal-trajet h2{
+    color: black;
+    font-size: 1.2em;
+}
+
+.infoTrajet{
+    background-color: rgb(177, 177, 177);
+    border-radius: 5px;
+    padding-top: 0.005rem;
+    padding-bottom: 0.005rem;
+    margin-bottom: 0.8em;
+}
+
+.profil{
+    color: orangered;
+    border: orangered 2px solid;
+    border-radius: 30px;
+    padding: 0.3em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    text-decoration: none;
+}
+
+.profil:hover{
+    border:  orangered 2px dotted;
+}
+
 
 /*Flexbox*/
 
@@ -281,6 +313,10 @@ tr td:first-child{
     justify-content: space-around;
     flex-flow: column;
     align-items: center;
+}
+
+tr td:first-child{
+    text-align: left;
 }
 
 /*animations*/

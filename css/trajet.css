@@ -1,16 +1,3 @@
-div.normal-trajet{
-    background-color: lightgray;
-    border-radius: 5px;
-    padding: 0.5em;
-    margin: 0.3em;
-    color: black;
-}
-
-div.normal-trajet h2{
-    color: black;
-    font-size: 1.2em;
-}
-
 .flexColonne#aligneDroite .flexLigne{
     justify-content: flex-end;
 }
@@ -18,6 +5,7 @@ div.normal-trajet h2{
 div.bouton{
     margin: 0.2em;
     padding: 0.3em;
+    min-width: 13em;
 }
 
 svg.bi{

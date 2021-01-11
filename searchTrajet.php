@@ -47,6 +47,8 @@ else
     header('location: index.php');
 }
 
+//début de la page
+echo '<div id="page">';
 
 // on teste si le submit "rechercher le trajet" =name"search" a été cliqué
 // on verifie que la ville est okai
@@ -95,11 +97,12 @@ if(isset($_POST['search']))
 
             if($trajet_exist > 0)
             {               
-                echo '               
-                <div>
-                    <h3>Liste des trajets trouvés</h3>
-                <div>
-                </br>'; 
+                echo '          
+                    <div>
+                        <h2>Liste des trajets trouvés</h2>
+                    </div>
+                    
+                <div id="resultats">'; 
         
                 foreach($search_trajet as $row)
                 {
@@ -114,30 +117,35 @@ if(isset($_POST['search']))
 
                     if($depart == 1)
                     {
-                        echo ' 
-                        <div>
-                            <p> Trajet proposé par <a href="profil.php?id=' . $driver.'">'. $row['prenom'] . ' ' . $row['nom'] . '</a></p>
-                            <p> Le ' . $row['date'] . ' à ' . $heure . 'h' . $minute . ' de uB à '. $nom_ville['ville_nom_reel'] .  '</p>
-                        </div>
-                        <div>
-                            <p>nombre places disponibles : ' . $row['place_dispo'] . '</p>
-                            <a href="inscription_trajet.php?id_trajet='.$row['id_trajet'] . '&action=inscription"> Choisir ce trajet </a>
+                        echo '
+                        <div  class="normal-trajet"> 
+                            <div>
+                                <h2>' . $row['date'] . ' à ' . $heure . 'h' . $minute . ' - uB à '. $nom_ville['ville_nom_reel'] .  '</h2>
+                            </div>
+                            <div class="infoTrajet">
+                                <p> Conducteur : <a class="profil" href="profil.php?id=' . $driver.'">'. $row['prenom'] . ' ' . $row['nom'] . '</a> </p>
+                                <p> Place(s) disponible(s) : ' . $row['place_dispo'] . '</p>
+                            </div>
+                            <a class="bouton" href="inscription_trajet.php?id_trajet='.$row['id_trajet'] . '&action=inscription"> Choisir ce trajet </a>
                         </div>
                         </br>';
                     }
                     else
                     {
-                        echo ' 
-                        <div>
-                            <p> Trajet proposé par <a href="profil.php?id=' . $driver.'">'. $row['prenom'] . ' ' . $row['nom'] . '</a></p>
-                            <p> Le ' . $row['date'] . ' à ' . $heure . 'h' . $minute . ' de '. $nom_ville['ville_nom_reel'] . ' à uB </p>
-                        </div>
-                        <div>
-                            <a href="inscription_trajet.php?id_trajet='.$row['id_trajet'] . '&action=inscription"> Choisir ce trajet </a>
+                        echo '
+                        <div class="normal-trajet"> 
+                            <div class="infoTrajet">
+                                <p> Trajet proposé par <a class="profil" href="profil.php?id=' . $driver.'">'. $row['prenom'] . ' ' . $row['nom'] . '</a></p>
+                                <p> Le ' . $row['date'] . ' à ' . $heure . 'h' . $minute . ' de '. $nom_ville['ville_nom_reel'] . ' à uB </p>
+                            </div>
+                            <div>
+                                <a class="bouton" href="inscription_trajet.php?id_trajet='.$row['id_trajet'] . '&action=inscription"> Choisir ce trajet </a>
+                            </div>
                         </div>
                         </br>';    
                     }                              
-                }                
+                }
+                echo '</div>';                
             }
             else
             {
@@ -158,7 +166,7 @@ if(isset($_POST['search']))
 
 ?>
 <div class="animBasHaut"></div>
-<div id="page">
+
 <h2><?php echo $txt_main; ?></h2><br/>
     <div class="flexColonne">
         <form action="" method="post">
