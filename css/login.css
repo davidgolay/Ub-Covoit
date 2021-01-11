@@ -1,52 +1,11 @@
-@font-face{
-    font-family: poppins;
-    src: url(fonts/poppins-medium.ttf);
-}
-
-body {
-    background-image:
-    url('img/fondIndexubcovoit2.png');
-    background-size: cover;
-    background-repeat: repeat;
-    background-position-y: -100px;
-    font-family: 'Poppins', sans-serif;
-    background-color: whitesmoke;
-    font-size: 1.2em;
-    height: fit-content;
-    color: whitesmoke;
-}
-
-
-
 #logoUB{
     width: 13em;
     margin: 1.5em;
 }
 
-h2{
-    color: #f46917;
-    text-align: center;
-    margin-top: 0.1em;
-    margin-bottom: 0.1em;
-}
-
-
-a.bouton, input[type=submit]{
-    padding: 0.8em;
-    background-color: #f46917;
-    color: black;
-    border-radius: 30px;
-    border-style: none;
-    text-decoration: none;
-    font-size: inherit;
-    width: 200px;
-    font-family: inherit;
-    align-items: center;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-a.bouton:hover, input[type=submit]:hover{
-    background-color:orange;
+div a.bouton, div input.bouton{
+    margin: 1vw;
+    width: unset;
 }
 
 input[type="email"],input[type="password"]{
@@ -60,6 +19,8 @@ input[type="email"],input[type="password"]{
     background-image: linear-gradient(#cecece, #cecece);
     background-repeat: no-repeat;
     transition: background-size .3s, color .3s;
+    margin: 1vw;
+    min-width: 19em;
 }
 
 input[type="password"]:focus,input[type="email"]:focus{
@@ -69,65 +30,16 @@ input[type="password"]:focus,input[type="email"]:focus{
     transform: transition;
 }
 
-.center-right-left{
-    background-position: 50% 50%;
-}
-.center-right-left{
-    background-size: 0% 100%;
-}
-
-@keyframes basEnHaut{
-    from{height: 100px;}
-    to{height: 0em;}
-}
-
-@-moz-keyframes basEnHaut{
-    from{height: 100px;}
-    to{height: 0em;} 
-}
-
-@keyframes apparaitre{
-    from{opacity: 0;}
-    to{opacity: 1;}
-}
-
-@-moz-keyframes apparaitre{
-    from{opacity: 0.3;}
-    to{opacity: 1;}
-}
-
-.animBasHaut{
-    animation: basEnHaut 1s ease-out;
-    -moz-animation: basEnHaut 1s ease-out;
-}
-
 
 fieldset{
     text-align: center;
     border-style: none;
-    padding-left: 5em;
-    padding-right: 5em;
+    padding-left: 6em;
+    padding-right: 6em;
     background-color: rgba(10, 10, 10, 0.65);
     border-radius: 5px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     animation: apparaitre 1s ease-out;
-}
+    color: whitesmoke;
 
-
-input[type=text], input[type=checkbox]{
-    border-style: none;
-    background-color: white;
-    border-radius: 5px;
-    padding: 0.5em;
-    padding-left: 3.5em;
-}
-
-.flexColonne{
-    display: flex;
-    justify-content: space-around;
-    flex-flow: column;
-    align-items: center;
-}
-div.error{
-    color: rgb(255, 230, 0);
 }

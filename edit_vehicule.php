@@ -63,33 +63,32 @@ else
 
 ?>
 
-<style>
-<?php include 'css/editvehivule.css'; ?>
-</style>
+<link rel="stylesheet" href="css/edit.css">
+<link rel="stylesheet" href="css/main.css">
 
-<div>
+<div id="page">
     <h2>Mofication de mon véhicule</h2><br/>
         <div>
             <form action="" method="post">
-                <table>
+                <table class="flexColonne">
                     <tr>
                         <td><label>Model</label></td>
-                        <td><input type="text" name="new_model" placeholder="Model" value="<?php echo $vehicule_info['model'];?>"/></td>
+                        <td><input class="center-right-left" type="text" name="new_model" placeholder="Model" value="<?php echo $vehicule_info['model'];?>"/></td>
                     </tr>
                     <tr>
                         <td><label>Marque</label></td>
-                        <td><input type="text" name="new_marque" placeholder="Marque" value="<?php echo $vehicule_info['marque'];?>"/></td>
+                        <td><input class="center-right-left" type="text" name="new_marque" placeholder="Marque" value="<?php echo $vehicule_info['marque'];?>"/></td>
                     </tr>
                     <tr>
                         <td><label>Place</label></td>
-                        <td><input type="text" name="new_place" placeholder="Place(s)" value="<?php echo $vehicule_info['place'];?>"/></td>
+                        <td><input class="center-right-left" type="text" name="new_place" placeholder="Place(s)" value="<?php echo $vehicule_info['place'];?>"/></td>
                     </tr>
                     <tr>
                         <td><label>Commentaire</label></td>
-                        <td><input type="text" name="new_commentaire" placeholder="Commentaire" value="<?php echo $vehicule_info['commentaire'];?>"/></td>
+                        <td><input class="center-right-left" type="text" name="new_commentaire" placeholder="Commentaire" value="<?php echo $vehicule_info['commentaire'];?>"/></td>
                     </tr>                        
                 </table>
-                <input type="submit" name="edit_vehicule" value="Enregistrer les modifications"/></td>
+                <input class="bouton" type="submit" name="edit_vehicule" value="Enregistrer"/></td>
             </form>
         </div>      
 </div>  

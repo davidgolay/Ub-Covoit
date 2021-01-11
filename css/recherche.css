@@ -1,57 +1,20 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
-
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
- figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video { 
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: 'Poppins', sans-serif;
-	vertical-align: baseline;
+div.animBasHaut{
+    animation: none;
 }
-@font-face{
-    font-family: poppins;
-    src: url(fonts/poppins-medium.ttf);
+
+div.flexLigne{
+    justify-content: space-between;
 }
 
 
-body {
-    background-image: url('img/fondIndexubcovoit2.png');
-    background-size: cover;
-    background-repeat: repeat;
-    background-position-y: -100px;
-    font-family: 'Poppins', sans-serif;
-    background-color: rgb(31, 31, 31);
+div.flexColonne.input{
+    align-items: stretch;
 }
 
-h2{
-    color: #f46917;
-    text-align: center;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-    font-size: 2em;
-}
-
-
-a.bouton, input[type=submit]{
+.levier{
+    background-color: rgb(175, 175, 175);
+    color: rgb(0, 0, 0);
     padding: 0.8em;
-    margin: 1em;
-    background-color: #f46917;
-    color: black;
     border-radius: 30px;
     border-style: none;
     text-decoration: none;
@@ -62,193 +25,23 @@ a.bouton, input[type=submit]{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-a.bouton:hover, input[type=submit]:hover{
-    background-color:orange;
-}
-
-input[type="text"],input[type="password"], input[type="date"], input[type="time"], input[type="number"]{
-    padding: 0.8em;
-    padding-top: 0.1em;
-    padding-bottom: 0.5em;
-    margin: 0.5em;
-    border-style: none;
-    border-radius: 30em;
-    background-color: whitesmoke;
-    font-size: inherit;
-    background-image: linear-gradient(#cecece, #cecece);
-    background-repeat: no-repeat;
-    transition: background-size .3s, color .3s;
-}
-
-input[type="date"], input[type="time"]{
-    font-size: 0.9em;
-    font-family: 'Poppins', sans-serif;
-    padding-left: 2.4em;
-    padding-right: 2em;
-}
-
-input.center-right-left:focus{
-    outline: none;
-    background-size: 100% 100%;
-    color: #000;
-    transform: transition;
-}
-
-.center-right-left{
-    background-position: 50% 50%;
-}
-.center-right-left{
-    background-size: 0% 100%;
-}
-
-@keyframes basEnHaut{
-    from{height: 2.5em;}
-    to{height: 0em;}
-}
-
-@-moz-keyframes basEnHaut{
-    from{height: 2.5em;}
-    to{height: 0em;} 
-}
-
-@keyframes apparaitre{
-    from{opacity: 0;}
-    to{opacity: 1;}
-}
-
-@-moz-keyframes apparaitre{
-    from{opacity: 0.3;}
-    to{opacity: 1;}
-}
-
-.animBasHaut{
-    animation: basEnHaut 1s ease-out;
-    -moz-animation: basEnHaut 1s ease-out;
-    height: 0em;
-}
-
-
-#page{
-    position: relative;
-    margin-left: 10em;
-    margin-right: 10em;
-    margin-top: 2em;
-    text-align: center;
-    border-style: none;
-    padding-left: 5em;
-    padding-right: 5em;
-    padding-bottom: 1.5em;
-    padding-top: 0.5em;
-    background-color: rgba(10, 10, 10, 0.65);
-    border-radius: 5px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    animation: apparaitre 1s ease-out;
-    color: whitesmoke
-}
-
-
-label{
-    color: whitesmoke;
-    margin-top: 1em;
-    margin-bottom: 1em;
-}
-
-.flexColonneEnd{
-    display: flex;
+div.switch{
+    position: unset;
+    min-width: unset;
     justify-content: space-around;
-    flex-flow: column;
-    align-items: flex-end;
-    align-content: space-between;
 }
 
-.flexColonneStart{
-    display: flex;
-    justify-content: flex-start;
-    flex-flow: column;
+div input[type="text"], div input[type="date"], div input[type="time"], div input[type="number"]{
+    min-width: 12em;
+    max-width: 12em;
 }
 
-div.error{
-    color: rgb(255, 230, 0);
+div input[type="text"]{
+    padding-left: 2em;
 }
-
-.flexLigne{
-    display : flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: stretch;
-    align-content: space-around;
-    justify-content: center;
-}
-
-
-
 @media screen and (max-device-width: 600px) {
 
-    /* page active */
-
-    #page{
-        margin-left: 0;
-        margin-right: 0;
-        height: 40em;
-        left: 0;
-        right: 0;
-        /*padding-bottom: 3em;*/
+    div.flexLigne{
+        flex-flow: column;
     }
-
-
-    /* général */
-
-    body {
-		background-image: url('img/fondIndexubcovoit2.png');
-		background-size: 450%;
-		background-repeat: repeat;
-		background-position-y: -100px;
-		background-position-x: -50%;
-    }
-
-    /* navbar */
-
-    .navbar{
-        height: 4em;
-    }
-   
-    #logoAccueuil{
-        margin-top: 0.3em;
-    }
-   
-    div#footer div a{
-        font-size: 1em;
-    }
-   
-    .mobileTexte{
-        visibility: hidden;
-        font-size: 0.1em;
-    }
-   
-    svg.icon{
-        width: 2.5em;
-        height: 2.5em;
-    }
-   
-    .navbar li a:hover{
-        background-color: transparent;
-        box-shadow: 0 0 0 0;
-        border-radius: 0px 0px 5px 5px;
-        text-shadow: 1px 1px 10px white;
-    }
-
-    .navbar li{
-        margin-top: 0.5em;
-   
-    }
-    
-    /* footer */
-
-    div#footer a{
-        color: rgb(19, 19, 19);
-        text-decoration: none;
-        font-size: 3em;
-        padding: 1em;
-    }
-   
 }

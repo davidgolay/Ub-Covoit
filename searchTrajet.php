@@ -21,7 +21,10 @@ if($_GET['partir_ub']<=1 AND $_GET['partir_ub']>=0)
         $txt_ville = 'Ville de départ : ';
         $txt_placeholder_ville = 'ville de départ';
         $td_debut = 'Trajets partant de ';
-        $td_fin = ' et arrivant à l'."'".'UB';    
+        $td_fin = ' et arrivant à l'."'".'UB';
+        $selectionAller = 'class="selectionne gauche"';
+        $selectionPartir = '';
+    
     }
     else
     {
@@ -33,7 +36,9 @@ if($_GET['partir_ub']<=1 AND $_GET['partir_ub']>=0)
         $txt_ville = 'Ville d'."'".'arrivée : ';
         $txt_placeholder_ville = 'ville d'."'".'arrivée';
         $td_debut = 'Trajets arrivant à ';
-        $td_fin = ' et partant de l'."'".'UB';    
+        $td_fin = ' et partant de l'."'".'UB';
+        $selectionPartir = 'class="selectionne droite"';
+        $selectionAller = '';    
     }
     //echo 'valeur du boolean partir_ub : '. $partir_ub; 
 }
@@ -55,6 +60,13 @@ if(isset($_POST['search']))
     $date = $_POST['date'];
     $time = $_POST['time'];
     $datetime = $date . ' ' . $time; //on concatène les champs formulaire date et time en une seule variable datetime_trajet
+
+    $length_ville = strlen($ville_code_postal);
+    $nb_zero = 5 - strlen($ville_code_postal);
+    while($nb_zero > 0){
+        $ville_code_postal = $ville_code_postal.'0';
+        $nb_zero = $nb_zero - 1;   
+    }
     
     // on verifie si les champs suivant sont vides
     if(!empty($_POST['ville_nom']) AND !empty($_POST['date']) AND !empty($_POST['time']))
@@ -154,53 +166,58 @@ if(isset($_POST['search']))
 ?>
 <div class="animBasHaut"></div>
 <div id="page">
-    <form action="" method="post">
-        <h2><?php echo $txt_main; ?></h2><br/>
-        <div>
-            <a class="bouton" href="<?php echo $switch_dest;?>">Inverser la destination</a>
-        </div>
-        
-        <div>    
-            <div>
-                <label><?php echo $txt_ville;?></label></br>
-                <input type="text" name="ville_nom" placeholder="<?php echo $txt_placeholder_ville; ?>" value="<?php if(isset($ville_nom_reel)) {echo $ville_nom_reel; } ?>"/>
+<h2><?php echo $txt_main; ?></h2><br/>
+    <div class="flexColonne">
+        <form action="" method="post">
+            <div class="flexColonne">
+                <div class="switch">
+                    <a <?php echo $selectionAller;?> href="searchTrajet.php?partir_ub=0">Aller à l'UB</a>
+                    <a <?php echo $selectionPartir;?> href="searchTrajet.php?partir_ub=1">Partir de l'UB</a>
+                </div>
             </div>
             <div>    
-                <label>Code postal :</label></br>
-                <input type="text" name="code_postal" placeholder="Code postal de cette ville" value="<?php if(isset($ville_code_postal)) {echo $ville_code_postal; }?>"/>
-            </div>
-            <!--
-            <div>
-                <label>Rayon de recherche (km)</label></br>
-                <input type="number" name="rayon_recherche" placeholder="Rayon de recherche" value="<?php if(isset($_POST['rayon_recherche'])) {echo $_POST['rayon_recherche'];} else{echo '10';}?>"/>
-            </div>
-            -->
-            <div>
-                <label>Date :</label></br>
-                <input type="date" name="date" value="<?php if(isset($date)) {echo $date; } else{echo $date_now;}?>" min="<?php echo $date_now ?>"/>
-            </div>
-            <div>
-                <label>Heure :</label></br>
-                <input type="time" name="time" value="<?php if(isset($time)) {echo $time; } else{echo $hour_now;}?>"/>
-            </div>
-        
+                <div class="flexLigne">
+                    <label><?php echo $txt_ville;?></label></br>
+                    <input class="center-right-left"  type="text" name="ville_nom" placeholder="<?php echo $txt_placeholder_ville; ?>" value="<?php if(isset($ville_nom_reel)) {echo $ville_nom_reel; } ?>"/>
+                </div>
+                <div class="flexLigne">    
+                    <label>Code postal :</label></br>
+                    <input class="center-right-left" type="text" name="code_postal" placeholder="Code postal de cette ville" value="<?php if(isset($ville_code_postal)) {echo $ville_code_postal; }?>"/>
+                </div>
+                <!--
+                <div>
+                    <label>Rayon de recherche (km)</label></br>
+                    <input type="number" name="rayon_recherche" placeholder="Rayon de recherche" value="<?php if(isset($_POST['rayon_recherche'])) {echo $_POST['rayon_recherche'];} else{echo '10';}?>"/>
+                </div>
+                -->
+                <div class="flexLigne">
+                    <label>Date :</label></br>
+                    <input class="center-right-left" type="date" name="date" value="<?php if(isset($date)) {echo $date; } else{echo $date_now;}?>" min="<?php echo $date_now ?>"/>
+                </div>
+                <div class="flexLigne">
+                    <label>Heure :</label></br>
+                    <input class="center-right-left" type="time" name="time" value="<?php if(isset($time)) {echo $time; } else{echo $hour_now;}?>"/>
+                </div>
 
-            <?php // affichage du message d'erreur ou succes 
-            if(isset($erreur)){
-                echo '<div class="error">'. $erreur . '</div>';
-                }?>
-        <input type="submit" name="search" value="Rechercher le trajet"/>
-    </form>
-    <a class="bouton" href="createTrajet.php?partir_ub=1">Proposer un trajet</a>
+
+                <?php // affichage du message d'erreur ou succes 
+                if(isset($erreur)){
+                    echo '<div class="error">'. $erreur . '</div>';
+                    }?>
+            <input class="bouton" type="submit" name="search" value="Rechercher le trajet"/>
+        </form>
+        <div>
+        <a class="levier" href="createTrajet.php?partir_ub=1">Proposer un trajet</a>
+        </div>
+    </div>    
 </div>
 
 
 
 
 
-<style>
-<?php include 'css/recherche.css'; ?>
-</style>
+<link rel="stylesheet" href="css/recherche.css">
+<link rel="stylesheet" href="css/main.css">
 
 <?php
 include 'footer.php';

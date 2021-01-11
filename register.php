@@ -50,7 +50,7 @@ if(isset($_POST['register']))
         
             if($age <= 64)
             {
-                echo "c'est okai";
+                //echo "c'est okai";
                 if(preg_match("#[0][6][- \.?]?([0-9][0-9][- \.?]?){4}$#", $tel)){ // verification du format du num de telephone  
                     if(filter_var($email, FILTER_VALIDATE_EMAIL) AND (endsWith($email, $fmt_mail1) OR endsWith($email, $fmt_mail2))){ // verification du format du mail 
                         $reqmail = $bdd->prepare("SELECT * FROM users WHERE email=?");
@@ -100,10 +100,8 @@ if(isset($_POST['register']))
 ?>
 
 
-<style>
-<?php include 'css/register.css'; ?>
-</style>
-
+<link rel="stylesheet" href="css/register.css">
+<link rel="stylesheet" href="css/main.css">
 <html>
 <head>
     <meta charset="UTF-8">
@@ -118,65 +116,67 @@ if(isset($_POST['register']))
                 <h2>Inscription</h2>
                 <div class="flexLigne"> 
                     <div class="flexColonne"> 
-                        <p class="label">Nom</p>  
+                        <div class="label">Nom</div>  
                         <input class="center-right-left" type="text" name="nom" value="<?php if(isset($nom)) {echo $nom; }?>" /> 
                     </div>
                     <div class="flexColonne">
-                        <p class="label">Prénom</p>
+                        <div class="label">Prénom</div>
                         <input  class="center-right-left" type="text" name="prenom" value="<?php if(isset($prenom)) {echo $prenom; }?>" />
                     </div>    
                 </div>
                 <div class="flexLigne"> 
                     <div class="flexColonne"> 
-                        <p class="label">Date de Naissance</p>  
+                        <div class="label">Date de Naissance</div>  
                         <input  class="center-right-left" type="date" name="dob" value="<?php if(isset($dob)) {echo $dob; }?>" /> 
                     </div>
                     <div class="flexColonne">
-                        <p class="label">Téléphone</p>
+                        <div class="label">Téléphone</div>
                         <input  class="center-right-left" type="text" name="tel" value="<?php if(isset($tel)) {echo $tel; }?>" />
                     </div>    
                 </div>
                 <div class="flexLigne"> 
                     <div class="flexColonne"> 
-                        <p class="label">Adresse email UB</p>  
+                        <div class="label">Adresse email UB</div>  
                         <input  class="center-right-left" type="text" name="email" value="<?php if(isset($email)) {echo $email; }?>" /> 
                     </div>
                     <div class="flexColonne">
-                        <p class="label">Adresse email récupération</p>
+                        <div class="label">Adresse email récupération</div>
                         <input  class="center-right-left" type="text" name="email_recup" value="<?php if(isset($email_recup)) {echo $email_recup; }?>" />
                     </div>    
                 </div>
                 <div class="flexLigne"> 
                     <div class="flexColonne"> 
-                        <p class="label">Mot de passe</p>  
+                        <div class="label">Mot de passe</div>  
                         <input  class="center-right-left" type="password" name="password" /> 
                     </div>
                     <div class="flexColonne">
-                        <p class="label">Confirmation mot de passe</p>
+                        <div class="label">Confirmation mot de passe</div>
                         <input  class="center-right-left" type="password" name="password_confirm" />
                     </div>    
                 </div>
                 <p  class="label">Etes-vous conducteur ?
                 <input type="checkbox" name="is_driver" value="1"/>
                 </p>
-                <p  class="label"> Accepter les conditions générales d'utilisation
-                <input type="checkbox" name="accepteCondition" value="1"/>
-                </p>
-                <p>
-                <a class="CGU center-right-left" href="conditions.php">Conditions générales d'utilisation</a>
-                </p>
-                <p>
-                <a class="CGU center-right-left" href="politique.php">politique de confidentialité</a>
-                </p>
+                <div class="flexColonne">
+                    <p  class="label"> Accepter les conditions générales d'utilisation
+                    <input type="checkbox" name="accepteCondition" value="1"/>
+                    </p>
+                    <p>
+                    <a class="CGU center-right-left" href="politique.php">politique de confidentialité</a>
+                    </p>
+                    <p>
+                    <a class="CGU center-right-left" href="conditions.php">Conditions générales d'utilisation</a>
+                    </p>
+                </div>
                 <?php
                     if(isset($erreur))
                     {
                         echo '<div class="error">'. $erreur . '</div>';
                     }
                 ?>
-                <p><input type="submit" name="register" value="S'inscrire"/></p>
-                <p class="label">Déjà un compte ?</p>
-                <p><br/> <a class="bouton" href="login.php">Se connecter</a></p>
+                <div><input class="bouton" type="submit" name="register" value="S'inscrire"/></div>
+                <div class="label">Déjà un compte ?</div>
+                <div><br/> <a class="bouton" href="login.php">Se connecter</a></div>
             </form>
         </fieldset>
     </div>

@@ -88,7 +88,7 @@ CREATE TABLE participe(
    is_accepted TINYINT(1) DEFAULT 0,
    annulation_passager TINYINT(1) DEFAULT 0,
    com_passager VARCHAR(255),
-   PRIMARY KEY(id_user, id_trajet,is_accepted,annulation_passager),
+   PRIMARY KEY(id_user, id_trajet),
    FOREIGN KEY(id_user) REFERENCES users(id),
    FOREIGN KEY(id_trajet) REFERENCES trajet(id_trajet)
 );

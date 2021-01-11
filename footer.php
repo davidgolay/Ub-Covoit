@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="css/footer.css">
 <div id="footer1">
     <div id="footer">
         <div><a href="politique.php">Politique de confidentialité</a></div>
