@@ -1,0 +1,34 @@
+div#page{
+    padding-left: 15em;
+    padding-right: 15em;
+}
+
+form input[type=text]{
+    background-color: whitesmoke;
+    background-image: linear-gradient(white, white);
+    border: solid grey 2px;
+}
+
+form label{
+    color: black;
+}
+
+div.infoTrajet{
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+    padding-bottom: 1em;
+}
+
+
+
+@media screen and (max-device-width: 600px) {
+    div#page{
+        padding-left: 0;
+        padding-right: 0;
+    } 
+    
+    form input[type=text]{
+        max-width: 76vw;
+        min-width: 76vw;
+    }
+}

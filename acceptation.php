@@ -3,17 +3,19 @@ session_start();
 include 'header.php';
 include 'config.php';
 ?>
-
+<link rel="stylesheet" href="css/trajet.css">
 <link rel="stylesheet" href="css/main.css">
 
-<div class="info">
+<div id="bandeau">
     <h1>Acceptation des passagers</h1>
-    <div>En validant l'inscription de passagers qui n'ont encore jamais voyagé avec vous, </br> 
-    vous aurez accès à des informations de contact supplémentaires en visitant leur profil.</br>
-    En validant une inscription, vous permettez également à ces passagers d'acceder à vos informations de contact.</br>
-    Retrouvez facilement leur profil en passant par l'onglet "Mes Trajets" puis "Afficher mes trajets conducteurs"
-    </div>
+    <p>En validant l'inscription de passagers qui n'ont encore jamais voyagé avec vous,
+    vous aurez accès à des informations de contact supplémentaires en visitant leur profil.
+    En validant une inscription, vous permettez également à ces passagers d'acceder à vos informations de contact.
+    Retrouvez facilement leur profil en passant par l'onglet "Mes Trajets" puis "Conducteur"
+    </p>
 </div>
+<div  id="page">
+    <div id="resultats">
 
 <?php
 
@@ -44,27 +46,31 @@ foreach($passagersNonAccepted as $row){
 
     // si il y a au moins 1 passager qui veut s'inscire
     if($passager_row > 0){?>
-        <div><?php
+            <?php
         foreach($profil_passager as $row2){?>
-            <div id="page">
-                <h3>Trajet du <?php echo $row['date'].' à '.$heure.'h'.$minute;?> </h3>
-                <div>Demande de <a href="profil.php?id=<?php echo $row2['id'];?>"> <?php echo $row2['prenom'].' '.$row2['nom'];?></a></div>
-                <div>Commentaire d'inscription: <?php if(!empty($row['com_passager'])){echo $row['com_passager'];}else{echo 'pas de message';};?></div>
-                <div>Email: <?php echo $row2['email'];?></div>
-                <div>Telephone: <?php echo $row2['tel'];?></div>
-                </br>
+            <div class="normal-trajet flexColonne">
+                <h3><?php echo $row['date'].' à '.$heure.'h'.$minute. ' - (direction)'?> </h3>
+                <div class="infoTrajet">
+                    <div>Demande de <a class="profil" href="profil.php?id=<?php echo $row2['id'];?>"> <?php echo $row2['prenom'].' '.$row2['nom'];?></a></div>
+                    <div>Commentaire d'inscription: <?php if(!empty($row['com_passager'])){echo $row['com_passager'];}else{echo 'pas de message';};?></div>
+                    <div>Email: <?php echo $row2['email'];?></div>
+                    <div>Telephone: <?php echo $row2['tel'];?></div>
+                </div>
                 <?php            
         }?>
-                <div><a class="bouton" href="acceptation.php?idPass=<?php echo $row2['id'].'&idTraj='.$row['id_trajet'].'&idSess='.$_SESSION['id'];?>">Accepter ce passager</a></div>   
+                <div class="bouton"><a class="TexteBouton" href="acceptation.php?idPass=<?php echo $row2['id'].'&idTraj='.$row['id_trajet'].'&idSess='.$_SESSION['id'];?>">Accepter ce passager</a></div>   
             </div>
-        </div><?php
+        <?php
     }
     // si il n'y aucun passager
     else{?>
         <div>Aucun passager inscrit à vos trajets</div><?php
     }
-}
+}?>
 
+    </div>
+</div>
 
+<?php
 include 'footer.php';
 ?>

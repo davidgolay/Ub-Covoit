@@ -48,32 +48,37 @@ if(isset($_GET['id_trajet']) AND $_GET['id_trajet'] > 0){
     $nom_ville = $ville_query->fetch();
     
     ?>
-    <div>
+    <div id="page">
         <h1><?php echo $txt_main;?></h1><br/>
-        <h2> Détail du trajet</h2>
-    
+        <div class="normal-trajet">
+        <h2> Détails du trajet</h2>
+        <div class="infoTrajet">
+            <table>
         <?php
         // le trajet part de l'ub
+    
         if($trajet['partir_ub'] == 1){
             echo 
-                '<div>
-                    Le ' . $trajet['date'] . ' à ' . $heure . 'h' . $minute . ' de uB à '. $nom_ville['ville_nom_reel'] . '
-                <div>';
+                '<tr>
+                    <p>' . $trajet['date'] . ' à ' . $heure . 'h' . $minute . '<br> de uB à '. $nom_ville['ville_nom_reel'] . '</p>
+                </tr>';
             $txt_delete = 'le ' . $trajet['date'] . ' à ' . $heure . 'h' . $minute . ' de uB à '. $nom_ville['ville_nom_reel'].'.';  //genération du message à envoyer en cas de suppression du trajet
         }
         else{ // le trajet arrive à l'ub
             echo 
-                '<div>
-                    Le ' . $trajet['date'] . ' à ' . $heure . 'h' . $minute . ' de uB à '. $nom_ville['ville_nom_reel'] . '  
-                <div>';
+                '<tr>
+                    <p>' . $trajet['date'] . ' à ' . $heure . 'h' . $minute . '<br> de uB à '. $nom_ville['ville_nom_reel'] . '</p>  
+                </tr>';
             $txt_delete = 'le ' . $trajet['date'] . ' à ' . $heure . 'h' . $minute . ' de uB à '. $nom_ville['ville_nom_reel'].'.'; //genération du message à envoyer en cas de suppression du trajet
         }
 
         // on affiche le conducteur du trajet
         echo 
-            '<div>Conducteur du trajet :
-                <a href="profil.php?id=' . $trajet['id_user'].'">' . $nom_driver . '</a>
-            <div>';
+            '<tr>
+                <p>Conducteur :
+                <a class="profil" href="profil.php?id=' . $trajet['id_user'].'">' . $nom_driver . '</a></p>
+            </tr>
+            </table>';
 
         // requete qui récupére les passagers inscrits au trajet
         $trajet_passager = $bdd->prepare("SELECT id, nom, prenom, trajet.id_trajet, trajet.id_ville FROM users 
@@ -93,13 +98,13 @@ if(isset($_GET['id_trajet']) AND $_GET['id_trajet'] > 0){
                     <table>
                         <tr>
                             <td>
-                                Passagers inscrits au trajet :
+                                Passagers inscrits :
                             </td>';
 
             foreach($trajet_passager as $row2){
                 echo '
                             <td>
-                                <a href="profil.php?id=' . $row2['id'].'">'. $row2['prenom'] . ' ' . $row2['nom'] . '</a>
+                                <a class="profil" href="profil.php?id=' . $row2['id'].'">'. $row2['prenom'] . ' ' . $row2['nom'] . '</a>
                             </td>';
             } 
         }
@@ -153,17 +158,20 @@ if(isset($_GET['id_trajet']) AND $_GET['id_trajet'] > 0){
             header('location: trajet.php?partir_ub='.$trajet['partir_ub'].'&incoming=1&driver=1');
         }
         ?>
-
+<link rel="stylesheet" href="css/inscription.css">
+<link rel="stylesheet" href="css/main.css">
         <form action="" method="post">
             <!--
             <label>Ajouter un commentaire</label></br>
               <input type="text" name="com_passager"/></br></br>   
             -->
+            
             <label><?php echo $txt_label;?></label></br>
-            <input type="text" name="com" value="<?php if(isset($_GET['delete'])){echo "Je vous informe que je dois annuler mon trajet proposé ".$txt_delete." Merci de votre compréhension.";}?>"/></br>
-            <input type="submit" name="<?php echo $action;?>" value="<?php echo $txt_action;?>"/>
+            <input class="center-right-left" type="text" name="com" value="<?php if(isset($_GET['delete'])){echo "Je vous informe que je dois annuler mon trajet proposé ".$txt_delete." Merci de votre compréhension.";}?>"/></br>
+            <input class="bouton" type="submit" name="<?php echo $action;?>" value="<?php echo $txt_action;?>"/>
         </form>
     </div>
+</div>
 
 <?php
 

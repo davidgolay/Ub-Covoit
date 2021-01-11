@@ -39,6 +39,18 @@ div input[type="text"], div input[type="date"], div input[type="time"], div inpu
 div input[type="text"]{
     padding-left: 2em;
 }
+
+div#page{
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+a.bouton{
+    padding: 0.3em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
 @media screen and (max-device-width: 600px) {
 
     div.flexLigne{

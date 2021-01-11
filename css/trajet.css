@@ -1,16 +1,3 @@
-div.normal-trajet{
-    background-color: lightgray;
-    border-radius: 5px;
-    padding: 0.5em;
-    margin: 0.3em;
-    color: black;
-}
-
-div.normal-trajet h2{
-    color: black;
-    font-size: 1.2em;
-}
-
 .flexColonne#aligneDroite .flexLigne{
     justify-content: flex-end;
 }
@@ -20,11 +7,29 @@ div.bouton{
     padding: 0.3em;
 }
 
+div.bouton.desinscrire{
+    min-width: 13em;
+}
+
 svg.bi{
     font-size: 1em;
     padding-top: 0.2em;
 }
 
+.accepte{
+    color:green;
+    font-style: italic;
+}
+
+.attenteAccepte{
+    color:#fffb00;
+    font-style: italic;
+}
+
+div#page{
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
 
 @media screen and (max-device-width: 600px) {
 

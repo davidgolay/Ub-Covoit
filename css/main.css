@@ -83,6 +83,28 @@ body{
     animation: apparaitre 1s ease-out;
 }
 
+#bandeau{
+    position: sticky;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    text-align: justify;
+    border-style: none;
+    padding-left: 5em;
+    padding-right: 5em;
+    padding-bottom: 1em;
+    padding-top: 0.3em;
+    background-color: #f46917;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); 
+}
+
+#bandeau h1{
+    color: black;
+}
+
+
+/*Elements*/
+
 h1{
     position: relative;
     top : 0em;
@@ -102,9 +124,6 @@ h2{
     font-size: 1.8em;
 }
 
-
-
-/*Elements*/
 
 p a.bouton, .bouton{
     padding: 0.8em;
@@ -222,7 +241,7 @@ label{
 
 input[type=text], input[type=checkbox]{
     border-style: none;
-    background-color: white;
+    background-color: lightgray;
     border-radius: 30px;
     padding: 0.5em;
     padding-left: 3.5em;
@@ -235,9 +254,9 @@ input[type="text"],input[type="password"], input[type="date"], input[type="time"
     margin: 0.5em;
     border-style: none;
     border-radius: 30em;
-    background-color: whitesmoke;
+    background-color: lightgray;
     font-size: inherit;
-    background-image: linear-gradient(#cecece, #cecece);
+    background-image: linear-gradient(whitesmoke, whitesmoke);
     background-repeat: no-repeat;
     transition: background-size .3s, color .3s;
     min-width: 18.5em;
@@ -254,9 +273,45 @@ div.error{
     color: rgb(255, 55, 88);
 }
 
-tr td:first-child{
-    text-align: left;
+div.normal-trajet{
+    background-color: lightgray;
+    border-radius: 5px;
+    padding: 0.5em;
+    padding-bottom: 0.5em;
+    margin: 0.3em;
+    color: black;
 }
+
+div.normal-trajet h2{
+    color: black;
+    font-size: 1.2em;
+}
+
+.infoTrajet{
+    background-color: rgb(177, 177, 177);
+    border-radius: 5px;
+    padding-top: 0.005rem;
+    padding-bottom: 0.005rem;
+    padding-right: 0.5em;
+    padding-left: 0.5em;
+    margin-bottom: 0.8em;
+}
+
+.profil{
+    color: rgb(182, 58, 0);
+    text-decoration: underline rgb(182, 58, 0) 2px dotted;
+}
+
+.profil:hover{
+    text-decoration: underline rgb(182, 58, 0) 2px solid;
+}
+
+#resultats{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
 
 /*Flexbox*/
 
@@ -281,6 +336,10 @@ tr td:first-child{
     justify-content: space-around;
     flex-flow: column;
     align-items: center;
+}
+
+tr td:first-child{
+    text-align: left;
 }
 
 /*animations*/
