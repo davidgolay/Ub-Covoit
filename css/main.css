@@ -416,6 +416,11 @@ div#footer{
         padding-bottom: -2em;
         overflow-x: clip;
     }
+
+    #bandeau{
+        padding-right: 0.5em;
+        padding-left: 0.5em;
+    }
     
     h1{
         font-size: 1.2em;
