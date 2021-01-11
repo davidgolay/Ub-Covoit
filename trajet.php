@@ -54,7 +54,7 @@ if($_GET['partir_ub']<=1 AND $_GET['partir_ub']>=0){
     if($_GET['partir_ub'] == 0){
         $partir_ub = 0;
         $txt_title_destination = "allant à l'UB";
-        $text_destination = " allant à l'UB et partant de ";
+        $text_destination = " à l'UB de ";
         // UTILE POUR LE BOUTON DE SWITCH
         $switch_dest = 'partir_ub=1';
         $text_selection = " Partant de l'UB";
@@ -64,7 +64,7 @@ if($_GET['partir_ub']<=1 AND $_GET['partir_ub']>=0){
     else{
         $partir_ub = 1;
         $txt_title_destination = "partant de l'UB";
-        $text_destination = " partant de l'UB et allant à ";
+        $text_destination = " de l'UB à ";
         // UTILE POUR LE BOUTON DE SWITCH
         $switch_dest = 'partir_ub=0';
         $text_selection = " Allant à l'UB";
@@ -160,7 +160,7 @@ if(isset($_GET['incoming']) AND isset($_GET['driver']) AND isset($_GET['partir_u
             $driver_info = $bdd->prepare("SELECT nom, prenom, email, tel FROM users WHERE id=?;");
             $driver_info->execute(array($id_driver_row));
             $driver_result = $driver_info->fetch();
-            $div_conducteur = '<div> Conducteur: <a href="profil.php?id=' . $id_driver_row.'">'. $driver_result['prenom'] . ' ' . $driver_result['nom'] . '</a></div>';       
+            $div_conducteur = '<div> Conducteur: <a class="profil" href="profil.php?id=' . $id_driver_row.'">'. $driver_result['prenom'] . ' ' . $driver_result['nom'] . '</a></div>';       
         }
         else{
             $div_conducteur = '';
@@ -173,7 +173,7 @@ if(isset($_GET['incoming']) AND isset($_GET['driver']) AND isset($_GET['partir_u
         
         echo '<div class="'.$classTrajet.'">';
         echo $status_trajet;
-        echo '<h2>Trajet du ' . $row['date'] . ' à ' . $heure . 'h' . $minute . $text_destination . $nom_ville['ville_nom_reel'] . '</h2><div class="flexColonne">' . $div_conducteur;
+        echo $row['date'] . ' à ' . $heure . 'h' . $minute . $text_destination . $nom_ville['ville_nom_reel'] . '</h2><div class="flexColonne">' . $div_conducteur;
 
         //requete pour afficher les passagers du trajet
         $trajet_passager = $bdd->prepare("SELECT id, nom, prenom, trajet.id_trajet, trajet.id_ville, participe.is_accepted FROM users 
@@ -193,7 +193,7 @@ if(isset($_GET['incoming']) AND isset($_GET['driver']) AND isset($_GET['partir_u
                 if ($row2['is_accepted'] == 1){
                 echo    
                     '<tr>
-                        <td><a href="profil.php?id=' . $row2['id'].'">'. $row2['prenom'] . ' ' . $row2['nom'] . '</a></td>
+                        <td><a class="profil" href="profil.php?id=' . $row2['id'].'">'. $row2['prenom'] . ' ' . $row2['nom'] . '</a></td>
                         <td style="color:green; font-style: italic;">(Accepté par le conducteur)</td>
                     </tr>';
                             
@@ -201,7 +201,7 @@ if(isset($_GET['incoming']) AND isset($_GET['driver']) AND isset($_GET['partir_u
                 else{
                     echo 
                         '<tr>
-                            <td><a href="profil.php?id=' . $row2['id'].'">'. $row2['prenom'] . ' ' . $row2['nom'] . '</a></td>
+                            <td><a class="profil" href="profil.php?id=' . $row2['id'].'">'. $row2['prenom'] . ' ' . $row2['nom'] . '</a></td>
                             <td style="color:#f46917; font-style: italic;">(En attente d\'acceptation)</td>
                         </tr>';
                     
@@ -226,7 +226,7 @@ if(isset($_GET['incoming']) AND isset($_GET['driver']) AND isset($_GET['partir_u
             }
             // dans le cas "en tant que PASSAGER" => Bouton de désinscription
             else{
-                echo '<div class="bouton"><a class="TexteBouton" href="inscription_trajet.php?id_trajet='.$row['id_trajet'] . '&action=desincription">Se désinscrire de ce trajet</a></div>';        
+                echo '<div class="bouton desinscrire"><a class="TexteBouton" href="inscription_trajet.php?id_trajet='.$row['id_trajet'] . '&action=desincription">Se désinscrire de ce trajet</a></div>';        
             }
             
         }

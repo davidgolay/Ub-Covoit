@@ -277,16 +277,11 @@ div.normal-trajet h2{
 
 .profil{
     color: orangered;
-    border: orangered 2px solid;
-    border-radius: 30px;
-    padding: 0.3em;
-    padding-left: 0.5em;
-    padding-right: 0.5em;
-    text-decoration: none;
+    text-decoration: underline orangered 2px dotted;
 }
 
 .profil:hover{
-    border:  orangered 2px dotted;
+    text-decoration: underline orangered 2px solid;
 }
 
 
