@@ -5,7 +5,13 @@ include 'header.php';
 
 <link rel="stylesheet" href="css/index.css">
 <link rel="stylesheet" href="css/main.css">
-<div><p><br/></p></div>
+<div id="bandeau">
+    <h1>Bienvenue sur UB'Covoit !</h1>
+    <p>UB'Covoit est une plateforme de covoiturage solidaire entre étudiants. La plateforme met en relation des conducteurs voyageant
+         avec des places libres et des passagers se rendant dans la même direction pour effectuer les trajets ensembles. Les membres
+          pourront alors diviser les frais routiers et créer des liens. 
+    </p>
+</div>
 <fieldset>
     <div class="animBasHaut"></div>
     <div class="flexColonne">
