@@ -1,5 +1,4 @@
-CREATE schema ubc_test_4;
-USE ubc_test_4;
+
 
 CREATE TABLE users (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,

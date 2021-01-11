@@ -22,9 +22,10 @@ include 'header.php';
         <li>Diminuer le trafic routier pour limiter l’impact de la pollution sur l’environnement</li>
         <li>Maximiser l’impact économique pour les étudiants</li>
     </ul>
-    <style>
-    <?php include 'css/about.css'; ?>
-    </style>
+
+    <link rel="stylesheet" href="css/about.css">
+    <link rel="stylesheet" href="css/main.css"> 
+
 </div>
 <?php
 include 'footer.php';

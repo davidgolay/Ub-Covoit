@@ -10,7 +10,7 @@ if($_GET['driver']<=1 AND $_GET['driver']>=0){
     // correspondra au trajets en tant que passagers
     if($_GET['driver'] == 0){
         $affichage_trajet_driver = 0;
-        $txt_title_type_trajet = ' en tant que passager'; // utile pour l'affichage de texte
+        $txt_title_type_trajet = ' passager'; // utile pour l'affichage de texte
         // UTILE POUR LE BOUTON DE SWITCH
         $switch_type_trajet = 'driver=1'; // utile pour le switch de passager à conducteur
         $link_type_trajet = 'Conducteur'; // utile pour le switch de passager à conducteur
@@ -20,7 +20,7 @@ if($_GET['driver']<=1 AND $_GET['driver']>=0){
     }
     else{
         $affichage_trajet_driver = 1;
-        $txt_title_type_trajet = ' en tant que conducteur';
+        $txt_title_type_trajet = ' conducteur';
         // UTILE POUR LE BOUTON DE SWITCH
         $switch_type_trajet = 'driver=0'; // utile pour le switch de passager à PASSAGER
         $link_type_trajet = 'Passager'; // utile pour le switch de passager à PASSAGER
@@ -53,21 +53,21 @@ if($_GET['incoming']<=1 AND $_GET['incoming']>=0){
 if($_GET['partir_ub']<=1 AND $_GET['partir_ub']>=0){
     if($_GET['partir_ub'] == 0){
         $partir_ub = 0;
-        $txt_title_destination = "allant à l'Université de Bourgogne";
-        $text_destination = ' allant à uB et partant de ';
+        $txt_title_destination = "allant à l'UB";
+        $text_destination = " allant à l'UB et partant de ";
         // UTILE POUR LE BOUTON DE SWITCH
         $switch_dest = 'partir_ub=1';
-        $text_selection = ' Partant de uB';
+        $text_selection = " Partant de l'UB";
         $selection_aller = 'class="selectionne gauche"';
         $selection_partir = '';
     }
     else{
         $partir_ub = 1;
-        $txt_title_destination = "partant de l'Université de Bourgogne";
-        $text_destination = ' partant de uB et allant à ';
+        $txt_title_destination = "partant de l'UB";
+        $text_destination = " partant de l'UB et allant à ";
         // UTILE POUR LE BOUTON DE SWITCH
         $switch_dest = 'partir_ub=0';
-        $text_selection = ' Allant à uB';
+        $text_selection = " Allant à l'UB";
         $selection_aller = '';
         $selection_partir = 'class="selectionne droite"';
           
@@ -119,9 +119,9 @@ if(isset($_GET['incoming']) AND isset($_GET['driver']) AND isset($_GET['partir_u
         }
 
     }
-
     echo // les liens boutons permettant de switcher entre partir_ub, trajets effectués/à venir et la destination ub ou non
-    '<div id="page"> 
+    '<div id="page">
+        <h1>Mes trajets '. $txt_title_type_trajet.'</h1>
         <div class="flexLigne">
             <div class="switch">
                 <a '.$selection_driver .'href="trajet.php?partir_ub='. $_GET['partir_ub'] . '&incoming='.$_GET['incoming'] . '&driver=1">Conducteur</a>
@@ -136,15 +136,16 @@ if(isset($_GET['incoming']) AND isset($_GET['driver']) AND isset($_GET['partir_u
                 <a '.$selection_effectue .'href="trajet.php?partir_ub='. $_GET['partir_ub'] . '&incoming=0&driver='.$_GET['driver'].'">Effectués</a>
             </div>
         </div>';
-
+    
     echo // balises de titre de liste des trajets à afficher
-    '<div class="espace"></div><h1>Liste de mes trajets'. $txt_title_dated . $txt_title_destination . $txt_title_type_trajet . '</h1></br>';
+    '<div class="espace"></div><h1>Trajets'. $txt_title_dated . $txt_title_destination.'</h1></br>';
 
     echo 
     '<div class="driverTrajet">';
 
     foreach($trajet as $row){
         $classTrajet = 'normal-trajet';
+        $status_trajet = '';
         $heure = substr($row['hour'], 0, 2);
         $minute = substr($row['hour'], -2, 2);
 
@@ -159,23 +160,23 @@ if(isset($_GET['incoming']) AND isset($_GET['driver']) AND isset($_GET['partir_u
             $driver_info = $bdd->prepare("SELECT nom, prenom, email, tel FROM users WHERE id=?;");
             $driver_info->execute(array($id_driver_row));
             $driver_result = $driver_info->fetch();
-            $div_conducteur = '<div> Conducteur :<a href="profil.php?id=' . $id_driver_row.'">'. $driver_result['prenom'] . ' ' . $driver_result['nom'] . '</a></div>';       
+            $div_conducteur = '<div> Conducteur: <a href="profil.php?id=' . $id_driver_row.'">'. $driver_result['prenom'] . ' ' . $driver_result['nom'] . '</a></div>';       
         }
         else{
             $div_conducteur = '';
         }
 
         if ($row['statut_trajet'] == 1){
-            echo '<div>Ce trajet à été annulé</div>';
-            $classTrajet = 'deleted-trajet';
+            $status_trajet = '<div style="color:red">Ce trajet à été annulé</div>';
+            $classTrajet = 'normal-trajet';
         }
         
-        echo  
-            '<div class="'.$classTrajet.'">
-            <h2>Trajet du ' . $row['date'] . ' à ' . $heure . 'h' . $minute . $text_destination . $nom_ville['ville_nom_reel'] . '</h2><div class="flexColonne">' . $div_conducteur;
+        echo '<div class="'.$classTrajet.'">';
+        echo $status_trajet;
+        echo '<h2>Trajet du ' . $row['date'] . ' à ' . $heure . 'h' . $minute . $text_destination . $nom_ville['ville_nom_reel'] . '</h2><div class="flexColonne">' . $div_conducteur;
 
         //requete pour afficher les passagers du trajet
-        $trajet_passager = $bdd->prepare("SELECT id, nom, prenom, trajet.id_trajet, trajet.id_ville FROM users 
+        $trajet_passager = $bdd->prepare("SELECT id, nom, prenom, trajet.id_trajet, trajet.id_ville, participe.is_accepted FROM users 
         INNER JOIN participe ON users.id=participe.id_user 
         INNER JOIN trajet ON participe.id_trajet=trajet.id_trajet
         WHERE trajet.partir_ub = 1 AND trajet.id_trajet=? AND participe.annulation_passager = 0;");
@@ -185,24 +186,35 @@ if(isset($_GET['incoming']) AND isset($_GET['driver']) AND isset($_GET['partir_u
         // si il y a au moins 1 passager
         if($passager_row > 0){
             echo 
-                '<div classe="passager">
-                    <table>
-                        <tr>
-                            <td>Passagers inscrits au trajet :</td>';      
-
+                '<div class="passager">
+                    <div style="font-weight: bold">Passagers inscrits au trajet :</div>      
+                        <table>';
             foreach($trajet_passager as $row2){
+                if ($row2['is_accepted'] == 1){
                 echo    
-                            '<td><a href="profil.php?id=' . $row2['id'].'">'. $row2['prenom'] . ' ' . $row2['nom'] . '</a></td>';            
+                    '<tr>
+                        <td><a href="profil.php?id=' . $row2['id'].'">'. $row2['prenom'] . ' ' . $row2['nom'] . '</a></td>
+                        <td style="color:green; font-style: italic;">(Accepté par le conducteur)</td>
+                    </tr>';
+                            
+                }
+                else{
+                    echo 
+                        '<tr>
+                            <td><a href="profil.php?id=' . $row2['id'].'">'. $row2['prenom'] . ' ' . $row2['nom'] . '</a></td>
+                            <td style="color:#f46917; font-style: italic;">(En attente d\'acceptation)</td>
+                        </tr>';
+                    
+                }           
             }
-        echo
-                        '</tr>
+            echo '
                     </table>
                 </div>';
         }
         // si il n'y aucun passager
         else{
             echo 
-                '<div classe="passager">Aucun passager inscrit à ce trajet</div>';
+                '<div class="passager">Aucun passager inscrit à ce trajet</div>';
         }
         // si le trajet n'a pas été annulé
         if ($row['statut_trajet'] == 0 AND $_GET['incoming'] == 1){
@@ -218,9 +230,9 @@ if(isset($_GET['incoming']) AND isset($_GET['driver']) AND isset($_GET['partir_u
             }
             
         }
-        echo '</div>'; //div qui ferme la div "flexColonne"
-        echo '</div>'; // div qui ferme la div de classe "classTrajet" juste avant le h2 Trajet du ...
-    echo '</div></br>'; // div qui ferme la div de classe "trajet-conducteur" juste avant le 1er foreach  
+        //echo '</div></br>';
+        echo '</div></br>'; //div qui ferme la div "flexColonne"
+    echo '</div></br>'; // div qui ferme la div de classe "classTrajet" juste avant le h2 Trajet du ...  
     }
 }
 else{

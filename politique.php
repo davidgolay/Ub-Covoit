@@ -78,9 +78,9 @@ include 'header.php';
     <div id=phrase><p>•	adressant un email à notre délégué à la protection des données à l’adresse <a href=mailto:dataprotection@ubCovoit.com>dataprotection@ubCovoit.com</a></p></div>
 
 
-    <style>
-    <?php include 'css/politique.css'; ?>
-    </style>
+    <link rel="stylesheet" href="css/politique.css">
+    <link rel="stylesheet" href="css/main.css"> 
+
 </div>
 <?php
 include 'footer.php';

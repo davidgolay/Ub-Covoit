@@ -1,4 +1,4 @@
-use ubc_test_4;
+
 
 INSERT INTO users (id,nom,prenom,email,email_recup,tel,dob,password,is_driver,bio,created_at) 
 VALUES

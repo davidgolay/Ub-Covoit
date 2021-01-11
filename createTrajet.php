@@ -46,7 +46,7 @@ if($_GET['partir_ub']<=1 AND $_GET['partir_ub']>=0)
         $selectionAller = '';  
           
     }
-    echo 'valeur du boolean partir_ub : '. $partir_ub; 
+    //echo 'valeur du boolean partir_ub : '. $partir_ub; 
 }
 else
 {
@@ -64,11 +64,14 @@ if(isset($_POST['proposer']))
     $date = $_POST['date'];
     $time = $_POST['time'];
     $datetime = $date . ' ' . $time; 
-
-    $lg_cp = strlen ( $ville_code_postal);
-    //echo "longueur code postal" . $lg_cp . "\n";
     $rayon = $_POST['rayon'];
-    
+
+    $length_ville = strlen($ville_code_postal);
+    $nb_zero = 5 - strlen($ville_code_postal);
+    while($nb_zero > 0){
+        $ville_code_postal = $ville_code_postal.'0';
+        $nb_zero = $nb_zero - 1;   
+    }
 
     if(!empty($_POST['ville_nom']) AND !empty($_POST['date']) AND !empty($_POST['time']))
     {   
@@ -79,7 +82,7 @@ if(isset($_POST['proposer']))
         if($ville_exist > 0) 
         {
             $id_ville = $reqville->fetch();
-            echo "id ville = " . $id_ville['id_ville'];
+            //echo "id ville = " . $id_ville['id_ville'];
         }    
         else
         {   // Si la requete echoue, on racourci de 3 nombres le code postal entré pour reverifier
@@ -93,7 +96,7 @@ if(isset($_POST['proposer']))
             if($ville_exist > 0) 
             {
                 $id_ville = $reqville->fetch();
-                echo "id ville = " . $id_ville['id_ville'];            
+                //echo "id ville = " . $id_ville['id_ville'];            
             }
             else
             {

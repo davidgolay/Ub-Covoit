@@ -62,6 +62,13 @@ if(isset($_POST['search']))
     $date = $_POST['date'];
     $time = $_POST['time'];
     $datetime = $date . ' ' . $time; //on concatène les champs formulaire date et time en une seule variable datetime_trajet
+
+    $length_ville = strlen($ville_code_postal);
+    $nb_zero = 5 - strlen($ville_code_postal);
+    while($nb_zero > 0){
+        $ville_code_postal = $ville_code_postal.'0';
+        $nb_zero = $nb_zero - 1;   
+    }
     
     // on verifie si les champs suivant sont vides
     if(!empty($_POST['ville_nom']) AND !empty($_POST['date']) AND !empty($_POST['time']))
