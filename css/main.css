@@ -83,6 +83,28 @@ body{
     animation: apparaitre 1s ease-out;
 }
 
+#bandeau{
+    position: sticky;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    text-align: justify;
+    border-style: none;
+    padding-left: 5em;
+    padding-right: 5em;
+    padding-bottom: 1em;
+    padding-top: 0.3em;
+    background-color: #f46917;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); 
+}
+
+#bandeau h1{
+    color: black;
+}
+
+
+/*Elements*/
+
 h1{
     position: relative;
     top : 0em;
@@ -102,9 +124,6 @@ h2{
     font-size: 1.8em;
 }
 
-
-
-/*Elements*/
 
 p a.bouton, .bouton{
     padding: 0.8em;
@@ -257,7 +276,8 @@ div.error{
 div.normal-trajet{
     background-color: lightgray;
     border-radius: 5px;
-    padding: 0.8em;
+    padding: 0.5em;
+    padding-bottom: 0.5em;
     margin: 0.3em;
     color: black;
 }
@@ -272,16 +292,24 @@ div.normal-trajet h2{
     border-radius: 5px;
     padding-top: 0.005rem;
     padding-bottom: 0.005rem;
+    padding-right: 0.5em;
+    padding-left: 0.5em;
     margin-bottom: 0.8em;
 }
 
 .profil{
-    color: orangered;
-    text-decoration: underline orangered 2px dotted;
+    color: rgb(182, 58, 0);
+    text-decoration: underline rgb(182, 58, 0) 2px dotted;
 }
 
 .profil:hover{
-    text-decoration: underline orangered 2px solid;
+    text-decoration: underline rgb(182, 58, 0) 2px solid;
+}
+
+#resultats{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
 }
 
 

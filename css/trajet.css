@@ -16,6 +16,20 @@ svg.bi{
     padding-top: 0.2em;
 }
 
+.accepte{
+    color:green;
+    font-style: italic;
+}
+
+.attenteAccepte{
+    color:#fffb00;
+    font-style: italic;
+}
+
+div#page{
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
 
 @media screen and (max-device-width: 600px) {
 

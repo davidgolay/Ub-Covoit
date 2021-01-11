@@ -40,9 +40,9 @@ div input[type="text"]{
     padding-left: 2em;
 }
 
-#resultats{
-    display: flex;
-    flex-flow: row wrap;
+div#page{
+    padding-left: 0.5em;
+    padding-right: 0.5em;
 }
 
 a.bouton{

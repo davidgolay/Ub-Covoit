@@ -19,6 +19,8 @@ div.infoTrajet{
     padding-bottom: 1em;
 }
 
+
+
 @media screen and (max-device-width: 600px) {
     div#page{
         padding-left: 0;
