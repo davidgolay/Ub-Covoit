@@ -92,7 +92,7 @@ if(isset($_POST['search']))
             //echo 'id ville retourné'. $id_ville['id_ville'] . '\n';
 
             // on prepare la requete de recherche de trajet
-            $search_trajet = $bdd->prepare("SELECT id_trajet, partir_ub, id_ville, id_user, place_dispo, date_format(datetime_trajet, '%d/%m/%Y') as date, date_format(datetime_trajet, '%H:%i') as hour, 
+            $search_trajet = $bdd->prepare("SELECT id_trajet, partir_ub, id_ville, id_user, place_dispo, com, date_format(datetime_trajet, '%d/%m/%Y') as date, date_format(datetime_trajet, '%H:%i') as hour, 
             nom, prenom, tel, email FROM trajet INNER JOIN users ON users.id = trajet.id_user
             WHERE id_ville = ?
             AND datetime_trajet >= ?
@@ -120,6 +120,12 @@ if(isset($_POST['search']))
                     $driver = $row['id_user'];
                     $heure = substr($row['hour'], 0, 2);
                     $minute = substr($row['hour'], -2, 2);
+                    /*if(!empty($row['com'])){
+                        $commentaire_driver = $row['com'];
+                    }
+                    else{
+                        $commentaire_driver = 'Aucun';
+                    }*/
 
                     $ville = $bdd->prepare("SELECT ville_nom_reel FROM ville WHERE id_ville=?;"); // requete qui permet de trouver l'id correspondant à la ville et son code postal saisis
                     $ville->execute(array($row['id_ville']));

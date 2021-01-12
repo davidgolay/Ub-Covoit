@@ -16,6 +16,11 @@ if($_SESSION['logged_in'] != 1)
          avec des places libres et des passagers se rendant dans la même direction pour effectuer les trajets ensembles. Les membres
           pourront alors diviser les frais routiers et créer des liens. 
     </p>
+    <?php if($_SESSION['is_driver'] != 1) {?>
+        <p>Si vous êtes devenu conducteur et que vous souhaitez proposer des trajets, modifier<a class="onglet" href="<?php if(isset($_SESSION['logged_in'])){echo 'profil.php?id='.$_SESSION['id'];}else{echo 'login.php';}?>"> votre profil </a>
+    et revenez sur la page d'acceuil pour accéder à cette fonctionnalité.
+    </p>
+    <?php } ?>
 </div>
 <fieldset>
     <div class="animBasHaut"></div>
