@@ -6,27 +6,52 @@ div#footer1{
     bottom: -10em;
 }
 
-a.bouton, input[type=submit]{
+div.bouton, input[type=submit]{
     border-radius: 90px;
     font-size: 2em;
+    width: unset;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
 }
 
-a.levier{
+div.formeLevier{
     padding: 0.8em;
     background-color: rgb(31, 31, 31);
-    color: rgb(236, 236, 236);
     border-radius: 90px;
     border-style: none;
-    text-decoration: none;
-    font-size: 2em;
-    font-family: inherit;
     align-items: center;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     animation: apparaitre 1s ease-out;
+    margin-top: 2em;
+}
+
+a.levier{
+    font-size: 2em;
+    font-family: inherit;
+    text-decoration: none;
+    color: rgb(236, 236, 236);
 }
 
 a.levier:hover{
     background-color:rgb(56, 56, 56);
+}
+
+div#pasConducteur{
+    padding: 0.8em;
+    padding-top: 0;
+    padding-bottom: 0;
+    border-radius: 5px;
+    border-style: none;
+    align-items: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    animation: apparaitre 1s ease-out;
+    margin-top: 2em;
+    background-color: rgb(31, 31, 31);
+    text-align: center;
+}
+
+p#pasConducteur{
+    color: whitesmoke;
 }
 
 div.flexLigne{
@@ -34,33 +59,25 @@ div.flexLigne{
     justify-content: space-around;
 }
 
-div.animBasHaut{
-    animation: basEnHautIndex 1s ease-out;
-    -moz-animation: basEnHautIndex 1s ease-out;
-    height: 5em;
-}
-
-@keyframes basEnHautIndex{
-    from{height: 8em;}
-    to{height: 5em;}
-}
-
-@-moz-keyframes basEnHautIndex{
-    from{height: 8em;}
-    to{height: 5em;} 
-}
 
 @media screen and (max-device-width: 600px) {
 
     /* page active */
 
-    a.bouton, a.levier{
-        font-size : 1.2em;
+    a.TexteBouton{
+        font-size : 0.6em;
     }
 
-    a.bouton{
-        margin-top: 10em;
-        margin-bottom: 10em;
+    a.levier{
+        font-size: 1.2em;
+    }
+
+    div.bouton{
+        margin-top: 1em;
+        margin-bottom: 1em;
+        padding: 0.5em;
+        padding-bottom: 0.1em;
+        padding-top: 0.0005em;
     }
 
 

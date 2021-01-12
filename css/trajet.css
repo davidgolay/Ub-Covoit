@@ -34,8 +34,10 @@ div#page{
 @media screen and (max-device-width: 600px) {
 
     /* page active */
-
-
+    div#page{
+        padding-left: 0;
+        padding-right: 0;
+    }
 
     .normal-trajet{
         font-size: 0.7em;

@@ -30,7 +30,7 @@ body{
     width: 100%;
     height: 3em;
     display: flex;
-    position: relative;
+    position: fixed;
     justify-content: left;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 } 
@@ -65,12 +65,17 @@ body{
     font-weight: normal;
 }
 
+#navbarEspace{
+    height: 4em;
+}
+
+
 /*page*/
 #page{
     position: relative;
     margin-left: 10em;
     margin-right: 10em;
-    margin-top: 2em;
+    margin-bottom: 4em;
     text-align: center;
     border-style: none;
     padding-left: 5em;
@@ -87,7 +92,7 @@ body{
     position: sticky;
     margin-left: 0;
     margin-right: 0;
-    margin-top: 0;
+    margin-top: -1em;
     text-align: justify;
     border-style: none;
     padding-left: 5em;
@@ -303,7 +308,8 @@ div.normal-trajet h2{
 }
 
 .profil:hover{
-    text-decoration: underline rgb(182, 58, 0) 2px solid;
+    text-decoration: underline rgb(131, 48, 0) 3px solid;
+    color: rgb(131, 48, 0);
 }
 
 #resultats{
@@ -380,7 +386,7 @@ div#footer a{
     color: rgb(19, 19, 19);
     text-decoration: none;
     font-size: 1em;
-    padding: 1em;
+    padding: 0.2em;
 }
 
 #footer a:hover{
@@ -388,11 +394,17 @@ div#footer a{
 }
 
 div#footer{
-    position: relative;
-    bottom : 2em;
+    background-color: lightgray;
+    box-shadow: 0 -4px 8px 0 rgba(0, 0, 0, 0.2), 0 -6px 20px 0 rgba(0, 0, 0, 0.19);
+    position: fixed;
+    bottom: 0;
+    padding-bottom: 0.1em;
+    padding-left: 15em;
+    padding-right: 15em;
+    width: 100%;
     display: flex;
     flex-flow: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 #footer1{
@@ -417,9 +429,17 @@ div#footer{
         overflow-x: clip;
     }
 
+    div.animBasHaut{
+        animation: none;
+        -moz-animation: none;
+        height: 0;
+    }
+
     #bandeau{
         padding-right: 0.5em;
         padding-left: 0.5em;
+        padding-bottom: 0.1em;
+        font-size: 0.8em;
     }
     
     h1{
@@ -462,6 +482,7 @@ div#footer{
 
     .navbar{
         height: 3.2em;
+        width: 100vw;
     }
    
     #logoAccueuil{
@@ -470,15 +491,16 @@ div#footer{
         margin-left: 0.5em;
     }
    
-    div#footer div a{
-        font-size: 1em;
-    }
    
     .mobileTexte{
         visibility: hidden;
         font-size: 0.1em;
     }
    
+    #navbarEspace{
+        height: 3.2em;
+    }
+
     svg.icon{
         width: 2em;
         height: 2em;
@@ -503,7 +525,9 @@ div#footer{
     div#footer a{
         color: rgb(19, 19, 19);
         text-decoration: none;
-        font-size: 3em;
-        padding: 1em;
+        width: 100vw;
+        font-size: 0.8em;
+        padding: 0;
+        text-align: center;
     }
 }
