@@ -91,7 +91,7 @@ if(isset($_GET['incoming']) AND isset($_GET['driver']) AND isset($_GET['partir_u
         // cas de figure pour recuperer les trajets PASSAGERS
         else{ 
             $trajet = $bdd->prepare("SELECT trajet.partir_ub, trajet.statut_trajet, trajet.id_trajet, trajet.id_user, date_format(datetime_trajet, '%d/%m/%Y') as date, 
-            date_format(datetime_trajet, '%h:%i') as hour, nom, prenom, is_driver 
+            date_format(datetime_trajet, '%H:%i') as hour, nom, prenom, is_driver 
             FROM trajet INNER JOIN users ON users.id = trajet.id_user 
             INNER JOIN participe ON trajet.id_trajet = participe.id_trajet 
             WHERE participe.id_user = ? AND participe.annulation_passager = 0 AND trajet.partir_ub = ? AND trajet.datetime_trajet > ? ORDER BY datetime_trajet ASC LIMIT 50;");
@@ -111,7 +111,7 @@ if(isset($_GET['incoming']) AND isset($_GET['driver']) AND isset($_GET['partir_u
         // cas de figure pour recuperer les trajets PASSAGERS
         else{ 
             $trajet = $bdd->prepare("SELECT trajet.partir_ub, trajet.statut_trajet, trajet.id_trajet, trajet.id_user, date_format(datetime_trajet, '%d/%m/%Y') as date, 
-            date_format(datetime_trajet, '%h:%i') as hour, nom, prenom, is_driver 
+            date_format(datetime_trajet, '%H:%i') as hour, nom, prenom, is_driver 
             FROM trajet INNER JOIN users ON users.id = trajet.id_user 
             INNER JOIN participe ON trajet.id_trajet = participe.id_trajet 
             WHERE participe.id_user = ? AND participe.annulation_passager = 0 AND trajet.partir_ub = ? AND trajet.datetime_trajet < ? ORDER BY datetime_trajet ASC LIMIT 50;");
@@ -128,8 +128,8 @@ if(isset($_GET['incoming']) AND isset($_GET['driver']) AND isset($_GET['partir_u
                 <a '.$selection_passager .'href="trajet.php?partir_ub='. $_GET['partir_ub'] . '&incoming='.$_GET['incoming'] . '&driver=0">Passager</a>
             </div>
             <div class="switch">
-                <a '.$selection_aller .'href="trajet.php?partir_ub=0&incoming='.$_GET['incoming'] . '&driver='.$_GET['driver'].'">Allant UB</a>
-                <a '.$selection_partir .'href="trajet.php?partir_ub=1&incoming='.$_GET['incoming'] . '&driver='.$_GET['driver'].'">Partant UB</a>
+                <a '.$selection_aller .'href="trajet.php?partir_ub=0&incoming='.$_GET['incoming'] . '&driver='.$_GET['driver'].'">Allant à l\'UB</a>
+                <a '.$selection_partir .'href="trajet.php?partir_ub=1&incoming='.$_GET['incoming'] . '&driver='.$_GET['driver'].'">Partant de l\'UB</a>
             </div>
             <div class="switch">
                 <a '.$selection_avenir .'href="trajet.php?partir_ub='. $_GET['partir_ub'] . '&incoming=1&driver='.$_GET['driver'].'">A venir</a>
@@ -229,7 +229,7 @@ if(isset($_GET['incoming']) AND isset($_GET['driver']) AND isset($_GET['partir_u
             }
             // dans le cas "en tant que PASSAGER" => Bouton de désinscription
             else{
-                echo '<div class="bouton desinscrire"><a class="TexteBouton" href="inscription_trajet.php?id_trajet='.$row['id_trajet'] . '&action=desincription">Se désinscrire de ce trajet</a></div>';        
+                echo '<div class="bouton desinscrire"><a class="TexteBouton" href="inscription_trajet.php?id_trajet='.$row['id_trajet'] . '&action=desinscription">Se désinscrire de ce trajet</a></div>';        
             }
             
         }

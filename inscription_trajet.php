@@ -28,7 +28,7 @@ switch ($_GET['action']) {
 if(isset($_GET['id_trajet']) AND $_GET['id_trajet'] > 0){
     // on récupère les infos du trajet transmis par url
     $select_id_trajet = intval($_GET['id_trajet']); //conversion en nombre pour sécuriser
-    $req_aff_trajet = $bdd->prepare("SELECT trajet.id_trajet, trajet.id_user, trajet.partir_ub, trajet.id_ville, trajet.place_dispo, 
+    $req_aff_trajet = $bdd->prepare("SELECT trajet.id_trajet, trajet.id_user, trajet.partir_ub, trajet.id_ville, trajet.place_dispo, trajet.com, 
     date_format(datetime_trajet, '%d/%m/%Y') as date, 
     date_format(datetime_trajet, '%H:%i') as hour, 
     users.nom, users.prenom FROM trajet 
@@ -77,11 +77,25 @@ if(isset($_GET['id_trajet']) AND $_GET['id_trajet'] > 0){
             '<tr>
                 <p>Conducteur :
                 <a class="profil" href="profil.php?id=' . $trajet['id_user'].'">' . $nom_driver . '</a></p>
-            </tr>
-            </table>';
+            </tr>';
+        if(($_GET['action'] == 'inscription') OR ($_GET['action'] == 'desinscription')){
+            if(($trajet['com']) != ''){
+                $commentaire_driver = $trajet['com'];
+            }
+            else{
+                $commentaire_driver = 'Aucun';
+            }
+            echo
+                '<tr>
+                    <p>Commentaire sur le trajet : </p>
+                    <p>'.$commentaire_driver.'</p>
+                </tr>';
+        }
+        echo
+            '</table>';
 
         // requete qui récupére les passagers inscrits au trajet
-        $trajet_passager = $bdd->prepare("SELECT id, nom, prenom, trajet.id_trajet, trajet.id_ville FROM users 
+        $trajet_passager = $bdd->prepare("SELECT id, nom, prenom, trajet.id_trajet, trajet.id_ville, trajet.id_user FROM users 
         INNER JOIN participe ON users.id=participe.id_user 
         INNER JOIN trajet ON participe.id_trajet=trajet.id_trajet
         WHERE trajet.partir_ub = 1 AND trajet.id_trajet=?;");
@@ -122,7 +136,7 @@ if(isset($_GET['id_trajet']) AND $_GET['id_trajet'] > 0){
                 </div>';
 }
         //cas de l'inscription à un trajet
-        if(isset($_POST['inscription'])){
+        if(isset($_POST['inscription']) AND $_SESSION['id'] != $trajet['id_user']){
             $id_trajet = $trajet['id_trajet'];
             $com_trajet = htmlspecialchars($_POST['com']);
             $insert_passager = $bdd->prepare("INSERT INTO participe(id_user, id_trajet, com_passager) VALUES(?, ?, ?);");
@@ -136,7 +150,7 @@ if(isset($_GET['id_trajet']) AND $_GET['id_trajet'] > 0){
         if(isset($_POST['desinscription'])){
             $id_trajet = $trajet['id_trajet'];
             $id_passager = $_SESSION['id'];
-            $com_passager = htmlspecialchars($_POST['com']);
+            $com_passager = 'desinscription';
             $desinscription_passager = $bdd->prepare("UPDATE participe
             SET annulation_passager = 1,
             com_passager = ? 
@@ -165,9 +179,11 @@ if(isset($_GET['id_trajet']) AND $_GET['id_trajet'] > 0){
             <label>Ajouter un commentaire</label></br>
               <input type="text" name="com_passager"/></br></br>   
             -->
-            
+            <?php 
+            if($_GET['action'] == 'inscription'){ ?>
             <label><?php echo $txt_label;?></label></br>
             <input class="center-right-left" type="text" name="com" value="<?php if(isset($_GET['delete'])){echo "Je vous informe que je dois annuler mon trajet proposé ".$txt_delete." Merci de votre compréhension.";}?>"/></br>
+            <?php } ?>
             <input class="bouton" type="submit" name="<?php echo $action;?>" value="<?php echo $txt_action;?>"/>
         </form>
     </div>

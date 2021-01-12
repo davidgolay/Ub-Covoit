@@ -36,13 +36,25 @@ if(isset($_GET['idPass']) AND isset($_GET['idTraj'])){
 }
 
 $passagersNonAccepted = $bdd->prepare("SELECT participe.id_user, participe.com_passager, participe.is_accepted, trajet.id_trajet, date_format(datetime_trajet, '%d/%m/%Y') as date, 
-date_format(datetime_trajet, '%h:%i') as hour FROM trajet INNER JOIN participe ON trajet.id_trajet=participe.id_trajet WHERE trajet.id_user = ? AND trajet.statut_trajet = 0 AND participe.is_accepted = 0 ORDER BY datetime_trajet;");
+date_format(datetime_trajet, '%H:%i') as hour FROM trajet INNER JOIN participe ON trajet.id_trajet=participe.id_trajet WHERE trajet.id_user = ? AND trajet.statut_trajet = 0 AND participe.is_accepted = 0 ORDER BY datetime_trajet;");
 $passagersNonAccepted->execute(array($_SESSION['id']));
 
 foreach($passagersNonAccepted as $row){
     //requete pour afficher les utlisateurs a accepter
     $heure = substr($row['hour'], 0, 2);
     $minute = substr($row['hour'], -2, 2);
+
+    $id_trajet_info = $row['id_trajet'];
+    $trajet = $bdd->prepare("SELECT trajet.partir_ub, ville.ville_nom FROM trajet INNER JOIN ville ON trajet.id_ville=ville.id_ville WHERE trajet.id_trajet = ?;");
+    $trajet->execute(array($id_trajet_info));
+    foreach ($trajet as $rowTrajet) {
+        if($rowTrajet['partir_ub'] == 1){
+            $ville = "De l'UB à ".$rowTrajet['ville_nom'];
+        }
+        else{
+            $ville = "De ".$rowTrajet['ville_nom']." à l'UB";
+        }
+    }
 
     $profil_passager = $bdd->prepare("SELECT * FROM users WHERE id = ?");
     $profil_passager->execute(array($row['id_user']));
@@ -51,9 +63,13 @@ foreach($passagersNonAccepted as $row){
     // si il y a au moins 1 passager qui veut s'inscire
     if($passager_row > 0){?>
             <?php
-        foreach($profil_passager as $row2){?>
+        foreach($profil_passager as $row2){
+            //recupération des infos du trajet
+            
+            
+            ?>
             <div class="normal-trajet flexColonne">
-                <h3><?php echo $row['date'].' à '.$heure.'h'.$minute. ' - (direction)'?> </h3>
+                <h3><?php echo $row['date'].' à '.$heure.'h'.$minute. ' - '.$ville?> </h3>
                 <div class="infoTrajet">
                     <div>Demande de <a class="profil" href="profil.php?id=<?php echo $row2['id'];?>"> <?php echo $row2['prenom'].' '.$row2['nom'];?></a></div>
                     <div>Commentaire d'inscription: <?php if(!empty($row['com_passager'])){echo $row['com_passager'];}else{echo 'pas de message';};?></div>
