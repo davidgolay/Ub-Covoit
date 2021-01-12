@@ -1,9 +1,10 @@
 <div id="footer1">
+<!-- <div id="footerEspace"></div> -->
     <div id="footer">
-        <div><a href="politique.php">Politique de confidentialité</a></div>
-        <div><a href="conditions.php">Conditions générales d'utilisation</a></div>
+        <a href="politique.php">Politique de confidentialité</a>
+        <a href="conditions.php">Conditions générales</a>
         <!--<div><a href="legal.php">Mentions légales</a></div> -->
-        <div><a href="about.php">A propos</a></div>
+        <a href="about.php">A propos</a>
     </div>
 </div>
 </body>
