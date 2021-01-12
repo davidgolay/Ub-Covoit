@@ -2,7 +2,7 @@
 session_start();
 include 'header.php';
 include 'config.php';
-if($_SESSION['logged_in'] != 1 OR empty($_GET['idPass']) OR empty($_GET['idTraj']) )
+if($_SESSION['logged_in'] != 1)
 {
     header('location: index.php');
 }
