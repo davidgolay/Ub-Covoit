@@ -65,6 +65,8 @@ if(isset($_POST['proposer']))
     $time = $_POST['time'];
     $datetime = $date . ' ' . $time; 
     $rayon = $_POST['rayon'];
+    
+    // ajouter test date
 
     $length_ville = strlen($ville_code_postal);
     $nb_zero = 5 - strlen($ville_code_postal);

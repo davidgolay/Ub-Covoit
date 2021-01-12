@@ -1,6 +1,11 @@
 <?php
 session_start();
 include 'header.php';
+
+if($_SESSION['logged_in'] != 1)
+{
+    header('location: login.php');
+}
 ?>
 
 <link rel="stylesheet" href="css/index.css">
@@ -16,14 +21,16 @@ include 'header.php';
     <div class="animBasHaut"></div>
     <div class="flexColonne">
         <div class="flexLigne">
-            <div class="centrer"><a class="bouton" href="searchTrajet.php?partir_ub=0"> Aller à l'UB </a></div>
+            <div class="centrer"><a class="bouton" href="searchTrajet.php?partir_ub=0" title="Rechercher un covoiturage allant à l'Université de Bourgogne"> Aller à l'UB </a></div>
             <div class="animBasHautMobile"></div>
-            <div class="centrer"><a class="bouton" href="searchTrajet.php?partir_ub=1"> Partir de l'UB </a></div>
+            <div class="centrer"><a class="bouton" href="searchTrajet.php?partir_ub=1" title="Rechercher un covoiturage partant de l'Université de Bourgogne"> Partir de l'UB </a></div>
         </div>
+        <?php if($_SESSION['is_driver'] == 1){?>
         <div class="animBasHaut"></div>
         <div class="flexLigne">
-            <div><a class="levier" href="createTrajet.php?partir_ub=1"> Proposer un trajet </a></div>
+            <div><a class="levier" href="createTrajet.php?partir_ub=1" title="Proposer votre trajet aux étudiants inscrits"> Proposer un trajet </a></div>
         </div>
+        <?php } ?>
     </div>
 </fieldset>
 

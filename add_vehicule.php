@@ -3,6 +3,10 @@ session_start();
 include 'config.php';
 include 'header.php';
 
+if($_SESSION['logged_in'] != 1){
+    header('location: index.php');
+}
+
 if(isset($_POST['add_vehicule']) AND !empty($_POST['marque']) AND !empty($_POST['model']) AND !empty($_POST['place']))
 {
     $id_proprietaire = intval($_SESSION['id']); //conversion en nombre pour sécuriser

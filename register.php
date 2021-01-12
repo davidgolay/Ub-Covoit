@@ -3,6 +3,11 @@ session_start();
 include 'config.php';
 $fmt_mail1 = '@etu.u-bourgogne.fr';
 $fmt_mail2 = '@iut-dijon.u-bourgogne.fr';
+$erreur = '';
+$erreur2 = '';
+$accepteCondition = 0;
+$is_driver = 0;
+
 
 // Function to check the string is ends  
 // with given substring or not 
@@ -25,6 +30,20 @@ if(isset($_POST['register']))
     $email_recup = htmlspecialchars($_POST['email_recup']);
     $password = sha1($_POST['password']);
     $password_2 = sha1($_POST['password_confirm']);
+/*
+    function check_mdp_format($mdp)
+    {
+	$majuscule = preg_match('@[A-Z]@', $password);
+	$minuscule = preg_match('@[a-z]@', $password);
+	$chiffre = preg_match('@[0-9]@', $password);
+	
+	if(!$majuscule || !$minuscule || !$chiffre || strlen($mdp) < 8)
+	{
+		return false;
+	}
+	else 
+		return true;
+    }*/
 
     if(empty($_POST["is_driver"])) {
         $is_driver = 0;
@@ -58,14 +77,22 @@ if(isset($_POST['register']))
                         $mailexist = $reqmail->rowCount();
                         if($mailexist == 0){
                             if ($accepteCondition == 1){
-                                if($password == $password_2){   
-                                    $insertUser = $bdd->prepare("INSERT INTO users(nom, prenom, email, email_recup, tel, dob, password, is_driver) VALUES(?, ?, ?, ?, ?, ?, ?, ?)");
-                                    $insertUser->execute(array($nom,$prenom,$email,$email_recup,$tel,$dob,$password,$is_driver));
-                                    //$erreur ="Votre compte a bien été créé!";
-                                    header('location: login.php?email='.$email);
+                                if($password == $password_2){
+                                    if (preg_match('#^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W)#', $_POST['password']) AND strlen($_POST['password']) >= 8) {                                                                              
+                                        $insertUser = $bdd->prepare("INSERT INTO users(nom, prenom, email, email_recup, tel, dob, password, is_driver) VALUES(?, ?, ?, ?, ?, ?, ?, ?)");
+                                        $insertUser->execute(array($nom,$prenom,$email,$email_recup,$tel,$dob,$password,$is_driver));
+                                        //$erreur ="Votre compte a bien été créé!";
+                                        header('location: login.php?email='.$email);
+                                    }
+                                    else {
+                                        $erreur = 'Mot de passe non conforme. Il doit contenir au moins 8 caractères ';
+                                        $erreur2 = 'dont 1 majuscule, 1 minuscule, 1 chiffre et un caractère spécial';
+                                    }
                                 }
                                 else
-                                {
+                                {   
+                                    $_POST['password'] = '';
+                                    $_POST['password_confirm'] = '';
                                     $erreur = "Vos mots de passe sont différents";
                                 }
                             }
@@ -86,7 +113,7 @@ if(isset($_POST['register']))
                 }
             }
             else{
-                $erreur = "vous êtes un peu vieux pour être étudiant à l'université";
+                $erreur = "vous êtes un peu vieux pour être étudiant à l'Université";
             }
         }
         else{
@@ -94,7 +121,7 @@ if(isset($_POST['register']))
         }
     }
     else{
-        $erreur = "Tout les champs doivent être complétés";
+        $erreur = "Tous les champs doivent être complétés";
     }
 }          
 ?>
@@ -136,30 +163,30 @@ if(isset($_POST['register']))
                 </div>
                 <div class="flexLigne"> 
                     <div class="flexColonne"> 
-                        <div class="label">Adresse email UB</div>  
-                        <input  class="center-right-left" type="text" name="email" value="<?php if(isset($email)) {echo $email; }?>" /> 
+                        <div class="label">Adresse éléctronique universitaire</div>  
+                        <input  class="center-right-left" type="text" name="email" value="<?php if(isset($email)) {echo $email; }?>" placeholder="@etu.u-bourgogne.fr" /> 
                     </div>
                     <div class="flexColonne">
-                        <div class="label">Adresse email récupération</div>
+                        <div class="label">Adresse éléctronique de récupération</div>
                         <input  class="center-right-left" type="text" name="email_recup" value="<?php if(isset($email_recup)) {echo $email_recup; }?>" />
                     </div>    
                 </div>
                 <div class="flexLigne"> 
                     <div class="flexColonne"> 
                         <div class="label">Mot de passe</div>  
-                        <input  class="center-right-left" type="password" name="password" /> 
+                        <input  class="center-right-left" type="password" name="password" value="<?php if(isset($_POST['password'])) {echo $_POST['password']; }?>" placeholder="8 caractères minimum" title="8 caractères minimum, au moins 1 majuscule, 1 minuscule 1 chiffre et 1 caractère spécial"/> 
                     </div>
                     <div class="flexColonne">
                         <div class="label">Confirmation mot de passe</div>
-                        <input  class="center-right-left" type="password" name="password_confirm" />
+                        <input  class="center-right-left" type="password" name="password_confirm" value="<?php if(isset($_POST['password_confirm'])) {echo $_POST['password_confirm']; }?>"/>
                     </div>    
                 </div>
                 <p  class="label">Etes-vous conducteur ?
-                <input type="checkbox" name="is_driver" value="1"/>
+                <input type="checkbox" name="is_driver" value="1" <?php if($is_driver == 1) echo 'checked' ?>/>
                 </p>
                 <div class="flexColonne">
                     <p  class="label"> Accepter les conditions générales d'utilisation
-                    <input type="checkbox" name="accepteCondition" value="1"/>
+                    <input type="checkbox" name="accepteCondition" value="1" <?php if($accepteCondition == 1) echo 'checked' ?>/>
                     </p>
                     <p>
                     <a class="CGU center-right-left" href="politique.php">politique de confidentialité</a>
@@ -172,6 +199,7 @@ if(isset($_POST['register']))
                     if(isset($erreur))
                     {
                         echo '<div class="error">'. $erreur . '</div>';
+                        echo '<div class="error">'. $erreur2 . '</div>';
                     }
                 ?>
                 <div><input class="bouton" type="submit" name="register" value="S'inscrire"/></div>

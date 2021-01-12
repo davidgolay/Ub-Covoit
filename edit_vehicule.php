@@ -3,6 +3,10 @@ session_start();
 include 'config.php';
 include 'header.php';
 
+if($_SESSION['logged_in'] != 1){
+    header('location: index.php');
+}
+
 if(isset($_SESSION['id']))
 {
     $var_session_id = $_SESSION['id'];

@@ -7,7 +7,10 @@ include 'config.php';
 $date_now = date_create('now')->format('Y-m-d');
 $hour_now = date_create('now')->format('H:i');
 
-
+if($_SESSION['logged_in'] != 1)
+{
+    header('location: login.php');
+}
 //switch_destination
 if($_GET['partir_ub']<=1 AND $_GET['partir_ub']>=0)
 {

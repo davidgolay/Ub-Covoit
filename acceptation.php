@@ -2,6 +2,10 @@
 session_start();
 include 'header.php';
 include 'config.php';
+if($_SESSION['logged_in'] != 1 OR empty($_GET['idPass']) OR empty($_GET['idTraj']) )
+{
+    header('location: index.php');
+}
 ?>
 <link rel="stylesheet" href="css/trajet.css">
 <link rel="stylesheet" href="css/main.css">

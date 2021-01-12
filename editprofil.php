@@ -3,6 +3,10 @@ session_start();
 include 'config.php';
 include 'header.php';
 
+if($_SESSION['logged_in'] != 1){
+    header('location: index.php');
+}
+
 if(isset($_SESSION['id'])){
     // on recupère les données de l'utilisateur à partir de la variable de session id
     $requser = $bdd->prepare("SELECT * FROM users WHERE id=?");
@@ -61,18 +65,18 @@ if(isset($_SESSION['id'])){
     }
 }
 else{
-    header("Location: login.php");
+    header("Location: index.php");
 }
 
 ?>
-<html>
+<!--<html>
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Mon profil</title>
+        <title>Mon profil</title>-->
         <link rel="stylesheet" href="css/edit.css">
         <link rel="stylesheet" href="css/main.css">
-    </head>
+<!--</head>-->
     <body>
         <div id="page">
             <h2>Mofication de mon profil</h2><br/>
@@ -123,8 +127,9 @@ else{
         echo '<div class="error">'. $erreur . '</div>';   
     };
     ?>
-    
+<!--    
     </body>
 </html>
+-->
 
 
