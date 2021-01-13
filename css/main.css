@@ -116,6 +116,14 @@ body{
     color: black;
 }
 
+#bandeau a{
+    color: black;
+    text-decoration: underline black dotted 2px;
+}
+
+#bandeau a:hover{
+    text-decoration: underline solid black 3px;
+}
 
 /*Elements*/
 
@@ -433,6 +441,7 @@ div#footer{
     #page{
         margin-left: 0;
         margin-right: 0;
+        margin-bottom: 3em;
         width: 100vw;
         padding-right: 0;
         padding-left: 0;

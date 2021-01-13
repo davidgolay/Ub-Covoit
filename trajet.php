@@ -122,7 +122,7 @@ if(isset($_GET['incoming']) AND isset($_GET['driver']) AND isset($_GET['partir_u
     ?>
     <div id="bandeau">
     <h1>Liste de tout vos trajets</h1>
-    <p> Retrouver tous vos trajet en changeant les filtres. Retrouvez par exemple vos trajets en tant que passager 
+    <p> Retrouvez tous vos trajets en changeant les filtres. Retrouvez par exemple vos trajets en tant que passager 
     (filtre "passager") partant de l'université de Bourgogne (filtre "Partant de l'UB") 
     qui sont prévus dans le futur (filtre "à venir").
     </p>

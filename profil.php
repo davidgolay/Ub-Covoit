@@ -59,36 +59,36 @@ else
     <div class="flexLigne">
         <div class="flexColonneDroite" id="aligneDroite">
                 <div class="flexLigne">
-                    <div class="etiquette">Prenom : </div>
+                    <div class="etiquette">Prenom </div>
                     <div class="info"><?php echo $userinfo['prenom'];?></div>
                 </div>
                 <div class="flexLigne">
-                    <div class="etiquette">Nom : </div>
+                    <div class="etiquette">Nom </div>
                     <div class="info"><?php echo $userinfo['nom'];?></div>
                 </div>
 
                 <?php if (($_GET['id'] == $_SESSION['id']) OR ($usersAccepted == 1)){?>
                     <div class="flexLigne">
-                        <div class="etiquette">Email étudiant : </div>
+                        <div class="etiquette">Email étudiant </div>
                         <div class="info"> <?php echo $userinfo['email'];?></div>
                     </div><?php
                 }?>
 
                 <?php if ($_GET['id'] == $_SESSION['id'] OR $usersAccepted == 1){?>
                     <div class="flexLigne">
-                        <div class="etiquette">Téléphone : </div>
+                        <div class="etiquette">Téléphone </div>
                         <div class="info"> <?php echo $userinfo['tel'];?></div>
                     </div><?php
                 }?>              
 
 
                 <div class="flexLigne"> 
-                    <div class="etiquette">Conducteur : </div>
+                    <div class="etiquette">Conducteur </div>
                     <div class="info"><?php echo $user_conducteur?></div>
                 </div>
         </div>
         <div class="flexColonne">    
-        <div class="etiquetteTexte">Biographie : </div>
+        <div class="etiquetteTexte">Biographie </div>
         <div class="textArea"><?php if(!empty($userinfo['bio'])){echo $userinfo['bio'];}else{echo 'Non renseignée';}?></div>
         </div>
     </div>
@@ -127,20 +127,20 @@ else
                     <div class="flexLigne">
                         <div class="flexColonneDroite"  id="aligneDroite">
                                 <div class="flexLigne">    
-                                    <div class="etiquette">Marque : </div>
+                                    <div class="etiquette">Marque </div>
                                     <div class="info"><?php echo $vehicule_info['marque'];?></div>   
                                 </div>
                                 <div class="flexLigne">       
-                                    <div class="etiquette">Modèle : </div> 
+                                    <div class="etiquette">Modèle </div> 
                                     <div class="info"><?php echo $vehicule_info['model'];?></div>  
                                 </div>    
                                 <div class="flexLigne">
-                                    <div class="etiquette">Place : </div>
+                                    <div class="etiquette">Place </div>
                                     <div class="info"><?php echo $vehicule_info['place'];?></div>
                                 </div>
                         </div>
                         <div class="flexColonne" id="commentaire">
-                                    <div class="etiquetteTexte">Commentaire : </div>
+                                    <div class="etiquetteTexte">Commentaire </div>
                                     <div class="textArea"><?php if(!empty($vehicule_info['commentaire'])){echo $vehicule_info['commentaire'];}else{echo 'Non renseigné';}?></div>
                         </div>
                     </div>               

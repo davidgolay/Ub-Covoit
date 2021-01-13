@@ -21,7 +21,7 @@ if($_GET['partir_ub']<=1 AND $_GET['partir_ub']>=0)
         // affichage de texte différents selon la valeur d u boolean partir_ub
         // ici cas trajet arrivant à l'UB
         $txt_main = 'Rechercher un trajet arrivant à l'."'". 'UB';
-        $txt_ville = 'Ville de départ : ';
+        $txt_ville = 'Ville de départ ';
         $txt_placeholder_ville = 'ville de départ';
         $td_debut = 'Trajets partant de ';
         $td_fin = ' et arrivant à l'."'".'UB';
@@ -36,7 +36,7 @@ if($_GET['partir_ub']<=1 AND $_GET['partir_ub']>=0)
         // affichage de texte différents selon la valeur d u boolean partir_ub
         // ici : cas trajet partant de l'UB
         $txt_main = 'Rechercher un trajet partant de l'."'". 'UB';
-        $txt_ville = 'Ville d'."'".'arrivée : ';
+        $txt_ville = 'Ville d'."'".'arrivée ';
         $txt_placeholder_ville = 'ville d'."'".'arrivée';
         $td_debut = 'Trajets arrivant à ';
         $td_fin = ' et partant de l'."'".'UB';
@@ -109,7 +109,7 @@ if(isset($_POST['search']))
             {               
                 echo '          
                     <div>
-                        <h2>Liste des trajets trouvés</h2>
+                        <h2>Trajets trouvés</h2>
                     </div>
                     
                 <div id="resultats">'; 
@@ -198,7 +198,7 @@ if(isset($_POST['search']))
                     <input class="center-right-left"  type="text" name="ville_nom" placeholder="<?php echo $txt_placeholder_ville; ?>" value="<?php if(isset($ville_nom_reel)) {echo $ville_nom_reel; } ?>"/>
                 </div>
                 <div class="flexLigne">    
-                    <label>Code postal :</label></br>
+                    <label>Code postal </label></br>
                     <input class="center-right-left" type="text" name="code_postal" placeholder="Code postal de cette ville" value="<?php if(isset($ville_code_postal)) {echo $ville_code_postal; }?>"/>
                 </div>
                 <!--
@@ -208,11 +208,11 @@ if(isset($_POST['search']))
                 </div>
                 -->
                 <div class="flexLigne">
-                    <label>Date :</label></br>
+                    <label>Date </label></br>
                     <input class="center-right-left" type="date" name="date" value="<?php if(isset($date)) {echo $date; } else{echo $date_now;}?>" min="<?php echo $date_now ?>"/>
                 </div>
                 <div class="flexLigne">
-                    <label>Heure :</label></br>
+                    <label>Heure </label></br>
                     <input class="center-right-left" type="time" name="time" value="<?php if(isset($time)) {echo $time; } else{echo $hour_now;}?>"/>
                 </div>
 

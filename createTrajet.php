@@ -23,8 +23,8 @@ if($_GET['partir_ub']<=1 AND $_GET['partir_ub']>=0)
         // affichage de texte différents selon la valeur d u boolean partir_ub
         // ici cas trajet arrivant à l'UB
         $txt_main = 'Proposer un trajet arrivant à l'."'". 'UB';
-        $txt_ville = 'Ville de départ : ';
-        $txt_adresse = 'Adresse de départ : ';
+        $txt_ville = 'Ville de départ ';
+        $txt_adresse = 'Adresse de départ ';
         $txt_placeholder_ville = 'ville de départ';
         $txt_placeholder_adresse = 'adresse de départ';
         $selectionAller = 'class="selectionne gauche"';
@@ -38,8 +38,8 @@ if($_GET['partir_ub']<=1 AND $_GET['partir_ub']>=0)
         // affichage de texte différents selon la valeur d u boolean partir_ub
         // ici : cas trajet partant de l'UB
         $txt_main = 'Proposer un trajet partant de l'."'". 'UB';
-        $txt_ville = 'Ville d'."'".'arrivée : ';
-        $txt_adresse = 'Adresse d'."'".'arrivée :';
+        $txt_ville = 'Ville d'."'".'arrivée ';
+        $txt_adresse = 'Adresse d'."'".'arrivée';
         $txt_placeholder_ville = 'ville d'."'".'arrivée';
         $txt_placeholder_adresse = 'adresse d'."'".'arrivée';
         $selectionPartir = 'class="selectionne droite"';
@@ -138,7 +138,7 @@ if(isset($_POST['proposer']))
             <input class="center-right-left" type="text" name="ville_nom" placeholder="<?php echo $txt_placeholder_ville; ?>" value="<?php if(isset($ville_nom_reel)) {echo $ville_nom_reel; }?>"/>
         </div>
         <div class="flexLigne">
-            <label>Code postal :</label>
+            <label>Code postal</label>
             <input class="center-right-left" type="text" name="code_postal" placeholder="Code postal de cette ville" value="<?php if(isset($ville_code_postal)) {echo $ville_code_postal; }?>"/>
         </div>
         <div class="flexLigne">
@@ -146,23 +146,23 @@ if(isset($_POST['proposer']))
             <input class="center-right-left" type="text" name="adresse" placeholder="<?php echo $txt_placeholder_adresse; ?>" value="<?php if(isset($ville_code_postal)) {echo $ville_code_postal; }?>"/>
         </div>
         <div class="flexLigne">
-            <label>Date :</label>
+            <label>Date</label>
             <input class="center-right-left" type="date" name="date" value="<?php if(isset($date)) {echo $date; }?>" min="<?php echo $date_now ?>"/>
         </div>
         <div class="flexLigne">
-            <label>Heure :</label>
+            <label>Heure</label>
             <input class="center-right-left" type="time" name="time" value="<?php if(isset($time)) {echo $time; }?>"/>
         </div>
         <div class="flexLigne">
-            <label>Nombre de place(s) disponible(s) :</label>
+            <label>Place(s) disponible(s)</label>
             <input class="center-right-left" type="number" name="place_dispo" value="<?php if(isset($place_dispo)) {echo $place_dispo; } else{echo 4;}?>"/>
         </div>
         <div class="flexLigne">
-            <label>distance maximale de détour (en km):</label>
+            <label>Détour (en km)</label>
             <input class="center-right-left" type="number" name="rayon" value="<?php if(isset($rayon)) {echo $rayon; } else{echo 0;}?>"/>
         </div>
         <div class="flexLigne">
-            <label>Commentaire sur le trajet :</label>
+            <label>Commentaire</label>
             <input class="center-right-left" type="text" name="com" value="<?php if(isset($com)) {echo $com; }?>"/>
         </div>
     </div>
