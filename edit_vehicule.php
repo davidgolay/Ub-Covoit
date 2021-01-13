@@ -70,6 +70,7 @@ else
 <link rel="stylesheet" href="css/edit.css">
 <link rel="stylesheet" href="css/main.css">
 
+<div id="corps">
 <div id="page">
     <h2>Mofication de mon véhicule</h2><br/>
         <div>
@@ -95,6 +96,7 @@ else
                 <input class="bouton" type="submit" name="edit_vehicule" value="Enregistrer"/></td>
             </form>
         </div>      
+</div>
 </div>  
        
 <?php

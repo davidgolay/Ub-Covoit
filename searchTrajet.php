@@ -51,7 +51,7 @@ else
 }
 
 //début de la page
-echo '<div id="page">';
+echo '<div id="corps"><div id="page">';
 
 // on teste si le submit "rechercher le trajet" =name"search" a été cliqué
 // on verifie que la ville est okai
@@ -223,10 +223,15 @@ if(isset($_POST['search']))
                     }?>
             <input class="bouton" type="submit" name="search" value="Rechercher le trajet"/>
         </form>
-        <div>
+    </div>
+    <div class="flexColonne">
+        <hr>
+        <div class="levier">
         <a class="levier" href="createTrajet.php?partir_ub=1">Proposer un trajet</a>
         </div>
+    </div>
     </div>    
+</div>
 </div>
 
 

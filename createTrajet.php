@@ -121,8 +121,9 @@ if(isset($_POST['proposer']))
 
 ?>
 <div class="animBasHaut"></div>
-<div id="page" class="flexColonne">
-<form action="" method="post">
+<div id="corps">
+<div id="page">
+<form action="" method="post"  class="flexColonne">
     <h2><?php echo $txt_main; ?></h2>
     <br/>
     <div class="flexColonne">
@@ -172,9 +173,14 @@ if(isset($_POST['proposer']))
         }
     ?>
     <div><input class="bouton" type="submit" name="proposer" value="Créer le trajet"/></div>
-    <div><a class="levier" href="index.php">Rechercher un trajet</a></div>
-    
+    <div class="flexColonne">
+        <hr>
+        <div class="levier">
+        <a class="levier" href="index.php">Rechercher un trajet</a>
+        </div>
+    </div>
 </form>
+</div>
 </div>
 
 <link rel="stylesheet" href="css/recherche.css">

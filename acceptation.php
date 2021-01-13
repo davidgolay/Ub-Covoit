@@ -18,6 +18,7 @@ if($_SESSION['logged_in'] != 1)
     Retrouvez facilement leur profil en passant par l'onglet "Mes Trajets" puis "Conducteur"
     </p>
 </div>
+<div id="corps">
 <div  id="page">
     <div id="resultats">
 
@@ -89,6 +90,7 @@ foreach($passagersNonAccepted as $row){
 }?>
 
     </div>
+</div>
 </div>
 
 <?php

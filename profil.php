@@ -53,6 +53,7 @@ else
 <link rel="stylesheet" href="css/main.css">
 
 <div class="animBasHaut"></div>
+<div id="corps">
 <div id="page">
     <h2>Profil de <?php echo $userinfo['prenom']." ".$userinfo['nom']; ?></h2><br/>
     <div class="flexLigne">
@@ -175,7 +176,8 @@ else
 ?>     
 </div>
 </div>
-  
+</div>
+   
 <?php
 include 'footer.php';
 ?>

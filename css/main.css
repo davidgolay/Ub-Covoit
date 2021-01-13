@@ -7,15 +7,18 @@ body {
 }
 
 /*Navbar*/
+html{
+    height: max-content;
+    min-height: 100%;
+}
 
 body{
     font-family: 'Poppins', sans-serif;
-    background-color: whitesmoke;
     font-size: 1.1em;
-    background-image: url('../img/fondIndexubcovoit2.png');
+    background-image: url('../img/fondIndexubcovoit3_large.png');
     background-size: cover;
     background-repeat: repeat;
-    background-position-y: -100px;
+    background-position: center bottom;
     font-family: 'Poppins', sans-serif;
     background-color: rgb(31, 31, 31);
 }
@@ -71,11 +74,17 @@ body{
 
 
 /*page*/
+#corps{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
 #page{
     position: relative;
-    margin-left: 10em;
-    margin-right: 10em;
+    width: 75vw;
     margin-bottom: 4em;
+    margin-top: 1em;
     text-align: center;
     border-style: none;
     padding-left: 5em;
@@ -99,7 +108,7 @@ body{
     padding-right: 5em;
     padding-bottom: 1em;
     padding-top: 0.3em;
-    background-color: #f46917;
+    background-color: rgba(244, 105, 23, 0.8);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); 
 }
 
@@ -275,7 +284,7 @@ input[type="date"], input[type="time"]{
 }
 
 div.error{
-    color: rgb(255, 55, 88);
+    color:rgb(255, 240, 36);
 }
 
 div.normal-trajet{
@@ -465,17 +474,6 @@ div#footer{
     .info{
         padding-right: 0;
         padding-left: 0;
-    }
-
-
-    /* général */
-
-    body {
-		background-image: url('../img/fondIndexubcovoit2.png');
-		background-size: 450%;
-		background-repeat: repeat;
-		background-position-y: -100px;
-		background-position-x: -50%;
     }
 
 

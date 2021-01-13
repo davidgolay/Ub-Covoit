@@ -133,7 +133,8 @@ if(isset($_GET['incoming']) AND isset($_GET['driver']) AND isset($_GET['partir_u
     
     <?php
     echo // les liens boutons permettant de switcher entre partir_ub, trajets effectués/à venir et la destination ub ou non
-    '<div id="page">
+    '<div id="corps">
+    <div id="page">
         <h1>Mes trajets '. $txt_title_type_trajet.'</h1>
         <div class="flexLigne">
             <div class="switch">
@@ -259,7 +260,7 @@ if(isset($_GET['incoming']) AND isset($_GET['driver']) AND isset($_GET['partir_u
 else{
     header('location: index.php');
 }
-echo '</div>'
+echo '</div></div>'
 ?>
 
 <link rel="stylesheet" href="css/trajet.css">

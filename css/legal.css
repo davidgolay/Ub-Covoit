@@ -69,4 +69,8 @@ div#page div#général{
         padding-right: 0.5em;
         padding-left: 0.5em;
     }
+
+    html body{
+        background-size: auto;
+    }
 }

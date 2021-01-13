@@ -5,6 +5,7 @@ include 'header.php';
 
 <link rel="stylesheet" href="css/legal.css">
 <link rel="stylesheet" href="css/main.css">
+<div id="corps">
 <div id="page">
     <h1>Conditions générales d'utilisation</h1>
 
@@ -123,6 +124,7 @@ include 'header.php';
     <p>La législation française s'applique au présent contrat. En cas d'absence de résolution amiable d'un litige né entre les parties, les tribunaux français seront seuls compétents pour en connaître.</p>
     <p>Pour toute question relative à l’application des présentes CGU, vous pouvez joindre l’éditeur aux coordonnées inscrites à l’ARTICLE 1.</p>
 
+</div>
 </div>
 <?php
 include 'footer.php';
