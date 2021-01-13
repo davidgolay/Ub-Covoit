@@ -7,7 +7,7 @@ include 'config.php';
 
 $date_now = date_create('now')->format('Y-m-d H:i:s');
 
-echo '<div class="animBasHaut"></div><div id="page">';
+echo '<div class="animBasHaut"></div><div id="corps"><div id="page">';
 
 if($_SESSION['is_driver'] == 1)
 {
@@ -56,7 +56,7 @@ foreach($incoming_trajet as $row)
     }
     
 }
-echo '</div>';
+echo '</div></div>';
 
 
 

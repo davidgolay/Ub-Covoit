@@ -3,7 +3,9 @@ session_start();
 include 'header.php';
 ?>
 <link rel="stylesheet" href="css/legal.css">
-<link rel="stylesheet" href="css/main.css"> 
+<link rel="stylesheet" href="css/main.css">
+
+<div id="corps">
 <div id="page">
     <h1>Politique de confidentialité</h1>
 
@@ -58,27 +60,33 @@ include 'header.php';
     
     <p>4.7. Vous disposez également du droit de définir des directives relatives au sort de vos Données Personnelles après votre mort.</p>
     
-    <p>4.8. Pour exercer ces droits, vous pouvez contacter notre Délégué à la Protection des Données Personnelles selon les modalités définies à l’article 8.</p>
-    
+    <p>4.8. Pour exercer ces droits, vous pouvez contacter notre Délégué à la Protection des Données Personnelles selon les modalités définies à l’article 9.</p>
+
     <h2>5. Confidentialité de votre mot de passe</h2>
     
     <p>Vous êtes responsable de la confidentialité du mot de passe que nous vous avez choisi pour accéder à votre compte sur nos Plateformes.</p>
     
     <p>Vous vous engagez à conserver ce mot de passe secret et à ne le communiquer à personne.</p>
     
-    <h2>6. Liens vers d’autres sites internet et réseaux sociaux</h2>
+    <h2>6. Vos données de contact. </h2>
+
+    <p> Vous nous autorisez à partager, dans le cas d’un trajet commun avec un utilisateur, à partager avec ce dernier vos coordonnées pour qu’ils puissent vous contacter. Les informations qui lui seront transmise seront, votre numéro de téléphone et votre mail étudiant. </p>    
+	
+    <h2>7. Liens vers d’autres sites internet et réseaux sociaux</h2>
     
-    <p>Nos Plateformes peuvent occasionnellement contenir des liens vers les sites internet de nos partenaires ou de sociétés tierces. Veuillez noter que ces sites internet ont leur propre politique de confidentialité et que nous déclinons toute responsabilité quant à l’utilisation faite par ces sites des informations collectées lorsque vous cliquez sur ces liens. Nous vous invitons à prendre connaissance de politiques de confidentialité de ces sites avant de leur transmettre vos Données Personnelles.</p>
+    <p>Nos Plateformes peuvent occasionnellement contenir des liens vers les sites internet de nos partenaires ou de sociétés tierces. Veuillez noter que ces sites internet ont leur propre politique de confidentialité et que nous déclinons toute responsabilité quant à l’utilisation faite par ces sites des informations collectées lorsque vous cliquez sur ces liens. Nous vous invitons à prendre connaissance de politiques de confidentialité de ces sites avant de leur transmettre vos Données Personnelles. </p>
     
-    <h2>7. Modification de notre politique de confidentialité</h2>
+    <h2>8. Modification de notre politique de confidentialité</h2>
     
     <p>Nous pouvons être amené à modifier occasionnellement la présente politique de confidentialité. Lorsque cela est nécessaire, nous vous en informerons et/ou solliciterons votre accord. Nous vous conseillons de consulter régulièrement cette page pour prendre connaissance des éventuelles modifications ou mises à jour apportées à notre politique de confidentialité.
     
-    <h2>8. Contact</h2>
+    <h2>9. Contact</h2>
+  
    
     <p>Pour toute question relative à la présente politique de confidentialité ou pour toute demande relative à vos données personnelles, vous pouvez nous contacter en :</p>
     <div id=phrase><p>•	adressant un email à notre délégué à la protection des données à l’adresse <a href=mailto:dataprotection@ubCovoit.com>dataprotection@ubCovoit.com</a></p></div>
 
+</div>
 </div>
 <?php
 include 'footer.php';

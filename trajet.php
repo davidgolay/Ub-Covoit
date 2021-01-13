@@ -122,7 +122,7 @@ if(isset($_GET['incoming']) AND isset($_GET['driver']) AND isset($_GET['partir_u
     ?>
     <div id="bandeau">
     <h1>Liste de tout vos trajets</h1>
-    <p> Retrouver tous vos trajet en changeant les filtres. Retrouvez par exemple vos trajets en tant que passager 
+    <p> Retrouvez tous vos trajets en changeant les filtres. Retrouvez par exemple vos trajets en tant que passager 
     (filtre "passager") partant de l'université de Bourgogne (filtre "Partant de l'UB") 
     qui sont prévus dans le futur (filtre "à venir").
     </p>
@@ -133,7 +133,8 @@ if(isset($_GET['incoming']) AND isset($_GET['driver']) AND isset($_GET['partir_u
     
     <?php
     echo // les liens boutons permettant de switcher entre partir_ub, trajets effectués/à venir et la destination ub ou non
-    '<div id="page">
+    '<div id="corps">
+    <div id="page">
         <h1>Mes trajets '. $txt_title_type_trajet.'</h1>
         <div class="flexLigne">
             <div class="switch">
@@ -206,15 +207,15 @@ if(isset($_GET['incoming']) AND isset($_GET['driver']) AND isset($_GET['partir_u
         // si il y a au moins 1 passager
         if($passager_row > 0){
             echo 
-                '<div class="passager">
-                    <div>Passagers inscrits au trajet :</div>      
+                '<div class="flexColonne">
+                    <div>Passagers inscrits :</div>      
                         <table>';
             foreach($trajet_passager as $row2){
                 if ($row2['is_accepted'] == 1){
                 echo    
                     '<tr>
                         <td><a class="profil" href="profil.php?id=' . $row2['id'].'">'. $row2['prenom'] . ' ' . $row2['nom'] . '</a></td>
-                        <td class="accepte">(Accepté par le conducteur)</td>
+                        <td class="accepte">(Accepté)</td>
                     </tr>';
                             
                 }
@@ -259,7 +260,7 @@ if(isset($_GET['incoming']) AND isset($_GET['driver']) AND isset($_GET['partir_u
 else{
     header('location: index.php');
 }
-echo '</div>'
+echo '</div></div>'
 ?>
 
 <link rel="stylesheet" href="css/trajet.css">

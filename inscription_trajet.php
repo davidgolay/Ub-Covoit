@@ -48,6 +48,7 @@ if(isset($_GET['id_trajet']) AND $_GET['id_trajet'] > 0){
     $nom_ville = $ville_query->fetch();
     
     ?>
+    <div id="corps">
     <div id="page">
         <h1><?php echo $txt_main;?></h1><br/>
         <div class="normal-trajet">
@@ -187,6 +188,7 @@ if(isset($_GET['id_trajet']) AND $_GET['id_trajet'] > 0){
             <input class="bouton" type="submit" name="<?php echo $action;?>" value="<?php echo $txt_action;?>"/>
         </form>
     </div>
+</div>
 </div>
 
 <?php

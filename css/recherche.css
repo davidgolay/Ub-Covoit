@@ -11,19 +11,37 @@ div.flexColonne.input{
     align-items: stretch;
 }
 
-.levier{
+hr{
+    width: 70vw;
+    height: 2px;
+    color: whitesmoke;
+    background-color: whitesmoke;
+}
+
+div.levier{
     background-color: rgb(175, 175, 175);
-    color: rgb(0, 0, 0);
     padding: 0.8em;
     border-radius: 30px;
     border-style: none;
-    text-decoration: none;
-    font-size: inherit;
     width: 200px;
-    font-family: inherit;
     align-items: center;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-top: 1em;
 }
+
+div.levier:hover{
+    background-color: rgb(114, 114, 114);  
+}
+
+a.levier{
+    font-family: inherit;
+    color: rgb(0, 0, 0);
+    font-size: inherit;
+    text-align: center;
+    text-decoration: none;
+}
+
+
 
 div.switch{
     position: unset;

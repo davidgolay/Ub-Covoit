@@ -5,6 +5,7 @@ include 'header.php';
 <link rel="stylesheet" href="css/legal.css">
 <link rel="stylesheet" href="css/main.css"> 
 
+<div id="corps">
 <div id="page">
     <h1>A propos d'Ub'Covoit</h1>
     <h2>Notre mission</h2>
@@ -12,7 +13,7 @@ include 'header.php';
 
     <h2>La vision d’Ub’Covoit.</h2>
 
-    <p>Ub’Covoit est un projet ayant pour objectif de rassembler les étudiants actifs au sein du campus. La plateforme met en relation des conducteurs voyageant avec des places libres et des passagers se rendant dans la même direction pour effectuer les trajets ensembles. Les membres pourront alors diviser les frais routiers et créer des liens.</p>
+    <p>Ub’Covoit est un projet ayant pour objectif de rassembler les étudiants actifs au sein du campus. La plateforme met en relation des conducteurs voyageant avec des places libres et des passagers se rendant dans la même direction pour effectuer les trajets ensemble. Les membres pourront alors diviser les frais routiers et créer des liens.</p>
 
     <div id="phrase">- Économique, conviviale et responsable, Ub’Covoit est là pour vous.</div>
     
@@ -25,6 +26,7 @@ include 'header.php';
         <li>Diminuer le trafic routier pour limiter l’impact de la pollution sur l’environnement</li>
         <li>Maximiser l’impact économique pour les étudiants</li>
     </ul>
+</div>
 </div>
 <?php
 include 'footer.php';

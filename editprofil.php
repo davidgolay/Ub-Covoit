@@ -78,6 +78,7 @@ else{
         <link rel="stylesheet" href="css/main.css">
 <!--</head>-->
     <body>
+        <div id="corps">
         <div id="page">
             <h2>Mofication de mon profil</h2><br/>
                 <div>
@@ -119,7 +120,8 @@ else{
                         <input class="bouton" type="submit" name="edit_profil" value="Enregistrer"/></td>
                     </form>
                 </div>      
-        </div>  
+        </div>
+    </div>      
        
     <?php
     if(isset($erreur))

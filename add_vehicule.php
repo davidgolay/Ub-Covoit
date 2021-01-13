@@ -28,6 +28,7 @@ if(isset($_POST['add_vehicule']) AND !empty($_POST['marque']) AND !empty($_POST[
 <link rel="stylesheet" href="css/edit.css">
 <link rel="stylesheet" href="css/main.css">
 
+<div id="corps">
 <div id="page">
     <h2>Ajouter mon véhicule</h2><br/>
         <div>
@@ -56,4 +57,5 @@ if(isset($_POST['add_vehicule']) AND !empty($_POST['marque']) AND !empty($_POST[
                 </div>
             </form>
         </div>      
+</div>
 </div>

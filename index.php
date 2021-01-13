@@ -13,7 +13,7 @@ if($_SESSION['logged_in'] != 1)
 <div id="bandeau">
     <h1>Bienvenue sur UB'Covoit !</h1>
     <p>UB'Covoit est une plateforme de covoiturage solidaire entre étudiants. La plateforme met en relation des conducteurs voyageant
-         avec des places libres et des passagers se rendant dans la même direction pour effectuer les trajets ensembles. Les membres
+         avec des places libres et des passagers se rendant dans la même direction pour effectuer les trajets ensemble. Les membres
           pourront alors diviser les frais routiers et créer des liens.</p>
 </div>
 <fieldset>

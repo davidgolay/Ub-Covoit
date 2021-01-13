@@ -17,18 +17,24 @@ svg.bi{
 }
 
 .accepte{
-    color:green;
+    color:#0d65f1;
     font-style: italic;
+    text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
 }
 
 .attenteAccepte{
-    color:#fffb00;
+    color:rgb(255, 240, 36);
     font-style: italic;
+    text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
 }
 
 div#page{
     padding-left: 0.5em;
     padding-right: 0.5em;
+}
+
+#icon#trajet{
+    color: black;
 }
 
 @media screen and (max-device-width: 600px) {
