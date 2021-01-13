@@ -139,7 +139,7 @@ if(isset($_POST['proposer']))
         </div>
         <div class="flexLigne">
             <label>Code postal</label>
-            <input class="center-right-left" type="text" name="code_postal" placeholder="Code postal de cette ville" value="<?php if(isset($ville_code_postal)) {echo $ville_code_postal; }?>"/>
+            <input class="center-right-left" type="text" name="code_postal" placeholder="ex: 21000 ou 21" value="<?php if(isset($ville_code_postal)) {echo $ville_code_postal; }?>"/>
         </div>
         <div class="flexLigne">
             <label><?php echo $txt_adresse;?></label>

@@ -2,7 +2,7 @@
 session_start();
 include 'header.php';
 
-if($_SESSION['logged_in'] != 1)
+if(!isset($_SESSION['logged_in']))
 {
     header('location: login.php');
 }
