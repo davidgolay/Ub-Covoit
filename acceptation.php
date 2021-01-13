@@ -6,6 +6,7 @@ include 'config.php';?>
     <link rel="stylesheet" href="css/trajet.css">
     <link rel="stylesheet" href="css/main.css">
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="img/favicon.png">
 	<title>uB'Covoit</title>	
 </head>

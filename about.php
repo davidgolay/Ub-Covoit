@@ -1,9 +1,19 @@
 <?php
 session_start();
-include 'header.php';
 ?>
-<link rel="stylesheet" href="css/legal.css">
-<link rel="stylesheet" href="css/main.css"> 
+
+<head>
+    <link rel="stylesheet" href="css/legal.css">
+    <link rel="stylesheet" href="css/main.css"> 
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="img/favicon.png">
+	<title>uB'Covoit</title>	
+</head>
+
+<?php
+    include 'header.php';
+?>
 
 <div id="corps">
 <div id="page">

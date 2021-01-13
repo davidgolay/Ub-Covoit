@@ -6,9 +6,20 @@ $fmt_mail2 = '@iut-dijon.u-bourgogne.fr';
 $erreur = '';
 $erreur2 = '';
 $accepteCondition = 0;
-$is_driver = 0;
+$is_driver = 0;?>
+
+<html>
+<head>
+    <link rel="stylesheet" href="css/register.css">
+    <link rel="stylesheet" href="css/main.css">
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="img/favicon.png">
+	<title>uB'Covoit</title>	
+</head>
 
 
+<?php
 // Function to check the string is ends  
 // with given substring or not 
 function endsWith($string, $endString) 
@@ -127,14 +138,8 @@ if(isset($_POST['register']))
 ?>
 
 
-<link rel="stylesheet" href="css/register.css">
-<link rel="stylesheet" href="css/main.css">
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index</title>
-</head>
+
+
 <body>
     <div class="flexColonne">
         <div class="animBasHaut"></div>

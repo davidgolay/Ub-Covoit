@@ -1,7 +1,18 @@
 <?php
 session_start();
-include 'config.php';
+include 'config.php';?>
 
+<head>
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/main.css">
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="img/favicon.png">
+	<title>uB'Covoit</title>	
+</head>
+
+
+<?php
 if(isset($_POST['login']))
 {
     $email_log = htmlspecialchars($_POST['email_log']);
@@ -37,9 +48,6 @@ if(isset($_POST['login']))
     }
 }
 ?>
-<link rel="stylesheet" href="css/login.css">
-<link rel="stylesheet" href="css/main.css">
-
 
 <html>
 <head>

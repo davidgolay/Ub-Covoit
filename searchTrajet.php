@@ -1,9 +1,19 @@
 <?php
 session_cache_limiter('private_no_expire');
 session_start();
-include 'header.php';
-include 'config.php';
+include 'config.php';?>
 
+<head>
+    <link rel="stylesheet" href="css/recherche.css">
+    <link rel="stylesheet" href="css/main.css">
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="img/favicon.png">
+	<title>uB'Covoit</title>	
+</head>
+
+<?php
+include 'header.php';
 $date_now = date_create('now')->format('Y-m-d');
 $hour_now = date_create('now')->format('H:i');
 
@@ -236,14 +246,6 @@ if(isset($_POST['search']))
     </div>    
 </div>
 </div>
-
-
-
-
-
-<link rel="stylesheet" href="css/recherche.css">
-<link rel="stylesheet" href="css/main.css">
-
 <?php
 include 'footer.php';
 ?>
