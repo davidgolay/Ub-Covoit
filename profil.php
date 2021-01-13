@@ -1,6 +1,17 @@
 <?php
 session_start();
-include 'config.php';
+include 'config.php';?>
+
+<head>
+    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="css/main.css">
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="img/favicon.png">
+	<title>uB'Covoit</title>	
+</head>
+
+<?php
 include 'header.php';
 
 //$vehicule = '<a href="edit_vehicule.php">modifier mon vehicule</a>';
@@ -49,8 +60,7 @@ else
     header('location: index.php');
 }
 ?>
-<link rel="stylesheet" href="css/profile.css">
-<link rel="stylesheet" href="css/main.css">
+
 
 <div class="animBasHaut"></div>
 <div id="corps">

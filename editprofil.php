@@ -1,6 +1,18 @@
 <?php
 session_start();
-include 'config.php';
+include 'config.php';?>
+
+<head>
+    <title>Mon profil</title>
+    <link rel="stylesheet" href="css/edit.css">
+    <link rel="stylesheet" href="css/main.css">
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="img/favicon.png">
+</head>
+
+
+<?php
 include 'header.php';
 
 if($_SESSION['logged_in'] != 1){
@@ -69,17 +81,9 @@ else{
 }
 
 ?>
-<!--<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Mon profil</title>-->
-        <link rel="stylesheet" href="css/edit.css">
-        <link rel="stylesheet" href="css/main.css">
-<!--</head>-->
     <body>
         <div id="corps">
-        <div id="page">
+        <div id="page" class="flexColonne">
             <h2>Mofication de mon profil</h2><br/>
                 <div>
                     <form action="" method="post">

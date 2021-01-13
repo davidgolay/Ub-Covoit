@@ -1,5 +1,16 @@
 <?php
-session_start();
+session_start();?>
+
+<head>
+    <title>uB'Covoit</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/main.css">
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="img/favicon.png">
+</head>
+
+<?php
 include 'header.php';
 
 if(!isset($_SESSION['logged_in']))
@@ -8,8 +19,7 @@ if(!isset($_SESSION['logged_in']))
 }
 ?>
 
-<link rel="stylesheet" href="css/index.css">
-<link rel="stylesheet" href="css/main.css">
+
 <div id="bandeau">
     <h1>Bienvenue sur UB'Covoit !</h1>
     <p>UB'Covoit est une plateforme de covoiturage solidaire entre étudiants. La plateforme met en relation des conducteurs voyageant

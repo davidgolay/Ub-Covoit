@@ -1,8 +1,20 @@
 <?php
 session_start();
-include 'header.php';
-include 'config.php';
+include 'config.php';?>
 
+
+
+<head>
+    <link rel="stylesheet" href="css/trajet.css">
+    <link rel="stylesheet" href="css/main.css">
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="img/favicon.png">
+	<title>uB'Covoit</title>	
+</head>
+
+<?php
+include 'header.php';
 $date_now = date_create('now')->format('Y-m-d H:i:s');
 
 if($_GET['driver']<=1 AND $_GET['driver']>=0){
@@ -262,9 +274,6 @@ else{
 }
 echo '</div></div>'
 ?>
-
-<link rel="stylesheet" href="css/trajet.css">
-<link rel="stylesheet" href="css/main.css">
 </div>
 <?php
 include 'footer.php';

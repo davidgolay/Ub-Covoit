@@ -1,9 +1,18 @@
 <?php
 session_start();
+include 'config.php';?>
+
+<head>
+    <link rel="stylesheet" href="css/recherche.css">
+    <link rel="stylesheet" href="css/main.css">
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="img/favicon.png">
+	<title>uB'Covoit</title>	
+</head>
+
+<?php
 include 'header.php';
-include 'config.php';
-
-
 if($_SESSION['is_driver'] != 1){
 header("location: index.php");
 }
@@ -182,9 +191,6 @@ if(isset($_POST['proposer']))
 </form>
 </div>
 </div>
-
-<link rel="stylesheet" href="css/recherche.css">
-<link rel="stylesheet" href="css/main.css">
 
 <?php
 include 'footer.php';
