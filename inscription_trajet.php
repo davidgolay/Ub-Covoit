@@ -9,6 +9,13 @@ switch ($_GET['action']) {
         $txt_main = "Inscription à un trajet";
         $txt_action = "S'inscrire";
         $txt_label = "Message à transmettre au conducteur";
+        // on ne peut pas s'inscrire deux fois
+        $trajet_id = intval($_GET['id_trajet']); //conversion en nombre pour sécuriser
+        $est_deja_inscrit = $bdd->prepare("SELECT id_trajet FROM participe WHERE id_trajet = ? AND id_user = ?;");
+        $est_deja_inscrit->execute(array($trajet_id, $_SESSION['id']));
+        $nb_inscription = $est_deja_inscrit->rowCount();
+        if($nb_inscription >= 1){header('location: index.php');}
+
         break;
     case 'desinscription':
         $action = 'desinscription';
@@ -140,7 +147,7 @@ if(isset($_GET['id_trajet']) AND $_GET['id_trajet'] > 0){
         if(isset($_POST['inscription']) AND $_SESSION['id'] != $trajet['id_user']){
             $id_trajet = $trajet['id_trajet'];
             $com_trajet = htmlspecialchars($_POST['com']);
-            $insert_passager = $bdd->prepare("INSERT INTO participe(id_user, id_trajet, com_passager) VALUES(?, ?, ?);");
+            $insert_passager = $bdd->prepare("INSERT INTO participe(id_user, id_trajet, com_passager, is_accepted, annulation_passager) VALUES(?, ?, ?, 0, 0);");
             $insert_passager->execute(array($_SESSION['id'], $id_trajet, $com_trajet));
             $enlever_place = $bdd->prepare("UPDATE trajet SET place_dispo = place_dispo - 1 WHERE id_trajet=?;");
             $enlever_place->execute(array($id_trajet));
