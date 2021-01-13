@@ -88,7 +88,7 @@ else
         </div>
         <div class="flexColonne">    
         <div class="etiquetteTexte">Biographie : </div>
-        <div class="textArea"><?php echo $userinfo['bio'];?></div>
+        <div class="textArea"><?php if(!empty($userinfo['bio'])){echo $userinfo['bio'];}else{echo 'Non renseignée';}?></div>
         </div>
     </div>
     <div><p></br></p></div>
@@ -140,7 +140,7 @@ else
                         </div>
                         <div class="flexColonne" id="commentaire">
                                     <div class="etiquetteTexte">Commentaire : </div>
-                                    <div class="textArea"><?php echo $vehicule_info['commentaire'];?></div>
+                                    <div class="textArea"><?php if(!empty($vehicule_info['commentaire'])){echo $vehicule_info['commentaire'];}else{echo 'Non renseigné';}?></div>
                         </div>
                     </div>               
                 </div>
