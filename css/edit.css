@@ -1,0 +1,8 @@
+@media screen and (max-device-width: 600px) {
+    .flexColonneMobile{
+        display: flex;
+        justify-content: space-around;
+        flex-flow: column;
+        align-items: center;
+    }
+}

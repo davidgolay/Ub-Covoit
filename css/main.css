@@ -390,7 +390,8 @@ div#footer a{
 }
 
 #footer a:hover{
-    text-shadow: 1px 1px 10px whitesmoke;
+    text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
+    font-weight: bold;
 }
 
 div#footer{

@@ -46,6 +46,7 @@ div#pasConducteur{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     animation: apparaitre 1s ease-out;
     margin-top: 2em;
+    margin-bottom: 3em;
     background-color: rgb(31, 31, 31);
     text-align: center;
 }
@@ -53,6 +54,17 @@ div#pasConducteur{
 p#pasConducteur{
     color: whitesmoke;
 }
+
+p#pasConducteur a{
+    color: #f46917;
+    text-decoration: underline #f46917 dotted 2px;
+}
+
+p#pasConducteur a:hover{
+    color: orange;
+    text-decoration: underline orange solid 3px;
+}
+
 
 div.flexLigne{
     width: 80vW;
