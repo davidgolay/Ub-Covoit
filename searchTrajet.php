@@ -149,10 +149,13 @@ if(isset($_POST['search']))
                     else
                     {
                         echo '
-                        <div class="normal-trajet"> 
+                        <div class="normal-trajet">
+                            <div>
+                                <h2>Le ' . $row['date'] . ' à ' . $heure . 'h' . $minute . ' de '. $nom_ville['ville_nom_reel'] . ' à uB </h2>
+                            </div> 
                             <div class="infoTrajet">
-                                <p> Trajet proposé par <a class="profil" href="profil.php?id=' . $driver.'">'. $row['prenom'] . ' ' . $row['nom'] . '</a></p>
-                                <p> Le ' . $row['date'] . ' à ' . $heure . 'h' . $minute . ' de '. $nom_ville['ville_nom_reel'] . ' à uB </p>
+                                <p> Conducteur : <a class="profil" href="profil.php?id=' . $driver.'">'. $row['prenom'] . ' ' . $row['nom'] . '</a> </p>
+                                <p> Place(s) disponible(s) : ' . $row['place_dispo'] . '</p>                               
                             </div>
                             <div>
                                 <a class="bouton" href="inscription_trajet.php?id_trajet='.$row['id_trajet'] . '&action=inscription"> Choisir ce trajet </a>
