@@ -2,6 +2,8 @@
 session_start();
 include 'header.php';
 ?>
+<link rel="stylesheet" href="css/politique.css">
+<link rel="stylesheet" href="css/main.css"> 
 <div id="page">
     <h1>Politique de confidentialité</h1>
 
@@ -76,10 +78,6 @@ include 'header.php';
    
     <p>Pour toute question relative à la présente politique de confidentialité ou pour toute demande relative à vos données personnelles, vous pouvez nous contacter en :</p>
     <div id=phrase><p>•	adressant un email à notre délégué à la protection des données à l’adresse <a href=mailto:dataprotection@ubCovoit.com>dataprotection@ubCovoit.com</a></p></div>
-
-
-    <link rel="stylesheet" href="css/politique.css">
-    <link rel="stylesheet" href="css/main.css"> 
 
 </div>
 <?php

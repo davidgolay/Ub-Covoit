@@ -74,20 +74,20 @@ else
     <h2>Mofication de mon véhicule</h2><br/>
         <div>
             <form action="" method="post">
-                <table class="flexColonne">
-                    <tr>
+                <table>
+                    <tr class="flexColonneMobile">
                         <td><label>Model</label></td>
                         <td><input class="center-right-left" type="text" name="new_model" placeholder="Model" value="<?php echo $vehicule_info['model'];?>"/></td>
                     </tr>
-                    <tr>
+                    <tr class="flexColonneMobile">
                         <td><label>Marque</label></td>
                         <td><input class="center-right-left" type="text" name="new_marque" placeholder="Marque" value="<?php echo $vehicule_info['marque'];?>"/></td>
                     </tr>
-                    <tr>
+                    <tr class="flexColonneMobile">
                         <td><label>Place</label></td>
                         <td><input class="center-right-left" type="text" name="new_place" placeholder="Place(s)" value="<?php echo $vehicule_info['place'];?>"/></td>
                     </tr>
-                    <tr>
+                    <tr class="flexColonneMobile">
                         <td><label>Commentaire</label></td>
                         <td><input class="center-right-left" type="text" name="new_commentaire" placeholder="Commentaire" value="<?php echo $vehicule_info['commentaire'];?>"/></td>
                     </tr>                        

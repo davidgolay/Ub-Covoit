@@ -2,6 +2,9 @@
 session_start();
 include 'header.php';
 ?>
+<link rel="stylesheet" href="css/about.css">
+<link rel="stylesheet" href="css/main.css"> 
+
 <div id="page">
     <h1>A propos d'Ub'Covoit</h1>
     <h2>Notre mission</h2>
@@ -22,10 +25,6 @@ include 'header.php';
         <li>Diminuer le trafic routier pour limiter l’impact de la pollution sur l’environnement</li>
         <li>Maximiser l’impact économique pour les étudiants</li>
     </ul>
-
-    <link rel="stylesheet" href="css/about.css">
-    <link rel="stylesheet" href="css/main.css"> 
-
 </div>
 <?php
 include 'footer.php';

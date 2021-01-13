@@ -82,36 +82,36 @@ else{
             <h2>Mofication de mon profil</h2><br/>
                 <div>
                     <form action="" method="post">
-                        <table class="flexColonne">
-                            <tr>
+                        <table>
+                            <tr class="flexColonneMobile">
                                 <td><label>Nom</label></td>
                                 <td><input class="center-right-left" type="text" name="new_nom" placeholder="Nom" value="<?php echo $user['nom'];?>"/></td>
                             </tr>
-                            <tr>
+                            <tr class="flexColonneMobile" class="flexColonne">
                                 <td><label>Prénom</label></td>
                                 <td><input class="center-right-left" type="text" name="new_prenom" placeholder="Prenom" value="<?php echo $user['prenom'];?>"/></td>
                             </tr>
-                            <tr>
+                            <tr class="flexColonneMobile">
                                 <td><label>Adresse email étudiante</label></td>
                                 <td><input class="center-right-left" type="email" name="new_email" placeholder="Email" value="<?php echo $user['email'];?>"/></td>
                             </tr>
-                            <tr>
+                            <tr class="flexColonneMobile">
                                 <td><label>Adresse email de récupération</label></td>
                                 <td><input class="center-right-left" type="email" name="new_email_recup" placeholder="Email de récupération" value="<?php echo $user['email_recup'];?>"/></td>
                             </tr>
-                            <tr>
+                            <tr class="flexColonneMobile">
                                 <td><label>Nouveau mot de passe</label></td>
                                 <td><input class="center-right-left" type="password" name="new_password" placeholder="Mot de passe"/></td>
                             </tr>
-                            <tr>
+                            <tr class="flexColonneMobile">
                                 <td><label>Confirmer mot de passe</label></td>
                                 <td><input class="center-right-left" type="password" name="new_password_confirm" placeholder="Confirmer mot de passe"/></td>
                             </tr>
-                            <tr>
+                            <tr class="flexColonneMobile">
                                 <td><label>Biographie</label></td>
                                 <td><input class="center-right-left" type="text" name="new_bio" value="<?php echo $user['bio'];?>" maxlength="255"/></td>
                             </tr>
-                            <tr>
+                            <tr class="flexColonneMobile">
                                 <td><label>Conducteur</label></td>
                                 <td><input class="center-right-left" type="checkbox" name="new_driver" value="1" <?php if($user['is_driver'] == 1){echo 'checked';}?> /></td>
                             </tr>

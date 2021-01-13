@@ -33,20 +33,20 @@ if(isset($_POST['add_vehicule']) AND !empty($_POST['marque']) AND !empty($_POST[
         <div>
             <form action="" method="post">
                 <table class="flexColonne">
-                    <tr>
+                    <tr class="flexColonneMobile">
                         <td><label>Marque du véhicule</label></td>
                         <td><input class="center-right-left" type="text" name="marque" placeholder="Marque" value="<?php if(isset($_POST['marque']))echo $_POST['marque'];?>"/></td>
                     </tr>
-                    <tr>
+                    <tr class="flexColonneMobile">
                         <td><label>Modèle du véhicule</label></td>
                         <td><input class="center-right-left" type="text" name="model" placeholder="Modele" value="<?php if(isset($_POST['model']))echo $_POST['model'];?>"/></td>
                     </tr>
                 
-                    <tr>
+                    <tr class="flexColonneMobile">
                         <td><label>Nombre de places</label></td>
                         <td><input class="center-right-left" type="number" name="place" placeholder="Place(s) passagères" value="<?php if(isset($_POST['place']))echo $_POST['place'];?>"/></td>
                     </tr>
-                    <tr>
+                    <tr class="flexColonneMobile">
                         <td><label>Commentaire véhicule</label></td>
                         <td><input class="center-right-left" type="text" name="commentaire" placeholder="Commentaire sur votre véhicule" value="<?php if(isset($_POST['commentaire']))echo $_POST['commentaire'];?>"/></td>
                     </tr>                        
