@@ -10,7 +10,7 @@ if($_GET['driver']<=1 AND $_GET['driver']>=0){
     // correspondra au trajets en tant que passagers
     if($_GET['driver'] == 0){
         $affichage_trajet_driver = 0;
-        $txt_title_type_trajet = ' passager'; // utile pour l'affichage de texte
+        $txt_title_type_trajet = ' passagers'; // utile pour l'affichage de texte
         // UTILE POUR LE BOUTON DE SWITCH
         $switch_type_trajet = 'driver=1'; // utile pour le switch de passager à conducteur
         $link_type_trajet = 'Conducteur'; // utile pour le switch de passager à conducteur
@@ -20,7 +20,7 @@ if($_GET['driver']<=1 AND $_GET['driver']>=0){
     }
     else{
         $affichage_trajet_driver = 1;
-        $txt_title_type_trajet = ' conducteur';
+        $txt_title_type_trajet = ' conducteurs';
         // UTILE POUR LE BOUTON DE SWITCH
         $switch_type_trajet = 'driver=0'; // utile pour le switch de passager à PASSAGER
         $link_type_trajet = 'Passager'; // utile pour le switch de passager à PASSAGER
@@ -119,6 +119,19 @@ if(isset($_GET['incoming']) AND isset($_GET['driver']) AND isset($_GET['partir_u
         }
 
     }
+    ?>
+    <div id="bandeau">
+    <h1>Liste de tout vos trajets</h1>
+    <p> Retrouver tous vos trajet en changeant les filtres. Retrouvez par exemple vos trajets en tant que passager 
+    (filtre "passager") partant de l'université de Bourgogne (filtre "Partant de l'UB") 
+    qui sont prévus dans le futur (filtre "à venir").
+    </p>
+    <p>
+    Selon les filtres selectionnés, vous pouvez vous désincrire d'un trajet à venir et vous pouvez supprimer un trajet à venir dont vous êtes le conducteur.
+    </p>
+    </div>
+    
+    <?php
     echo // les liens boutons permettant de switcher entre partir_ub, trajets effectués/à venir et la destination ub ou non
     '<div id="page">
         <h1>Mes trajets '. $txt_title_type_trajet.'</h1>
@@ -142,6 +155,11 @@ if(isset($_GET['incoming']) AND isset($_GET['driver']) AND isset($_GET['partir_u
 
     echo 
     '<div id="resultats">';
+    /*if ($_SESSION['is_driver'] == 0 AND $_GET['driver'] == 1){
+        $non_conducteur = '<div class="error">Vous n\'êtes pas conducteur</div>';
+        //$classTrajet = 'normal-trajet';
+    }
+    echo $non_conducteur;*/
 
     foreach($trajet as $row){
         $classTrajet = 'normal-trajet';
@@ -173,6 +191,7 @@ if(isset($_GET['incoming']) AND isset($_GET['driver']) AND isset($_GET['partir_u
         
         echo '<div class="flexColonne '.$classTrajet.'">';
         echo $status_trajet;
+        
         echo '<h2>'.$row['date'] . ' à ' . $heure . 'h' . $minute . $text_destination . $nom_ville['ville_nom_reel'] . '</h2>
         <div class="infoTrajet">' . $div_conducteur;
 
