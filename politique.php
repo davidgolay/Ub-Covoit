@@ -2,7 +2,7 @@
 session_start();
 include 'header.php';
 ?>
-<link rel="stylesheet" href="css/politique.css">
+<link rel="stylesheet" href="css/legal.css">
 <link rel="stylesheet" href="css/main.css"> 
 <div id="page">
     <h1>Politique de confidentialité</h1>

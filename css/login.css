@@ -43,3 +43,10 @@ fieldset{
     color: whitesmoke;
 
 }
+
+@media screen and (max-device-width: 600px) {
+    fieldset{
+        padding-left: 0.5em;
+        padding-right: 0.5em;
+    }
+}
