@@ -165,18 +165,18 @@ if(isset($_POST['search']))
             }
             else
             {
-                $erreur = "Aucun trajet trouvé";
+                $erreur = "Aucun trajet trouvé.";
             }
 
         }
         else
         {
-            $erreur ="ville inconnue ou mal saisie";
+            $erreur ="Ville inconnue ou mal saisie.";
         }
     }
     else
     {
-        $erreur = "Tout les champs doivent être complétés!";
+        $erreur = "Tous les champs doivent être complétés.";
     }
 }
 

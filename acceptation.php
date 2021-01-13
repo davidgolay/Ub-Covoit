@@ -73,9 +73,9 @@ foreach($passagersNonAccepted as $row){
                 <h3><?php echo $row['date'].' à '.$heure.'h'.$minute. ' - '.$ville?> </h3>
                 <div class="infoTrajet">
                     <div>Demande de <a class="profil" href="profil.php?id=<?php echo $row2['id'];?>"> <?php echo $row2['prenom'].' '.$row2['nom'];?></a></div>
-                    <div>Commentaire d'inscription: <?php if(!empty($row['com_passager'])){echo $row['com_passager'];}else{echo 'pas de message';};?></div>
-                    <div>Email: <?php echo $row2['email'];?></div>
-                    <div>Telephone: <?php echo $row2['tel'];?></div>
+                    <div>Message d'inscription : <?php if(!empty($row['com_passager'])){echo $row['com_passager'];}else{echo 'pas de message';};?></div>
+                    <div>Email : <?php echo $row2['email'];?></div>
+                    <div>Téléphone : <?php echo $row2['tel'];?></div>
                 </div>
                 <?php            
         }?>

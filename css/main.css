@@ -284,7 +284,7 @@ input[type="date"], input[type="time"]{
 }
 
 div.error{
-    color:rgb(255, 240, 36);
+    color:rgb(214, 32, 0);
 }
 
 div.normal-trajet{
@@ -309,6 +309,7 @@ div.normal-trajet h2{
     padding-right: 0.5em;
     padding-left: 0.5em;
     margin-bottom: 0.8em;
+    min-width: 95%;
 }
 
 .profil{
