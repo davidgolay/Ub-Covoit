@@ -81,7 +81,7 @@ if(isset($_POST['register']))
             if($age <= 64)
             {
                 //echo "c'est okai";
-                if(preg_match("#[0][6][- \.?]?([0-9][0-9][- \.?]?){4}$#", $tel)){ // verification du format du num de telephone  
+                if((preg_match("#[0][6][- \.?]?([0-9][0-9][- \.?]?){4}$#", $tel)) OR (preg_match("#[0][7][- \.?]?([0-9][0-9][- \.?]?){4}$#", $tel))){ // verification du format du num de telephone  
                     if(filter_var($email, FILTER_VALIDATE_EMAIL) AND (endsWith($email, $fmt_mail1) OR endsWith($email, $fmt_mail2))){ // verification du format du mail 
                         $reqmail = $bdd->prepare("SELECT * FROM users WHERE email=?");
                         $reqmail->execute(array($email));
