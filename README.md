@@ -47,20 +47,35 @@ Les droits associés appartiennent à l'IUT de Dijon-Auxerre. Par conséquent, U
 
 # 🖼️ Capture d'écran
 
+### ▶️ Toutes les pages de ub'Covoit sont responsives.
+
+<p align="center">
+  <img src="media/galerie/landing_page.png" width="800">
+  <img src="media/galerie/proposition.png" width="500">
+  <img src="media/galerie/trajets.png" width="500">
+  <img src="media/galerie/recherche_trajets.png" width="500">
+  <img src="media/galerie/resultats.png" width="500">
+  <img src="media/galerie/profil.png" width="500">
+  <img src="media/galerie/vehicule.png" width="500">
+</p>
+
 <br/><br/><br/>
 
 # 🧰 Fonctionnalités dévelloppées
-*Ce tableau récapitule toutes les fonctionnalités que nous avons incorporées au site Ub'Covoit.
+
+### ▶️ Ce tableau récapitule toutes les fonctionnalités incorporées au site Ub'Covoit.
+
 <p align="center">
-  <img src="media/fonctionnalites/fonctionnalites_1.jpg" width="700">
-  <img src="media/fonctionnalites/fonctionnalites_2.jpg" width="700">
-  <img src="media/fonctionnalites/fonctionnalites_3.jpg" width="700">
+  <img src="media/fonctionnalites/fonctionnalites_1.jpg" width="500">
+  <img src="media/fonctionnalites/fonctionnalites_2.jpg" width="500">
+  <img src="media/fonctionnalites/fonctionnalites_3.jpg" width="500">
 </p>
 
                                                                  
 # 💾 Base de donnée
-*La base de données que nous avons établi contient plus de 78 000 villes françaises grâce à la récupération de données libres de droit que nous avons intégré à notre structure.*
-<h2>Dictionnaire des données</h2>
+
+### ▶️ La base de données que nous avons établi contient plus de 78 000 villes françaises grâce à la récupération de données libres de droit que nous avons intégré à notre structure.*
+<h2>MLD / MCD / Dictionnaire des données</h2>
 <p align="center">
   <img src="media/BDD/bdd.jpg" width="1000">
 </p>
@@ -69,5 +84,11 @@ Les droits associés appartiennent à l'IUT de Dijon-Auxerre. Par conséquent, U
 
  # 👤 Guide utilisateur
 
-<img src="media/bdd.jpg" width="100" height="100">
+<img src="media/guide_utilisateur/GU_1.jpg" width="800">
+<img src="media/guide_utilisateur/GU_2.jpg" width="800">
+<img src="media/guide_utilisateur/GU_3.jpg" width="800">
+<img src="media/guide_utilisateur/GU_4.jpg" width="800">
+<img src="media/guide_utilisateur/GU_5.jpg" width="800">
+<img src="media/guide_utilisateur/GU_6.jpg" width="800">
+<img src="media/guide_utilisateur/GU_7.jpg" width="800">
 <br/><br/><br/>
