@@ -6,7 +6,7 @@ trajet et/ou rechercher un trajet</b>. Les utilisateurs auront la possibilité d
 entre eux directement sur la plateforme.
 
 *<b> ⚠️ Ce projet a été dévelloppé dans un cadre pédagogique lors de notre 1er semestre à l'IUT Informatique de Dijon-Auxerre.
-Les droits associés appartiennent à l'IUT de Dijon-Auxerre.</b>*
+Les droits associés appartiennent à l'IUT de Dijon-Auxerre. Par conséquent, Ub'Covoit n'est pas disponible en ligne. Il est toutefois publié sur un réseau privé de l'IUT. </b>*
 <br/><br/><br/>
 
 <h2>:family_man_man_boy_boy: L'équipe </h2>
@@ -27,36 +27,47 @@ Les droits associés appartiennent à l'IUT de Dijon-Auxerre.</b>*
   Maintenance de la BDD et création d'un lot de donnée pour offrir à l’équipe la possibilité
     de tester cette dernière.</li>
   </ul>
-  
-<b> 🖱️ EDI & Softwares: </b> Visual Studio Code, SQL Workbench 
+  <br/>
+ 
+<h2> 🖱️ Les technologies </h2>
+<b> ➡️ EDI & Softwares: </b> Visual Studio Code, SQL Workbench 
   </br>
-<b> 🖱️ Langages: </b> PHP, MySql, HTML5, CSS
-</br>
-</br>
-</br>
+<b> ➡️ Langages: </b> PHP, MySql, HTML5, CSS
+<br/><br/><br/>
 
 
 <h1> 📖 Table des matières </h1>
 <ul>
-  <li><h2> 1️⃣ Captures d'écran du site </h2></li>
+  <li><h2> 1️⃣ Captures d'écran </h2></li>
   <li><h2> 2️⃣ Fonctionnalités dévelloppées </h2></li>
   <li><h2> 3️⃣ Base de donnée </h2></li>
   <li><h2> 4️⃣ Guide utilisateur </h2></li>
 </ul>
-<br/><br/><br/><br/>
+<br/><br/><br/>
 
-# 2️⃣ Fonctionnalités dévelloppées
+# 🖼️ Capture d'écran
 
+<br/><br/><br/>
+
+# 🧰 Fonctionnalités dévelloppées
+*Ce tableau récapitule toutes les fonctionnalités que nous avons incorporées au site Ub'Covoit.
 <p align="center">
-<img src="media/fonctionnalites/fonctionnalites_1.jpg" width="700">
+  <img src="media/fonctionnalites/fonctionnalites_1.jpg" width="700">
+  <img src="media/fonctionnalites/fonctionnalites_2.jpg" width="700">
+  <img src="media/fonctionnalites/fonctionnalites_3.jpg" width="700">
 </p>
+
                                                                  
-# 3️⃣ Base de donnée
+# 💾 Base de donnée
+*La base de données que nous avons établi contient plus de 78 000 villes françaises grâce à la récupération de données libres de droit que nous avons intégré à notre structure.*
+<h2>Dictionnaire des données</h2>
+<p align="center">
+  <img src="media/BDD/bdd.jpg" width="1000">
+</p>
 
-![Page_1](media/bdd.jpg)
+<br/><br/><br/>
 
- # 4️⃣ Guide utilisateur
+ # 👤 Guide utilisateur
 
 <img src="media/bdd.jpg" width="100" height="100">
-
-[Ub'Covoit - Rapport short.pdf](https://github.com/davidgolay/Ub-covoit/files/7148197/Ub.Covoit.-.Rapport.short.pdf)
+<br/><br/><br/>
