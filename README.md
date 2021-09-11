@@ -46,11 +46,20 @@ Les droits associés appartiennent à l'IUT de Dijon-Auxerre. Par conséquent, U
 <br/><br/><br/>
 
 # 🖼️ Capture d'écran
+Toutes les pages de ub'Covoit sont responsives.
+<p align="center">
+  <img src="media/galerie/landing_page.png" width="800">
+  <img src="media/galerie/proposition.png" width="500">
+  <img src="media/galerie/trajets.png" width="600">
+  <img src="media/galerie/recherche_trajets.png" width="600">
+  <img src="media/galerie/resultats.png" width="600">
+  <img src="media/galerie/profil.png" width="500">
+</p>
 
 <br/><br/><br/>
 
 # 🧰 Fonctionnalités dévelloppées
-*Ce tableau récapitule toutes les fonctionnalités que nous avons incorporées au site Ub'Covoit.
+### Ce tableau récapitule toutes les fonctionnalités que nous avons incorporées au site Ub'Covoit.
 <p align="center">
   <img src="media/fonctionnalites/fonctionnalites_1.jpg" width="700">
   <img src="media/fonctionnalites/fonctionnalites_2.jpg" width="700">
@@ -59,7 +68,7 @@ Les droits associés appartiennent à l'IUT de Dijon-Auxerre. Par conséquent, U
 
                                                                  
 # 💾 Base de donnée
-*La base de données que nous avons établi contient plus de 78 000 villes françaises grâce à la récupération de données libres de droit que nous avons intégré à notre structure.*
+### La base de données que nous avons établi contient plus de 78 000 villes françaises grâce à la récupération de données libres de droit que nous avons intégré à notre structure.*
 <h2>Dictionnaire des données</h2>
 <p align="center">
   <img src="media/BDD/bdd.jpg" width="1000">
