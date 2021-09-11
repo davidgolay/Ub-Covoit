@@ -51,11 +51,11 @@ Les droits associés appartiennent à l'IUT de Dijon-Auxerre. Par conséquent, U
 
 <p align="center">
   <img src="media/galerie/landing_page.png" width="800">
-  <img src="media/galerie/proposition.png" width="500">
-  <img src="media/galerie/trajets.png" width="600">
-  <img src="media/galerie/recherche_trajets.png" width="600">
-  <img src="media/galerie/resultats.png" width="600">
-  <img src="media/galerie/profil.png" width="500">
+  <img src="media/galerie/proposition.png" width="300">
+  <img src="media/galerie/trajets.png" width="300">
+  <img src="media/galerie/recherche_trajets.png" width="300">
+  <img src="media/galerie/resultats.png" width="300">
+  <img src="media/galerie/profil.png" width="300">
 </p>
 
 <br/><br/><br/>
@@ -74,7 +74,7 @@ Les droits associés appartiennent à l'IUT de Dijon-Auxerre. Par conséquent, U
 # 💾 Base de donnée
 
 ### ▶️ La base de données que nous avons établi contient plus de 78 000 villes françaises grâce à la récupération de données libres de droit que nous avons intégré à notre structure.*
-<h2>Dictionnaire des données</h2>
+<h2>MLD / MCD / Dictionnaire des données</h2>
 <p align="center">
   <img src="media/BDD/bdd.jpg" width="1000">
 </p>
