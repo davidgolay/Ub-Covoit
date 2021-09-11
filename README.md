@@ -59,7 +59,7 @@ Toutes les pages de ub'Covoit sont responsives.
 <br/><br/><br/>
 
 # 🧰 Fonctionnalités dévelloppées
-### Ce tableau récapitule toutes les fonctionnalités que nous avons incorporées au site Ub'Covoit.
+### Ce tableau récapitule toutes les fonctionnalités incorporées au site Ub'Covoit.
 <p align="center">
   <img src="media/fonctionnalites/fonctionnalites_1.jpg" width="700">
   <img src="media/fonctionnalites/fonctionnalites_2.jpg" width="700">
@@ -78,5 +78,11 @@ Toutes les pages de ub'Covoit sont responsives.
 
  # 👤 Guide utilisateur
 
-<img src="media/bdd.jpg" width="100" height="100">
+<img src="media/guide_utilisateur/GU_1.jpg" width="800">
+<img src="media/guide_utilisateur/GU_2.jpg" width="800">
+<img src="media/guide_utilisateur/GU_3.jpg" width="800">
+<img src="media/guide_utilisateur/GU_4.jpg" width="800">
+<img src="media/guide_utilisateur/GU_5.jpg" width="800">
+<img src="media/guide_utilisateur/GU_6.jpg" width="800">
+<img src="media/guide_utilisateur/GU_7.jpg" width="800">
 <br/><br/><br/>
