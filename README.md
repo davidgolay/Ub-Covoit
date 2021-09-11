@@ -7,8 +7,16 @@ trajet et/ou rechercher un trajet. Les utilisateurs auront la possibilité de co
 entre eux directement sur la plateforme. 
 <br/>
 
+# Fonctionnalités dévellopées
+
+![Page_1](media/fonctionnalites/fonctionnalites_1.jpg)
+
 # Base de donnée
 
 ![Page_1](media/bdd.jpg)
+
+ 
+
+<img src="media/bdd.jpg" width="100" height="100">
 
 [Ub'Covoit - Rapport short.pdf](https://github.com/davidgolay/Ub-covoit/files/7148197/Ub.Covoit.-.Rapport.short.pdf)
