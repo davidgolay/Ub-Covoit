@@ -9,8 +9,10 @@ entre eux directement sur la plateforme.
 
 # Fonctionnalités dévellopées
 
-![Page_1](media/fonctionnalites/fonctionnalites_1.jpg)
-
+<p align="center>
+<img src="media/fonctionnalites/fonctionnalites_1.jpg" width="700">
+</p>
+                                                                 
 # Base de donnée
 
 ![Page_1](media/bdd.jpg)
