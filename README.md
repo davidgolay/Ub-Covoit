@@ -56,6 +56,7 @@ Les droits associés appartiennent à l'IUT de Dijon-Auxerre. Par conséquent, U
   <img src="media/galerie/recherche_trajets.png" width="500">
   <img src="media/galerie/resultats.png" width="500">
   <img src="media/galerie/profil.png" width="500">
+  <img src="media/galerie/vehicule.png" width="500">
 </p>
 
 <br/><br/><br/>
