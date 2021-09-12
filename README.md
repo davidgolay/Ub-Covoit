@@ -35,11 +35,11 @@ Les droits associés appartiennent à l'IUT de Dijon-Auxerre. Par conséquent, U
 <b> ➡️ Langages: </b> PHP, MySql, HTML5, CSS
 <br/><br/><br/>
 
-
-<a target="_blank" rel="noopener noreferrer" 
-     href="https://www.youtube.com/watch?v=Cur84t2qvE8&ab_channel=Mathis.Pct"> 
-      <img src="media/galerie/landing_page.png" width="800">
-</a>
+<p align="center">
+  <a href="https://www.youtube.com/watch?v=Cur84t2qvE8&ab_channel=Mathis.Pct">
+    <img src="media/galerie/landing_page.png" width="800">
+  </a>
+</p>
 
 <h1> 📖 Table des matières </h1>
 <ul>
