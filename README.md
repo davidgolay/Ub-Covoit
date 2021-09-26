@@ -79,19 +79,13 @@ Il pourra préciser si il fait des détours et laisser un commentaire informatif
   De la même manière que la proposition de trajet, il faut remplir un formulaire qui nous retournera une liste de trajets disponibles selon les critères entrés.
   On aura la possibilité de s'inscrire en laissant un message au conducteur qui n'aura plus qu'à accepter notre demande.
 <p align="center">
-
-  <a href="https://www.youtube.com/watch?v=Cur84t2qvE8&ab_channel=Mathis.Pct">
     <img src="media/giff/recherche trajet.gif" width="800">
-  </a>
 </p>
 
 <h2> Site Responsive </h2>
 Ub'Covoit est entierement responsive et s'adapte à tout type de plateforme.
 <p align="center">
-
-  <a href="https://www.youtube.com/watch?v=Cur84t2qvE8&ab_channel=Mathis.Pct">
     <img src="media/giff/responsive.gif" width="800">
-  </a>
 </p>
 
 <br/><br/><br/>
