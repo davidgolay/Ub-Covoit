@@ -50,37 +50,49 @@ Les droits associés appartiennent à l'IUT de Dijon-Auxerre. Par conséquent, U
 
 
 <h2> Inscription au site </h2>
-
-<p align="center">
   L'inscription au site necessite un format d'adresse mail spécifique, un format de telephone correct.
 Le mot passe est hashé et doit contenir au moins 8 caractères, une majuscule, une miniscule et un caractère spécial.
-Il faut aussi avoir accepté les conditions générales d'utilisation et avoir plus de 18 ans.
-    <a href="https://www.youtube.com/watch?v=Cur84t2qvE8&ab_channel=Mathis.Pct">
+Il faut accepter les conditions générales d'utilisation et avoir plus de 18 ans.
+<p align="center">
       <img src="media/giff/inscription et login.gif" width="800">
-    </a>
-  </p>
+ </p>
 
 <h2> Mon profil conducteur </h2>
-<p align="center">
   Pour pouvoir proposer des trajet, il faut modifier son profil pour débloquer ses fonctionnalités.
   Tout les champs du profil sont modifiables. On pourra aussi préciser son véhicule facilement.
-  <a href="https://www.youtube.com/watch?v=Cur84t2qvE8&ab_channel=Mathis.Pct">
+<p align="center">
     <img src="media/giff/profil conducteur.gif" width="800">
-  </a>
 </p>
 
 <h2> Proposition de trajet </h2>
-<p align="center">
   Un conducteur pourra proposer des trajets allant ou partant de l'Université de Bourgogne. 
   la base de données propose plus de 78 000 villes d'arrivée ou de départ, mais l'auto completion des villes n'a pas encore été développée.
 Il faut donc indiquer un code postal (le code département suffit) et un nom de ville (sans faute d'orthographe) pour que cela fonctionne.
 Si la ville n'existe pas, un message d'erreur sera affiché au conducteur.
 Il pourra préciser si il fait des détours et laisser un commentaire informatif sur son trajet.
+<p align="center">
+
+    <img src="media/giff/proposition trajet.gif" width="800">
+</p>
+
+<h2> Recherche de trajet </h2>
+  De la même manière que la proposition de trajet, il faut remplir un formulaire qui nous retournera une liste de trajets disponibles selon les critères entrés.
+  On aura la possibilité de s'inscrire en laissant un message au conducteur qui n'aura plus qu'à accepter notre demande.
+<p align="center">
+
   <a href="https://www.youtube.com/watch?v=Cur84t2qvE8&ab_channel=Mathis.Pct">
-    <img src="media/giff/propostion trajet.gif" width="800">
+    <img src="media/giff/recherche trajet.gif" width="800">
   </a>
 </p>
 
+<h2> Site Responsive </h2>
+Ub'Covoit est entierement responsive et s'adapte à tout type de plateforme.
+<p align="center">
+
+  <a href="https://www.youtube.com/watch?v=Cur84t2qvE8&ab_channel=Mathis.Pct">
+    <img src="media/giff/responsive.gif" width="800">
+  </a>
+</p>
 
 <br/><br/><br/>
 
